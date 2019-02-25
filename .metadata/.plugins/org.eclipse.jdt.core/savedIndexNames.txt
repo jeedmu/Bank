@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\Programmerings-mappen\GitHub\Bank\.metadata\.plugins\org.eclipse.jdt.core
+589511858.index
+2075598579.index
+3139000163.index

@@ -1,0 +1,369 @@
+!SESSION 2019-02-25 11:00:25.046 -----------------------------------------------
+eclipse.buildId=4.10.0.I20181206-0815
+java.version=1.8.0_152
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=da_DK
+Framework arguments:  -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -product org.eclipse.epp.package.jee.product -data D:\Programmerings-mappen\GitHub\Bank -product org.eclipse.epp.package.jee.product
+
+!ENTRY org.eclipse.jface 2 0 2019-02-25 11:00:28.881
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2019-02-25 11:00:28.881
+!MESSAGE A conflict occurred for CTRL+SHIFT+T:
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.navigate.open.type,Open Type,
+		Open a type in a Java editor,
+		Category(org.eclipse.ui.category.navigate,Navigate,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@fefd4a2,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+Binding(CTRL+SHIFT+T,
+	ParameterizedCommand(Command(org.eclipse.lsp4e.symbolinworkspace,Go to Symbol in Workspace,
+		,
+		Category(org.eclipse.lsp4e.category,Language Servers,null,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@6d2693f,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
+
+!ENTRY org.eclipse.jface.text 2 0 2019-02-25 11:00:31.333
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.boolean'
+
+!ENTRY org.eclipse.egit.ui 2 0 2019-02-25 11:00:34.681
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Mathias A. Lenz'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.wst.common.project.facet.ui 4 0 2019-02-25 11:00:39.313
+!MESSAGE Could not load icon "icons/obj16/new_webserv_wiz.gif" from plugin org.jboss.tools.ws.jaxws.ui.
+
+!ENTRY org.jboss.tools.discovery.core 4 0 2019-02-25 11:00:43.803
+!MESSAGE No URL set for discovery catalog. Property jboss.discovery.directory.url is missing!
+
+!ENTRY org.jboss.tools.discovery.core 4 0 2019-02-25 11:00:43.811
+!MESSAGE All attempts to discover connectors have failed
+!SUBENTRY 1 org.eclipse.mylyn.discovery.core 4 0 2019-02-25 11:00:43.812
+!MESSAGE Failed to get connectors from RemoteProxyWizardDiscoveryStrategy
+!STACK 0
+java.lang.NullPointerException
+	at java.net.URI$Parser.parse(Unknown Source)
+	at java.net.URI.<init>(Unknown Source)
+	at org.jboss.tools.discovery.core.internal.connectors.xpl.RemoteExternalBundleDiscoveryStrategy.loadRegistry(RemoteExternalBundleDiscoveryStrategy.java:91)
+	at org.jboss.tools.discovery.core.internal.connectors.xpl.ExternalBundleDiscoveryStrategy.performDiscovery(ExternalBundleDiscoveryStrategy.java:117)
+	at org.jboss.tools.discovery.core.internal.connectors.ChainedDiscoveryStrategy.performDiscovery(ChainedDiscoveryStrategy.java:68)
+	at org.eclipse.mylyn.internal.discovery.core.model.ConnectorDiscovery.performDiscovery(ConnectorDiscovery.java:116)
+	at org.jboss.tools.central.internal.discovery.wizards.ProxyWizardManager.loadWizards(ProxyWizardManager.java:107)
+	at org.jboss.tools.central.internal.discovery.wizards.ProxyWizardUpdateJob.run(ProxyWizardUpdateJob.java:47)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY com.github.camel-tooling.eclipse.client 4 0 2019-02-25 11:01:42.861
+!MESSAGE Cannot get the Camel LSP Server jar.
+!STACK 0
+java.net.URISyntaxException: Illegal character in path at index 27: file:/D:/Programmer/Eclipse EE/eclipse/plugins/com.github.camel-tooling.eclipse.client_1.0.0.201809120921/libs/camel-lsp-server-1.0.0-SNAPSHOT.jar
+	at java.net.URI$Parser.fail(Unknown Source)
+	at java.net.URI$Parser.checkChars(Unknown Source)
+	at java.net.URI$Parser.parseHierarchical(Unknown Source)
+	at java.net.URI$Parser.parse(Unknown Source)
+	at java.net.URI.<init>(Unknown Source)
+	at java.net.URL.toURI(Unknown Source)
+	at com.github.cameltooling.eclipse.client.CamelLSPStreamConnectionProvider.computeCamelLanguageServerJarPath(CamelLSPStreamConnectionProvider.java:60)
+	at com.github.cameltooling.eclipse.client.CamelLSPStreamConnectionProvider.computeCommands(CamelLSPStreamConnectionProvider.java:51)
+	at com.github.cameltooling.eclipse.client.CamelLSPStreamConnectionProvider.<init>(CamelLSPStreamConnectionProvider.java:39)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:206)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.eclipse.lsp4e.LanguageServersRegistry$ExtensionLanguageServerDefinition.createConnectionProvider(LanguageServersRegistry.java:114)
+	at org.eclipse.lsp4e.LanguageServerWrapper.start(LanguageServerWrapper.java:204)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSWrapperForConnection(LanguageServiceAccessor.java:340)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSWrappers(LanguageServiceAccessor.java:299)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSPDocumentInfosFor(LanguageServiceAccessor.java:444)
+	at org.eclipse.lsp4e.ConnectDocumentToLanguageServerSetupParticipant$1.run(ConnectDocumentToLanguageServerSetupParticipant.java:75)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.lsp4e 4 0 2019-02-25 11:01:53.008
+!MESSAGE LanguageServer not initialized after 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.util.concurrent.CompletableFuture.timedGet(Unknown Source)
+	at java.util.concurrent.CompletableFuture.get(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:593)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSWrappers(LanguageServiceAccessor.java:301)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSPDocumentInfosFor(LanguageServiceAccessor.java:444)
+	at org.eclipse.lsp4e.ConnectDocumentToLanguageServerSetupParticipant$1.run(ConnectDocumentToLanguageServerSetupParticipant.java:75)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.fusesource.ide.camel.model.service.core 4 0 2019-02-25 11:02:02.480
+!MESSAGE Cannot retrieve the Camel Catalog Embedded
+!STACK 1
+org.eclipse.core.runtime.CoreException: Plug-in org.fusesource.ide.camel.model.service.impl.v2210fuse710018redhat00001 was unable to load class org.fusesource.ide.camel.model.service.impl.v2210fuse000112redhat3.CamelCatalogWrapper.
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.throwException(RegistryStrategyOSGI.java:216)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:198)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.fusesource.ide.camel.model.service.internal.CamelCatalogEmbeddedManager.registerCamelCatalogWrapper(CamelCatalogEmbeddedManager.java:51)
+	at org.fusesource.ide.camel.model.service.internal.CamelCatalogEmbeddedManager.getCamelCatalogsEmbedded(CamelCatalogEmbeddedManager.java:40)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.getEmbeddedCatalog(CamelService.java:74)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.getCatalog(CamelService.java:63)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.updateMavenRepositoryLookup(CamelService.java:179)
+	at org.fusesource.ide.camel.model.service.core.catalog.cache.CamelCatalogCacheManager.getCamelModelForProject(CamelCatalogCacheManager.java:131)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.notifyClasspathChanged(ProjectClasspathChangedListener.java:149)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:127)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visitChildren(ProjectClasspathChangedListener.java:82)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:123)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.elementChanged(ProjectClasspathChangedListener.java:55)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1739)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1727)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1560)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1536)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2257)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2147)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:290)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:153)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:379)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2308)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:807)
+	at org.eclipse.jdt.core.JavaCore.setClasspathContainer(JavaCore.java:5880)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.install(J2EEComponentClasspathContainer.java:496)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.refresh(J2EEComponentClasspathContainer.java:541)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.processModules(J2EEComponentClasspathUpdater.java:387)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.access$4(J2EEComponentClasspathUpdater.java:371)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob$1.run(J2EEComponentClasspathUpdater.java:414)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.run(J2EEComponentClasspathUpdater.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+Caused by: java.lang.ClassNotFoundException: org.fusesource.ide.camel.model.service.impl.v2210fuse000112redhat3.CamelCatalogWrapper cannot be found by org.fusesource.ide.camel.model.service.impl.v2210fuse710018redhat00001_11.1.0.v20180912-1829
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:511)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:422)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:414)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:153)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:612)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
+	... 40 more
+!SUBENTRY 1 org.eclipse.equinox.registry 4 1 2019-02-25 11:02:02.481
+!MESSAGE Plug-in org.fusesource.ide.camel.model.service.impl.v2210fuse710018redhat00001 was unable to load class org.fusesource.ide.camel.model.service.impl.v2210fuse000112redhat3.CamelCatalogWrapper.
+!STACK 0
+java.lang.ClassNotFoundException: org.fusesource.ide.camel.model.service.impl.v2210fuse000112redhat3.CamelCatalogWrapper cannot be found by org.fusesource.ide.camel.model.service.impl.v2210fuse710018redhat00001_11.1.0.v20180912-1829
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClassInternal(BundleLoader.java:511)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:422)
+	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:414)
+	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:153)
+	at java.lang.ClassLoader.loadClass(Unknown Source)
+	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:612)
+	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:196)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:934)
+	at org.eclipse.core.internal.registry.ConfigurationElement.createExecutableExtension(ConfigurationElement.java:246)
+	at org.eclipse.core.internal.registry.ConfigurationElementHandle.createExecutableExtension(ConfigurationElementHandle.java:63)
+	at org.fusesource.ide.camel.model.service.internal.CamelCatalogEmbeddedManager.registerCamelCatalogWrapper(CamelCatalogEmbeddedManager.java:51)
+	at org.fusesource.ide.camel.model.service.internal.CamelCatalogEmbeddedManager.getCamelCatalogsEmbedded(CamelCatalogEmbeddedManager.java:40)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.getEmbeddedCatalog(CamelService.java:74)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.getCatalog(CamelService.java:63)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.updateMavenRepositoryLookup(CamelService.java:179)
+	at org.fusesource.ide.camel.model.service.core.catalog.cache.CamelCatalogCacheManager.getCamelModelForProject(CamelCatalogCacheManager.java:131)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.notifyClasspathChanged(ProjectClasspathChangedListener.java:149)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:127)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visitChildren(ProjectClasspathChangedListener.java:82)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:123)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.elementChanged(ProjectClasspathChangedListener.java:55)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1739)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1727)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1560)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1536)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2257)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2147)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:290)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:153)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:379)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2308)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:807)
+	at org.eclipse.jdt.core.JavaCore.setClasspathContainer(JavaCore.java:5880)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.install(J2EEComponentClasspathContainer.java:496)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.refresh(J2EEComponentClasspathContainer.java:541)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.processModules(J2EEComponentClasspathUpdater.java:387)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.access$4(J2EEComponentClasspathUpdater.java:371)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob$1.run(J2EEComponentClasspathUpdater.java:414)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.run(J2EEComponentClasspathUpdater.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui 4 4 2019-02-25 11:02:03.629
+!MESSAGE To avoid deadlock while executing Display.syncExec() with argument: org.fusesource.ide.preferences.initializer.PreferencesInitializer$$Lambda$582/470909207@61550f55, thread Worker-4: EAR Libraries Update Job will interrupt UI thread.
+!SUBENTRY 1 org.eclipse.ui 4 4 2019-02-25 11:02:03.629
+!MESSAGE Worker-4: EAR Libraries Update Job thread is an instance of Worker or owns an ILock
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread Worker-4: EAR Libraries Update Job
+	at sun.management.ThreadImpl.dumpThreads0(Native Method)
+	at sun.management.ThreadImpl.getThreadInfo(Unknown Source)
+	at org.eclipse.ui.internal.UILockListener.reportInterruption(UILockListener.java:209)
+	at org.eclipse.ui.internal.UILockListener.interruptUI(UILockListener.java:179)
+	at org.eclipse.ui.internal.PendingSyncExec.waitUntilExecuted(PendingSyncExec.java:85)
+	at org.eclipse.ui.internal.UISynchronizer.syncExec(UISynchronizer.java:156)
+	at org.eclipse.swt.widgets.Display.syncExec(Display.java:4580)
+	at org.fusesource.ide.preferences.initializer.PreferencesInitializer.initializeDefaultPreferences(PreferencesInitializer.java:45)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper$1.run(PreferenceServiceRegistryHelper.java:301)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.runInitializer(PreferenceServiceRegistryHelper.java:304)
+	at org.eclipse.core.internal.preferences.PreferenceServiceRegistryHelper.applyRuntimeDefaults(PreferenceServiceRegistryHelper.java:134)
+	at org.eclipse.core.internal.preferences.PreferencesService.applyRuntimeDefaults(PreferencesService.java:375)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.applyRuntimeDefaults(DefaultPreferences.java:225)
+	at org.eclipse.core.internal.preferences.DefaultPreferences.load(DefaultPreferences.java:279)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.create(EclipsePreferences.java:370)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.internalNode(EclipsePreferences.java:623)
+	at org.eclipse.core.internal.preferences.EclipsePreferences.node(EclipsePreferences.java:766)
+	at org.eclipse.core.internal.preferences.AbstractScope.getNode(AbstractScope.java:41)
+	at org.eclipse.core.runtime.preferences.DefaultScope.getNode(DefaultScope.java:77)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore.getDefaultPreferences(ScopedPreferenceStore.java:237)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore.getPreferenceNodes(ScopedPreferenceStore.java:268)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore.internalGet(ScopedPreferenceStore.java:416)
+	at org.eclipse.ui.preferences.ScopedPreferenceStore.getBoolean(ScopedPreferenceStore.java:356)
+	at org.fusesource.ide.preferences.initializer.StagingRepositoriesPreferenceInitializer.isStagingRepositoriesEnabled(StagingRepositoriesPreferenceInitializer.java:66)
+	at org.fusesource.ide.preferences.StagingRepositoriesUtils.getAdditionalRepos(StagingRepositoriesUtils.java:34)
+	at org.fusesource.ide.camel.model.service.internal.DynamicCamelCatalog.configureAdditionalRepos(DynamicCamelCatalog.java:52)
+	at org.fusesource.ide.camel.model.service.internal.DynamicCamelCatalog.<init>(DynamicCamelCatalog.java:47)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.createCatalogForNotEmbeddedVersions(CamelService.java:85)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.getCatalog(CamelService.java:65)
+	at org.fusesource.ide.camel.model.service.internal.CamelService.updateMavenRepositoryLookup(CamelService.java:179)
+	at org.fusesource.ide.camel.model.service.core.catalog.cache.CamelCatalogCacheManager.getCamelModelForProject(CamelCatalogCacheManager.java:131)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.notifyClasspathChanged(ProjectClasspathChangedListener.java:149)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:127)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visitChildren(ProjectClasspathChangedListener.java:82)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.visit(ProjectClasspathChangedListener.java:123)
+	at org.fusesource.ide.camel.model.service.core.util.ProjectClasspathChangedListener.elementChanged(ProjectClasspathChangedListener.java:55)
+	at org.eclipse.jdt.internal.core.DeltaProcessor$3.run(DeltaProcessor.java:1739)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyListeners(DeltaProcessor.java:1727)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.firePostChangeDelta(DeltaProcessor.java:1560)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.fire(DeltaProcessor.java:1536)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.notifyAndFire(DeltaProcessor.java:2257)
+	at org.eclipse.jdt.internal.core.DeltaProcessor.resourceChanged(DeltaProcessor.java:2147)
+	at org.eclipse.jdt.internal.core.DeltaProcessingState.resourceChanged(DeltaProcessingState.java:477)
+	at org.eclipse.core.internal.events.NotificationManager$1.run(NotificationManager.java:300)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:290)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:153)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:379)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1502)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2308)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.jdt.internal.core.JavaModelOperation.runOperation(JavaModelOperation.java:807)
+	at org.eclipse.jdt.core.JavaCore.setClasspathContainer(JavaCore.java:5880)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.install(J2EEComponentClasspathContainer.java:496)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathContainer.refresh(J2EEComponentClasspathContainer.java:541)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.processModules(J2EEComponentClasspathUpdater.java:387)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.access$4(J2EEComponentClasspathUpdater.java:371)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob$1.run(J2EEComponentClasspathUpdater.java:414)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.jst.j2ee.internal.common.classpath.J2EEComponentClasspathUpdater$ModuleUpdateJob.run(J2EEComponentClasspathUpdater.java:397)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SUBENTRY 1 org.eclipse.ui 4 4 2019-02-25 11:02:03.629
+!MESSAGE UI thread waiting on a job or lock.
+!STACK 0
+java.lang.IllegalStateException: Call stack for thread main
+	at java.lang.Object.wait(Native Method)
+	at org.eclipse.core.internal.jobs.Semaphore.acquire(Semaphore.java:42)
+	at org.eclipse.core.internal.jobs.OrderedLock.doAcquire(OrderedLock.java:173)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:109)
+	at org.eclipse.core.internal.jobs.OrderedLock.acquire(OrderedLock.java:85)
+	at org.eclipse.core.internal.resources.WorkManager.checkIn(WorkManager.java:125)
+	at org.eclipse.core.internal.resources.Workspace.prepareOperation(Workspace.java:2243)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2290)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:2322)
+	at org.eclipse.jdt.internal.core.JavaModelManager.initializeAllContainers(JavaModelManager.java:3141)
+	at org.eclipse.jdt.internal.core.JavaModelManager.getClasspathContainer(JavaModelManager.java:2111)
+	at org.eclipse.jdt.core.JavaCore.getClasspathContainer(JavaCore.java:3661)
+	at org.eclipse.jdt.internal.ui.packageview.ClassPathContainer.<init>(ClassPathContainer.java:156)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider.getPackageFragmentRoots(PackageExplorerContentProvider.java:365)
+	at org.eclipse.jdt.ui.StandardJavaElementContentProvider.getChildren(StandardJavaElementContentProvider.java:183)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider.getChildren(PackageExplorerContentProvider.java:314)
+	at org.eclipse.jdt.internal.ui.navigator.JavaNavigatorContentProvider.getChildren(JavaNavigatorContentProvider.java:181)
+	at org.eclipse.jdt.internal.ui.navigator.JavaNavigatorContentProvider.getPipelinedChildren(JavaNavigatorContentProvider.java:205)
+	at org.eclipse.ui.internal.navigator.extensions.SafeDelegateTreeContentProvider.getPipelinedChildren(SafeDelegateTreeContentProvider.java:175)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.pipelineChildren(NavigatorContentServiceContentProvider.java:213)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.access$1(NavigatorContentServiceContentProvider.java:201)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider$1.run(NavigatorContentServiceContentProvider.java:169)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:45)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.internalGetChildren(NavigatorContentServiceContentProvider.java:146)
+	at org.eclipse.ui.internal.navigator.NavigatorContentServiceContentProvider.getChildren(NavigatorContentServiceContentProvider.java:132)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getRawChildren(AbstractTreeViewer.java:1415)
+	at org.eclipse.jface.viewers.TreeViewer.getRawChildren(TreeViewer.java:350)
+	at org.eclipse.jface.viewers.StructuredViewer.getFilteredChildren(StructuredViewer.java:903)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.getSortedChildren(AbstractTreeViewer.java:621)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.updateChildren(AbstractTreeViewer.java:2663)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefreshStruct(AbstractTreeViewer.java:1953)
+	at org.eclipse.jface.viewers.TreeViewer.internalRefreshStruct(TreeViewer.java:677)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1929)
+	at org.eclipse.jface.viewers.AbstractTreeViewer.internalRefresh(AbstractTreeViewer.java:1886)
+	at org.eclipse.ui.navigator.CommonViewer.internalRefresh(CommonViewer.java:532)
+	at org.eclipse.jface.viewers.StructuredViewer.lambda$3(StructuredViewer.java:1533)
+	at org.eclipse.jface.viewers.StructuredViewer$$Lambda$288/923571841.run(Unknown Source)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1449)
+	at org.eclipse.jface.viewers.TreeViewer.preservingSelection(TreeViewer.java:363)
+	at org.eclipse.jface.viewers.StructuredViewer.preservingSelection(StructuredViewer.java:1410)
+	at org.eclipse.jface.viewers.StructuredViewer.refresh(StructuredViewer.java:1533)
+	at org.eclipse.jface.viewers.ColumnViewer.refresh(ColumnViewer.java:538)
+	at org.eclipse.ui.navigator.CommonViewer.refresh(CommonViewer.java:349)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider$3.run(PackageExplorerContentProvider.java:986)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider.runUpdates(PackageExplorerContentProvider.java:209)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider.runPendingUpdates(PackageExplorerContentProvider.java:201)
+	at org.eclipse.jdt.internal.ui.packageview.PackageExplorerContentProvider$1.runInUIThread(PackageExplorerContentProvider.java:179)
+	at org.eclipse.ui.progress.UIJob.lambda$0(UIJob.java:98)
+	at org.eclipse.ui.progress.UIJob$$Lambda$380/173447369.run(Unknown Source)
+	at org.eclipse.swt.widgets.RunnableLock.run(RunnableLock.java:40)
+	at org.eclipse.swt.widgets.Synchronizer.runAsyncMessages(Synchronizer.java:185)
+	at org.eclipse.swt.widgets.Display.runAsyncMessages(Display.java:3919)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3550)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$5.run(PartRenderingEngine.java:1173)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1062)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:156)
+	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:636)
+	at org.eclipse.ui.internal.Workbench$$Lambda$20/751702204.run(Unknown Source)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:339)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:563)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:151)
+	at org.eclipse.ui.internal.ide.application.IDEApplication.start(IDEApplication.java:155)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:203)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:137)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:107)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:400)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:255)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:659)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:595)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1501)
+
+!ENTRY org.eclipse.lsp4e 4 0 2019-02-25 11:02:19.914
+!MESSAGE LanguageServer not initialized after 10s
+!STACK 0
+java.util.concurrent.TimeoutException
+	at java.util.concurrent.CompletableFuture.timedGet(Unknown Source)
+	at java.util.concurrent.CompletableFuture.get(Unknown Source)
+	at org.eclipse.lsp4e.LanguageServerWrapper.getServerCapabilities(LanguageServerWrapper.java:593)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSWrappers(LanguageServiceAccessor.java:301)
+	at org.eclipse.lsp4e.LanguageServiceAccessor.getLSPDocumentInfosFor(LanguageServiceAccessor.java:444)
+	at org.eclipse.lsp4e.ConnectDocumentToLanguageServerSetupParticipant$1.run(ConnectDocumentToLanguageServerSetupParticipant.java:75)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
