@@ -1,6 +1,10 @@
 package dk.eamv.bank.ejb.entity;
 
 import java.math.BigDecimal;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import dk.eamv.bank.domain.Account;
 public class AccountEntity {
 
@@ -11,11 +15,18 @@ public class AccountEntity {
 		this.AccountName = getAccountName();
 		this.Balance = getBalance();
 	}
-	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "CustomerID")
 	private int CustomerID;
+	
+	@NotNull
 	private String RegNumber;
+	@Id
+	@GeneratedValue
 	private String AccountNumber;
+	@NotNull
 	private String AccountName;
+	@NotNull
 	private BigDecimal Balance;
 	
 	public int getCustomerID() {
