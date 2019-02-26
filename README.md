@@ -18,10 +18,10 @@ Vi ønsker en bank-applikation, kodet i Java EE. Applikationen skal kunne tilgå
 
 
 
+
 **Indledende mail:**
 
 Kære 4. semester
-
 Lige et par informationer vedr. projektet, som starter på mandag:
 
 Det laves som et stort fælles projekt, dvs mens nogle arbejder med een ting, arbejder andre med noget andet.
