@@ -9,6 +9,7 @@ public class Entry {
 	private String description;
 	private LocalDateTime date;
 	private BigDecimal amount;
+	private String accountNumber;
 	
 	public int getEntryID() {
 		return entryID;
@@ -33,5 +34,11 @@ public class Entry {
 	}
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
+	}
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
 	}
 }
