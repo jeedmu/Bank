@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Entry;
+
 /**
  * Session Bean implementation class HomeBankingBean
  */
@@ -18,21 +21,21 @@ public class HomeBankingBean implements HomeBanking {
     }
 
 	@Override
-	public void showAccounts(String customerNo) {
+	public ArrayList<Account> showAccounts(String customerNo) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public boolean createEntry(String entry) {
+	public boolean createEntry(Entry entry) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public void showEntries(String accountNo) {
+	public ArrayList<Entry> showEntries(String accountNo) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }
