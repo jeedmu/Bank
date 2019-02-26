@@ -1,10 +1,13 @@
 # Bank
 
-**Projekt**
+**Projekt**  <br />
 Vi ønsker en bank-applikation, kodet i Java EE. Applikationen skal kunne tilgås af både kunder og medarbejdere. Kunderne skal kunne tilgå funktioner som kontooversigt, posteringsoversigt, og kontooverførsler.Medarbejdere skal desuden kunne oprette/vedligeholde oplysninger om kunder og konti. En administrator skal desuden kunne oprette brugere. Både kunder og medarbejdere skal oprettes som brugere, for at kunne tilgå systemet. Kunder skal tilgå systemet via enbrowser. Medarbejdere skal tilgå systemet via en JavaFX-applikation, der tilgår bank-systemet via en HTTP-protokol(REST).Kontooverførsler, der involverer andre banker skal sende oplysninger om overførslen via en SOAP-webservice. Og vi skal ligeledes kunne modtage overførsels-oplysninger fra andre banker via en SOAP-webservice.
 
 **Rammer**</br>
--Projektet starter mandag d. 25. februar kl. 9.20 med en fælles workshop. -Projektet tæller som obligatoriskopgave / bunden forudsætning.Det betyder, at der er deltagelsespligt.Desuden skal alle præsentere et emne for holdet af minimum et kvarters varighed. Emneraftales løbende med HI.-Projektet løses som et fællesprojekt, dvs alle kommer ikke til at arbejde med alt. Derfor er præsentationerne for holdet vigtige.-Projektet løses som et iterativt og agilt projekt (SCRUM?) med statusmøderhver mandag og tirsdag kl 9.20.
+-Projektet starter mandag d. 25. februar kl. 9.20 med en fælles workshop.  <br />
+-Projektet tæller som obligatoriskopgave / bunden forudsætning.Det betyder, at der er deltagelsespligt. Desuden skal alle præsentere et emne for holdet af minimum et kvarters varighed. Emneraftales løbende med HI. <br />
+-Projektet løses som et fællesprojekt, dvs alle kommer ikke til at arbejde med alt. Derfor er præsentationerne for holdet vigtige.  <br />
+-Projektet løses som et iterativt og agilt projekt (SCRUM?) med statusmøderhver mandag og tirsdag kl 9.20.  <br />
 
 **Opgaver / ansvarsområder:** <br />
 -GIT ? Opsætning og initiering, tilslutning af studerende <br />
