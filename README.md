@@ -24,16 +24,16 @@ Kære 4. semester
 
 Lige et par informationer vedr. projektet, som starter på mandag:
 
-    Det laves som et stort fælles projekt, dvs mens nogle arbejder med een ting, arbejder andre med noget andet.
-    HI er teknisk projektleder og kunde.
-    Ingen arbejder alene, dvs mindst to arbejder om hver ting (undtagen HI)
-    Det betyder, at der bliver behov for vidensdeling. Dvs alle er forpligtet til at dele sin tilegnede viden med andre.
-    Projektet gennemføres som et agilt udviklingsprojekt i fx Scrum. Det aftaler vi på mandag.
-    Der er projektmøde hver mandag og tirsdag morgen kl 9.20.
-    Koden opbevares tilgængeligt for alle, fx i GIT. Hvordan afklares på mandag.
-    Projektet gennemføres som en obligatorisk opgave / bunden forudsætning, dvs deltagelse er obligatorisk.
-    Det betyder ikke, at man nødvendigvis er tilstede hver gang / hele tiden, men at man deltager og holder sig og andre orienteret om hvad man laver.
-    Alle er forpligtet til på et givet tidspunkt (aftales med HI) at præsentere et Java EE relevant emne ved tavlen a mindst 15 min. varighed.
+Det laves som et stort fælles projekt, dvs mens nogle arbejder med een ting, arbejder andre med noget andet.
+HI er teknisk projektleder og kunde.
+Ingen arbejder alene, dvs mindst to arbejder om hver ting (undtagen HI)
+Det betyder, at der bliver behov for vidensdeling. Dvs alle er forpligtet til at dele sin tilegnede viden med andre.
+Projektet gennemføres som et agilt udviklingsprojekt i fx Scrum. Det aftaler vi på mandag.
+Der er projektmøde hver mandag og tirsdag morgen kl 9.20.
+Koden opbevares tilgængeligt for alle, fx i GIT. Hvordan afklares på mandag.
+Projektet gennemføres som en obligatorisk opgave / bunden forudsætning, dvs deltagelse er obligatorisk.
+Det betyder ikke, at man nødvendigvis er tilstede hver gang / hele tiden, men at man deltager og holder sig og andre orienteret om hvad man laver.
+Alle er forpligtet til på et givet tidspunkt (aftales med HI) at præsentere et Java EE relevant emne ved tavlen a mindst 15 min. varighed.
 
 Det var vist det hele. Ellers kommer det nok på mandag. Jeg glæder mig til at arbejde sammen med jer om det.
 
