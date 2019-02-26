@@ -27,15 +27,15 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	@Override
-	public boolean createEntry(Entry entry) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public ArrayList<Entry> showEntries(String accountNo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean createEntry(Entry to, Entry from) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }
