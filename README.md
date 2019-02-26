@@ -3,26 +3,26 @@
 **Projekt**
 Vi ønsker en bank-applikation, kodet i Java EE. Applikationen skal kunne tilgås af både kunder og medarbejdere. Kunderne skal kunne tilgå funktioner som kontooversigt, posteringsoversigt, og kontooverførsler.Medarbejdere skal desuden kunne oprette/vedligeholde oplysninger om kunder og konti. En administrator skal desuden kunne oprette brugere. Både kunder og medarbejdere skal oprettes som brugere, for at kunne tilgå systemet. Kunder skal tilgå systemet via enbrowser. Medarbejdere skal tilgå systemet via en JavaFX-applikation, der tilgår bank-systemet via en HTTP-protokol(REST).Kontooverførsler, der involverer andre banker skal sende oplysninger om overførslen via en SOAP-webservice. Og vi skal ligeledes kunne modtage overførsels-oplysninger fra andre banker via en SOAP-webservice.
 
-**Rammer**
+**Rammer**</br>
 -Projektet starter mandag d. 25. februar kl. 9.20 med en fælles workshop. -Projektet tæller som obligatoriskopgave / bunden forudsætning.Det betyder, at der er deltagelsespligt.Desuden skal alle præsentere et emne for holdet af minimum et kvarters varighed. Emneraftales løbende med HI.-Projektet løses som et fællesprojekt, dvs alle kommer ikke til at arbejde med alt. Derfor er præsentationerne for holdet vigtige.-Projektet løses som et iterativt og agilt projekt (SCRUM?) med statusmøderhver mandag og tirsdag kl 9.20.
 
-**Opgaver / ansvarsområder:**
--GIT ? Opsætning og initiering, tilslutning af studerende
--Sessionbeans. Interfaces og domain-objekter
--Forretningslogik. Implementation af ovenstående interfaces
--Data-lag. Databaser. Entities og beans-Kunde
--præsentations lag (Servlets og JSF)
--Medarbejder-præsentation (JavaFX + REST + HttpClient)
--Overførsler med fremmede banker (Timer-services og SOAP Web Services)
--Sikkerhed (SSL, Deklarativ sikkerhed)
+**Opgaver / ansvarsområder:** <br />
+-GIT ? Opsætning og initiering, tilslutning af studerende <br />
+-Sessionbeans. Interfaces og domain-objekter <br />
+-Forretningslogik. Implementation af ovenstående interfaces <br />
+-Data-lag. Databaser. Entities og beans-Kunde <br />
+-præsentations lag (Servlets og JSF) <br />
+-Medarbejder-præsentation (JavaFX + REST + HttpClient) <br />
+-Overførsler med fremmede banker (Timer-services og SOAP Web Services) <br />
+-Sikkerhed (SSL, Deklarativ sikkerhed) <br />
 
 .
 .
 
 **Indledende mail:**
 
-Kære 4. semester
-Lige et par informationer vedr. projektet, som starter på mandag:
+Kære 4. semester <br />
+Lige et par informationer vedr. projektet, som starter på mandag: <br />
 
 Det laves som et stort fælles projekt, dvs mens nogle arbejder med een ting, arbejder andre med noget andet.
 HI er teknisk projektleder og kunde.
