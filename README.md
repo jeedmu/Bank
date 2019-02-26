@@ -16,8 +16,8 @@ Vi ønsker en bank-applikation, kodet i Java EE. Applikationen skal kunne tilgå
 -Overførsler med fremmede banker (Timer-services og SOAP Web Services)
 -Sikkerhed (SSL, Deklarativ sikkerhed)
 
-
-
+.
+.
 
 **Indledende mail:**
 
