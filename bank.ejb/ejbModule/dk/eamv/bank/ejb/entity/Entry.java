@@ -9,6 +9,7 @@ public class Entry {
 	private String Description;
 	private LocalDateTime Date;
 	private BigDecimal Amount;
+	private String AccountNumber;
 	
 	public int getEntryID() {
 		return EntryID;

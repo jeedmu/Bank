@@ -2,11 +2,27 @@ package dk.eamv.bank.ejb.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
+@Entity
 public class Account {
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "CustomerID") 		// joiner account klasse til Customer tabellen via joincolumn
 	private int CustomerID;
+	
+	@NotNull
 	private String RegNumber;
+
+	@Id
+	@GeneratedValue
 	private String AccountNumber;
+	
+	@NotNull
 	private String AccountName;
 	private BigDecimal Balance;
 	
