@@ -2,14 +2,14 @@ package dk.eamv.bank.domain;
 
 public class Bank {
 
-	private String BankName;
+	private String bankName;
 
 	public String getBankName() {
-		return BankName;
+		return bankName;
 	}
 
 	public void setBankName(String bankName) {
-		BankName = bankName;
+		bankName = bankName;
 	}
 	
 }

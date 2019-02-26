@@ -2,14 +2,14 @@ package dk.eamv.bank.domain;
 
 public class Property {
 
-	private String RegNumber;
+	private String regNumber;
 
 	public String getRegNumber() {
-		return RegNumber;
+		return regNumber;
 	}
 
 	public void setRegNumber(String regNumber) {
-		RegNumber = regNumber;
+		regNumber = regNumber;
 	}
 	
 	
