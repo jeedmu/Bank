@@ -9,7 +9,7 @@ public class Property {
 	}
 
 	public void setRegNumber(String regNumber) {
-		regNumber = regNumber;
+		this.regNumber = regNumber;
 	}
 	
 	

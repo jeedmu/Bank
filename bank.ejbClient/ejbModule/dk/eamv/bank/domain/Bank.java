@@ -9,7 +9,7 @@ public class Bank {
 	}
 
 	public void setBankName(String bankName) {
-		bankName = bankName;
+		this.bankName = bankName;
 	}
 	
 }

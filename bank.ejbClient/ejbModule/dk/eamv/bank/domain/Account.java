@@ -3,11 +3,11 @@ package dk.eamv.bank.domain;
 import java.math.BigDecimal;
 
 public class Account {
-	private final int customerID;
-	private final String regNumber;
-	private final String accountNumber;
-	private final String accountName;
-	private final BigDecimal balance;
+	private int customerID;
+	private String regNumber;
+	private  String accountNumber;
+	private String accountName;
+	private BigDecimal balance;
 
 	public static class Builder {
 		private int customerID;
@@ -26,7 +26,7 @@ public class Account {
 	}
 
 	public void setCustomerID(int customerID) {
-		customerID = customerID;
+		this.customerID = customerID;
 	}
 
 	public String getRegNumber() {
@@ -34,7 +34,7 @@ public class Account {
 	}
 
 	public void setRegNumber(String regNumber) {
-		regNumber = regNumber;
+		this.regNumber = regNumber;
 	}
 
 	public String getAccountNumber() {
@@ -42,7 +42,7 @@ public class Account {
 	}
 
 	public void setAccountNumber(String accountNumber) {
-		accountNumber = accountNumber;
+		this.accountNumber = accountNumber;
 	}
 
 	public String getAccountName() {
@@ -50,7 +50,7 @@ public class Account {
 	}
 
 	public void setAccountName(String accountName) {
-		accountName = accountName;
+		this.accountName = accountName;
 	}
 
 	public BigDecimal getBalance() {
@@ -58,6 +58,6 @@ public class Account {
 	}
 
 	public void setBalance(BigDecimal balance) {
-		balance = balance;
+		this.balance = balance;
 	}
 }
