@@ -2,13 +2,16 @@ package dk.eamv.bank.domain;
 
 public class Property {
 
-	private final String regNumber;
+	private final String key;
+	private final String value;
 	
 	public static class Builder {
-		private final String regNumber;
+		private final String key;
+		private final String value;
 		
-		public Builder(String regNumber) {
-			this.regNumber = regNumber;
+		public Builder(String key, String value) {
+			this.key = key;
+			this.value = key;
 		}
 		
 		public Property Build() {
@@ -17,14 +20,23 @@ public class Property {
 	}
 
 	private Property(Builder builder) {
-		regNumber = builder.regNumber;
+		key = builder.key;
+		value = builder.value;
 	}
 
-	public String getRegNumber() {
-		return regNumber;
+	public String getKey() {
+		return key;
 	}
 
-	public Property setRegNumber(String regNumber) {
-		return new Property.Builder(regNumber).Build();
+	public Property setKey(String key) {
+		return new Property.Builder(key, this.value).Build();
+	}
+	
+	public String getValue() {
+		return value;
+	}
+	
+	public Property setValue(String value) {
+		return new Property.Builder(this.key, value).Build();
 	}
 }
