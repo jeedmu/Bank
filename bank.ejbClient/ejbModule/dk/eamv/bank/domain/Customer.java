@@ -2,69 +2,69 @@ package dk.eamv.bank.domain;
 
 public class Customer {
 	
-	private int CustomerID;
-	private String SSN;
-	private String FirstName;
-	private String SurName;
-	private String Address;
-	private String Country;
-	private String ZipCode;
-	private String City;
-	private String Email;
+	private int customerID;
+	private String sSN;
+	private String firstName;
+	private String surName;
+	private String address;
+	private String country;
+	private String zipCode;
+	private String city;
+	private String email;
 	
 	public int getCustomerID() {
-		return CustomerID;
+		return customerID;
 	}
 	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+		this.customerID = customerID;
 	}
 	public String getSSN() {
-		return SSN;
+		return sSN;
 	}
 	public void setSSN(String sSN) {
-		SSN = sSN;
+		this.sSN = sSN;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getSurName() {
-		return SurName;
+		return surName;
 	}
 	public void setSurName(String surName) {
-		SurName = surName;
+		this.surName = surName;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 	public String getZipCode() {
-		return ZipCode;
+		return zipCode;
 	}
 	public void setZipCode(String zipCode) {
-		ZipCode = zipCode;
+		this.zipCode = zipCode;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 }
