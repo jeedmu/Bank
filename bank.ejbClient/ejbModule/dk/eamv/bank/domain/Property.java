@@ -2,15 +2,29 @@ package dk.eamv.bank.domain;
 
 public class Property {
 
-	private String regNumber;
+	private final String regNumber;
+	
+	public static class Builder {
+		private final String regNumber;
+		
+		public Builder(String regNumber) {
+			this.regNumber = regNumber;
+		}
+		
+		public Property Build() {
+			return new Property(this);
+		}
+	}
+
+	private Property(Builder builder) {
+		regNumber = builder.regNumber;
+	}
 
 	public String getRegNumber() {
 		return regNumber;
 	}
 
-	public void setRegNumber(String regNumber) {
-		this.regNumber = regNumber;
+	public Property setRegNumber(String regNumber) {
+		return new Property.Builder(regNumber).Build();
 	}
-	
-	
 }
