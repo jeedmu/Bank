@@ -5,33 +5,33 @@ import java.time.LocalDateTime;
 
 public class Entry {
 	
-	private int EntryID;
-	private String Description;
-	private LocalDateTime Date;
-	private BigDecimal Amount;
+	private int entryID;
+	private String description;
+	private LocalDateTime date;
+	private BigDecimal amount;
 	
 	public int getEntryID() {
-		return EntryID;
+		return entryID;
 	}
 	public void setEntryID(int entryID) {
-		EntryID = entryID;
+		this.entryID = entryID;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public LocalDateTime getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(LocalDateTime date) {
-		Date = date;
+		this.date = date;
 	}
 	public BigDecimal getAmount() {
-		return Amount;
+		return amount;
 	}
 	public void setAmount(BigDecimal amount) {
-		Amount = amount;
+		this.amount = amount;
 	}
 }
