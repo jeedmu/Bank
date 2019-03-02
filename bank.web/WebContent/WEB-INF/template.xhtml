@@ -14,8 +14,8 @@
 
 <body>
 
-	<p:layout fullPage="true" >
-		<p:layoutUnit position="north" >
+	<p:layout fullPage="true">
+		<p:layoutUnit position="north">
 			<!-- style="border-style:none" -->
 		header
 		</p:layoutUnit>
@@ -26,10 +26,10 @@
 		</p:layoutUnit>
 
 		<p:layoutUnit position="center">
-		content
+			<ui:insert name="content">Default content</ui:insert>
 		</p:layoutUnit>
-		
-				<p:layoutUnit position="south" size="100">
+
+		<p:layoutUnit position="south" size="100">
 		footer
 		</p:layoutUnit>
 
