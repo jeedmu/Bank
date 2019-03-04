@@ -17,7 +17,7 @@ public class AccountEntity {
 	}
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CustomerID")
-	private int CustomerID;
+	private CustomerEntity customer;
 	
 	@NotNull
 	private int RegNumber;
