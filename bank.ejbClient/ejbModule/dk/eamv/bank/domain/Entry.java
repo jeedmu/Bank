@@ -9,16 +9,16 @@ public final class Entry {
 	private final String description;
 	private final LocalDateTime date;
 	private final BigDecimal amount;
-	private final String accountNumber;
+	private final int accountNumber;
 	
 	public static class Builder{
-		private final int entryID;
+		private final long entryID;
 		private String description;
 		private final LocalDateTime date;
 		private final BigDecimal amount;
-		private final String accountNumber;
+		private final int accountNumber;
 		
-		public Builder(int entryID, LocalDateTime date, BigDecimal amount, String accountNumber) {
+		public Builder(long entryID, LocalDateTime date, BigDecimal amount, int accountNumber) {
 			this.entryID = entryID;
 			this.date = date;
 			this.amount = amount;
@@ -42,10 +42,10 @@ public final class Entry {
 		amount = builder.amount;
 		accountNumber = builder.accountNumber;
 	}
-	public int getEntryID() {
+	public long getEntryID() {
 		return entryID;
 	}
-	public Entry setEntryID(int entryID) {
+	public Entry setEntryID(long entryID) {
 		return new Entry.Builder(entryID, this.date, this.amount, this.accountNumber)
 				  .setDescription(this.description)
 				  .Build();
@@ -74,10 +74,10 @@ public final class Entry {
 				  .setDescription(this.description)
 				  .Build();
 	}
-	public String getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
-	public Entry setAccountNumber(String accountNumber) {
+	public Entry setAccountNumber(int accountNumber) {
 		return new Entry.Builder(this.entryID, this.date, this.amount, accountNumber)
 				  .setDescription(this.description)
 				  .Build();

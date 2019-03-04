@@ -23,10 +23,10 @@ public class AccountEntity
 		this.accountName = getAccountName();
 		this.balance = getBalance();
 	}
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CustomerID")
-	private int customerID;
+	private CustomerEntity customer;
 
 	@EmbeddedId
     public AccountKey getPrimaryKey() {
