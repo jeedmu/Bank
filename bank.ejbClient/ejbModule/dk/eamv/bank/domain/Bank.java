@@ -2,16 +2,30 @@ package dk.eamv.bank.domain;
 
 public class Bank {
 
+	private final String cvr;
 	private final String bankName;
 	private final int regNumber;
+	private final String phoneNumber;
+	
 	
 	public static class Builder {
+		//Required params
+		private final String cvr;
 		private final String bankName;
 		private final int regNumber;
 		
-		public Builder(String bankName, int regNumber) {
+		//Optional params
+		private String phoneNumber;
+		
+		public Builder(String cvr, String bankName, int regNumber) {
+			this.cvr = cvr;
 			this.bankName = bankName;
 			this.regNumber = regNumber;
+		}
+		
+		public Builder setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+			return this;
 		}
 		
 		public Bank Build() {
@@ -20,8 +34,18 @@ public class Bank {
 	}
 
 	private Bank(Builder builder) {
+		cvr = builder.cvr;
 		bankName = builder.bankName;
 		regNumber = builder.regNumber;
+		phoneNumber = builder.phoneNumber;
+	}
+	
+	public String getCVR() {
+		return cvr;
+	}
+	
+	public Bank setCVR(String cvr) {
+		return new Bank.Builder(cvr, this.bankName, this.regNumber).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 	public String getBankName() {
@@ -29,7 +53,7 @@ public class Bank {
 	}
 
 	public Bank setBankName(String bankName) {
-		return new Bank.Builder(bankName, this.regNumber).Build();
+		return new Bank.Builder(this.cvr, bankName, this.regNumber).setPhoneNumber(this.phoneNumber).Build();
 	}
 	
 	public int getRegNumber() {
@@ -37,6 +61,14 @@ public class Bank {
 	}
 
 	public Bank setRegName(int regNumber) {
-		return new Bank.Builder(this.bankName, regNumber).Build();
+		return new Bank.Builder(this.cvr, this.bankName, regNumber).setPhoneNumber(this.phoneNumber).Build();
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	
+	public Bank setPhoneNumber(String phoneNumber) {
+		return new Bank.Builder(this.cvr, this.bankName, this.regNumber).setPhoneNumber(phoneNumber).Build();
 	}
 }
