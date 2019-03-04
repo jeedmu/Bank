@@ -11,6 +11,7 @@ public class Customer {
 	private final String zipCode;
 	private final String city;
 	private final String email;
+	private final String phoneNumber;
 
 	public static class Builder {
 		// Required Params
@@ -25,6 +26,7 @@ public class Customer {
 		private String zipCode;
 		private String city;
 		private String email;
+		private String phoneNumber;
 
 		public Builder(int customerID, String sSN) {
 			this.customerID = customerID;
@@ -65,6 +67,11 @@ public class Customer {
 			this.email = email;
 			return this;
 		}
+		
+		public Builder setPhoneNumber(String phoneNumber) {
+			this.phoneNumber = phoneNumber;
+			return this;
+		}
 
 		public Customer Build() {
 			return new Customer(this);
@@ -81,6 +88,7 @@ public class Customer {
 		zipCode = builder.zipCode;
 		city = builder.city;
 		email = builder.email;
+		phoneNumber = builder.phoneNumber;
 	}
 
 	public int getCustomerID() {
@@ -120,7 +128,7 @@ public class Customer {
 	public Customer setSurName(String surName) {
 		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 	public String getAddress() {
@@ -130,7 +138,7 @@ public class Customer {
 	public Customer setAddress(String address) {
 		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 	public String getCountry() {
@@ -140,7 +148,7 @@ public class Customer {
 	public Customer setCountry(String country) {
 		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 	public String getZipCode() {
@@ -160,7 +168,7 @@ public class Customer {
 	public Customer setCity(String city) {
 		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 	public String getEmail() {
@@ -170,7 +178,17 @@ public class Customer {
 	public Customer setEmail(String email) {
 		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).Build();
+				.setEmail(email).setPhoneNumber(this.phoneNumber).Build();
+	}
+	
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+	
+	public Customer setPhoneNumber(String phoneNumber) {
+		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
+				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
+				.setEmail(email).setPhoneNumber(this.phoneNumber).Build();
 	}
 
 }
