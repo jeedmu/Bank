@@ -33,8 +33,8 @@ public class AccountBean {
 		}
 	}
 	
-	public Optional<Account> read(int key){
-		AccountEntity entity = em.find(AccountEntity.class, key);
+	public Optional<Account> read(int accountNumber){
+		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {

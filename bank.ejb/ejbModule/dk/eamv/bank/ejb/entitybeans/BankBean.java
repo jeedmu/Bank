@@ -30,8 +30,8 @@ public class BankBean {
 		}
 	}
 	
-	public Optional<Bank> read(String key){
-		BankEntity entity = em.find(BankEntity.class, key);
+	public Optional<Bank> read(String cvr){
+		BankEntity entity = em.find(BankEntity.class, cvr);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {
