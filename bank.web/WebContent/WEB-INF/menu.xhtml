@@ -1,23 +1,44 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-<body>
-      <ui:composition> 
-         <h1>Menu</h1>
-         <h:outputText value="#{uiParam}"></h:outputText>
-         <h:form>
-    		<p:tree style="width:150px;" value="#{basicView.root}" var="node" animate="true">
-        		<p:treeNode>
-            		<h:outputText value="#{node}" />
-	        	</p:treeNode>
-    		</p:tree>
-		</h:form>
-         
-      </ui:composition>	
-   </body>
-   
+<ui:composition>
+
+	<style>
+.site-nav__link .icon-chevron-down {
+	display: none;
+}
+</style>
+
+
+	<h:form>
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+
+		<p:panelMenu style="width:200px">
+			<p:submenu label="Konto" styleClass="site-nav__link">
+
+				<p:menuitem value="Kontooversigt" outcome="accountoverview" />
+				<p:menuitem value="Create Account" />
+				<p:menuitem value="Transfer Founds" />
+
+
+
+
+
+			</p:submenu>
+			<p:submenu label="Cards">
+				<p:menuitem value="Order Card" />
+				<p:menuitem value="Block Card" />
+			</p:submenu>
+
+		</p:panelMenu>
+	</h:form>
+</ui:composition>
+
+
 </html>
