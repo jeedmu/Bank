@@ -5,41 +5,37 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<h:outputStylesheet library="css" name="styles.css" />
-	<ui:insert name="htmlhead" />
-</h:head>
+	<h:head>
+		<h:outputStylesheet library="css" name="styles.css" />
+		<ui:insert name="htmlhead" />
+	</h:head>
 
-<!-- Placed in the WEB-INF to avoid direct user access -->
-
-<body>
-
-
-
-	<div id="container"> 
-		<div id="header">
-			<a>test header</a>
-			<br/>
-			<h:panelGroup rendered="#{not uiParam}">
-	    		<a>Parameter sent from content page: </a>
-    			<h:outputText value="#{uiParam}"></h:outputText>
-			</h:panelGroup>
-		</div>
-	
-		<div style="overflow:hidden;">
-			<div id="navigation">
-				<a>test menu</a>
-				<ui:include src="menu.xhtml" />		
+	<!-- Placed in the WEB-INF to avoid direct user access -->
+	<body>
+		<div id="container"> 
+			<div id="header">
+				<a>test header</a>
+				<br/>
+				<h:panelGroup rendered="#{not uiParam}">
+		    		<a>Parameter sent from content page: </a>
+    				<h:outputText value="#{uiParam}"></h:outputText>
+				</h:panelGroup>
 			</div>
-
-			<div id="content">
-				<ui:insert name="content"/>    
+			
+			<div style="overflow:hidden;">
+				<div id="navigation">
+					<a>test menu</a>
+					<ui:include src="menu.xhtml" />		
+				</div>
+				<div id="content">
+					<ui:insert name="content"/>    
+				</div>
 			</div>
+			
+			<div id="footer">
+				<a>test footer</a>
+			</div>
+			
 		</div>
-		<div id="footer">
-			<a>test footer</a>
-		</div>
-	</div>
-
-</body>
+	</body>
 </html>
