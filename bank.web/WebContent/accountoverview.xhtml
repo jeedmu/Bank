@@ -16,13 +16,20 @@
     
     <!-- Define the content to be displayed -->
     <ui:define name="content">        
-		<ui:repeat var="account" value="#{accountOverviewBean.accounts}">
-			<h:outputText value="#{account.accountName}"/>
-        	<h:outputText value="#{account.regNumber} #{account.accountNumber}"/>
-        	<br/>
-        	<h:outputText value="#{account.balance.toString()}" />
-        	<br/>
-    	</ui:repeat>
+    	<ul>
+			<ui:repeat var="account" value="#{accountOverviewBean.accounts}">
+				<li>
+					<h:link outcome="entryoverview" >
+    					<f:param name="accountNo" value="#{account.accountNumber}" />
+    					
+						<h:outputText value="#{account.accountName}"/>
+        				<h:outputText value="#{account.regNumber} #{account.accountNumber}"/>
+        				<br/>
+        				<h:outputText value="#{account.balance.toString()}" />
+        				<br/>
+        			</h:link>
+        		</li>
+    		</ui:repeat>
+   		</ul>
     </ui:define>
-    
 </ui:composition>

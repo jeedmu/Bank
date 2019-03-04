@@ -24,7 +24,7 @@ public class AccountBean {
 	
 	@PersistenceContext private EntityManager em;
 
-	public void create(Account account) {
+	public void create(Account account) throws AccountAlreadyExsistsException {
 		Optional<Account> optional = read(account.getAccountNumber());
 		if (optional.isPresent()) {
 			throw new AccountAlreadyExsistsException();
@@ -33,8 +33,8 @@ public class AccountBean {
 		}
 	}
 	
-	public Optional<Account> read(int key){
-		AccountEntity entity = em.find(AccountEntity.class, key);
+	public Optional<Account> read(int accountNumber){
+		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {
@@ -54,7 +54,7 @@ public class AccountBean {
 		}
 	}
 	
-	public void delete(int accountNumber) {
+	public void delete(int accountNumber) throws AccountNotFoundException {
 		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			em.remove(entity);
@@ -62,6 +62,13 @@ public class AccountBean {
 			throw new AccountNotFoundException();
 		}
 	}
-	
+	public List<Account> list(String search) {
+		return em.createNamedQuery("searchAccounts", AccountEntity.class)
+				.setParameter("search", "%" + search.toUpperCase() + "%")
+				.getResultList()
+				.stream()
+				.map(p -> p.toDomain())
+				.collect(Collectors.toList());
+}
 
 }

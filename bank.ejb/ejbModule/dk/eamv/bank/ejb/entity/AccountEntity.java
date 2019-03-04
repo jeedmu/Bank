@@ -19,14 +19,22 @@ public class AccountEntity
 	
 	public AccountEntity(Account account ) 
 	{
-		this.customerID = account.getCustomerID();
+		//this.customerID = account.getCustomerID();
 		this.accountName = getAccountName();
 		this.balance = getBalance();
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "CustomerID")
+	@JoinColumn(name = "customerID")
 	private CustomerEntity customer;
+
+	public CustomerEntity getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(CustomerEntity customer) {
+		this.customer = customer;
+	}
 
 	@EmbeddedId
     public AccountKey getPrimaryKey() {
@@ -44,14 +52,6 @@ public class AccountEntity
 	private BigDecimal balance;
 	
 	//set/getters
-	public int getCustomerID() {
-		return customerID;
-	}
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
-
-		CustomerID = customerID;
-	}
 
 	public String getAccountName() {
 		return accountName;

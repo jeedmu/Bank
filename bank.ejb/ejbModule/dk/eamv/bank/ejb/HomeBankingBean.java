@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.ejb.entitybeans.AccountBean;
 
 /**
  * Session Bean implementation class HomeBankingBean
@@ -25,7 +26,8 @@ public class HomeBankingBean implements HomeBanking {
 
 	@Override
 	public ArrayList<Account> showAccounts(String customerNo) {
-		 // test implementation
+		 
+		// test implementation
 		ArrayList<Account> accounts = new ArrayList<Account>();
 		accounts.add(new Account.Builder(0, 0, 0).Build());
 		accounts.add(new Account.Builder(1, 1, 1).Build());
@@ -51,14 +53,14 @@ public class HomeBankingBean implements HomeBanking {
 		return false;
 	}
 	
-	private boolean accountHasSufficientFunds (int accountNo) {
-		// TODO
-		return true;
+	private boolean accountHasSufficientFunds (int accountNo, int amount) {
+		Account account = new AccountBean().read(accountNo).get();
+		
+		return account.getBalance().compareTo(new BigDecimal(amount)) != -1;
 	}
 	
 	private boolean accountExists(int accountNo) {
-		// TODO
-		return true;
+		return new AccountBean().read(accountNo).isPresent();
 	}
 	
 	private ArrayList<Entry> translateIntoEntries(HashMap<String, String> mappedEntry){

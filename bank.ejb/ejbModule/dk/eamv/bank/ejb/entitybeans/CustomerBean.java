@@ -1,6 +1,8 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -18,8 +20,7 @@ import dk.eamv.bank.ejb.entity.CustomerEntity;;
 public class CustomerBean {
 	@PersistenceContext private EntityManager em;
 
-	@Override
-    public void create(Customer customer){
+	public void create(Customer customer) throws CustomerAlreadyExsistsException{
     	Optional<Customer> optional = read(customer.getCustomerID());
     	
     	if(optional.isPresent())
@@ -27,8 +28,7 @@ public class CustomerBean {
     	else
     		em.persist(new CustomerEntity(customer));
     }
-    @Override
-    public Optional<Customer> read(int customerID){
+	public Optional<Customer> read(int customerID){
     	CustomerEntity entity = em.find(CustomerEntity.class, customerID);
     	if(entity != null) 
     		return Optional.of(entity.toDomain());
@@ -36,8 +36,7 @@ public class CustomerBean {
     			return Optional.empty();
     }
     
-    @Override
-    public void update(Customer customer) {
+    public void update(Customer customer) throws CustomerNotFoundException {
     	CustomerEntity entity = em.find(CustomerEntity.class, customer.getCustomerID());
     	if(entity != null) {
     		entity.setFirstName(customer.getFirstName());
@@ -52,9 +51,23 @@ public class CustomerBean {
     		throw new CustomerNotFoundException();
     }
     
-    @Override
-    public void delete(int customerID) {
+    public void delete(int customerID) throws CustomerNotFoundException {
     	CustomerEntity entity = em.find(CustomerEntity.class, customerID);
+    	
+    	if(entity != null)
+    		em.remove(entity);
+    	else
+    		throw new CustomerNotFoundException();
+    }
+    
+    public List<Customer> list(String search){
+    	return em.createNamedQuery("searchCustomers", CustomerEntity.class)
+    				.setParameter("search", "%" + search.toUpperCase() + "%")
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());
+    				
     }
 
 }

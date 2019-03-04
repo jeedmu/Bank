@@ -10,6 +10,8 @@ import javax.validation.constraints.Pattern;
 
 import dk.eamv.bank.domain.Customer;
 
+@Entity
+@Table(name="customer")
 public class CustomerEntity {
 	
 	public CustomerEntity() {}
@@ -28,15 +30,24 @@ public class CustomerEntity {
 	
 	@GeneratedValue
 	@NotNull
+	@Id
 	private int customerID;
 	
 	@OneToMany(fetch = FetchType.EAGER)
 	@JoinColumn(name = "AccountNumber")
 	private List<AccountEntity> accounts;
 	
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
+
 	@NotNull
-	@Pattern(regexp= "(\"^[0-9]*$\"")
-	@Column (length = 10)
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 10)
 	private String sSN;
 	
 	@NotNull
@@ -52,20 +63,20 @@ public class CustomerEntity {
 	private String country;
 	
 	@NotNull
-	@Pattern(regexp= "(\"^[0-9]*$\"")
-	@Column (length = 4)
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 4)
 	private String zipCode;
 	
 	@NotNull
-	@Pattern(regexp = "(\"^[A-Za-z]*$\"")
+	// @Pattern(regexp = "(\"^[A-Za-z]*$\"")
 	private String city;
 	
 	@NotNull
-	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+	/*@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
 			+ "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
 			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
 			+ "(?:[a-z0-9-]*[a-z0-9])?",
-			message = "WRONG email")
+			message = "WRONG email")*/
 	private String email;
 
 	public int getCustomerID() {
@@ -122,5 +133,10 @@ public class CustomerEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	
+	//something something. Virker ikke.
+	/*public Customer toDomain() {
+		return new Customer(customerID, this.sSN, this.firstName, this.surName, this.address, this.country, this.zipCode, this.city, this.email);
+} */
 
 }

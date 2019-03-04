@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+	<ui:composition template="/WEB-INF/template.xhtml">
+
+    	<ui:define name="title">
+        	Kontobevægelser
+    	</ui:define>
+
+    	<ui:define name="content">
+        		<p:dataTable var="car" value="#{accountOverviewBean.getEntries(param['accountNo'])}">
+    				<p:column headerText="Dato">
+        				<h:outputText value="#{accountOverviewBean.GetDate(car)}" />
+    				</p:column>
+ 
+    				<p:column headerText="Beskrivelse">
+	        			<h:outputText value="#{car.description}" />
+    				</p:column>
+ 
+    				<p:column headerText="Beløb" >
+	        			<h:outputText style="float:right;" value="#{car.amount.toString()}" />
+    				</p:column>
+				</p:dataTable>
+    	</ui:define>
+	</ui:composition> 
+</html>

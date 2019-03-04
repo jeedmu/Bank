@@ -20,7 +20,7 @@ import ejbModule.javaee.ejb.beans.PersistenceContext;
 public class EntryBean {
 	@javax.persistence.PersistenceContext private javax.persistence.EntityManager em;
 
-	public void create(Entry entry) {
+	public void create(Entry entry) throws EntryAlreadyExsistsException {
 		Optional<Entry> optional = read(entry.getEntryID());
 		if (optional.isPresent()) {
 			throw new EntryAlreadyExsistsException();
@@ -29,8 +29,8 @@ public class EntryBean {
 		}
 	}
 	
-	public Optional<Entry> read(long key){
-		EntryEntity entity = em.find(EntryEntity.class, key);
+	public Optional<Entry> read(long entryID){
+		EntryEntity entity = em.find(EntryEntity.class, entryID);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {
@@ -38,7 +38,7 @@ public class EntryBean {
 		}
 	}
 	
-	public void update(Entry entry) {
+	public void update(Entry entry) throws EntryNotFoundException {
 		EntryEntity entity = em.find(EntryEntity.class, entry.getEntryID());
 		if (entity != null) {
 			entity.setDescription(entry.getDescription());
@@ -47,7 +47,7 @@ public class EntryBean {
 		}
 	}
 	
-	public void delete(long entryID) {
+	public void delete(long entryID) throws AccountNotFoundException {
 		EntryEntity entity = em.find(EntryEntity.class, entryID);
 		if (entity != null) {
 			em.remove(entity);

@@ -1,42 +1,62 @@
 package dk.eamv.bank.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+
+import javaee.domain.Property;
+
+/**
+ * Entity implementation class for Entity: Property
+ *
+ */
+@Entity(name = "property")
+
+@NamedQuery(name = "searchProperties", query = "SELECT p FROM property p  "
+		+ "WHERE UPPER(p.property) LIKE :search " 
+		+ "OR UPPER(p.value) LIKE :search " 
++ "ORDER BY p.property")
+
 public class Property {
 
-	private final String key;
-	private final String value;
-	
-	public static class Builder {
-		private final String key;
-		private final String value;
-		
-		public Builder(String key, String value) {
-			this.key = key;
-			this.value = key;
-		}
-		
-		public Property Build() {
-			return new Property(this);
-		}
+	@Id
+	private String property;
+	private String value;
+	private static final long serialVersionUID = 1L;
+
+	public Property() {
+		super();
 	}
 
-	private Property(Builder builder) {
-		key = builder.key;
-		value = builder.value;
+	public Property(Property property) {
+		this.property = property.getProperty();
+		this.value = property.getValue();
 	}
 
-	public String getKey() {
-		return key;
+	public Property toDomain() {
+		return new Property(this.property, this.value);
 	}
 
-	public Property setKey(String key) {
-		return new Property.Builder(key, this.value).Build();
+	public String getProperty() {
+		return this.property;
 	}
-	
+
+	public void setProperty(String property) {
+		this.property = property;
+	}
+
 	public String getValue() {
-		return value;
+		return this.value;
 	}
-	
-	public Property setValue(String value) {
-		return new Property.Builder(this.key, value).Build();
+
+	public void setValue(String value) {
+		this.value = value;
 	}
+
+	@Override
+	public String toString() {
+		return "PropertyEntity [property=" + property + ", value=" + value + "]";
+}
 }
