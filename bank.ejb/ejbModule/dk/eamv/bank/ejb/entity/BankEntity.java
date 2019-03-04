@@ -15,9 +15,7 @@ public class BankEntity implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
-	public BankEntity() {
-		super();
-	}
+	
 	@NotNull
 	private String bankName;
 	@Id
