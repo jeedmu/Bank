@@ -1,4 +1,5 @@
 package dk.eamv.bank.ejb;
+import java.util.HashMap;
 import java.util.List;
 import javax.ejb.Local;
 import dk.eamv.bank.domain.*;
@@ -14,15 +15,14 @@ public interface HomeBanking {
 
 	/**
 	 * Create a new entry... entry contains account numbers and monetary amount
-	 * @param to The account to which the amount will be transferred
-	 * @param from The account from which the amount will be drawn
+	 * @param mappedEntry mapping keys: "amount", "fromAccount", "toAccount", "fromDescription", "toDescription"
 	 * @return true if it succeded, else false
 	 */
-	public boolean createEntry(Entry to, Entry from);
+	public boolean createEntry(HashMap<String, String> mappedEntry);
 	
 	/**
 	 * Show all entries belonging to specified account
 	 * @param accountNo The account number specifying which account's entries to show
 	 */
-	public List<Entry> showEntries(String accountNo);
+	public List<Entry> showEntries(String accountNo, int noOfDays);
 }
