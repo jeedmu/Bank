@@ -14,26 +14,32 @@
 
 <body>
 
-	<p:layout fullPage="true" >
-		<p:layoutUnit position="north" >
-			<!-- style="border-style:none" -->
-		header
-		</p:layoutUnit>
 
-		<p:layoutUnit position="west" size="340" style="height:400px">
 
-			<ui:include src="menu2.xhtml" />
-		</p:layoutUnit>
+	<div id="container"> 
+		<div id="header">
+			<a>test header</a>
+			<br/>
+			<h:panelGroup rendered="#{not uiParam}">
+	    		<a>Parameter sent from content page: </a>
+    			<h:outputText value="#{uiParam}"></h:outputText>
+			</h:panelGroup>
+		</div>
+	
+		<div style="overflow:hidden;">
+			<div id="navigation">
+				<a>test menu</a>
+				<ui:include src="menu2.xhtml" />		
+			</div>
 
-		<p:layoutUnit position="center">
-		content
-		</p:layoutUnit>
-		
-				<p:layoutUnit position="south" size="100">
-		footer
-		</p:layoutUnit>
-
-	</p:layout>
+			<div id="content">
+				<ui:insert name="content"/>    
+			</div>
+		</div>
+		<div id="footer">
+			<a>test footer</a>
+		</div>
+	</div>
 
 </body>
 </html>

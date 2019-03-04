@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public final class Entry {
 	
-	private final int entryID;
+	private final long entryID;
 	private final String description;
 	private final LocalDateTime date;
 	private final BigDecimal amount;

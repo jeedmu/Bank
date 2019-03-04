@@ -1,39 +1,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
-	<ui:composition>
-	
+<ui:composition>
+
 	<style>
 .site-nav__link .icon-chevron-down {
-    display: none;
+	display: none;
 }
- 	
-	</style>
-	
-	
-		<h:form>
-    <p:growl>
-        <p:autoUpdate />
-    </p:growl>
- 	
-    <p:panelMenu style="width:300px">
-        <p:submenu label="Konto" styleClass="site-nav__link">
-            <p:menuitem value="Overview" action="#{konto.overview}" icon="pi pi-save" />
-            <p:menuitem value="Create Account" action="#{konto.creatAccount}"  icon="pi pi-refresh" />
-            <p:menuitem value="Transfer Founds" action="#{konto.transferFounds}"  icon="pi pi-refresh" />
-        </p:submenu>
-        <p:submenu label="Cards">
-            <p:menuitem value="Order Card" action="#{card.orderCard}"  ajax="false" icon="pi pi-times"/>
-            <p:menuitem value="Block Card" action="#{card.blockCard}"  ajax="false" icon="pi pi-times"/>
-        </p:submenu>
+</style>
 
-    </p:panelMenu>
-</h:form>
-	</ui:composition>
-	
+
+	<h:form>
+		<p:growl>
+			<p:autoUpdate />
+		</p:growl>
+
+		<p:panelMenu style="width:300px">
+			<p:submenu label="Konto" styleClass="site-nav__link">
+
+				<p:menuitem value="Page1" outcome="page1" />
+				<p:menuitem value="Create Account" />
+				<p:menuitem value="Transfer Founds" />
+
+
+
+
+
+			</p:submenu>
+			<p:submenu label="Cards">
+				<p:menuitem value="Order Card" />
+				<p:menuitem value="Block Card" />
+			</p:submenu>
+
+		</p:panelMenu>
+	</h:form>
+</ui:composition>
+
 
 </html>

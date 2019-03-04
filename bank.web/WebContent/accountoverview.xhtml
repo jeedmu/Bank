@@ -1,0 +1,28 @@
+<ui:composition template="WEB-INF/template.xhtml"
+    xmlns="http://www.w3.org/1999/xhtml"   
+    xmlns:ui="http://java.sun.com/jsf/facelets"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <!-- Change stuff in the head tag -->
+    <ui:define name="htmlhead">
+    	<title>Index</title>
+	</ui:define>
+		
+		<!-- Send parameter 'uiParam' with the bool 'false' to template, could be used to tell which menu item to highlight -->
+    <ui:param name="uiParam" value="false" />
+    
+    <!-- Define the content to be displayed -->
+    <ui:define name="content">        
+		<ui:repeat var="account" value="#{accountOverviewBean.accounts}">
+			<h:outputText value="#{account.accountName}"/>
+        	<h:outputText value="#{account.regNumber} #{account.accountNumber}"/>
+        	<br/>
+        	<h:outputText value="#{account.balance.toString()}" />
+        	<br/>
+    	</ui:repeat>
+    </ui:define>
+    
+</ui:composition>

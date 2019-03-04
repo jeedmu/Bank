@@ -27,7 +27,7 @@ public class AccountEntity
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CustomerID")
 	private int customerID;
-	
+
 	@EmbeddedId
     public AccountKey getPrimaryKey() {
         return primaryKey;
@@ -39,7 +39,7 @@ public class AccountEntity
 
 	@NotNull
 	private String accountName;
-	
+
 	@NotNull
 	private BigDecimal balance;
 	
@@ -49,8 +49,10 @@ public class AccountEntity
 	}
 	public void setCustomerID(int customerID) {
 		this.customerID = customerID;
+
+		CustomerID = customerID;
 	}
-	
+
 	public String getAccountName() {
 		return accountName;
 	}
