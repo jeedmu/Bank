@@ -20,10 +20,10 @@ public class AccountEntity {
 	private int CustomerID;
 	
 	@NotNull
-	private String RegNumber;
+	private int RegNumber;
 	@Id
 	@GeneratedValue
-	private String AccountNumber;
+	private int AccountNumber;
 	@NotNull
 	private String AccountName;
 	@NotNull
@@ -35,16 +35,16 @@ public class AccountEntity {
 	public void setCustomerID(int customerID) {
 		CustomerID = customerID;
 	}
-	public String getRegNumber() {
+	public int getRegNumber() {
 		return RegNumber;
 	}
-	public void setRegNumber(String regNumber) {
+	public void setRegNumber(int regNumber) {
 		RegNumber = regNumber;
 	}
-	public String getAccountNumber() {
+	public int getAccountNumber() {
 		return AccountNumber;
 	}
-	public void setAccountNumber(String accountNumber) {
+	public void setAccountNumber(int accountNumber) {
 		AccountNumber = accountNumber;
 	}
 	public String getAccountName() {
