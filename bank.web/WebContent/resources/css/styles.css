@@ -2,6 +2,12 @@ body{
 	padding:0px;
 	margin:0px;
 }
+#logo_text {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    color: rgb(128,217,255);
+    font-size: 64px;
+    margin: 0 auto;
+}
 
 #container {
 	background-color:rgb(50,50,50);
@@ -61,8 +67,13 @@ body{
 	 border-top:4px solid #1e7770;
 }
 
-#inner_footer, #inner_header{
+#inner_footer {
 	width:75%;
+	margin: 0 auto;
+}
+
+#inner_header {
+	width:71%;
 	margin: 0 auto;
 }
 
