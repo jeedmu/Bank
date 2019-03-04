@@ -1,6 +1,8 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -26,7 +28,7 @@ public class CustomerBean {
     	else
     		em.persist(new CustomerEntity(customer));
     }
-public Optional<Customer> read(int customerID){
+	public Optional<Customer> read(int customerID){
     	CustomerEntity entity = em.find(CustomerEntity.class, customerID);
     	if(entity != null) 
     		return Optional.of(entity.toDomain());
@@ -56,6 +58,16 @@ public Optional<Customer> read(int customerID){
     		em.remove(entity);
     	else
     		throw new CustomerNotFoundException();
+    }
+    
+    public List<Customer> list(String search){
+    	return em.createNamedQuery("searchCustomers", CustomerEntity.class)
+    				.setParameter("search", "%" + search.toUpperCase() + "%")
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());
+    				
     }
 
 }
