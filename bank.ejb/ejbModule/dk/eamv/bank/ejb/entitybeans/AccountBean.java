@@ -62,14 +62,6 @@ public class AccountBean {
 			throw new AccountNotFoundException();
 		}
 	}
-	public List<Account> list(String search) {
-		return em.createNamedQuery("searchAccounts", AccountEntity.class)
-				.setParameter("search", "%" + search.toUpperCase() + "%")
-				.getResultList()
-				.stream()
-				.map(p -> p.toDomain())
-				.collect(Collectors.toList());
-}
 	
 
 }
