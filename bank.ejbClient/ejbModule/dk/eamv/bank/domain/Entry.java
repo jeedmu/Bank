@@ -5,20 +5,20 @@ import java.time.LocalDateTime;
 
 public final class Entry {
 	
-	private final int entryID;
+	private final long entryID;
 	private final String description;
 	private final LocalDateTime date;
 	private final BigDecimal amount;
 	private final String accountNumber;
 	
 	public static class Builder{
-		private final int entryID;
+		private final long entryID;
 		private String description;
 		private final LocalDateTime date;
 		private final BigDecimal amount;
 		private final String accountNumber;
 		
-		public Builder(int entryID, LocalDateTime date, BigDecimal amount, String accountNumber) {
+		public Builder(long entryID, LocalDateTime date, BigDecimal amount, String accountNumber) {
 			this.entryID = entryID;
 			this.date = date;
 			this.amount = amount;
@@ -42,10 +42,10 @@ public final class Entry {
 		amount = builder.amount;
 		accountNumber = builder.accountNumber;
 	}
-	public int getEntryID() {
+	public long getEntryID() {
 		return entryID;
 	}
-	public Entry setEntryID(int entryID) {
+	public Entry setEntryID(long entryID) {
 		return new Entry.Builder(entryID, this.date, this.amount, this.accountNumber)
 				  .setDescription(this.description)
 				  .Build();
