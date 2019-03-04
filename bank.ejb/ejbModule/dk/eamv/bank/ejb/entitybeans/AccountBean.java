@@ -24,7 +24,7 @@ public class AccountBean {
 	
 	@PersistenceContext private EntityManager em;
 
-	public void create(Account account) {
+	public void create(Account account) throws AccountAlreadyExsistsException {
 		Optional<Account> optional = read(account.getAccountNumber());
 		if (optional.isPresent()) {
 			throw new AccountAlreadyExsistsException();
@@ -54,7 +54,7 @@ public class AccountBean {
 		}
 	}
 	
-	public void delete(int accountNumber) {
+	public void delete(int accountNumber) throws AccountNotFoundException {
 		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			em.remove(entity);

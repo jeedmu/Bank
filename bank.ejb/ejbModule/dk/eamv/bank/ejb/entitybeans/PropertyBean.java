@@ -17,7 +17,7 @@ import dk.eamv.bank.domain.Property;
 public class PropertyBean {
 	@PersistenceContext private EntityManager em;
 	
-	public void create(Property property) {
+	public void create(Property property) throws PropertyAlreadyExistsException{
 		Optional<Property> optional = read(property.getProperty());
 		if (optional.isPresent()) {
 			throw new PropertyAlreadyExistsException();
@@ -36,7 +36,7 @@ public class PropertyBean {
 		}
 	}
 
-	public void update(Property property) {
+	public void update(Property property) throws PropertyNotFoundException{
 		PropertyEntity entity = em.find(PropertyEntity.class, property.getProperty());
 		if (entity != null) {
 			entity.setValue(property.getValue());
@@ -45,7 +45,7 @@ public class PropertyBean {
 		}
 	}
 
-	public void delete(String property) {
+	public void delete(String property) throws PropertyNotFoundException{
 		PropertyEntity entity = em.find(PropertyEntity.class, property);
 		if (entity != null) {
 			em.remove(entity);
