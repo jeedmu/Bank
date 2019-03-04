@@ -19,21 +19,19 @@
 			<p:autoUpdate />
 		</p:growl>
 
-		<p:panelMenu style="width:200px">
+		<p:panelMenu id="panelMenu">
 			<p:submenu label="Konto" styleClass="site-nav__link">
 
-				<p:menuitem value="Kontooversigt" outcome="accountoverview" />
+				<p:menuitem value="Account Overview" outcome="accountoverview" />
 				<p:menuitem value="Create Account" />
 				<p:menuitem value="Transfer Founds" />
 
-
-
-
-
 			</p:submenu>
-			<p:submenu label="Cards">
+			<p:submenu label="Cards" styleClass="site-nav__link">
+
 				<p:menuitem value="Order Card" />
 				<p:menuitem value="Block Card" />
+
 			</p:submenu>
 
 		</p:panelMenu>
