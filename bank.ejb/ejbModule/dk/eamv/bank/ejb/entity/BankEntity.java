@@ -32,6 +32,12 @@ public class BankEntity implements Serializable {
 		return bankName;
 	}
 	
+	public void setRegNumber(int regnumber) {
+		this.regNumber = regnumber;
+	}
 	
+	public void setBankName(String bankname) {
+		this.bankName = bankname;
+	}
    
 }
