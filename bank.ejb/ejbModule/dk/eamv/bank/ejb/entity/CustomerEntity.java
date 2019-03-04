@@ -1,70 +1,126 @@
 package dk.eamv.bank.ejb.entity;
 
+
+import java.util.List;
+
+import javax.annotation.Generated;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import dk.eamv.bank.domain.Customer;
+
 public class CustomerEntity {
 	
-	private int CustomerID;
-	private String SSN;
-	private String FirstName;
-	private String SurName;
-	private String Address;
-	private String Country;
-	private String ZipCode;
-	private String City;
-	private String Email;
+	public CustomerEntity() {}
 	
+	public CustomerEntity(Customer customer) {
+		this.customerID = customer.getCustomerID();
+		this.sSN = customer.getSSN();
+		this.firstName = customer.getFirstName();
+		this.surName = customer.getSurName();
+		this.address = customer.getAddress();
+		this.zipCode = customer.getZipCode();
+		this.city = customer.getCity();
+		this.email = customer.getEmail();
+	}
+	
+	
+	@GeneratedValue
+	@NotNull
+	private int customerID;
+	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name = "AccountNumber")
+	private List<AccountEntity> accounts;
+	
+	@NotNull
+	@Pattern(regexp= "(\"^[0-9]*$\"")
+	@Column (length = 10)
+	private String sSN;
+	
+	@NotNull
+	private String firstName;
+	
+	@NotNull
+	private String surName;
+	
+	@NotNull
+	private String address;
+	
+	@NotNull
+	private String country;
+	
+	@NotNull
+	@Pattern(regexp= "(\"^[0-9]*$\"")
+	@Column (length = 4)
+	private String zipCode;
+	
+	@NotNull
+	@Pattern(regexp = "(\"^[A-Za-z]*$\"")
+	private String city;
+	
+	@NotNull
+	@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+			+ "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
+			+ "(?:[a-z0-9-]*[a-z0-9])?",
+			message = "WRONG email")
+	private String email;
+
 	public int getCustomerID() {
-		return CustomerID;
+		return customerID;
 	}
 	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+		this.customerID = customerID;
 	}
 	public String getSSN() {
-		return SSN;
+		return sSN;
 	}
 	public void setSSN(String sSN) {
-		SSN = sSN;
+		this.sSN = sSN;
 	}
 	public String getFirstName() {
-		return FirstName;
+		return firstName;
 	}
 	public void setFirstName(String firstName) {
-		FirstName = firstName;
+		this.firstName = firstName;
 	}
 	public String getSurName() {
-		return SurName;
+		return surName;
 	}
 	public void setSurName(String surName) {
-		SurName = surName;
+		this.surName = surName;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
 	public String getCountry() {
-		return Country;
+		return country;
 	}
 	public void setCountry(String country) {
-		Country = country;
+		this.country = country;
 	}
 	public String getZipCode() {
-		return ZipCode;
+		return zipCode;
 	}
 	public void setZipCode(String zipCode) {
-		ZipCode = zipCode;
+		this.zipCode = zipCode;
 	}
 	public String getCity() {
-		return City;
+		return city;
 	}
 	public void setCity(String city) {
-		City = city;
+		this.city = city;
 	}
 	public String getEmail() {
-		return Email;
+		return email;
 	}
 	public void setEmail(String email) {
-		Email = email;
+		this.email = email;
 	}
 
 }
