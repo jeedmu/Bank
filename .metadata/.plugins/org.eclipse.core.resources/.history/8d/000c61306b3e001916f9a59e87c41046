@@ -19,18 +19,18 @@ import javaee.domain.Property;
 		+ "OR UPPER(p.value) LIKE :search " 
 + "ORDER BY p.property")
 
-public class Property {
+public class PropertyEntity {
 
 	@Id
 	private String property;
 	private String value;
 	private static final long serialVersionUID = 1L;
 
-	public Property() {
+	public PropertyEntity() {
 		super();
 	}
 
-	public Property(Property property) {
+	public PropertyEntity(Property property) {
 		this.property = property.getProperty();
 		this.value = property.getValue();
 	}

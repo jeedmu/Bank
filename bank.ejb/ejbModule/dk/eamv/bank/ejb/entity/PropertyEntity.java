@@ -1,12 +1,10 @@
-package dk.eamv.bank.domain;
-
-import java.io.Serializable;
+package dk.eamv.bank.ejb.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 
-import javaee.domain.Property;
+import dk.eamv.bank.domain.Property;
 
 /**
  * Entity implementation class for Entity: Property
@@ -19,24 +17,23 @@ import javaee.domain.Property;
 		+ "OR UPPER(p.value) LIKE :search " 
 + "ORDER BY p.property")
 
-public class Property {
-
+public class PropertyEntity {
 	@Id
 	private String property;
 	private String value;
 	private static final long serialVersionUID = 1L;
 
-	public Property() {
+	public PropertyEntity() {
 		super();
 	}
 
-	public Property(Property property) {
+	public PropertyEntity(Property property) {
 		this.property = property.getProperty();
 		this.value = property.getValue();
 	}
 
 	public Property toDomain() {
-		return new Property(this.property, this.value);
+		return new Property();  // mangler måske noget fra domæneklassen.
 	}
 
 	public String getProperty() {

@@ -26,11 +26,11 @@ public class Property {
 	private String value;
 	private static final long serialVersionUID = 1L;
 
-	public Property() {
+	public PropertyEntity() {
 		super();
 	}
 
-	public Property(Property property) {
+	public PropertyEntity(Property property) {
 		this.property = property.getProperty();
 		this.value = property.getValue();
 	}

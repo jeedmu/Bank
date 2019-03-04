@@ -135,8 +135,8 @@ public class CustomerEntity {
 	}
 	
 	//something something. Virker ikke.
-	/*public Customer toDomain() {
+	public Customer toDomain() {
 		return new Customer(customerID, this.sSN, this.firstName, this.surName, this.address, this.country, this.zipCode, this.city, this.email);
-} */
+} 
 
 }
