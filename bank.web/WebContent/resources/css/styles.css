@@ -3,7 +3,6 @@ body{
 	margin:0px;
 }
 
-
 #container {
 	background-color:rgb(50,50,50);
 	width:100%;
@@ -23,6 +22,7 @@ body{
 #content_wrapper{
 	background-color: rgb(240,240,240);
 	min-width:500px;
+	overflow:hidden;
 	overflow-y:hidden;
 	overflow-x:scroll;	
 }
@@ -88,6 +88,10 @@ body{
 	border:none;
 	border-left:3px solid #489b93;
 	border-radius:0px;
+}
+
+.site-nav__link .icon-chevron-down {
+	display: none;
 }
 
 .ui-panelmenu .ui-panelmenu-content{
