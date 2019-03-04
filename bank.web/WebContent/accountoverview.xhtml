@@ -15,14 +15,14 @@
     <ui:param name="uiParam" value="false" />
     
     <!-- Define the content to be displayed -->
-    <ui:define name="content">
-        
+    <ui:define name="content">        
 		<ui:repeat var="orly" value="#{accountOverviewBean.accounts}">
+			<h:outputText value="#{orly.accountName}"/>
         	<h:outputText value="#{orly.regNumber} #{orly.accountNumber}"/>
         	<br/>
-        <h:outputText value="#{orly.balance.toString()}" />
-        <br/>
-    </ui:repeat>
+        	<h:outputText value="#{orly.balance.toString()}" />
+        	<br/>
+    	</ui:repeat>
     </ui:define>
     
 </ui:composition>
