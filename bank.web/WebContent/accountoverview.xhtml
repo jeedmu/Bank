@@ -17,7 +17,7 @@
     <!-- Define the content to be displayed -->
     <ui:define name="content">
         
-		<ui:repeat var="orly" value="#{coolBean.accounts}">
+		<ui:repeat var="orly" value="#{accountOverviewBean.accounts}">
         	<h:outputText value="#{orly.regNumber} #{orly.accountNumber}"/>
         	<br/>
         <h:outputText value="#{orly.balance.toString()}" />

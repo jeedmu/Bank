@@ -19,7 +19,7 @@ import dk.eamv.bank.ejb.HomeBanking;
 
 @Named
 @RequestScoped
-public class CoolBean implements Serializable{
+public class AccountOverviewBean implements Serializable{
 
 	@EJB private HomeBanking homeBanking;
 	/**
@@ -30,9 +30,9 @@ public class CoolBean implements Serializable{
 	public List<Account> getAccounts()
 	{
 		ArrayList<Account> ac = new ArrayList<Account>();
-		ac.add(new Account.Builder(25,"regnumber213","accountnumber12893").setBalance(BigDecimal.ZERO).setAccountName("Niels").Build());
-		ac.add(new Account.Builder(11,"regnumber243","accountnumber12893").setBalance(BigDecimal.ONE).setAccountName("Ole").Build());
-		ac.add(new Account.Builder(34,"regnumber563","ac456ntnumber12893").setBalance(BigDecimal.TEN).setAccountName("Peter").Build());
+		ac.add(new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Niels").Build());
+		ac.add(new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ole").Build());
+		ac.add(new Account.Builder(34,3487, 348584598).setBalance(BigDecimal.TEN).setAccountName("Peter").Build());
 		return ac;
 		//return homeBanking.showAccounts("");
 	}
