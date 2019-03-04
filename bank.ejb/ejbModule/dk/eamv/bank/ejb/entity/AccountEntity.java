@@ -6,59 +6,61 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Account;
-public class AccountEntity {
 
-	public AccountEntity(Account account ) {
-		this.CustomerID = account.getCustomerID();
-		this.RegNumber = account.getRegNumber();
-		this.AccountNumber = account.getAccountNumber();
-		this.AccountName = getAccountName();
-		this.Balance = getBalance();
+@Entity
+@Table(name="account")
+public class AccountEntity 
+{
+	AccountKey primaryKey;
+	public AccountEntity()
+	{
+		
 	}
+	
+	public AccountEntity(Account account ) 
+	{
+		this.customerID = account.getCustomerID();
+		this.accountName = getAccountName();
+		this.balance = getBalance();
+	}
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "CustomerID")
-	private int CustomerID;
+	private int customerID;
+	
+	@EmbeddedId
+    public AccountKey getPrimaryKey() {
+        return primaryKey;
+    }
+ 
+    public void setPrimaryKey(AccountKey pk) {
+        primaryKey = pk;
+    }
+
+	@NotNull
+	private String accountName;
 	
 	@NotNull
-	private String RegNumber;
-	@Id
-	@GeneratedValue
-	private String AccountNumber;
-	@NotNull
-	private String AccountName;
-	@NotNull
-	private BigDecimal Balance;
+	private BigDecimal balance;
 	
+	//set/getters
 	public int getCustomerID() {
-		return CustomerID;
+		return customerID;
 	}
 	public void setCustomerID(int customerID) {
-		CustomerID = customerID;
+		this.customerID = customerID;
 	}
-	public String getRegNumber() {
-		return RegNumber;
-	}
-	public void setRegNumber(String regNumber) {
-		RegNumber = regNumber;
-	}
-	public String getAccountNumber() {
-		return AccountNumber;
-	}
-	public void setAccountNumber(String accountNumber) {
-		AccountNumber = accountNumber;
-	}
+	
 	public String getAccountName() {
-		return AccountName;
+		return accountName;
 	}
 	public void setAccountName(String accountName) {
-		AccountName = accountName;
+		this.accountName = accountName;
 	}
 	public BigDecimal getBalance() {
-		return Balance;
+		return balance;
 	}
 	public void setBalance(BigDecimal balance) {
-		Balance = balance;
+		this.balance = balance;
 	}
-	
-	
 }
