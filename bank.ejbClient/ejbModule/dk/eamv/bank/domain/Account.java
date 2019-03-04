@@ -4,19 +4,19 @@ import java.math.BigDecimal;
 
 public class Account {
 	private final int customerID;
-	private final String regNumber;
-	private final String accountNumber;
+	private final int regNumber;
+	private final int accountNumber;
 	private final String accountName;
 	private final BigDecimal balance;
 
 	public static class Builder {
 		private final int customerID;
-		private final String regNumber;
-		private final String accountNumber;
+		private final int regNumber;
+		private final int accountNumber;
 		private String accountName;
 		private BigDecimal balance;
 
-		public Builder(int customerID, String regNumber, String accountNumber) {
+		public Builder(int customerID, int regNumber, int accountNumber) {
 			this.customerID = customerID;
 			this.regNumber = regNumber;
 			this.accountNumber = accountNumber;
@@ -56,22 +56,22 @@ public class Account {
 						  .Build();
 	}
 
-	public String getRegNumber() {
+	public int getRegNumber() {
 		return regNumber;
 	}
 
-	public Account setRegNumber(String regNumber) {
+	public Account setRegNumber(int regNumber) {
 		return new Account.Builder(this.customerID, regNumber, this.accountNumber)
 				  .setAccountName(this.accountName)
 				  .setBalance(this.balance)
 				  .Build();
 	}
 
-	public String getAccountNumber() {
+	public int getAccountNumber() {
 		return accountNumber;
 	}
 
-	public Account setAccountNumber(String accountNumber) {
+	public Account setAccountNumber(int accountNumber) {
 		return new Account.Builder(this.customerID, this.regNumber, accountNumber)
 				  .setAccountName(this.accountName)
 				  .setBalance(this.balance)
