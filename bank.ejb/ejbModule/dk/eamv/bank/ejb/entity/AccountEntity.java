@@ -19,7 +19,8 @@ public class AccountEntity {
 	@JoinColumn(name = "CustomerID")
 	private CustomerEntity customer;
 	
-	@NotNull
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "RegNumber")
 	private int RegNumber;
 	@Id
 	@GeneratedValue
