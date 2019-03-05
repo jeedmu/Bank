@@ -10,7 +10,7 @@ import dk.eamv.bank.domain.Bank;
  * Entity implementation class for Entity: BankEntity
  *
  */
-@Entity
+@Entity(name = "bank")
 
 public class BankEntity implements Serializable {
 

@@ -1,35 +1,15 @@
 package dk.eamv.bank.ejb.entity;
 
-
 import java.util.List;
-
 import javax.annotation.Generated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
 import dk.eamv.bank.domain.Customer;
 
-@Entity
-@Table(name="customer")
-public class CustomerEntity {
-	
-	public CustomerEntity() {}
-	
-	public CustomerEntity(Customer customer) {
-		this.customerID = customer.getCustomerID();
-		this.sSN = customer.getSSN();
-		this.firstName = customer.getFirstName();
-		this.surName = customer.getSurName();
-		this.address = customer.getAddress();
-		this.zipCode = customer.getZipCode();
-		this.city = customer.getCity();
-		this.email = customer.getEmail();
-		
-	}
-	
 
-	//Instance variables
+@Entity(name="customer")
+public class CustomerEntity {
 	
 	@GeneratedValue
 	@NotNull
@@ -40,14 +20,6 @@ public class CustomerEntity {
 	@JoinColumn(name = "AccountNumber")
 	private List<AccountEntity> accounts;
 	
-	public List<AccountEntity> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<AccountEntity> accounts) {
-		this.accounts = accounts;
-	}
-
 	@NotNull
 	// @Pattern(regexp= "(\"^[0-9]*$\"")
 	// @Column (length = 10)
@@ -84,20 +56,38 @@ public class CustomerEntity {
 	
 	@NotNull
 	private String phoneNumber;
-
 	
-	//Methods
 	
-	//something something. Virker måske.
+	
+	public CustomerEntity() {}
+	
+	public CustomerEntity(Customer customer) {
+		this.customerID = customer.getCustomerID();
+		this.sSN = customer.getSSN();
+		this.firstName = customer.getFirstName();
+		this.surName = customer.getSurName();
+		this.address = customer.getAddress();
+		this.zipCode = customer.getZipCode();
+		this.city = customer.getCity();
+		this.email = customer.getEmail();
+		this.phoneNumber = customer.getPhoneNumber();
+	}
+	
+	
+	
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
 				.setPhoneNumber(this.phoneNumber).Build();
 	} 
 	
-	//..............................//
-	//Setters and getters//
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
 	
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -159,6 +149,4 @@ public class CustomerEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	
-
 }
