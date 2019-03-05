@@ -25,8 +25,11 @@ public class CustomerEntity {
 		this.zipCode = customer.getZipCode();
 		this.city = customer.getCity();
 		this.email = customer.getEmail();
+		
 	}
 	
+
+	//Instance variables
 	
 	@GeneratedValue
 	@NotNull
@@ -78,7 +81,23 @@ public class CustomerEntity {
 			+ "(?:[a-z0-9-]*[a-z0-9])?",
 			message = "WRONG email")*/
 	private String email;
+	
+	@NotNull
+	private String phoneNumber;
 
+	
+	//Methods
+	
+	//something something. Virker måske.
+	public Customer toDomain() {
+		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
+				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
+				.setPhoneNumber(this.phoneNumber).Build();
+	} 
+	
+	//..............................//
+	//Setters and getters//
+	
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -133,10 +152,13 @@ public class CustomerEntity {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 	
-	//something something. Virker ikke.
-	/*public Customer toDomain() {
-		return new Customer(customerID, this.sSN, this.firstName, this.surName, this.address, this.country, this.zipCode, this.city, this.email);
-} */
 
 }
