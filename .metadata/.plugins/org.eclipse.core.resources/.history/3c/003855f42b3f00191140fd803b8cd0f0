@@ -1,12 +1,14 @@
 package dk.eamv.bank.ejb.entity;
 
+
 import java.util.List;
+
 import javax.annotation.Generated;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import dk.eamv.bank.domain.Customer;
 
+import dk.eamv.bank.domain.Customer;
 
 @Entity(name="customer")
 public class CustomerEntity {
@@ -56,7 +58,8 @@ public class CustomerEntity {
 	
 	@NotNull
 	private String phoneNumber;
-	
+
+
 	
 	
 	public CustomerEntity() {}
@@ -70,24 +73,31 @@ public class CustomerEntity {
 		this.zipCode = customer.getZipCode();
 		this.city = customer.getCity();
 		this.email = customer.getEmail();
-		this.phoneNumber = customer.getPhoneNumber();
+		
 	}
 	
 	
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
+
+		
+	//Methods
 	
+	//something something. Virker måske.
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
 				.setPhoneNumber(this.phoneNumber).Build();
 	} 
 	
-	public List<AccountEntity> getAccounts() {
-		return accounts;
-	}
+	//..............................//
+	//Setters and getters//
 	
-	public void setAccounts(List<AccountEntity> accounts) {
-		this.accounts = accounts;
-	}
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -149,4 +159,6 @@ public class CustomerEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+
 }

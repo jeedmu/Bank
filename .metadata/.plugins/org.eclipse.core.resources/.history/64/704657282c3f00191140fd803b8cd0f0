@@ -56,7 +56,8 @@ public class CustomerEntity {
 	
 	@NotNull
 	private String phoneNumber;
-	
+
+
 	
 	
 	public CustomerEntity() {}
@@ -70,24 +71,31 @@ public class CustomerEntity {
 		this.zipCode = customer.getZipCode();
 		this.city = customer.getCity();
 		this.email = customer.getEmail();
-		this.phoneNumber = customer.getPhoneNumber();
+		
 	}
 	
 	
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
+
+		
+	//Methods
 	
+	//something something. Virker måske.
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
 				.setPhoneNumber(this.phoneNumber).Build();
 	} 
 	
-	public List<AccountEntity> getAccounts() {
-		return accounts;
-	}
+	//..............................//
+	//Setters and getters//
 	
-	public void setAccounts(List<AccountEntity> accounts) {
-		this.accounts = accounts;
-	}
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -149,4 +157,6 @@ public class CustomerEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+
 }
