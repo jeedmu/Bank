@@ -59,9 +59,8 @@ public class PropertyBean {
 		}
 	}
 	
-	 public List<Property> list(String search){
+	 public List<Property> list(){
 	    	return em.createNamedQuery("searchProperties", PropertyEntity.class)
-	    				.setParameter("search", "%" + search.toUpperCase() + "%")
 	    				.getResultList()
 	    				.stream()
 	    				.map(p -> p.toDomain())

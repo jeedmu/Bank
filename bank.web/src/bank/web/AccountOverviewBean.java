@@ -19,7 +19,6 @@ import javax.inject.Named;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
-import dk.eamv.bank.ejb.HomeBanking;
 
 @Named
 @RequestScoped
