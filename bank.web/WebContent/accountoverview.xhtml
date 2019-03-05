@@ -13,23 +13,23 @@
 		
 		<!-- Send parameter 'uiParam' with the bool 'false' to template, could be used to tell which menu item to highlight -->
     <ui:param name="uiParam" value="false" />
-    
-    <!-- Define the content to be displayed -->
-    <ui:define name="content">        
-    	<ul>
-			<ui:repeat var="account" value="#{accountOverviewBean.accounts}">
-				<li>
-					<h:link outcome="entryoverview" >
+	    <!-- Define the content to be displayed -->
+	    <ui:define name="content">        
+		    <p:dataTable var="account" value="#{accountOverviewBean.accounts}">
+		    	<p:column headerText="Konto">
+		    		<h:link outcome="entryoverview" >
     					<f:param name="accountNo" value="#{account.accountNumber}" />
-    					
-						<h:outputText value="#{account.accountName}"/>
-        				<h:outputText value="#{account.regNumber} #{account.accountNumber}"/>
-        				<br/>
-        				<h:outputText value="#{account.balance.toString()}" />
-        				<br/>
-        			</h:link>
-        		</li>
-    		</ui:repeat>
-   		</ul>
+			        	<h:outputText value="#{account.accountName}" />
+			        </h:link>
+			    </p:column>
+
+			    <p:column headerText="Reg- og Konto nr.">
+			        <h:outputText value="#{account.regNumber} #{account.accountNumber}" />
+			    </p:column>
+			 
+			    <p:column headerText="Saldo">
+			        <h:outputText value="#{account.balance.toString()}" />
+			    </p:column>
+		</p:dataTable>
     </ui:define>
 </ui:composition>
