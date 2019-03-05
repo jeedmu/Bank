@@ -12,6 +12,7 @@ import javax.persistence.PersistenceContext;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.ejb.entity.CustomerEntity;
+import dk.eamv.bank.ejb.entity.PropertyEntity;
 
 /**
  * Session Bean implementation class PropertyBean
