@@ -60,9 +60,8 @@ public class CustomerBean {
     		throw new CustomerNotFoundException();
     }
     
-    public List<Customer> list(String search){
+    public List<Customer> list(){
     	return em.createNamedQuery("searchCustomers", CustomerEntity.class)
-    				.setParameter("search", "%" + search.toUpperCase() + "%")
     				.getResultList()
     				.stream()
     				.map(c -> c.toDomain())
