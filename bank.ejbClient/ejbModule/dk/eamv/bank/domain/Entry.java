@@ -10,19 +10,25 @@ public class Entry {
 	private final LocalDateTime date;
 	private final BigDecimal amount;
 	private final int accountNumber;
+	private final int regNumber;
 
 	public static class Builder {
+		//Required Params
 		private final long entryID;
-		private String description;
 		private final LocalDateTime date;
 		private final BigDecimal amount;
 		private final int accountNumber;
+		private final int regNumber;
+		
+		//Optional Params
+		private String description;
 
-		public Builder(long entryID, LocalDateTime date, BigDecimal amount, int accountNumber) {
+		public Builder(long entryID, LocalDateTime date, BigDecimal amount, int accountNumber, int regNumber) {
 			this.entryID = entryID;
 			this.date = date;
 			this.amount = amount;
 			this.accountNumber = accountNumber;
+			this.regNumber = regNumber;
 		}
 
 		public Builder setDescription(String description) {
@@ -41,6 +47,7 @@ public class Entry {
 		date = builder.date;
 		amount = builder.amount;
 		accountNumber = builder.accountNumber;
+		regNumber = builder.regNumber;
 	}
 
 	public long getEntryID() {
@@ -48,7 +55,7 @@ public class Entry {
 	}
 
 	public Entry setEntryID(long entryID) {
-		return new Entry.Builder(entryID, this.date, this.amount, this.accountNumber).setDescription(this.description)
+		return new Entry.Builder(entryID, this.date, this.amount, this.accountNumber, this.regNumber).setDescription(this.description)
 				.Build();
 	}
 
@@ -57,7 +64,7 @@ public class Entry {
 	}
 
 	public Entry setDescription(String description) {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber).setDescription(description)
+		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, this.regNumber).setDescription(description)
 				.Build();
 	}
 
@@ -66,7 +73,7 @@ public class Entry {
 	}
 
 	public Entry setDate(LocalDateTime date) {
-		return new Entry.Builder(this.entryID, date, this.amount, this.accountNumber).setDescription(this.description)
+		return new Entry.Builder(this.entryID, date, this.amount, this.accountNumber, this.regNumber).setDescription(this.description)
 				.Build();
 	}
 
@@ -75,7 +82,7 @@ public class Entry {
 	}
 
 	public Entry setAmount(BigDecimal amount) {
-		return new Entry.Builder(this.entryID, this.date, amount, this.accountNumber).setDescription(this.description)
+		return new Entry.Builder(this.entryID, this.date, amount, this.accountNumber, this.regNumber).setDescription(this.description)
 				.Build();
 	}
 
@@ -84,7 +91,7 @@ public class Entry {
 	}
 
 	public Entry setAccountNumber(int accountNumber) {
-		return new Entry.Builder(this.entryID, this.date, this.amount, accountNumber).setDescription(this.description)
+		return new Entry.Builder(this.entryID, this.date, this.amount, accountNumber, this.regNumber).setDescription(this.description)
 				.Build();
 	}
 }
