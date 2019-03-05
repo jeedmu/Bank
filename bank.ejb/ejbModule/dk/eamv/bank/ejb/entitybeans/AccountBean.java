@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.ejb.entity.AccountEntity;
+import dk.eamv.bank.ejb.exception.AccountAlreadyExsistsException;
+import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 
 /**
  * Session Bean implementation class AccountBean

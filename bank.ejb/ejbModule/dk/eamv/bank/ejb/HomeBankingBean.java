@@ -11,8 +11,8 @@ import javax.ejb.Stateless;
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
-import dk.eamv.bank.ejb.entitybeans.EntryAlreadyExsistsException;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
+import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 
 /**
  * Session Bean implementation class HomeBankingBean

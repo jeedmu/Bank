@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.ejb.entity.BankEntity;
+import dk.eamv.bank.ejb.exception.BankAlreadyExsistsException;
+import dk.eamv.bank.ejb.exception.BankNotFoundException;
 
 /**
  * Session Bean implementation class BankBean

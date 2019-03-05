@@ -10,7 +10,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Customer;
-import dk.eamv.bank.ejb.entity.CustomerEntity;;
+import dk.eamv.bank.ejb.entity.CustomerEntity;
+import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
+import dk.eamv.bank.ejb.exception.CustomerNotFoundException;;
 
 /**
  * Session Bean implementation class CustomerBean
