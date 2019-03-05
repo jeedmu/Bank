@@ -1,4 +1,4 @@
-package dk.eamv.bank.ejb.entitybeans;
+package dk.eamv.bank.ejb.exception;
 
 public class PropertyAlreadyExistsException extends RuntimeException {
 

@@ -11,6 +11,8 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.ejb.entity.PropertyEntity;
+import dk.eamv.bank.ejb.exception.PropertyAlreadyExistsException;
+import dk.eamv.bank.ejb.exception.PropertyNotFoundException;
 
 /**
  * Session Bean implementation class PropertyBean
