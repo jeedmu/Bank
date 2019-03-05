@@ -7,41 +7,49 @@ import dk.eamv.bank.domain.Entry;
 public class EntryEntity {
 	
 	public EntryEntity(Entry entry) {
-		this.EntryID = getEntryID();
-		this.Description = getDescription();
-		this.Date = getDate();
-		this.Amount = getAmount();
+		this.entryID = getEntryID();
+		this.description = getDescription();
+		this.date = getDate();
+		this.amount = getAmount();
 	}
-	
-	
-	
-	private int EntryID;
-	private String Description;
-	private LocalDateTime Date;
-	private BigDecimal Amount;
+		
+	private int entryID;
+	private String description;
+	private LocalDateTime date;
+	private BigDecimal amount;
+	private int accountNumber;
 	
 	public int getEntryID() {
-		return EntryID;
+		return entryID;
 	}
 	public void setEntryID(int entryID) {
-		EntryID = entryID;
+		this.entryID = entryID;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public LocalDateTime getDate() {
-		return Date;
+		return date;
 	}
 	public void setDate(LocalDateTime date) {
-		Date = date;
+		this.date = date;
 	}
 	public BigDecimal getAmount() {
-		return Amount;
+		return amount;
 	}
 	public void setAmount(BigDecimal amount) {
-		Amount = amount;
+		this.amount = amount;
+	}
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public Entry toDomain() {
+		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber).Build();
 	}
 }
