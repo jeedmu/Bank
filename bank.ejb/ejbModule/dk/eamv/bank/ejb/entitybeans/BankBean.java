@@ -21,7 +21,7 @@ public class BankBean {
 
 	@PersistenceContext private EntityManager em;
 	
-	public void create(Bank bank) throws BankAlreadyExsistsException{
+	public void create(Bank bank) {
 		Optional<Bank> optional = read(bank.getCVR());
 		if (optional.isPresent()) {
 			throw new BankAlreadyExsistsException();
@@ -39,7 +39,7 @@ public class BankBean {
 		}
 	}
 	
-	public void update(Bank bank) throws BankNotFoundException {
+	public void update(Bank bank) {
 		BankEntity entity = em.find(BankEntity.class, bank.getCVR());
 		if (entity != null) {
 			entity.setBankName(bank.getBankName());
@@ -50,7 +50,7 @@ public class BankBean {
 		}
 	}
 	
-	public void delete(String cvr) throws BankNotFoundException {
+	public void delete(String cvr) {
 		BankEntity entity = em.find(BankEntity.class, cvr);
 		if (entity != null) {
 			em.remove(entity);

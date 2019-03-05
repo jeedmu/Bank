@@ -20,7 +20,7 @@ import dk.eamv.bank.ejb.entity.CustomerEntity;;
 public class CustomerBean {
 	@PersistenceContext private EntityManager em;
 
-	public void create(Customer customer) throws CustomerAlreadyExsistsException{
+	public void create(Customer customer) {
     	Optional<Customer> optional = read(customer.getCustomerID());
     	
     	if(optional.isPresent())
@@ -36,7 +36,7 @@ public class CustomerBean {
     			return Optional.empty();
     }
     
-    public void update(Customer customer) throws CustomerNotFoundException {
+    public void update(Customer customer) {
     	CustomerEntity entity = em.find(CustomerEntity.class, customer.getCustomerID());
     	if(entity != null) {
     		entity.setFirstName(customer.getFirstName());
@@ -51,7 +51,7 @@ public class CustomerBean {
     		throw new CustomerNotFoundException();
     }
     
-    public void delete(int customerID) throws CustomerNotFoundException {
+    public void delete(int customerID) {
     	CustomerEntity entity = em.find(CustomerEntity.class, customerID);
     	
     	if(entity != null)

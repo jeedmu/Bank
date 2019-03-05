@@ -9,8 +9,8 @@ import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entity.AccountEntity;
 import dk.eamv.bank.ejb.entity.EntryEntity;
-import ejbModule.javaee.ejb.beans.EntityManager;
-import ejbModule.javaee.ejb.beans.PersistenceContext;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Session Bean implementation class EntryBean
@@ -18,9 +18,9 @@ import ejbModule.javaee.ejb.beans.PersistenceContext;
 @Stateless
 @LocalBean
 public class EntryBean {
-	@javax.persistence.PersistenceContext private javax.persistence.EntityManager em;
+	@PersistenceContext private EntityManager em;
 
-	public void create(Entry entry) throws EntryAlreadyExsistsException {
+	public void create(Entry entry) {
 		Optional<Entry> optional = read(entry.getEntryID());
 		if (optional.isPresent()) {
 			throw new EntryAlreadyExsistsException();
@@ -38,7 +38,7 @@ public class EntryBean {
 		}
 	}
 	
-	public void update(Entry entry) throws EntryNotFoundException {
+	public void update(Entry entry) {
 		EntryEntity entity = em.find(EntryEntity.class, entry.getEntryID());
 		if (entity != null) {
 			entity.setDescription(entry.getDescription());
@@ -47,7 +47,7 @@ public class EntryBean {
 		}
 	}
 	
-	public void delete(long entryID) throws AccountNotFoundException {
+	public void delete(long entryID) {
 		EntryEntity entity = em.find(EntryEntity.class, entryID);
 		if (entity != null) {
 			em.remove(entity);

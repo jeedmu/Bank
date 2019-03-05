@@ -1,5 +1,5 @@
 package dk.eamv.bank.ejb.entitybeans;
 
-public class BankAlreadyExsistsException extends Exception {
+public class BankAlreadyExsistsException extends RuntimeException {
 
 }

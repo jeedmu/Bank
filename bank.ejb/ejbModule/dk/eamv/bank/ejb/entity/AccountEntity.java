@@ -17,7 +17,7 @@ public class AccountEntity
 		
 	}
 	
-	public AccountEntity(Account account ) 
+	public AccountEntity(Account account) 
 	{
 		//this.customerID = account.getCustomerID();
 		this.accountName = getAccountName();
