@@ -1,6 +1,8 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -9,8 +11,10 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Bank;
+import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.ejb.entity.AccountEntity;
 import dk.eamv.bank.ejb.entity.BankEntity;
+import dk.eamv.bank.ejb.entity.CustomerEntity;
 
 /**
  * Session Bean implementation class BankBean
@@ -58,5 +62,15 @@ public class BankBean {
 			throw new BankNotFoundException();
 		}
 	}
+	
+	 public List<Bank> list(String search){
+	    	return em.createNamedQuery("searchBanks", BankEntity.class)
+	    				.setParameter("search", "%" + search.toUpperCase() + "%")
+	    				.getResultList()
+	    				.stream()
+	    				.map(b -> b.toDomain())
+	    				.collect(Collectors.toList());
+	    				
+	    }
 	
 }

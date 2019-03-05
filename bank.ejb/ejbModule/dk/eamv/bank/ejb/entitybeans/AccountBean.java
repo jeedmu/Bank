@@ -1,5 +1,6 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
 
 import javax.ejb.LocalBean;
@@ -9,11 +10,6 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.ejb.entity.AccountEntity;
-import ejbModule.javaee.ejb.beans.Property;
-import ejbModule.javaee.ejb.beans.PropertyAlreadyExistsException;
-import ejbModule.javaee.ejb.beans.PropertyEntity;
-import ejbModule.javaee.ejb.beans.PropertyNotFoundException;
-import ejbModule.javaee.ejb.beans.String;
 
 /**
  * Session Bean implementation class AccountBean
@@ -67,7 +63,7 @@ public class AccountBean {
 				.setParameter("search", "%" + search.toUpperCase() + "%")
 				.getResultList()
 				.stream()
-				.map(p -> p.toDomain())
+				.map(a -> a.toDomain())
 				.collect(Collectors.toList());
 }
 

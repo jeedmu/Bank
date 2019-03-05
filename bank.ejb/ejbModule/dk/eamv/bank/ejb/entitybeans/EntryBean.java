@@ -1,13 +1,17 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entity.AccountEntity;
+import dk.eamv.bank.ejb.entity.CustomerEntity;
 import dk.eamv.bank.ejb.entity.EntryEntity;
 import ejbModule.javaee.ejb.beans.EntityManager;
 import ejbModule.javaee.ejb.beans.PersistenceContext;
@@ -55,5 +59,15 @@ public class EntryBean {
 			throw new AccountNotFoundException();
 		}
 	}
+	
+	 public List<Entry> list(String search){
+	    	return em.createNamedQuery("searchEntries", EntryEntity.class)
+	    				.setParameter("search", "%" + search.toUpperCase() + "%")
+	    				.getResultList()
+	    				.stream()
+	    				.map(e -> e.toDomain())
+	    				.collect(Collectors.toList());
+	    				
+	    }
 	
 }

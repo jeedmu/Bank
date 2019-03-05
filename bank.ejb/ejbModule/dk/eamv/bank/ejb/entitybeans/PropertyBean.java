@@ -1,13 +1,17 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Property;
+import dk.eamv.bank.ejb.entity.CustomerEntity;
 
 /**
  * Session Bean implementation class PropertyBean
@@ -53,5 +57,15 @@ public class PropertyBean {
 			throw new PropertyNotFoundException();
 		}
 	}
+	
+	 public List<Property> list(String search){
+	    	return em.createNamedQuery("searchProperties", PropertyEntity.class)
+	    				.setParameter("search", "%" + search.toUpperCase() + "%")
+	    				.getResultList()
+	    				.stream()
+	    				.map(p -> p.toDomain())
+	    				.collect(Collectors.toList());
+	    				
+	    }
 
 }
