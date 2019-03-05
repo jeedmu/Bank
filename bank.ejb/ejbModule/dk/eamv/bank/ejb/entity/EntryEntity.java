@@ -12,7 +12,7 @@ import dk.eamv.bank.domain.Entry;
 public class EntryEntity {
 	@Id
 	@GeneratedValue 
-	private long entryID;    // der skal laves annotationos
+	private long entryID;    
 	@NotNull
 	private String description;
 	@NotNull
@@ -26,9 +26,10 @@ public class EntryEntity {
 	
 	public EntryEntity(Entry entry) {
 		this.entryID = entry.getEntryID();
-		this.description = getDescription();
-		this.date = getDate();
-		this.amount = getAmount();
+		this.description = entry.getDescription();
+		this.date = entry.getDate();
+		this.amount = entry.getAmount();
+		//this.regNumber = entry.GetRegNumber(); // mangler get metode fra domain klasse
 	}
 	
 	public EntryEntity() {
@@ -65,6 +66,13 @@ public class EntryEntity {
 	}
 	public void setAccountNumber(int accountNumber) {
 		this.accountNumber = accountNumber;
+	}
+	
+	public int GetRegNumber() {
+		return regNumber;
+	}
+	public void SetRegNumber(int regNumber) {
+		this.regNumber = regNumber;
 	}
 	public Entry toDomain() {
 		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber).Build();
