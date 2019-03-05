@@ -2,11 +2,23 @@ body{
 	padding:0px;
 	margin:0px;
 }
+
+#logo{
+	position:relative;
+	float:left;
+	width:96px;
+	height:96px;
+	margin-top:16px;
+}
+
 #logo_text {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-    color: rgb(128,217,255);
+    color: #1e7770;
     font-size: 64px;
-    margin: 0 auto;
+    float:left;
+    margin:0px;
+    padding:0px;
+    padding-top:10px;
 }
 
 #container {
@@ -74,7 +86,7 @@ body{
 }
 
 #inner_header {
-	width:71%;
+	width:75%;
 	margin: 0 auto;
 }
 
