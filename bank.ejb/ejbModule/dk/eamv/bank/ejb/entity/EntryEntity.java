@@ -29,7 +29,7 @@ public class EntryEntity {
 		this.description = entry.getDescription();
 		this.date = entry.getDate();
 		this.amount = entry.getAmount();
-		//this.regNumber = entry.GetRegNumber(); // mangler get metode fra domain klasse
+		this.regNumber = entry.getRegNumber();
 	}
 	
 	public EntryEntity() {
@@ -68,13 +68,13 @@ public class EntryEntity {
 		this.accountNumber = accountNumber;
 	}
 	
-	public int GetRegNumber() {
+	public int getRegNumber() {
 		return regNumber;
 	}
 	public void SetRegNumber(int regNumber) {
 		this.regNumber = regNumber;
 	}
 	public Entry toDomain() {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber).Build();
+		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, this.regNumber).Build();
 	}
 }
