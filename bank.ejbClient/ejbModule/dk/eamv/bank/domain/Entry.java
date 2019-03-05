@@ -94,4 +94,12 @@ public class Entry {
 		return new Entry.Builder(this.entryID, this.date, this.amount, accountNumber, this.regNumber).setDescription(this.description)
 				.Build();
 	}
+	
+	public int getRegNumber() {
+		return regNumber;
+	}
+	public Entry setRegNumber(int regNumber) {
+		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, regNumber).setDescription(this.description)
+				.Build();
+	}
 }
