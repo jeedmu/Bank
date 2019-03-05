@@ -9,12 +9,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Bank;
-import dk.eamv.bank.domain.Customer;
-import dk.eamv.bank.ejb.entity.AccountEntity;
 import dk.eamv.bank.ejb.entity.BankEntity;
-import dk.eamv.bank.ejb.entity.CustomerEntity;
 
 /**
  * Session Bean implementation class BankBean

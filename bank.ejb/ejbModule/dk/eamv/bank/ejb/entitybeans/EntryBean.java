@@ -6,15 +6,11 @@ import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
-
-import dk.eamv.bank.domain.Account;
-import dk.eamv.bank.domain.Customer;
-import dk.eamv.bank.domain.Entry;
-import dk.eamv.bank.ejb.entity.AccountEntity;
-import dk.eamv.bank.ejb.entity.CustomerEntity;
-import dk.eamv.bank.ejb.entity.EntryEntity;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
+import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.ejb.entity.EntryEntity;
 
 /**
  * Session Bean implementation class EntryBean
