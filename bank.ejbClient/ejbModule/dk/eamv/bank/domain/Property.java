@@ -1,12 +1,5 @@
 package dk.eamv.bank.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.NamedQuery;
-
-
 /**
  * Entity implementation class for Entity: Property
  *
@@ -14,39 +7,21 @@ import javax.persistence.NamedQuery;
 
 public class Property {
 
-	@Id
-	private String property;
-	private String value;
-	private static final long serialVersionUID = 1L;
+	private final String property;
+	private final String value;
 
-	public Property() {
-		super();
+	
+	public Property(String property, String value) {
+		this.property = property;
+		this.value = value;
 	}
-
-	public Property(Property property) {
-		this.property = property.getProperty();
-		this.value = property.getValue();
-	}
-
+	
 
 	public String getProperty() {
 		return this.property;
 	}
 
-	public void setProperty(String property) {
-		this.property = property;
-	}
-
 	public String getValue() {
 		return this.value;
 	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
-	@Override
-	public String toString() {
-		return "PropertyEntity [property=" + property + ", value=" + value + "]";
-}
 }
