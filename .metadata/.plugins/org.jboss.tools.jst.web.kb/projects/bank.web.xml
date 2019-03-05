@@ -25,19 +25,19 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/c-1_0.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/c-1_0.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/fmt-1_0.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/fmt-1_0.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/sql-1_0.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/sql-1_0.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/x-1_0.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-compat-1.2.6-RC1.jar/meta-inf/x-1_0.tld" project="bank.web"/>
     </library>
    </libraries>
   </path>
@@ -50,51 +50,51 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_0-rt.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_0-rt.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_1.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_1.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt-1_0-rt.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt-1_0-rt.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fn.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fn.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/permittedtaglibs.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/permittedtaglibs.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/scriptfree.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/scriptfree.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql-1_0-rt.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql-1_0-rt.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x-1_0-rt.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x-1_0-rt.tld" project="bank.web"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x.tld" project="bank.ejbClient"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x.tld" project="bank.web"/>
     </library>
    </libraries>
   </path>
@@ -149,56 +149,49 @@
   <core validator-id="batch-verification"/>
   <core validator-id="jboss.jsf.core"/>
   <el>
-   <linked-el length="12" name="%4" offset="443" path="%5"/>
-   <linked-el length="19" name="%6" offset="552" path="%7"/>
-   <linked-el length="10" name="%0" offset="639" path="%5"/>
-   <linked-el length="20" name="%0" offset="533" path="%5"/>
-   <linked-el length="19" name="%8" offset="552" path="%7"/>
-   <linked-el length="22" name="%8" offset="639" path="%7"/>
-   <linked-el length="22" name="%8" offset="801" path="%7"/>
-   <linked-el length="10" name="%1" offset="639" path="%5"/>
-   <linked-el length="20" name="%1" offset="533" path="%5"/>
-   <linked-el length="22" name="%9" offset="639" path="%7"/>
-   <linked-el length="22" name="%10" offset="801" path="%7"/>
-   <linked-el length="16" name="%11" offset="627" path="%12"/>
-   <linked-el length="12" name="%11" offset="723" path="%12"/>
-   <linked-el length="47" name="%13" offset="864" path="%14"/>
-   <linked-el length="32" name="%13" offset="960" path="%14"/>
-   <linked-el length="24" name="%13" offset="807" path="%14"/>
-   <linked-el length="47" name="%3" offset="864" path="%14"/>
-   <linked-el length="32" name="%3" offset="960" path="%14"/>
-   <linked-el length="24" name="%3" offset="807" path="%14"/>
-   <linked-el length="33" name="%3" offset="748" path="%14"/>
-   <linked-el length="33" name="%2" offset="748" path="%14"/>
+   <linked-el length="19" name="%4" offset="552" path="%5"/>
+   <linked-el length="19" name="%6" offset="552" path="%5"/>
+   <linked-el length="22" name="%6" offset="639" path="%5"/>
+   <linked-el length="22" name="%6" offset="801" path="%5"/>
+   <linked-el length="22" name="%7" offset="639" path="%5"/>
+   <linked-el length="22" name="%8" offset="801" path="%5"/>
+   <linked-el length="16" name="%9" offset="627" path="%10"/>
+   <linked-el length="12" name="%9" offset="723" path="%10"/>
+   <linked-el length="47" name="%11" offset="864" path="%12"/>
+   <linked-el length="32" name="%11" offset="960" path="%12"/>
+   <linked-el length="24" name="%11" offset="807" path="%12"/>
+   <linked-el length="47" name="%3" offset="864" path="%12"/>
+   <linked-el length="32" name="%3" offset="960" path="%12"/>
+   <linked-el length="24" name="%3" offset="807" path="%12"/>
+   <linked-el length="33" name="%3" offset="748" path="%12"/>
+   <linked-el length="33" name="%2" offset="748" path="%12"/>
   </el>
  </validation>
  <aliases>
-  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%14"/>
-  <alias path="uiParam" value="%4"/>
-  <alias path="/bank.web/WebContent/WEB-INF/menu.xhtml" value="%5"/>
+  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%12"/>
   <alias path="/bank.web/src/bank/web/BasicView.java" value="%0"/>
-  <alias path="/bank.web/WebContent/menu.xhtml" value="%7"/>
-  <alias path="menuView" value="%8"/>
+  <alias path="/bank.web/WebContent/menu.xhtml" value="%5"/>
+  <alias path="menuView" value="%6"/>
   <alias path="basicView" value="%1"/>
-  <alias path="String" value="%11"/>
+  <alias path="String" value="%9"/>
   <alias
-   path="/bank.ejbClient/ejbModule/dk/eamv/bank/domain/Account.java" value="%13"/>
+   path="/bank.ejbClient/ejbModule/dk/eamv/bank/domain/Account.java" value="%11"/>
   <alias path="/bank.web/src/bank/web/AccountOverviewBean.java" value="%2"/>
-  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%12"/>
-  <alias path="menuView.save" value="%6"/>
-  <alias path="menuView.update" value="%9"/>
-  <alias path="menuView.delete" value="%10"/>
+  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%10"/>
+  <alias path="menuView.save" value="%4"/>
+  <alias path="menuView.update" value="%7"/>
+  <alias path="menuView.delete" value="%8"/>
   <alias path="accountOverviewBean" value="%3"/>
-  <alias path="/bank.web/WebContent/index.xhtml" value="%15"/>
+  <alias path="/bank.web/WebContent/index.xhtml" value="%13"/>
  </aliases>
  <includes>
-  <page path="%15">
-   <include path="%12">
+  <page path="%13">
+   <include path="%10">
     <var len="7" name="uiParam" off="547" value="#{&quot;false&quot;.toString()}"/>
    </include>
   </page>
-  <page path="%14">
-   <include path="%12">
+  <page path="%12">
+   <include path="%10">
     <var len="7" name="uiParam" off="593" value="#{&quot;false&quot;.toString()}"/>
    </include>
   </page>
