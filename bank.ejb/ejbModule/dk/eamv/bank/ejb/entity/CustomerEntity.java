@@ -10,26 +10,8 @@ import javax.validation.constraints.Pattern;
 
 import dk.eamv.bank.domain.Customer;
 
-@Entity
-@Table(name="customer")
+@Entity(name="customer")
 public class CustomerEntity {
-	
-	public CustomerEntity() {}
-	
-	public CustomerEntity(Customer customer) {
-		this.customerID = customer.getCustomerID();
-		this.sSN = customer.getSSN();
-		this.firstName = customer.getFirstName();
-		this.surName = customer.getSurName();
-		this.address = customer.getAddress();
-		this.zipCode = customer.getZipCode();
-		this.city = customer.getCity();
-		this.email = customer.getEmail();
-		
-	}
-	
-
-	//Instance variables
 	
 	@GeneratedValue
 	@NotNull
@@ -40,14 +22,6 @@ public class CustomerEntity {
 	@JoinColumn(name = "AccountNumber")
 	private List<AccountEntity> accounts;
 	
-	public List<AccountEntity> getAccounts() {
-		return accounts;
-	}
-
-	public void setAccounts(List<AccountEntity> accounts) {
-		this.accounts = accounts;
-	}
-
 	@NotNull
 	// @Pattern(regexp= "(\"^[0-9]*$\"")
 	// @Column (length = 10)
@@ -85,7 +59,33 @@ public class CustomerEntity {
 	@NotNull
 	private String phoneNumber;
 
+
 	
+	
+	public CustomerEntity() {}
+	
+	public CustomerEntity(Customer customer) {
+		this.customerID = customer.getCustomerID();
+		this.sSN = customer.getSSN();
+		this.firstName = customer.getFirstName();
+		this.surName = customer.getSurName();
+		this.address = customer.getAddress();
+		this.zipCode = customer.getZipCode();
+		this.city = customer.getCity();
+		this.email = customer.getEmail();
+		
+	}
+	
+	
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
+
+		
 	//Methods
 	
 	//something something. Virker måske.

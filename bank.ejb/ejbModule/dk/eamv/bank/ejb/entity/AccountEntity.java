@@ -7,10 +7,25 @@ import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Account;
 
-@Entity
-@Table(name="account")
+@Entity(name="account")
 public class AccountEntity 
 {
+	@NotNull
+	private String accountName;
+
+	@NotNull
+	private BigDecimal balance;
+	
+	@NotNull
+	private int accountNumber;
+	
+	@NotNull
+	private int regNumber;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "customerID")
+	private CustomerEntity customer;
+
 	AccountKey primaryKey;
 	public AccountEntity()
 	{
@@ -23,10 +38,7 @@ public class AccountEntity
 		this.balance = account.getBalance();
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "customerID")
-	private CustomerEntity customer;
-
+	
 	public CustomerEntity getCustomer() {
 		return customer;
 	}
@@ -44,17 +56,6 @@ public class AccountEntity
         primaryKey = pk;
     }
 
-	@NotNull
-	private String accountName;
-
-	@NotNull
-	private BigDecimal balance;
-	
-	@NotNull
-	private int accountNumber;
-	
-	@NotNull
-	private int regNumber;
 	
 	//set/getters
 

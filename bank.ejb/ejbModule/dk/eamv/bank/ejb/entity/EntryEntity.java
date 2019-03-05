@@ -2,27 +2,44 @@ package dk.eamv.bank.ejb.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import dk.eamv.bank.domain.Entry;
 
+@Entity(name ="entry") 
 public class EntryEntity {
+	@Id
+	@GeneratedValue 
+	private long entryID;    // der skal laves annotationos
+	@NotNull
+	private String description;
+	@NotNull
+	private LocalDateTime date;
+	@NotNull
+	private BigDecimal amount;
+	@NotNull
+	private int accountNumber;
+	@NotNull
+	private int regNumber;
 	
 	public EntryEntity(Entry entry) {
-		this.entryID = getEntryID();
+		this.entryID = entry.getEntryID();
 		this.description = getDescription();
 		this.date = getDate();
 		this.amount = getAmount();
 	}
-		
-	private int entryID;
-	private String description;
-	private LocalDateTime date;
-	private BigDecimal amount;
-	private int accountNumber;
 	
-	public int getEntryID() {
+	public EntryEntity() {
+		
+	}
+		
+	
+	public long getEntryID() {
 		return entryID;
 	}
-	public void setEntryID(int entryID) {
+	public void setEntryID(long entryID) {
 		this.entryID = entryID;
 	}
 	public String getDescription() {
