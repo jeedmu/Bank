@@ -1,10 +1,5 @@
 package dk.eamv.bank.domain;
 
-/**
- * Entity implementation class for Entity: Property
- *
- */
-
 public class Property {
 
 	private final String property;
@@ -24,4 +19,5 @@ public class Property {
 	public String getValue() {
 		return this.value;
 	}
+	
 }
