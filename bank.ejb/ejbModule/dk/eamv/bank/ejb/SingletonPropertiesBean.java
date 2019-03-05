@@ -14,7 +14,6 @@ import dk.eamv.bank.ejb.entitybeans.PropertyBean;
  * Session Bean implementation class SingletonPropertiesBean
  */
 @Singleton
-@LocalBean
 public class SingletonPropertiesBean implements SingletonPropertiesBeanLocal {
 
 	@EJB private PropertyBean propertyBean; 
@@ -23,6 +22,7 @@ public class SingletonPropertiesBean implements SingletonPropertiesBeanLocal {
     public SingletonPropertiesBean() {
     	properties = new HashMap<String, Property>();
     }
+    
     @PostConstruct
     public void init()
     {
