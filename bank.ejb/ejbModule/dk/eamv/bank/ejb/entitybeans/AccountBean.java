@@ -2,6 +2,7 @@ package dk.eamv.bank.ejb.entitybeans;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -58,9 +59,9 @@ public class AccountBean {
 			throw new AccountNotFoundException();
 		}
 	}
-	public List<Account> list(String search) {
+	public List<Account> list(int customerID) {
 		return em.createNamedQuery("searchAccounts", AccountEntity.class)
-				.setParameter("search", "%" + search.toUpperCase() + "%")
+				.setParameter("customerID", "%" + customerID + "%")
 				.getResultList()
 				.stream()
 				.map(a -> a.toDomain())
