@@ -33,7 +33,7 @@ public class PropertyEntity {
 	}
 
 	public Property toDomain() {
-		return new Property();  // mangler måske noget fra domæneklassen.
+		return new Property(this.property, this.value); 
 	}
 
 	public String getProperty() {

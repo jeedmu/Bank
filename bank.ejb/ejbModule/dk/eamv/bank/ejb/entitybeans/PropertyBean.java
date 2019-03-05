@@ -1,13 +1,18 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Property;
+import dk.eamv.bank.ejb.entity.CustomerEntity;
+import dk.eamv.bank.ejb.entity.PropertyEntity;
 
 /**
  * Session Bean implementation class PropertyBean
@@ -17,7 +22,7 @@ import dk.eamv.bank.domain.Property;
 public class PropertyBean {
 	@PersistenceContext private EntityManager em;
 	
-	public void create(Property property) throws PropertyAlreadyExistsException{
+	public void create(Property property) {
 		Optional<Property> optional = read(property.getProperty());
 		if (optional.isPresent()) {
 			throw new PropertyAlreadyExistsException();
@@ -36,7 +41,7 @@ public class PropertyBean {
 		}
 	}
 
-	public void update(Property property) throws PropertyNotFoundException{
+	public void update(Property property) {
 		PropertyEntity entity = em.find(PropertyEntity.class, property.getProperty());
 		if (entity != null) {
 			entity.setValue(property.getValue());
@@ -45,7 +50,7 @@ public class PropertyBean {
 		}
 	}
 
-	public void delete(String property) throws PropertyNotFoundException{
+	public void delete(String property) {
 		PropertyEntity entity = em.find(PropertyEntity.class, property);
 		if (entity != null) {
 			em.remove(entity);
@@ -53,5 +58,14 @@ public class PropertyBean {
 			throw new PropertyNotFoundException();
 		}
 	}
+	
+	 public List<Property> list(){
+	    	return em.createNamedQuery("searchProperties", PropertyEntity.class)
+	    				.getResultList()
+	    				.stream()
+	    				.map(p -> p.toDomain())
+	    				.collect(Collectors.toList());
+	    				
+	    }
 
 }

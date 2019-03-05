@@ -1,6 +1,8 @@
 package dk.eamv.bank.ejb.entitybeans;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -9,11 +11,6 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.ejb.entity.AccountEntity;
-import ejbModule.javaee.ejb.beans.Property;
-import ejbModule.javaee.ejb.beans.PropertyAlreadyExistsException;
-import ejbModule.javaee.ejb.beans.PropertyEntity;
-import ejbModule.javaee.ejb.beans.PropertyNotFoundException;
-import ejbModule.javaee.ejb.beans.String;
 
 /**
  * Session Bean implementation class AccountBean
@@ -24,7 +21,7 @@ public class AccountBean {
 	
 	@PersistenceContext private EntityManager em;
 
-	public void create(Account account) throws AccountAlreadyExsistsException {
+	public void create(Account account) {
 		Optional<Account> optional = read(account.getAccountNumber());
 		if (optional.isPresent()) {
 			throw new AccountAlreadyExsistsException();
@@ -54,7 +51,7 @@ public class AccountBean {
 		}
 	}
 	
-	public void delete(int accountNumber) throws AccountNotFoundException {
+	public void delete(int accountNumber) {
 		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			em.remove(entity);
@@ -62,12 +59,12 @@ public class AccountBean {
 			throw new AccountNotFoundException();
 		}
 	}
-	public List<Account> list(String search) {
+	public List<Account> list(int customerID) {
 		return em.createNamedQuery("searchAccounts", AccountEntity.class)
-				.setParameter("search", "%" + search.toUpperCase() + "%")
+				.setParameter("customerID", "%" + customerID + "%")
 				.getResultList()
 				.stream()
-				.map(p -> p.toDomain())
+				.map(a -> a.toDomain())
 				.collect(Collectors.toList());
 }
 

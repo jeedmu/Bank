@@ -14,14 +14,13 @@ public class AccountEntity
 	AccountKey primaryKey;
 	public AccountEntity()
 	{
-		
 	}
 	
-	public AccountEntity(Account account ) 
+	public AccountEntity(Account account) 
 	{
 		//this.customerID = account.getCustomerID();
-		this.accountName = getAccountName();
-		this.balance = getBalance();
+		this.accountName = account.getAccountName();
+		this.balance = account.getBalance();
 	}
 
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -51,6 +50,12 @@ public class AccountEntity
 	@NotNull
 	private BigDecimal balance;
 	
+	@NotNull
+	private int accountNumber;
+	
+	@NotNull
+	private int regNumber;
+	
 	//set/getters
 
 	public String getAccountName() {
@@ -64,5 +69,20 @@ public class AccountEntity
 	}
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
+	}
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+	public int getRegNumber() {
+		return regNumber;
+	}
+	public void setRegNumber(int regNumber) {
+		this.regNumber = regNumber;
+	}
+	public Account toDomain() {
+		return new Account.Builder(this.customer.getCustomerID(), this.regNumber, this.accountNumber).setAccountName(this.accountName).setBalance(this.balance).Build();
 	}
 }
