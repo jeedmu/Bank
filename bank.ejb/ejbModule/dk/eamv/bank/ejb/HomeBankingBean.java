@@ -41,8 +41,8 @@ public class HomeBankingBean implements HomeBanking {
 		accounts.add(new Account.Builder(1, 1, 1).Build());
 		accounts.add(new Account.Builder(2, 2, 2).Build());
 		
-		/*
-		 * actual implementation
+		
+		/* actual implementation
 		accounts.addAll(accountBean.list(customerID));
 		*/
 		
@@ -57,15 +57,14 @@ public class HomeBankingBean implements HomeBanking {
 
 	@Override
 	public boolean createEntry(HashMap<String, String> mappedEntry, int customerID) {
-		
-		ArrayList<Entry> list = translateHashmapIntoEntries(mappedEntry);
-		Entry fromAccount = list.get(1);
-		Entry toAccount = list.get(2);
+		// TODO skal tage højde for fremmed bank
+		ArrayList<Entry> fromAndToAccount = translateHashmapIntoEntries(mappedEntry);
+		Entry fromAccount = fromAndToAccount.get(1);
+		Entry toAccount = fromAndToAccount.get(2);
 		
 		if (accountExists(fromAccount.getAccountNumber()) && accountExists(toAccount.getAccountNumber())) {
 			if (customerHasAccountRights(fromAccount.getAccountNumber(), customerID)) {
 				if (accountHasSufficientFunds(fromAccount.getAccountNumber(), fromAccount.getAmount())) {
-					
 					try {
 						entryBean.create(fromAccount);
 						entryBean.create(toAccount);
