@@ -8,9 +8,6 @@ import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Entry;
 
-@NamedQuery(name = "allEntries", query = "SELECT p FROM entry p  "
-		+ "ORDER BY p.entryID")
-
 @Entity(name ="entry") 
 public class EntryEntity {
 	@Id

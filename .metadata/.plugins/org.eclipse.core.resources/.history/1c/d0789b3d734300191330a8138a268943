@@ -10,11 +10,6 @@ import dk.eamv.bank.domain.Bank;
  * Entity implementation class for Entity: BankEntity
  *
  */
-
-//joke
-@NamedQuery(name = "allBanks", query = "SELECT p FROM bank p  "
-		+ "ORDER BY p.cvr")
-
 @Entity(name = "bank")
 
 public class BankEntity implements Serializable {

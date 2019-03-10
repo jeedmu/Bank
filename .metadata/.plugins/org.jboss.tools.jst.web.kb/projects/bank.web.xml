@@ -50,51 +50,51 @@
    <libraries>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_0-rt.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_0-rt.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_1.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c-1_1.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/c.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt-1_0-rt.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt-1_0-rt.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fmt.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fn.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/fn.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/permittedtaglibs.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/permittedtaglibs.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/scriptfree.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/scriptfree.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql-1_0-rt.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql-1_0-rt.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/sql.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x-1_0-rt.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x-1_0-rt.tld" project="bank.ejbClient"/>
     </library>
     <library class="tld">
      <id class="model-object"
-      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x.tld" project="bank.web"/>
+      path="FileSystems/lib-taglibs-standard-impl-1.2.6-RC1.jar/meta-inf/x.tld" project="bank.ejbClient"/>
     </library>
    </libraries>
   </path>
