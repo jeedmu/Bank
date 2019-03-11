@@ -44,9 +44,9 @@ public class AccountOverviewBean implements Serializable{
 	{
 		List<Entry> entries = new ArrayList<Entry>();
 		if(accountNo.equals("24242424"))
-			entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923).setDescription("Pakke").Build());
-		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.TEN.multiply(BigDecimal.TEN), 12391923).setDescription("Løn").Build());
-		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923).setDescription("Regning").Build());
+		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923, 0).setDescription("Pakke").Build());
+		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.TEN.multiply(BigDecimal.TEN), 12391923, 0).setDescription("Løn").Build());
+		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923, 0).setDescription("Regning").Build());
 		return entries;
 	}
 	
