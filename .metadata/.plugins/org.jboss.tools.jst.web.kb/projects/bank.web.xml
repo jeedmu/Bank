@@ -141,57 +141,23 @@
   <path value="C:/Users/Mathias A. Lenz/wildfly-14.0.1.Final/modules/system/layers/base/javax/batch/api/main/jboss-batch-api_1.0_spec-1.0.1.Final.jar"/>
  </paths>
  <validation>
-  <core validator-id="jsf-verification"/>
   <core validator-id="jboss.cdi.core">
    <linked-resource declaration="true" name="%1;" path="%0"/>
    <linked-resource declaration="true" name="%3;" path="%2"/>
   </core>
-  <core validator-id="batch-verification"/>
-  <core validator-id="jboss.jsf.core"/>
-  <el>
-   <linked-el length="19" name="%4" offset="552" path="%5"/>
-   <linked-el length="19" name="%6" offset="552" path="%5"/>
-   <linked-el length="22" name="%6" offset="639" path="%5"/>
-   <linked-el length="22" name="%6" offset="801" path="%5"/>
-   <linked-el length="22" name="%7" offset="639" path="%5"/>
-   <linked-el length="22" name="%8" offset="801" path="%5"/>
-   <linked-el length="16" name="%9" offset="627" path="%10"/>
-   <linked-el length="12" name="%9" offset="723" path="%10"/>
-   <linked-el length="32" name="%11" offset="960" path="%12"/>
-   <linked-el length="32" name="%13" offset="960" path="%12"/>
-   <linked-el length="32" name="%3" offset="960" path="%12"/>
-   <linked-el length="33" name="%3" offset="748" path="%12"/>
-   <linked-el length="32" name="%14" offset="960" path="%12"/>
-   <linked-el length="33" name="%2" offset="748" path="%12"/>
-  </el>
+  <el/>
  </validation>
  <aliases>
-  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%12"/>
   <alias path="/bank.web/src/bank/web/BasicView.java" value="%0"/>
-  <alias path="/bank.web/WebContent/menu.xhtml" value="%5"/>
-  <alias path="menuView" value="%6"/>
   <alias path="basicView" value="%1"/>
-  <alias path="String" value="%9"/>
-  <alias
-   path="/bank.ejbClient/ejbModule/dk/eamv/bank/domain/Account.java" value="%11"/>
-  <alias path="account.accountNam" value="%13"/>
-  <alias path="/bank.web/src/bank/web/AccountOverviewBean.java" value="%2"/>
-  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%10"/>
-  <alias path="menuView.save" value="%4"/>
-  <alias path="menuView.update" value="%7"/>
-  <alias path="menuView.delete" value="%8"/>
   <alias path="accountOverviewBean" value="%3"/>
-  <alias path="account" value="%14"/>
-  <alias path="/bank.web/WebContent/index.xhtml" value="%15"/>
+  <alias path="/bank.web/src/bank/web/AccountOverviewBean.java" value="%2"/>
+  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%4"/>
+  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%5"/>
  </aliases>
  <includes>
-  <page path="%15">
-   <include path="%10">
-    <var len="7" name="uiParam" off="547" value="#{&quot;false&quot;.toString()}"/>
-   </include>
-  </page>
-  <page path="%12">
-   <include path="%10">
+  <page path="%4">
+   <include path="%5">
     <var len="7" name="uiParam" off="593" value="#{&quot;false&quot;.toString()}"/>
    </include>
   </page>

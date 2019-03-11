@@ -1,0 +1,10 @@
+package dk.eamv.bank.ejb.entity;
+
+public class CustomerKey {
+
+	public CustomerKey() {}
+	
+	
+	
+	
+}

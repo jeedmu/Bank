@@ -24,11 +24,11 @@ public class BankEntity implements Serializable {
 
 	
 	@Id
-	private int regNumber;
+	private String regNumber;
 	@NotNull
 	private String bankName;
 	@NotNull
-	private String cvr;
+	private int cvr;
 	@NotNull
 	private int accountNumber;
 	@NotNull
