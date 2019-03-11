@@ -25,7 +25,7 @@ public class CustomerEntity {
 	private int customerID;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "AccountNumber")
+	@JoinColumn(name = "customerID")
 	private List<AccountEntity> accounts;
 	
 	@NotNull

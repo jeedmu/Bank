@@ -2,34 +2,41 @@ package dk.eamv.bank.ejb.entity;
 
 import java.math.BigDecimal;
 
-import javax.persistence.*;
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Account;
 
 @NamedQuery(name = "allAccounts", query = "SELECT p FROM account p  "
-		+ "ORDER BY p.accountNumber")
+		+ "ORDER BY p.primaryKey.accountNumber")
 
 @Entity(name="account")
 public class AccountEntity 
 {
+	@EmbeddedId
+	private AccountKey primaryKey;
+	
 	@NotNull
 	private String accountName;
 
 	@NotNull
 	private BigDecimal balance;
 	
-	@NotNull
-	private int accountNumber;
-	
-	@NotNull
-	private int regNumber;
+//	@NotNull
+//	private int accountNumber;
+//	
+//	@NotNull
+//	private int regNumber;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerID")
 	private CustomerEntity customer;
 
-	AccountKey primaryKey;
 	public AccountEntity()
 	{
 	}
@@ -50,7 +57,7 @@ public class AccountEntity
 		this.customer = customer;
 	}
 
-	@EmbeddedId
+//	@EmbeddedId
     public AccountKey getPrimaryKey() {
         return primaryKey;
     }
@@ -74,19 +81,19 @@ public class AccountEntity
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
-	public int getAccountNumber() {
-		return accountNumber;
-	}
-	public void setAccountNumber(int accountNumber) {
-		this.accountNumber = accountNumber;
-	}
-	public int getRegNumber() {
-		return regNumber;
-	}
-	public void setRegNumber(int regNumber) {
-		this.regNumber = regNumber;
-	}
+//	public int getAccountNumber() {
+//		return accountNumber;
+//	}
+//	public void setAccountNumber(int accountNumber) {
+//		this.accountNumber = accountNumber;
+//	}
+//	public int getRegNumber() {
+//		return regNumber;
+//	}
+//	public void setRegNumber(int regNumber) {
+//		this.regNumber = regNumber;
+//	}
 	public Account toDomain() {
-		return new Account.Builder(this.customer.getCustomerID(), this.regNumber, this.accountNumber).setAccountName(this.accountName).setBalance(this.balance).Build();
+		return new Account.Builder(this.customer.getCustomerID(), this.primaryKey.getRegNumber(), this.primaryKey.getAccountNumber()).setAccountName(this.accountName).setBalance(this.balance).Build();
 	}
 }
