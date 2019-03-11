@@ -18,6 +18,11 @@ public class AccountKey implements Serializable
     private int accountNumber;
 
     public AccountKey() { }
+    
+    public AccountKey(int regNumber, int accountNumber) {
+    	this.regNumber = regNumber;
+    	this.accountNumber = accountNumber;
+    }
 
     public int getRegNumber() {
         return regNumber;
