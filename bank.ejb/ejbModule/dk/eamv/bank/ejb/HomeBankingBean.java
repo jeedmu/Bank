@@ -49,7 +49,7 @@ public class HomeBankingBean implements HomeBanking {
 
 	@Override
 	public List<Entry> showEntries(int accountNo, int noOfDays) {
-		// TODO skal søge på noOfDays
+		
 		return entryBean.list(accountNo);
 	}
 
@@ -61,10 +61,10 @@ public class HomeBankingBean implements HomeBanking {
 		Entry fromEntry = fromAndToAccount.get(1);
 		Entry toEntry = fromAndToAccount.get(2);
 		
-		if (accountsBelongToSameBank(fromEntry.getAccountNumber(), toEntry.getAccountNumber())) {
-			if (accountExists(fromEntry.getAccountNumber()) && accountExists(toEntry.getAccountNumber())) {
-				if (customerHasAccountRights(fromEntry.getAccountNumber(), customerID)) {
-					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount())) {
+		if (accountsBelongToSameBank(fromEntry.getAccountNumber(), toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
+			if (accountExists(fromEntry.getAccountNumber(), fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(), fromEntry.getRegNumber())) {
+				if (customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())) {
+					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount(),fromEntry.getRegNumber())) {
 						try {
 							// create entries in database
 							entryBean.create(fromEntry);
@@ -81,6 +81,14 @@ public class HomeBankingBean implements HomeBanking {
 				}
 			}
 		}
+		else
+			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
+				if(customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())){
+					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
+				    
+					}
+				}
+			}
 		return false;
 	}
 
@@ -93,50 +101,46 @@ public class HomeBankingBean implements HomeBanking {
 	private boolean updateBalance(Entry entry, boolean add) {
 		
 		
-		Account account = accountBean.read(entry.getAccountNumber()).get();
+		Account account = accountBean.read(entry.getRegNumber(),entry.getAccountNumber()).get();
 		
 		if (add)
 			account.setBalance(account.getBalance().add(entry.getAmount()));
 		else 
 			account.setBalance(account.getBalance().subtract(entry.getAmount()));
 		
-		try {
-			accountBean.update(account);
-			return true;
-		} catch(AccountNotFoundException e) {
-			e.printStackTrace();
-		}
+		accountBean.update(account);
+		return true;
 		
-		return false;
+		
 	}
 	
-	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo) {
-		return accountBean.read(fromAccountNo).get().getRegNumber() == accountBean.read(toAccountNo).get()
+	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo,int accountReg) {
+		return accountBean.read(accountReg,fromAccountNo).get().getRegNumber() == accountBean.read(accountReg,toAccountNo).get()
 				.getRegNumber();
 	}
 
-	private boolean customerHasAccountRights(int accountNo, int customerID) {
-		return accountBean.read(accountNo).get().getCustomerID() == customerID;
+	private boolean customerHasAccountRights(int accountNo, int customerID,int accountReg) {
+		return accountBean.read(accountReg,accountNo).get().getCustomerID() == customerID;
 	}
 
-	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount) {
-		Account account = new AccountBean().read(accountNo).get();
+	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount, int accountReg) {
+		Account account = new AccountBean().read(accountReg,accountNo).get();
 		return account.getBalance().compareTo(amount) != -1;
 	}
 
-	private boolean accountExists(int accountNo) {
-		return accountBean.read(accountNo).isPresent();
+	private boolean accountExists(int accountNo, int accountReg) {
+		return accountBean.read(accountReg,accountNo).isPresent();
 	}
 
 	private ArrayList<Entry> translateHashmapIntoEntries(HashMap<String, String> mappedEntry) {
 		ArrayList<Entry> list = new ArrayList<Entry>();
 
 		Entry fromEntry = new Entry.Builder(0, LocalDateTime.now(), new BigDecimal(mappedEntry.get("amount")),
-				Integer.parseInt(mappedEntry.get("fromAccount"))).setDescription(mappedEntry.get("fromDescription"))
+				Integer.parseInt(mappedEntry.get("fromAccount")), 0).setDescription(mappedEntry.get("fromDescription"))
 						.Build();
 
 		Entry toEntry = new Entry.Builder(0, LocalDateTime.now(), new BigDecimal(mappedEntry.get("amount")),
-				Integer.parseInt(mappedEntry.get("toAccount"))).setDescription(mappedEntry.get("toDescription"))
+				Integer.parseInt(mappedEntry.get("toAccount")), 0).setDescription(mappedEntry.get("toDescription"))
 						.Build();
 
 		list.add(fromEntry);
