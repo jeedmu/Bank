@@ -63,7 +63,17 @@ public class CustomerBean {
     }
     
     public List<Customer> list(){
-    	return em.createNamedQuery("searchCustomers", CustomerEntity.class)
+    	return em.createNamedQuery("AllCustomers", CustomerEntity.class)
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());
+    				
+    }
+    
+    public List<Customer> namedList(String search){
+    	return em.createNamedQuery("SearchCustomer", CustomerEntity.class)
+    				.setParameter("search", "%" + search + "%")
     				.getResultList()
     				.stream()
     				.map(c -> c.toDomain())

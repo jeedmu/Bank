@@ -61,9 +61,8 @@ public class BankBean {
 		}
 	}
 	
-	 public List<Bank> list(String search){
-	    	return em.createNamedQuery("searchBanks", BankEntity.class)
-	    				.setParameter("search", "%" + search.toUpperCase() + "%")
+	 public List<Bank> list(){
+	    	return em.createNamedQuery("AllBanks", BankEntity.class)
 	    				.getResultList()
 	    				.stream()
 	    				.map(b -> b.toDomain())

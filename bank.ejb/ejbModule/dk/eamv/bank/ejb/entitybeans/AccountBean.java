@@ -62,7 +62,7 @@ public class AccountBean {
 	}
 	public List<Account> list(int customerID) {
 		return em.createNamedQuery("searchAccounts", AccountEntity.class)
-				.setParameter("customerID", "%" + customerID + "%")
+				.setParameter("customerID", "=" + customerID)
 				.getResultList()
 				.stream()
 				.map(a -> a.toDomain())
