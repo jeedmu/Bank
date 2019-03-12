@@ -59,9 +59,10 @@ public class EntryBean {
 		}
 	}
 	
-	 public List<Entry> list(int accountNumber){
-	    	return em.createNamedQuery("searchEntries", EntryEntity.class)
-	    				.setParameter("accountNumber", "%" + accountNumber + "%")
+	 public List<Entry> list(int accountNumber, int regNumber){
+	    	return em.createNamedQuery("searchEntriesForAccount", EntryEntity.class)
+	    				.setParameter("accountNumber", "=" + accountNumber)
+	    				.setParameter("regNumber", "=" + regNumber)
 	    				.getResultList()
 	    				.stream()
 	    				.map(e -> e.toDomain())
