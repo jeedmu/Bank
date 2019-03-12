@@ -25,5 +25,5 @@ public interface HomeBanking {
 	 * Show all entries belonging to specified account
 	 * @param accountNo The account number specifying which account's entries to show
 	 */
-	public List<Entry> showEntries(int accountNo, int noOfDays);
+	public List<Entry> showEntries(int accountNo, int noOfDays,int regNumber);
 }
