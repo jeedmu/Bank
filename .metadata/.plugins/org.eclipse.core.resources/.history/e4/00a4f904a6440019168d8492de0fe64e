@@ -2,7 +2,6 @@ package dk.eamv.bank.ejb.entity;
 
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,7 +29,8 @@ public class CustomerEntity {
 	private List<AccountEntity> accounts;
 	
 	@NotNull
-	@Column (length = 10)
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 10)
 	private String sSN;
 	
 	@NotNull
@@ -46,12 +46,20 @@ public class CustomerEntity {
 	private String country;
 	
 	@NotNull
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 4)
 	private String zipCode;
 	
 	@NotNull
+	// @Pattern(regexp = "(\"^[A-Za-z]*$\"")
 	private String city;
 	
 	@NotNull
+	/*@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+			+ "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
+			+ "(?:[a-z0-9-]*[a-z0-9])?",
+			message = "WRONG email")*/
 	private String email;
 	
 	@NotNull

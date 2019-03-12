@@ -19,8 +19,7 @@ public class CustomerChangesEntity {
 	private int customerID;
 	
 	@NotNull
-	// @Pattern(regexp= "(\"^[0-9]*$\"")
-	// @Column (length = 10)
+	@Column (length = 10)
 	private String sSN;
 	
 	@NotNull
@@ -36,20 +35,14 @@ public class CustomerChangesEntity {
 	private String country;
 	
 	@NotNull
-	// @Pattern(regexp= "(\"^[0-9]*$\"")
-	// @Column (length = 4)
+	@Pattern(regexp= "(\"^[0-9]*$\"")
 	private String zipCode;
 	
 	@NotNull
-	// @Pattern(regexp = "(\"^[A-Za-z]*$\"")
+	@Pattern(regexp = "(\"^[A-Za-z]*$\"")
 	private String city;
 	
 	@NotNull
-	/*@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
-			+ "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
-			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
-			+ "(?:[a-z0-9-]*[a-z0-9])?",
-			message = "WRONG email")*/
 	private String email;
 	
 	@NotNull

@@ -27,6 +27,7 @@ public class AccountEntity
 	@NotNull
 	private BigDecimal balance;
 	
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerID")
 	private CustomerEntity customer;

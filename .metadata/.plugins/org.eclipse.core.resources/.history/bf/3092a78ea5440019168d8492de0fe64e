@@ -27,6 +27,12 @@ public class AccountEntity
 	@NotNull
 	private BigDecimal balance;
 	
+//	@NotNull
+//	private int accountNumber;
+//	
+//	@NotNull
+//	private int regNumber;
+	
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "customerID")
 	private CustomerEntity customer;
@@ -75,6 +81,18 @@ public class AccountEntity
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+//	public int getAccountNumber() {
+//		return accountNumber;
+//	}
+//	public void setAccountNumber(int accountNumber) {
+//		this.accountNumber = accountNumber;
+//	}
+//	public int getRegNumber() {
+//		return regNumber;
+//	}
+//	public void setRegNumber(int regNumber) {
+//		this.regNumber = regNumber;
+//	}
 	public Account toDomain() {
 		return new Account.Builder(this.customer.getCustomerID(), this.primaryKey.getRegNumber(), this.primaryKey.getAccountNumber()).setAccountName(this.accountName).setBalance(this.balance).Build();
 	}
