@@ -3,6 +3,7 @@ package dk.eamv.bank.ejb.entitybeans;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.Timer;
 import java.util.stream.Collectors;
 
 import javax.ejb.LocalBean;
@@ -14,8 +15,6 @@ import javax.persistence.PersistenceContext;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerChanges;
 import dk.eamv.bank.ejb.entity.CustomerChangesEntity;
-import dk.eamv.bank.ejb.entity.CustomerEntity;
-import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
 /**
@@ -27,10 +26,10 @@ public class CustomerChangeBean {
 	@PersistenceContext private EntityManager em;
 	CustomerBean cb;
 	
-	@Schedule(hour = "*/6")
+	@Schedule(second = "*", minute = "*/1", hour = "*")
 	public void checkForChanges() {
+		System.out.println("CustomerChangeBean");
 		List<CustomerChanges> listOfCustomerChanges = list();
-		
 		for(CustomerChanges changes : listOfCustomerChanges) {
 			if(changes.getChangeDate() == LocalDate.now()) {
 				Customer customer = new Customer.Builder(changes.getCustomerID(), changes.getSSN())

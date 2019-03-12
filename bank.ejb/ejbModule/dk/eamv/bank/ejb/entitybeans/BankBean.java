@@ -24,7 +24,7 @@ public class BankBean {
 	@PersistenceContext private EntityManager em;
 	
 	public void create(Bank bank) {
-		Optional<Bank> optional = read(bank.getCVR());
+		Optional<Bank> optional = read(bank.getRegNumber());
 		if (optional.isPresent()) {
 			throw new BankAlreadyExsistsException();
 		} else {
@@ -32,8 +32,8 @@ public class BankBean {
 		}
 	}
 	
-	public Optional<Bank> read(String cvr){
-		BankEntity entity = em.find(BankEntity.class, cvr);
+	public Optional<Bank> read(int regNumber){
+		BankEntity entity = em.find(BankEntity.class, regNumber);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {
@@ -42,7 +42,7 @@ public class BankBean {
 	}
 	
 	public void update(Bank bank) {
-		BankEntity entity = em.find(BankEntity.class, bank.getCVR());
+		BankEntity entity = em.find(BankEntity.class, bank.getRegNumber());
 		if (entity != null) {
 			entity.setBankName(bank.getBankName());
 			entity.setRegNumber(bank.getRegNumber());
@@ -52,8 +52,8 @@ public class BankBean {
 		}
 	}
 	
-	public void delete(String cvr) {
-		BankEntity entity = em.find(BankEntity.class, cvr);
+	public void delete(int regNumber) {
+		BankEntity entity = em.find(BankEntity.class, regNumber);
 		if (entity != null) {
 			em.remove(entity);
 		} else {
@@ -69,6 +69,6 @@ public class BankBean {
 	    				.map(b -> b.toDomain())
 	    				.collect(Collectors.toList());
 	    				
-	    }
+	   }
 	
 }
