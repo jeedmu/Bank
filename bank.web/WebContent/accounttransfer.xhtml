@@ -2,8 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html">
-
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+    	
 	<ui:composition template="/WEB-INF/template.xhtml">
+	
+	
+	<ui:define name ="title">
+	Konto-overførsel
+	</ui:define>
+	
+	<ui:define name="content">
+	
+	<p:dataTable>
+	<p:column HeaderText ="konto"> default text</p:column> <br></br>
+	<p:column> default text 2</p:column>
+	</p:dataTable>
+	
+	</ui:define>
+	
 	</ui:composition>
 </html>
