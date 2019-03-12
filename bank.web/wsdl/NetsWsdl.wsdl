@@ -1,50 +1,71 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.example.org/NetsWsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="NetsWsdl" targetNamespace="http://www.example.org/NetsWsdl/">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ejb.bank.eamv.dk/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ForeignEntryNetsBeanService" targetNamespace="http://ejb.bank.eamv.dk/">
   <wsdl:types>
-    <xsd:schema targetNamespace="http://www.example.org/NetsWsdl/">
-      <xsd:element name="NewOperation">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="in" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-      <xsd:element name="NewOperationResponse">
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:element name="out" type="xsd:string"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:schema>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ejb.bank.eamv.dk/" elementFormDefault="unqualified" targetNamespace="http://ejb.bank.eamv.dk/" version="1.0">
+
+  <xs:element name="CreateNetsRequest" type="tns:CreateNetsRequest"/>
+
+  <xs:element name="CreateNetsRequestResponse" type="tns:CreateNetsRequestResponse"/>
+
+  <xs:complexType name="CreateNetsRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="tns:entry"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="entry">
+    <xs:sequence>
+      <xs:element name="accountNumber" type="xs:int"/>
+      <xs:element minOccurs="0" name="amount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="date" type="tns:localDateTime"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element name="entryID" type="xs:long"/>
+      <xs:element name="regNumber" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="localDateTime">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="CreateNetsRequestResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
   </wsdl:types>
-  <wsdl:message name="NewOperationRequest">
-    <wsdl:part element="tns:NewOperation" name="parameters"/>
+  <wsdl:message name="CreateNetsRequest">
+    <wsdl:part element="tns:CreateNetsRequest" name="parameters">
+    </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="NewOperationResponse">
-    <wsdl:part element="tns:NewOperationResponse" name="parameters"/>
+  <wsdl:message name="CreateNetsRequestResponse">
+    <wsdl:part element="tns:CreateNetsRequestResponse" name="parameters">
+    </wsdl:part>
   </wsdl:message>
-  <wsdl:portType name="NetsWsdl">
-    <wsdl:operation name="NewOperation">
-      <wsdl:input message="tns:NewOperationRequest"/>
-      <wsdl:output message="tns:NewOperationResponse"/>
+  <wsdl:portType name="ForeignEntryNetsBean">
+    <wsdl:operation name="CreateNetsRequest">
+      <wsdl:input message="tns:CreateNetsRequest" name="CreateNetsRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:CreateNetsRequestResponse" name="CreateNetsRequestResponse">
+    </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="NetsWsdlSOAP" type="tns:NetsWsdl">
+  <wsdl:binding name="ForeignEntryNetsBeanServiceSoapBinding" type="tns:ForeignEntryNetsBean">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="NewOperation">
-      <soap:operation soapAction="http://www.example.org/NetsWsdl/NewOperation"/>
-      <wsdl:input>
+    <wsdl:operation name="CreateNetsRequest">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="CreateNetsRequest">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output>
+      <wsdl:output name="CreateNetsRequestResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="NetsWsdl">
-    <wsdl:port binding="tns:NetsWsdlSOAP" name="NetsWsdlSOAP">
-      <soap:address location="http://www.example.org/"/>
+  <wsdl:service name="ForeignEntryNetsBeanService">
+    <wsdl:port binding="tns:ForeignEntryNetsBeanServiceSoapBinding" name="ForeignEntryNetsBeanPort">
+      <soap:address location="http://M13975:8080/bank.ejb/ForeignEntryNetsBean"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
