@@ -54,14 +54,14 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	@Override
-	public List<Entry> showEntries(int accountNo, int noOfDays) {
+	public List<Entry> showEntries(int accountNo, int noOfDays,int regNumber) {
 		
-		return entryBean.list(accountNo);
+		return entryBean.list(accountNo,regNumber);
 	}
 
 	@Override
 	public boolean createEntry(HashMap<String, String> mappedEntry, int customerID) {
-		// TODO skal tage højde for fremmed bank
+		
 		ArrayList<Entry> fromAndToAccount = translateHashmapIntoEntries(mappedEntry);
 		
 		Entry fromEntry = fromAndToAccount.get(1);
