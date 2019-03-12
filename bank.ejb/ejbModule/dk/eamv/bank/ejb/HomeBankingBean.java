@@ -10,9 +10,13 @@ import javax.ejb.Stateless;
 import javax.security.auth.login.AccountNotFoundException;
 
 import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.ejb.entity.BankEntity;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
+import dk.eamv.bank.ejb.entitybeans.BankBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
+import dk.eamv.bank.ejb.entitybeans.ForeignEntryBean;
 import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 
 /**
@@ -23,6 +27,8 @@ public class HomeBankingBean implements HomeBanking {
 
 	private AccountBean accountBean = new AccountBean();
 	private EntryBean entryBean = new EntryBean();
+	private BankBean bankBean= new BankBean();
+	private ForeignEntryBean foreignEntryBean=new ForeignEntryBean();
 
 	/**
 	 * Default constructor.
@@ -82,9 +88,25 @@ public class HomeBankingBean implements HomeBanking {
 			}
 		}
 		else
-			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
+			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && ifForeignBankExsist(toEntry.getRegNumber())) {
 				if(customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())){
 					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
+						Entry forenignBankEntry=  new Entry.Builder(0, LocalDateTime.now(),toEntry.getAmount(),
+								getforeignAccount(toEntry.getRegNumber()), toEntry.getRegNumber()).setDescription(mappedEntry.get("toDescription"))
+								.Build();
+					try {	
+					
+				    entryBean.create(fromEntry);
+				    entryBean.create(forenignBankEntry);
+				    foreignEntryBean.create(toEntry);
+				    return true;
+				    }
+					catch (EntryAlreadyExsistsException e) {
+						e.printStackTrace();
+					}
+					updateBalance(fromEntry, false);
+					updateBalance(forenignBankEntry,true);
+					
 				    
 					}
 				}
@@ -113,6 +135,7 @@ public class HomeBankingBean implements HomeBanking {
 		
 		
 	}
+
 	
 	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo,int accountReg) {
 		return accountBean.read(accountReg,fromAccountNo).get().getRegNumber() == accountBean.read(accountReg,toAccountNo).get()
@@ -147,5 +170,14 @@ public class HomeBankingBean implements HomeBanking {
 		list.add(toEntry);
 
 		return list;
+	}
+	private boolean ifForeignBankExsist(int regNumber) {
+		return bankBean.read(regNumber).isPresent();
+	}
+	
+	private int getforeignAccount(int regNumber) {
+		 Bank entity= bankBean.read(regNumber).get();
+		 return entity.getAccountNumber();
+		 
 	}
 }
