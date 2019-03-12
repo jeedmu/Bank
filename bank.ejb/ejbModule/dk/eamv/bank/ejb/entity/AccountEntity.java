@@ -12,8 +12,9 @@ import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Account;
 
-@NamedQuery(name = "allAccounts", query = "SELECT p FROM account p  "
-		+ "ORDER BY p.primaryKey.accountNumber")
+@NamedQuery(name = "searchAccounts", query = "SELECT p FROM account p " 
+											+ "WHERE p.customer.customerID = :customerID "
+											+ "ORDER BY p.primaryKey.accountNumber")
 
 @Entity(name="account")
 public class AccountEntity 

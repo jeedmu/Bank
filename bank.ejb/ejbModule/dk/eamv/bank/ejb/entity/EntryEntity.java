@@ -8,7 +8,9 @@ import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Entry;
 
-@NamedQuery(name = "allEntries", query = "SELECT p FROM entry p  "
+@NamedQuery(name = "searchEntriesForAccount", query = "SELECT p FROM entry p "
+		+ "WHERE p.accountNumber = :accountNumber " 
+		+ "AND p.regNumber = :regNumber "
 		+ "ORDER BY p.entryID")
 
 @Entity(name ="entry") 

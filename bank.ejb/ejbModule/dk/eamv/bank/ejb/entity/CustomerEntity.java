@@ -8,14 +8,18 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Customer;
 
-@NamedQuery(name = "allCustomers", query = "SELECT p FROM customer p  "
-		+ "ORDER BY p.customerID")
+@NamedQueries({	@NamedQuery(name = "allCustomers", query = "SELECT p FROM customer p  "
+															+ "ORDER BY p.customerID"),
+				@NamedQuery(name = "searchCustomer", query = "SELECT p FROM customer p " 
+															+ "WHERE p.firstName LIKE :search OR p.surName LIKE :search "
+															+ "ORDER BY p.customerID")})
 
 @Entity(name="customer")
 public class CustomerEntity {
