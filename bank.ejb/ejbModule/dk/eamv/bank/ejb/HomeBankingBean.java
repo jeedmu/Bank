@@ -6,13 +6,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
-import javax.security.auth.login.AccountNotFoundException;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Entry;
-import dk.eamv.bank.ejb.entity.BankEntity;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.BankBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
@@ -25,10 +24,10 @@ import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 @Stateless
 public class HomeBankingBean implements HomeBanking {
 
-	private AccountBean accountBean = new AccountBean();
-	private EntryBean entryBean = new EntryBean();
-	private BankBean bankBean= new BankBean();
-	private ForeignEntryBean foreignEntryBean=new ForeignEntryBean();
+	@EJB private AccountBean accountBean;
+	@EJB private EntryBean entryBean;
+	@EJB private BankBean bankBean;
+	@EJB private ForeignEntryBean foreignEntryBean;
 
 	/**
 	 * Default constructor.
