@@ -77,6 +77,6 @@ public class AccountEntity
 		this.balance = balance;
 	}
 	public Account toDomain() {
-		return new Account.Builder(this.customer.getCustomerID(), this.primaryKey.getRegNumber(), this.primaryKey.getAccountNumber()).setAccountName(this.accountName).setBalance(this.balance).Build();
+		return new Account.Builder(this.customer.getCustomerID(), this.primaryKey.getRegNumber(), this.primaryKey.getAccountNumber()).setAccountName(this.accountName).setBalance(this.balance).build();
 	}
 }
