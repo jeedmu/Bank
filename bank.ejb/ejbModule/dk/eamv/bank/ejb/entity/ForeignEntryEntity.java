@@ -85,6 +85,6 @@ public class ForeignEntryEntity implements Serializable{
 		this.regNumber = regNumber;
 	}
 	public Entry toDomain() {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, this.regNumber).Build();
+		return new Entry.Builder().setEntryID(this.entryID).setDescription(this.description).setDate(this.date).setAmount(this.amount).setAccountNumber(this.accountNumber).setRegNumber(this.regNumber).build();
 	}
 }

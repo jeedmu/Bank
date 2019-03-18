@@ -88,7 +88,7 @@ public class BankEntity implements Serializable {
 	}
    
 	public Bank toDomain() {
-		return new Bank.Builder(this.cvr, this.bankName, this.regNumber, this.accountNumber).setPhoneNumber(this.phoneNumber).Build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName).setRegNumber(this.regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 }
