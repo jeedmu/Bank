@@ -32,7 +32,7 @@ public class Account {
 			return this;
 		}
 		
-		public Account Build() {
+		public Account build() {
 			return new Account(this);
 		}
 	}
@@ -53,7 +53,7 @@ public class Account {
 		return new Account.Builder(customerID, this.regNumber, this.accountNumber)
 						  .setAccountName(this.accountName)
 						  .setBalance(this.balance)
-						  .Build();
+						  .build();
 	}
 
 	public int getRegNumber() {
@@ -64,7 +64,7 @@ public class Account {
 		return new Account.Builder(this.customerID, regNumber, this.accountNumber)
 				  .setAccountName(this.accountName)
 				  .setBalance(this.balance)
-				  .Build();
+				  .build();
 	}
 
 	public int getAccountNumber() {
@@ -75,7 +75,7 @@ public class Account {
 		return new Account.Builder(this.customerID, this.regNumber, accountNumber)
 				  .setAccountName(this.accountName)
 				  .setBalance(this.balance)
-				  .Build();
+				  .build();
 	}
 
 	public String getAccountName() {
@@ -86,7 +86,7 @@ public class Account {
 		return new Account.Builder(this.customerID, this.regNumber, this.accountNumber)
 				  .setAccountName(accountName)
 				  .setBalance(this.balance)
-				  .Build();
+				  .build();
 	}
 
 	public BigDecimal getBalance() {
@@ -97,6 +97,6 @@ public class Account {
 		return new Account.Builder(this.customerID, this.regNumber, this.accountNumber)
 				  .setAccountName(this.accountName)
 				  .setBalance(balance)
-				  .Build();
+				  .build();
 	}
 }
