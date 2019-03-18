@@ -13,30 +13,47 @@ public class Entry {
 	private final int regNumber;
 
 	public static class Builder {
-		//Required Params
-		private final long entryID;
-		private final LocalDateTime date;
-		private final BigDecimal amount;
-		private final int accountNumber;
-		private final int regNumber;
-		
-		//Optional Params
+		private long entryID;
+		private LocalDateTime date;
+		private BigDecimal amount;
+		private int accountNumber;
+		private int regNumber;
 		private String description;
 
-		public Builder(long entryID, LocalDateTime date, BigDecimal amount, int accountNumber, int regNumber) {
+		public Builder() {
+		}
+		
+		public Builder setEntryID(long entryID) {
 			this.entryID = entryID;
+			return this;
+		}
+		
+		public Builder setDate(LocalDateTime date) {
 			this.date = date;
+			return this;
+		}
+		
+		public Builder setAmount(BigDecimal amount) {
 			this.amount = amount;
-			this.accountNumber = accountNumber;
-			this.regNumber = regNumber;
+			return this;
 		}
 
+		public Builder setAccountNumber(int accountNumber) {
+			this.accountNumber = accountNumber;
+			return this;
+		}
+		
+		public Builder setRegNumber(int regNumber) {
+			this.regNumber = regNumber;
+			return this;
+		}
+		
 		public Builder setDescription(String description) {
 			this.description = description;
 			return this;
 		}
-
-		public Entry Build() {
+		
+		public Entry build() {
 			return new Entry(this);
 		}
 	}
@@ -55,8 +72,14 @@ public class Entry {
 	}
 
 	public Entry setEntryID(long entryID) {
-		return new Entry.Builder(entryID, this.date, this.amount, this.accountNumber, this.regNumber).setDescription(this.description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 
 	public String getDescription() {
@@ -64,8 +87,14 @@ public class Entry {
 	}
 
 	public Entry setDescription(String description) {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, this.regNumber).setDescription(description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(description)
+				.build();
 	}
 
 	public LocalDateTime getDate() {
@@ -73,8 +102,14 @@ public class Entry {
 	}
 
 	public Entry setDate(LocalDateTime date) {
-		return new Entry.Builder(this.entryID, date, this.amount, this.accountNumber, this.regNumber).setDescription(this.description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 
 	public BigDecimal getAmount() {
@@ -82,8 +117,14 @@ public class Entry {
 	}
 
 	public Entry setAmount(BigDecimal amount) {
-		return new Entry.Builder(this.entryID, this.date, amount, this.accountNumber, this.regNumber).setDescription(this.description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 
 	public int getAccountNumber() {
@@ -91,15 +132,27 @@ public class Entry {
 	}
 
 	public Entry setAccountNumber(int accountNumber) {
-		return new Entry.Builder(this.entryID, this.date, this.amount, accountNumber, this.regNumber).setDescription(this.description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 	
 	public int getRegNumber() {
 		return regNumber;
 	}
 	public Entry setRegNumber(int regNumber) {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, regNumber).setDescription(this.description)
-				.Build();
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 }
