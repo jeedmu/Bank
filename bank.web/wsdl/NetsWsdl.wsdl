@@ -65,7 +65,7 @@
   </wsdl:binding>
   <wsdl:service name="ForeignEntryNetsBeanService">
     <wsdl:port binding="tns:ForeignEntryNetsBeanServiceSoapBinding" name="ForeignEntryNetsBeanPort">
-      <soap:address location="http://M13975:8080/bank.ejb/ForeignEntryNetsBean"/>
+      <soap:address location="http://jonastk:8080/bank.ejb/ForeignEntryNetsBean"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

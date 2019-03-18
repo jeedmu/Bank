@@ -10,7 +10,7 @@ import javax.xml.namespace.QName;
 /**
  * This object contains factory methods for each 
  * Java content interface and Java element interface 
- * generated in the dk.eamv.bank.ejb package. 
+ * generated in the dk.eamv.bank.ejb.ws package. 
  * <p>An ObjectFactory allows you to programatically 
  * construct new instances of the Java representation 
  * for XML content. The Java representation of XML 
@@ -28,7 +28,7 @@ public class ObjectFactory {
     private final static QName _CreateNetsRequestResponse_QNAME = new QName("http://ejb.bank.eamv.dk/", "CreateNetsRequestResponse");
 
     /**
-     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: dk.eamv.bank.ejb
+     * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: dk.eamv.bank.ejb.ws
      * 
      */
     public ObjectFactory() {
@@ -67,8 +67,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateNetsRequest }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateNetsRequest }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreateNetsRequest }{@code >}
      */
     @XmlElementDecl(namespace = "http://ejb.bank.eamv.dk/", name = "CreateNetsRequest")
     public JAXBElement<CreateNetsRequest> createCreateNetsRequest(CreateNetsRequest value) {
@@ -76,8 +80,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link CreateNetsRequestResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link CreateNetsRequestResponse }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link CreateNetsRequestResponse }{@code >}
      */
     @XmlElementDecl(namespace = "http://ejb.bank.eamv.dk/", name = "CreateNetsRequestResponse")
     public JAXBElement<CreateNetsRequestResponse> createCreateNetsRequestResponse(CreateNetsRequestResponse value) {
