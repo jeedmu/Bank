@@ -1,7 +1,10 @@
 package dk.eamv.bank.ejb.ws;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.net.UnknownHostException;
+
 import javax.xml.namespace.QName;
 import javax.xml.ws.WebEndpoint;
 import javax.xml.ws.WebServiceClient;
@@ -15,7 +18,6 @@ import javax.xml.ws.Service;
  *
  */
 @WebServiceClient(name = "ForeignEntryNetsBeanService",
-                  wsdlLocation = "file:/C:/Users/Jonas/Documents/GitHub/Bank/bank.web/wsdl/NetsWsdl.wsdl",
                   targetNamespace = "http://ejb.bank.eamv.dk/")
 public class ForeignEntryNetsBeanService extends Service {
 
@@ -24,15 +26,31 @@ public class ForeignEntryNetsBeanService extends Service {
     public final static QName SERVICE = new QName("http://ejb.bank.eamv.dk/", "ForeignEntryNetsBeanService");
     public final static QName ForeignEntryNetsBeanPort = new QName("http://ejb.bank.eamv.dk/", "ForeignEntryNetsBeanPort");
     static {
-        URL url = null;
-        try {
-            url = new URL("file:/C:/Users/Jonas/Documents/GitHub/Bank/bank.web/wsdl/NetsWsdl.wsdl");
-        } catch (MalformedURLException e) {
-            java.util.logging.Logger.getLogger(ForeignEntryNetsBeanService.class.getName())
-                .log(java.util.logging.Level.INFO,
-                     "Can not initialize the default wsdl from {0}", "file:/C:/Users/Jonas/Documents/GitHub/Bank/bank.web/wsdl/NetsWsdl.wsdl");
-        }
-        WSDL_LOCATION = url;
+    	/*
+    	 * Maybe later change or add a "retrieve url from property"
+    	 */
+        WSDL_LOCATION = getWsdlURL();
+    }
+    
+    private static URL getWsdlURL()
+    {
+    	URL url = null;
+    	String urlAddress = "";
+	    try {
+	    	InetAddress addr = InetAddress.getLocalHost();
+			String hostname = addr.getHostName();
+			urlAddress = "http://"+hostname+":8080/bank.ejb/ForeignEntryNetsBean?wsdl";
+		    url = new URL(urlAddress);
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (MalformedURLException e) {
+			java.util.logging.Logger.getLogger(ForeignEntryNetsBeanService.class.getName())
+            .log(java.util.logging.Level.INFO,
+                 "Can not initialize the default wsdl from {0}", urlAddress);
+		}
+	    
+	    return url;
     }
 
     public ForeignEntryNetsBeanService(URL wsdlLocation) {
