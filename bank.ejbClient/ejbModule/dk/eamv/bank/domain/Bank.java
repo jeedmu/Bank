@@ -10,28 +10,37 @@ public class Bank {
 	
 	
 	public static class Builder {
-		//Required params
-		private final String cvr;
-		private final String bankName;
-		private final int regNumber;
-		private final int accountNumber;
-		
-		//Optional params
+		private String cvr;
+		private String bankName;
+		private int regNumber;
+		private int accountNumber;
 		private String phoneNumber;
 		
-		public Builder(String cvr, String bankName, int regNumber, int accountNumber) {
-			this.cvr = cvr;
-			this.bankName = bankName;
-			this.regNumber = regNumber;
-			this.accountNumber = accountNumber;
+		public Builder(){
 		}
 		
+		public Builder setCvr(String cvr) {
+			this.cvr = cvr;
+			return this;
+		}
+		public Builder setBankName(String bankName) {
+			this.bankName = bankName;
+			return this;
+		}
+		public Builder setRegNumber(int regNumber) {
+			this.regNumber = regNumber;
+			return this;
+		}
+		public Builder setAccountNumber(int accountNumber) {
+			this.accountNumber = accountNumber;
+			return this;
+		}
 		public Builder setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 			return this;
 		}
 		
-		public Bank Build() {
+		public Bank build() {
 			return new Bank(this);
 		}
 	}
@@ -49,7 +58,7 @@ public class Bank {
 	}
 	
 	public Bank setCVR(String cvr) {
-		return new Bank.Builder(cvr, this.bankName, this.regNumber, this.accountNumber).setPhoneNumber(this.phoneNumber).Build();
+		return new Bank.Builder().setCvr(cvr).setBankName(this.bankName).setRegNumber(this.regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getBankName() {
@@ -57,15 +66,15 @@ public class Bank {
 	}
 
 	public Bank setBankName(String bankName) {
-		return new Bank.Builder(this.cvr, bankName, this.regNumber, this.accountNumber).setPhoneNumber(this.phoneNumber).Build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(bankName).setRegNumber(this.regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public int getRegNumber() {
 		return regNumber;
 	}
 
-	public Bank setRegName(int regNumber) {
-		return new Bank.Builder(this.cvr, this.bankName, regNumber, this.accountNumber).setPhoneNumber(this.phoneNumber).Build();
+	public Bank setRegNumber(int regNumber) {
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName).setRegNumber(regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public int getAccountNumber() {
@@ -73,7 +82,7 @@ public class Bank {
 	}
 	
 	public Bank setAccountNumber(int accountNumber) {
-		return new Bank.Builder(this.cvr, this.bankName, this.accountNumber, accountNumber).setPhoneNumber(this.phoneNumber).Build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName).setRegNumber(this.regNumber).setAccountNumber(accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public String getPhoneNumber() {
@@ -81,6 +90,6 @@ public class Bank {
 	}
 	
 	public Bank setPhoneNumber(String phoneNumber) {
-		return new Bank.Builder(this.cvr, this.bankName, this.regNumber, this.accountNumber).setPhoneNumber(phoneNumber).Build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName).setRegNumber(this.regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(phoneNumber).build();
 	}
 }

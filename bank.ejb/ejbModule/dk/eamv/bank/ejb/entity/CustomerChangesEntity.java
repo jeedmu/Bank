@@ -73,7 +73,7 @@ public class CustomerChangesEntity {
 	public CustomerChanges toDomain() {
 		return new CustomerChanges.Builder(customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
-				.setPhoneNumber(this.phoneNumber).Build();
+				.setPhoneNumber(this.phoneNumber).build();
 	} 
 	
 	//..............................//

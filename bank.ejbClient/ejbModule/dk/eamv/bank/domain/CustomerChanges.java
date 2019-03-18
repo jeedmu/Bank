@@ -79,7 +79,7 @@ public class CustomerChanges {
 			return this;
 		}
 
-		public CustomerChanges Build() {
+		public CustomerChanges build() {
 			return new CustomerChanges(this);
 		}
 	}
@@ -105,7 +105,7 @@ public class CustomerChanges {
 	public CustomerChanges setCustomerID(int customerID) {
 		return new CustomerChanges.Builder(customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).build();
 	}
 
 	public String getSSN() {
@@ -115,7 +115,7 @@ public class CustomerChanges {
 	public CustomerChanges setSSN(String sSN) {
 		return new CustomerChanges.Builder(this.customerID, sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).build();
 	}
 	
 	public LocalDate getChangeDate() {
@@ -125,7 +125,7 @@ public class CustomerChanges {
 	public CustomerChanges setChangeDate(LocalDate changeDate) {
 		return new CustomerChanges.Builder(this.customerID, sSN, changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).build();
 	}
 	public String getFirstName() {
 		return firstName;
@@ -134,7 +134,7 @@ public class CustomerChanges {
 	public CustomerChanges setFirstName(String firstName) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).build();
 	}
 
 	public String getSurName() {
@@ -144,7 +144,7 @@ public class CustomerChanges {
 	public CustomerChanges setSurName(String surName) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getAddress() {
@@ -154,7 +154,7 @@ public class CustomerChanges {
 	public CustomerChanges setAddress(String address) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getCountry() {
@@ -164,7 +164,7 @@ public class CustomerChanges {
 	public CustomerChanges setCountry(String country) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getZipCode() {
@@ -174,7 +174,7 @@ public class CustomerChanges {
 	public CustomerChanges setZipCode(String zipCode) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(zipCode).setCity(this.city)
-				.setEmail(this.email).Build();
+				.setEmail(this.email).build();
 	}
 
 	public String getCity() {
@@ -184,7 +184,7 @@ public class CustomerChanges {
 	public CustomerChanges setCity(String city) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getEmail() {
@@ -194,7 +194,7 @@ public class CustomerChanges {
 	public CustomerChanges setEmail(String email) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public String getPhoneNumber() {
@@ -204,7 +204,7 @@ public class CustomerChanges {
 	public CustomerChanges setPhoneNumber(String phoneNumber) {
 		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).Build();
+				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 }
