@@ -33,9 +33,9 @@ public class AccountOverviewBean implements Serializable{
 	public List<Account> getAccounts()
 	{
 		ArrayList<Account> ac = new ArrayList<Account>();
-		ac.add(new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").Build());
-		ac.add(new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").Build());
-		ac.add(new Account.Builder(34,3487, 348584598).setBalance(BigDecimal.TEN.multiply(BigDecimal.TEN).multiply(BigDecimal.TEN).multiply(BigDecimal.TEN)).setAccountName("Kort").Build());
+		ac.add(new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").build());
+		ac.add(new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build());
+		ac.add(new Account.Builder(34,3487, 348584598).setBalance(BigDecimal.TEN.multiply(BigDecimal.TEN).multiply(BigDecimal.TEN).multiply(BigDecimal.TEN)).setAccountName("Kort").build());
 		return ac;
 		//return homeBanking.showAccounts("");
 	}
@@ -44,9 +44,9 @@ public class AccountOverviewBean implements Serializable{
 	{
 		List<Entry> entries = new ArrayList<Entry>();
 		if(accountNo.equals("24242424"))
-		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923, 0).setDescription("Pakke").Build());
-		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.TEN.multiply(BigDecimal.TEN), 12391923, 0).setDescription("Løn").Build());
-		entries.add(new Entry.Builder(0, LocalDateTime.now(), BigDecimal.ZERO.subtract(BigDecimal.TEN), 12391923, 0).setDescription("Regning").Build());
+		entries.add(new Entry.Builder().setEntryID(0).setDate(LocalDateTime.now()).setAmount(BigDecimal.ZERO.subtract(BigDecimal.TEN)).setAccountNumber(12391923).setRegNumber(0).setDescription("Pakke").build());
+		entries.add(new Entry.Builder().setEntryID(0).setDate(LocalDateTime.now()).setAmount(BigDecimal.TEN.multiply(BigDecimal.TEN)).setAccountNumber(12391923).setRegNumber(0).setDescription("Løn").build());
+		entries.add(new Entry.Builder().setEntryID(0).setDate(LocalDateTime.now()).setAmount(BigDecimal.ZERO.subtract(BigDecimal.TEN)).setAccountNumber(12391923).setRegNumber(0).setDescription("Regning").build());
 		return entries;
 	}
 	
