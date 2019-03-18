@@ -90,13 +90,13 @@ public class HomeBankingBean implements HomeBanking {
 			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && ifForeignBankExsist(toEntry.getRegNumber())) {
 				if(customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())){
 					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
-						Entry forenignBankEntry=  new Entry.Builder(0, LocalDateTime.now(),toEntry.getAmount(),
+						Entry foreignBankEntry=  new Entry.Builder(0, LocalDateTime.now(),toEntry.getAmount(),
 								getforeignAccount(toEntry.getRegNumber()), toEntry.getRegNumber()).setDescription(mappedEntry.get("toDescription"))
 								.Build();
 					try {	
 					
 				    entryBean.create(fromEntry);
-				    entryBean.create(forenignBankEntry);
+				    entryBean.create(foreignBankEntry);
 				    foreignEntryBean.create(toEntry);
 				    return true;
 				    }
@@ -104,7 +104,7 @@ public class HomeBankingBean implements HomeBanking {
 						e.printStackTrace();
 					}
 					updateBalance(fromEntry, false);
-					updateBalance(forenignBankEntry,true);
+					updateBalance(foreignBankEntry,true);
 					
 				    
 					}
