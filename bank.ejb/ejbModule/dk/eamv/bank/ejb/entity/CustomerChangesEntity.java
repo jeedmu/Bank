@@ -10,8 +10,11 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import dk.eamv.bank.domain.CustomerChanges;
-@NamedQuery(name = "searchCustomersChanges", query = "SELECT p FROM customerChanges p  "
-		+ "ORDER BY p.customerID")
+@NamedQueries({	@NamedQuery(name = "allCustomerChanges", query = "SELECT p FROM customerChanges p  "
+		+ "ORDER BY p.customerID"),
+@NamedQuery(name = "searchCustomerChange", query = "SELECT p FROM customerChanges p " 
+		+ "WHERE p.firstName LIKE :search OR p.surName LIKE :search "
+		+ "ORDER BY p.customerID")})
 
 @Entity(name="customerChanges")
 public class CustomerChangesEntity {
