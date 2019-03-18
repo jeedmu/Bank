@@ -80,6 +80,13 @@ public class EntryEntity {
 		this.regNumber = regNumber;
 	}
 	public Entry toDomain() {
-		return new Entry.Builder(this.entryID, this.date, this.amount, this.accountNumber, this.regNumber).Build();
+		return new Entry.Builder().setEntryID(this.entryID)
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(this.regNumber)
+				.setDescription(this.description)
+				.build();
 	}
 }

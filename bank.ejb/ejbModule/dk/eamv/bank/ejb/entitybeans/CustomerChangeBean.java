@@ -41,7 +41,7 @@ public class CustomerChangeBean {
 												.setCity(changes.getCity())
 												.setEmail(changes.getEmail())
 												.setPhoneNumber(changes.getPhoneNumber())
-												.Build();
+												.build();
 				cb.update(customer);
 			}
 		}
