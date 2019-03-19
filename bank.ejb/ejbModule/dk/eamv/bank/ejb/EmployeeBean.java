@@ -31,8 +31,15 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public boolean deleteCustomer(int customerID) {
-		// TODO Auto-generated method stub
-		return false;
+		try 
+		{
+			customerChangesBean.delete(customerID);
+			return true;
+		}
+		catch(CustomerNotFoundException e)
+		{
+			return false;
+		}
 	}
 
 	@Override
