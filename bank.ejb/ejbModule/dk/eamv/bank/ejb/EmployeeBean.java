@@ -8,6 +8,7 @@ import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
+import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 
 /**
  * Session Bean implementation class EmployeeBean
@@ -30,19 +31,40 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public boolean deleteCustomer(int customerID) {
-		// TODO Auto-generated method stub
-		return false;
+		try 
+		{
+			customerChangesBean.delete(customerID);
+			return true;
+		}
+		catch(CustomerNotFoundException e)
+		{
+			return false;
+		}
 	}
 
 	@Override
-	public boolean editAccount(Account accountData) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editAccount(Account account) {
+		try 
+		{
+			accountBean.update(account);
+			return true;
+		}
+		catch(AccountNotFoundException e)
+		{
+			return false;
+		}
 	}
 
 	@Override
-	public boolean deleteAccount(int accountNo) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteAccount(int regNumber, int accountNo) {
+		try 
+		{
+			accountBean.delete(regNumber, accountNo);
+			return true;
+		}
+		catch(AccountNotFoundException e)
+		{
+			return false;
+		}
 	}
 }
