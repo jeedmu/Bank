@@ -28,15 +28,11 @@
                 	<f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
                 	<f:selectItems value="#{dropdownView.countries}" />
             	</p:selectOneMenu>
- 
-            	<p:outputLabel for="city" value="City: " />
-            	<p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
-                	<f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
-                	<f:selectItems value="#{dropdownView.cities}" />
-            	</p:selectOneMenu>
         	</h:panelGrid>
  
         	<p:separator />
+ 
+        	<p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
     	
 		</h:form>
 

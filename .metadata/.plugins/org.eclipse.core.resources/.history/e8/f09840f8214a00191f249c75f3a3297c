@@ -21,7 +21,7 @@
     	<p:growl id="msgs" showDetail="true" />
  
     	
-        	<h:panelGrid columns="2" cellpadding="5">
+        	<h:panelGrid columns="1" cellpadding="5">
             	<p:outputLabel for="country" value="Country: " />
             	<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
                		<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
@@ -37,6 +37,8 @@
         	</h:panelGrid>
  
         	<p:separator />
+ 
+        	<p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
     	
 		</h:form>
 
