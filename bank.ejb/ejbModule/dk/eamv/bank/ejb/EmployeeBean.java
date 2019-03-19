@@ -36,9 +36,16 @@ public class EmployeeBean implements Employee {
 	}
 
 	@Override
-	public boolean editAccount(Account accountData) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editAccount(Account account) {
+		try 
+		{
+			accountBean.update(account);
+			return true;
+		}
+		catch(AccountNotFoundException e)
+		{
+			return false;
+		}
 	}
 
 	@Override

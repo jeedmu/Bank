@@ -25,7 +25,7 @@ public interface Employee {
 	 * @param accountData HashMap keys: "customerID", "regNumber", "accountNumber", "accountName", "balance" 
 	 * @return true if succeeded, else false
 	 */
-	public boolean editAccount(Account accountData);
+	public boolean editAccount(Account account);
 
 	public boolean deleteAccount(int regNumber, int accountNo);
     
