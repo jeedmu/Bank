@@ -1,5 +1,6 @@
 package dk.eamv.bank.ejb;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.ejb.Local;
@@ -15,7 +16,7 @@ public interface Employee {
 	 * @param customerData HashMap keys: "sSN", "firstName", "surName", "address", "country", "zipCode", "city", "email", "phoneNumber"
 	 * @return true if succeeded, else false
 	 */
-	public boolean editCustomer(Customer customerData);
+	public boolean editCustomer(Customer customerData, LocalDate changeDate);
 
 	public boolean deleteCustomer(int customerID);
 

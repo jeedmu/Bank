@@ -1,5 +1,6 @@
 package dk.eamv.bank.ejb;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 
 import javax.ejb.Stateless;
@@ -21,7 +22,7 @@ public class EmployeeBean implements Employee {
     }
 
 	@Override
-	public boolean editCustomer(Customer customerData) {
+	public boolean editCustomer(Customer customerData, LocalDate changeDate) {
 		// TODO Auto-generated method stub
 		return false;
 	}
