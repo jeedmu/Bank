@@ -27,7 +27,7 @@ public interface Employee {
 	 */
 	public boolean editAccount(Account accountData);
 
-	public boolean deleteAccount(int accountNo);
+	public boolean deleteAccount(int regNumber, int accountNo);
     
 	
 	
