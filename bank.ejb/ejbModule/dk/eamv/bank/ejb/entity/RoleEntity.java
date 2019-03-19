@@ -7,14 +7,14 @@ import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 import dk.eamv.bank.domain.Role;
 
-/* TODO
-@NamedQueries({	@NamedQuery(name = "allRoles", query = "SELECT p FROM role p"
+
+@NamedQueries({	@NamedQuery(name = "allRoles", query = "SELECT p FROM role p "
 														+ "ORDER BY p.roleID"),
 
 	@NamedQuery(name = "searchRole", query = "SELECT p FROM role p " 
-											  + "WHERE p.roleName LIKE :search"
+											  + "WHERE p.roleName LIKE :search "
 											  + "ORDER BY p.roleID")})
-*/
+
 @Entity(name="role")
 public class RoleEntity {
 

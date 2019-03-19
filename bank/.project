@@ -6,6 +6,7 @@
 		<project>bank.ejb</project>
 		<project>bank.ejbClient</project>
 		<project>bank.web</project>
+		<project>bank.ws</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
