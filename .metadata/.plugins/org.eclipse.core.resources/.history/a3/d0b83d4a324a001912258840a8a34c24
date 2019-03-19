@@ -21,7 +21,7 @@
             	<p:selectOneMenu id="account" value="#{accountTransferBean.accounts}">
 
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
-                	<f:selectItems value="#{dropdownView.accounts}" />
+                	<f:selectItems value="#{dropdownView.countries}" />
             	</p:selectOneMenu>
             	
 

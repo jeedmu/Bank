@@ -17,11 +17,11 @@
         <h:form>
             <h:panelGrid columns="2" >
             	
-            	<p:outputLabel for="account" value="Fra konto: " /> 
-            	<p:selectOneMenu id="account" value="#{accountTransferBean.accounts}">
+            	<p:outputLabel for="country" value="Fra konto: " /> 
+            	<p:selectOneMenu id="country" value="#{AccountTransferBean.accounts}">
 
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
-                	<f:selectItems value="#{dropdownView.accounts}" />
+                	<f:selectItems value="#{dropdownView.countries}" />
             	</p:selectOneMenu>
             	
 

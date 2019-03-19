@@ -149,27 +149,26 @@
   <core validator-id="batch-verification"/>
   <core validator-id="jboss.jsf.core"/>
   <el>
-   <linked-el length="25" name="%4" offset="772" path="%5"/>
-   <linked-el length="28" name="%6" offset="936" path="%5"/>
-   <linked-el length="25" name="%6" offset="772" path="%5"/>
-   <linked-el length="28" name="%7" offset="936" path="%5"/>
+   <linked-el length="27" name="%4" offset="944" path="%5"/>
+   <linked-el length="33" name="%0" offset="772" path="%5"/>
+   <linked-el length="33" name="%1" offset="772" path="%5"/>
+   <linked-el length="27" name="%6" offset="944" path="%5"/>
   </el>
  </validation>
  <aliases>
-  <alias path="dropdownView.country" value="%4"/>
-  <alias path="dropdownView" value="%6"/>
+  <alias path="dropdownView" value="%4"/>
   <alias path="/bank.web/src/bank/web/AccountTransferBean.java" value="%0"/>
   <alias path="accountTransferBean" value="%1"/>
   <alias path="/bank.web/WebContent/accounttransfer.xhtml" value="%5"/>
-  <alias path="dropdownView.countries" value="%7"/>
+  <alias path="dropdownView.accounts" value="%6"/>
   <alias path="accountOverviewBean" value="%3"/>
   <alias path="/bank.web/src/bank/web/AccountOverviewBean.java" value="%2"/>
-  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%8"/>
-  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%9"/>
+  <alias path="/bank.web/WebContent/accountoverview.xhtml" value="%7"/>
+  <alias path="/bank.web/WebContent/WEB-INF/template.xhtml" value="%8"/>
  </aliases>
  <includes>
-  <page path="%8">
-   <include path="%9">
+  <page path="%7">
+   <include path="%8">
     <var len="7" name="uiParam" off="593" value="#{&quot;false&quot;.toString()}"/>
    </include>
   </page>
