@@ -7,8 +7,10 @@ import javax.ejb.Stateless;
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
+import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
 import dk.eamv.bank.ejb.exception.AccountNotFoundException;
+import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
 /**
  * Session Bean implementation class EmployeeBean
@@ -18,6 +20,7 @@ public class EmployeeBean implements Employee {
 
 	@EJB CustomerChangeBean customerChangesBean;
 	@EJB AccountBean accountBean;
+	@EJB CustomerBean customerBean; 
 	
     public EmployeeBean() {
         // TODO Auto-generated constructor stub
@@ -33,7 +36,7 @@ public class EmployeeBean implements Employee {
 	public boolean deleteCustomer(int customerID) {
 		try 
 		{
-			customerChangesBean.delete(customerID);
+			customerBean.delete(customerID);
 			return true;
 		}
 		catch(CustomerNotFoundException e)
