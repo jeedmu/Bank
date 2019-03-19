@@ -41,7 +41,8 @@ public class EmployeeBean implements Employee {
 															 .setFirstName(customerData.getFirstName())
 															 .setPhoneNumber(customerData.getPhoneNumber())
 															 .setSurName(customerData.getSurName())
-															 .setZipCode(customerData.getZipCode()).build();
+															 .setZipCode(customerData.getZipCode())
+															 .build();
 		customerChangesBean.create(customerChanges);
 		return true;
 	}
