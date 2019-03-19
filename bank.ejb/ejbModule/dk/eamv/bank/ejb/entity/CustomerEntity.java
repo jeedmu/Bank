@@ -83,7 +83,7 @@ public class CustomerEntity {
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
-				.setPhoneNumber(this.phoneNumber).Build();
+				.setPhoneNumber(this.phoneNumber).build();
 	} 
 	
 	public List<AccountEntity> getAccounts() {
