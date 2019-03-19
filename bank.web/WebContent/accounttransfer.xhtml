@@ -16,24 +16,17 @@
  <h:body>
         <h:form>
             <h:panelGrid columns="2" >
-            	<h:form>
-    	<p:growl id="msgs" showDetail="true" />
- 
+            	
             	<p:outputLabel for="country" value="Fra konto: " /> 
-            	<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px"  >
+            	<p:selectOneMenu id="country" value="#{dropdownView.country}">
 
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
                 	<f:selectItems value="#{dropdownView.countries}" />
             	</p:selectOneMenu>
-  
-		</h:form>
-		<br></br>
-            
+            	
 
                 <h:outputLabel value="Til konto:" />
                 <h:inputText p:placeholder="Indtast kontonummer" />
-                
-                
                 
                 <h:outputLabel value="Overførselsdato:" />
                 <h:inputText></h:inputText>
@@ -49,14 +42,6 @@
         </h:form>
     </h:body>
 	
-	<h:form>
-		<br></br>
-	
-	
-
-
-		<h:commandButton value="欠 を 食べる"/> 
-	</h:form>
 	</div>
 	
 	</div>
