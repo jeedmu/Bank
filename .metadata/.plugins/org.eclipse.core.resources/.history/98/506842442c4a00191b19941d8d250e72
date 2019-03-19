@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+    	
+	<ui:composition template="/WEB-INF/template.xhtml">
+
+	<ui:define name="content" >
+<p:panel header="Kontooverførsel"> </p:panel>		
+<div align="center">
+
+	<div>
+ <h:body>
+        <h:form>
+            <h:panelGrid columns="2" >
+            	
+            	<p:outputLabel for="country" value="Fra konto: " /> 
+            	<p:selectOneMenu id="country" value="#{dropdownView.country}">
+
+                	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
+                	<f:selectItems value="#{dropdownView.countries}" />
+            	</p:selectOneMenu>
+  
+		
+
+            
+
+                <h:outputLabel value="Til konto:" />
+                <h:inputText p:placeholder="Indtast kontonummer" />
+                
+                <h:outputLabel value="Overførselsdato:" />
+                <h:inputText></h:inputText>
+                
+                <h:outputLabel value="Tekst til egen kontoudskrift:" />
+                <h:inputText>></h:inputText>
+                
+                <h:outputLabel value="Besked til modtager:" />
+                <h:inputText p:type="number" p:step="1"/>
+
+            </h:panelGrid>
+            <h:commandButton value="ボタン" />
+        </h:form>
+    </h:body>
+	
+	</div>
+	
+	</div>
+	</ui:define>
+	
+	</ui:composition>
+</html>

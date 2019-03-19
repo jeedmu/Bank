@@ -11,15 +11,22 @@
 	<ui:define name="content" >
 <p:panel header="Kontooverførsel"> </p:panel>		
 <div align="center">
+
 	<div>
  <h:body>
         <h:form>
-            <h:panelGrid columns="2">
+            <h:panelGrid columns="2" >
+            	
+            	<p:outputLabel for="country" value="Fra konto: " /> 
+            	<p:selectOneMenu id="country" value="#{dropdownView.country}">
+
+                	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
+                	<f:selectItems value="#{dropdownView.countries}" />
+            	</p:selectOneMenu>
+            	
 
                 <h:outputLabel value="Til konto:" />
                 <h:inputText p:placeholder="Indtast kontonummer" />
-                
-                
                 
                 <h:outputLabel value="Overførselsdato:" />
                 <h:inputText></h:inputText>
@@ -35,30 +42,8 @@
         </h:form>
     </h:body>
 	
-	<h:form>
-		<br></br>
-	
-		<h:form>
-    	<p:growl id="msgs" showDetail="true" />
- 
-    	
-        	<h:panelGrid columns="2" cellpadding="5">
-            	<p:outputLabel for="country" value="Fra konto: " /> 
-            	<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
-
-                	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
-                	<f:selectItems value="#{dropdownView.countries}" />
-            	</p:selectOneMenu>
-        	</h:panelGrid>
-		</h:form>
-
-
-
-		<h:commandButton value="欠 を 食べる"/> 
-	</h:form>
 	</div>
-
-
+	
 	</div>
 	</ui:define>
 	

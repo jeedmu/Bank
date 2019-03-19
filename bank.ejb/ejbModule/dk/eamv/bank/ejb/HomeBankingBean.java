@@ -165,7 +165,7 @@ public class HomeBankingBean implements HomeBanking {
 								   .setDescription(mappedEntry.get("fromDescription"))
 								   .setEntryID(0)
 								   .setAccountNumber(Integer.parseInt(mappedEntry.get("fromAccount")))
-								   .setRegNumber(0)
+								   .setRegNumber(Integer.parseInt(mappedEntry.get("regNumber")))
 								   .build();
 
 		
@@ -176,7 +176,7 @@ public class HomeBankingBean implements HomeBanking {
 								 .setDescription(mappedEntry.get("toDescription"))
 								 .setEntryID(0)
 								 .setAccountNumber(Integer.parseInt(mappedEntry.get("toAccount")))
-								 .setRegNumber(0)
+								 .setRegNumber(Integer.parseInt(mappedEntry.get("regNumber")))
 								 .build();
 
 		list.add(fromEntry);
