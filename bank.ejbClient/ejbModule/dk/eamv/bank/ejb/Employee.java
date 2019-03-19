@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import javax.ejb.Local;
 
+import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Customer;
+
 @Local
 public interface Employee {
 
@@ -12,7 +15,7 @@ public interface Employee {
 	 * @param customerData HashMap keys: "sSN", "firstName", "surName", "address", "country", "zipCode", "city", "email", "phoneNumber"
 	 * @return true if succeeded, else false
 	 */
-	public boolean editCustomer(HashMap<String, String> customerData);
+	public boolean editCustomer(Customer customerData);
 
 	public boolean deleteCustomer(int customerID);
 
@@ -21,7 +24,7 @@ public interface Employee {
 	 * @param accountData HashMap keys: "customerID", "regNumber", "accountNumber", "accountName", "balance" 
 	 * @return true if succeeded, else false
 	 */
-	public boolean editAccount(HashMap<String, String> accountData);
+	public boolean editAccount(Account accountData);
 
 	public boolean deleteAccount(int accountNo);
     

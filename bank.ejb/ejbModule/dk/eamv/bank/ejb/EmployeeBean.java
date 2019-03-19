@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Customer;
+
 /**
  * Session Bean implementation class EmployeeBean
  */
@@ -18,7 +21,7 @@ public class EmployeeBean implements Employee {
     }
 
 	@Override
-	public boolean editCustomer(HashMap<String, String> customerData) {
+	public boolean editCustomer(Customer customerData) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -30,7 +33,7 @@ public class EmployeeBean implements Employee {
 	}
 
 	@Override
-	public boolean editAccount(HashMap<String, String> accountData) {
+	public boolean editAccount(Account accountData) {
 		// TODO Auto-generated method stub
 		return false;
 	}
