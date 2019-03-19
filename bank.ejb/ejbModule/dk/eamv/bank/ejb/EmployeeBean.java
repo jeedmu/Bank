@@ -3,10 +3,13 @@ package dk.eamv.bank.ejb;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.ejb.entitybeans.AccountBean;
+import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
 
 /**
  * Session Bean implementation class EmployeeBean
@@ -14,9 +17,9 @@ import dk.eamv.bank.domain.Customer;
 @Stateless
 public class EmployeeBean implements Employee {
 
-    /**
-     * Default constructor. 
-     */
+	@EJB CustomerChangeBean customerChangesBean;
+	@EJB AccountBean accountBean;
+	
     public EmployeeBean() {
         // TODO Auto-generated constructor stub
     }
