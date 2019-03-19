@@ -1,8 +1,6 @@
 package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
-import java.util.HashMap;
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -47,7 +45,4 @@ public class EmployeeBean implements Employee {
 		// TODO Auto-generated method stub
 		return false;
 	}
-    
-    
-
 }
