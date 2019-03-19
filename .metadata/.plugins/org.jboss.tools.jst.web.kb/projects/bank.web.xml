@@ -149,10 +149,10 @@
   <core validator-id="batch-verification"/>
   <core validator-id="jboss.jsf.core"/>
   <el>
-   <linked-el length="26" name="%4" offset="1533" path="%5"/>
-   <linked-el length="26" name="%6" offset="1533" path="%5"/>
-   <linked-el length="28" name="%6" offset="1717" path="%5"/>
-   <linked-el length="28" name="%7" offset="1717" path="%5"/>
+   <linked-el length="25" name="%4" offset="772" path="%5"/>
+   <linked-el length="28" name="%6" offset="936" path="%5"/>
+   <linked-el length="25" name="%6" offset="772" path="%5"/>
+   <linked-el length="28" name="%7" offset="936" path="%5"/>
   </el>
  </validation>
  <aliases>
