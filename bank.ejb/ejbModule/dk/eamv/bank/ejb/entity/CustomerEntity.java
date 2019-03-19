@@ -12,6 +12,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import dk.eamv.bank.domain.Customer;
 
@@ -25,7 +26,6 @@ import dk.eamv.bank.domain.Customer;
 public class CustomerEntity {
 	
 	@GeneratedValue
-	@NotNull
 	@Id
 	private int customerID;
 	
@@ -35,6 +35,7 @@ public class CustomerEntity {
 	
 	@NotNull
 	@Column (length = 10)
+	//@Size(min=10, max=10)
 	private String sSN;
 	
 	@NotNull
@@ -82,7 +83,7 @@ public class CustomerEntity {
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
 				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
-				.setPhoneNumber(this.phoneNumber).build();
+				.setPhoneNumber(this.phoneNumber).Build();
 	} 
 	
 	public List<AccountEntity> getAccounts() {

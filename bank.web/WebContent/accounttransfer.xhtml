@@ -12,14 +12,50 @@
 <p:panel header="Kontooverførsel"> </p:panel>		
 <div align="center">
 	<div>
-	Beløb: &nbsp;&nbsp;&nbsp;  <p:inputNumber placeholder="0,00"></p:inputNumber>  &nbsp; DKK
-	</div>
-	<br></br>
-	<div>
-	Fra Konto: &nbsp;&nbsp; 
-	</div>
+	<h:form>
+		Beløb: &nbsp;&nbsp;&nbsp; <p:inputNumber placeholder="0,00"></p:inputNumber>  &nbsp; DKK
+		<br></br>
+		Fra Konto: &nbsp;&nbsp;  
 	
-	
+		<h:form>
+    	<p:growl id="msgs" showDetail="true" />
+ 
+    	<p:panel header="Select a Location" style="margin-bottom:10px;">
+        	<h:panelGrid columns="2" cellpadding="5">
+            	<p:outputLabel for="country" value="Country: " />
+            	<p:selectOneMenu id="country" value="#{dropdownView.country}" style="width:150px">
+               		<p:ajax listener="#{dropdownView.onCountryChange}" update="city" />
+                	<f:selectItem itemLabel="Select Country" itemValue="" noSelectionOption="true" />
+                	<f:selectItems value="#{dropdownView.countries}" />
+            	</p:selectOneMenu>
+ 
+            	<p:outputLabel for="city" value="City: " />
+            	<p:selectOneMenu id="city" value="#{dropdownView.city}" style="width:150px">
+                	<f:selectItem itemLabel="Select City" itemValue="" noSelectionOption="true" />
+                	<f:selectItems value="#{dropdownView.cities}" />
+            	</p:selectOneMenu>
+        	</h:panelGrid>
+ 
+        	<p:separator />
+ 
+        	<p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
+    	</p:panel>
+		</h:form>
+
+		<br />
+ 		Til konto: &nbsp;&nbsp;&nbsp; <h:inputText p:placeholder="Indtast kontonummer" />
+		<br />
+ 		Overførselsdato:&nbsp;&nbsp;&nbsp;  INDSAET UR.
+ 		<br />
+ 		Tekst til egen kontoudskrift: &nbsp;&nbsp;&nbsp; <h:inputText />
+ 		<br />
+		Besked til modtager: &nbsp;&nbsp;&nbsp; <h:inputText />
+		<br/>
+		<h:commandButton value="欠 を 食べる"/> 
+	</h:form>
+	</div>
+
+
 	</div>
 	</ui:define>
 	
