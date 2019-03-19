@@ -39,15 +39,8 @@ public class HomeBankingBean implements HomeBanking {
 	public ArrayList<Account> showAccounts(int customerID) {
 
 		ArrayList<Account> accounts = new ArrayList<Account>();
-
-		// test implementation
-		accounts.add(new Account.Builder(0, 0, 0).Build());
-		accounts.add(new Account.Builder(1, 1, 1).Build());
-		accounts.add(new Account.Builder(2, 2, 2).Build());
-
-		/*
-		 * actual implementation accounts.addAll(accountBean.list(customerID));
-		 */
+		
+		accounts.addAll(accountBean.list(customerID));
 
 		return accounts;
 	}
@@ -90,9 +83,17 @@ public class HomeBankingBean implements HomeBanking {
 			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && ifForeignBankExsist(toEntry.getRegNumber())) {
 				if(customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())){
 					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
-						Entry foreignBankEntry=  new Entry.Builder(0, LocalDateTime.now(),toEntry.getAmount(),
-								getforeignAccount(toEntry.getRegNumber()), toEntry.getRegNumber()).setDescription(mappedEntry.get("toDescription"))
-								.Build();
+						
+						Entry foreignBankEntry = new Entry.Builder()
+														  .setAccountNumber(toEntry.getAccountNumber())
+														  .setRegNumber(toEntry.getRegNumber())
+														  .setAmount(toEntry.getAmount())
+														  .setEntryID(0)
+														  .setDate(LocalDateTime.now())
+														  .setDescription(toEntry.getDescription())
+														  .build();
+						
+						
 					try {	
 					
 				    entryBean.create(fromEntry);
@@ -157,13 +158,26 @@ public class HomeBankingBean implements HomeBanking {
 	private ArrayList<Entry> translateHashmapIntoEntries(HashMap<String, String> mappedEntry) {
 		ArrayList<Entry> list = new ArrayList<Entry>();
 
-		Entry fromEntry = new Entry.Builder(0, LocalDateTime.now(), new BigDecimal(mappedEntry.get("amount")),
-				Integer.parseInt(mappedEntry.get("fromAccount")), 0).setDescription(mappedEntry.get("fromDescription"))
-						.Build();
+		
+		Entry fromEntry = new Entry.Builder()
+								   .setAmount(new BigDecimal(mappedEntry.get("amount")))
+								   .setDate(LocalDateTime.now())
+								   .setDescription(mappedEntry.get("fromDescription"))
+								   .setEntryID(0)
+								   .setAccountNumber(Integer.parseInt(mappedEntry.get("fromAccount")))
+								   .setRegNumber(0)
+								   .build();
 
-		Entry toEntry = new Entry.Builder(0, LocalDateTime.now(), new BigDecimal(mappedEntry.get("amount")),
-				Integer.parseInt(mappedEntry.get("toAccount")), 0).setDescription(mappedEntry.get("toDescription"))
-						.Build();
+		
+		
+		Entry toEntry = new Entry.Builder()
+								 .setAmount(new BigDecimal(mappedEntry.get("amount")))
+								 .setDate(LocalDateTime.now())
+								 .setDescription(mappedEntry.get("toDescription"))
+								 .setEntryID(0)
+								 .setAccountNumber(Integer.parseInt(mappedEntry.get("toAccount")))
+								 .setRegNumber(0)
+								 .build();
 
 		list.add(fromEntry);
 		list.add(toEntry);

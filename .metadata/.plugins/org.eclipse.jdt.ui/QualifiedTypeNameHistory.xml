@@ -8,4 +8,5 @@
 <fullyQualifiedTypeName name="dk.eamv.bank.domain.Property"/>
 <fullyQualifiedTypeName name="javax.persistence.NamedQuery"/>
 <fullyQualifiedTypeName name="javax.persistence.Entity"/>
+<fullyQualifiedTypeName name="javax.validation.constraints.Size"/>
 </qualifiedTypeNameHistroy>

@@ -1,0 +1,23 @@
+package bank.web;
+
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import javax.ejb.LocalBean;
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
+import dk.eamv.bank.domain.Account;
+
+
+/**
+ * Session Bean implementation class AccountBean
+ */
+@Stateless
+@LocalBean
+public class AccountTransferBean {
+
+}
