@@ -37,6 +37,8 @@
         	</h:panelGrid>
  
         	<p:separator />
+ 
+        	<p:commandButton value="Submit" update="msgs" action="#{dropdownView.displayLocation}" icon="pi pi-check" />
     	
 		</h:form>
 
