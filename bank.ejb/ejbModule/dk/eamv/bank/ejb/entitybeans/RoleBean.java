@@ -19,14 +19,6 @@ import dk.eamv.bank.ejb.exception.RoleNotFoundException;
 @LocalBean
 public class RoleBean {
 	@PersistenceContext private EntityManager em;
-
-    /**
-     * Default constructor. 
-     */
-    public RoleBean() {
-        // TODO Auto-generated constructor stub
-    }
-    
     
     public void create(Role role) {
     	Optional<Role> optional = read(role.getRoleID());
@@ -44,6 +36,19 @@ public class RoleBean {
     	else 
     			return Optional.empty();
     }
+    
+    
+    public void update(Role role) {
+    	RoleEntity entity = em.find(RoleEntity.class, role.getRoleID());
+    	if(entity != null) {
+    		entity.setRoleName(role.getRoleName());
+    		entity.setRoleID(role.getRoleID());
+    		
+    	}
+    	else 
+    		throw new RoleNotFoundException();
+    }
+    
     
     public void delete(int roleID) {
     	RoleEntity entity = em.find(RoleEntity.class, roleID);
