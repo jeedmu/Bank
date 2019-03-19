@@ -15,7 +15,7 @@ public interface HomeBanking {
 
 	/**
 	 * Create a new entry... entry contains account numbers and monetary amount
-	 * @param mappedEntry mapping keys: "amount", "fromAccount", "toAccount", "fromDescription", "toDescription"
+	 * @param mappedEntry mapping keys: "amount", "fromAccount", "toAccount", "fromDescription", "toDescription", "regNumber"
 	 * @param customerID identifies the current customer
 	 * @return true if it succeded, else false
 	 */
