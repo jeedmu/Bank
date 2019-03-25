@@ -1,7 +1,11 @@
 package dk.eamv.bank.ejb.entity;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
@@ -25,6 +29,20 @@ public class RoleEntity {
 	@NotNull
 	private String roleName;
 	
+	@ManyToMany(mappedBy = "roles")
+	private List<UserEntity> users = new ArrayList<UserEntity>();
+	
+	
+	
+	
+	public List<UserEntity> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<UserEntity> users) {
+		this.users = users;
+	}
+
 	public RoleEntity() {}
 	
 	public RoleEntity(Role role) {

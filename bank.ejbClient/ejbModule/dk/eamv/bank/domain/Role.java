@@ -3,8 +3,8 @@ package dk.eamv.bank.domain;
 public class Role {
 
 	
-	private int roleID;
-	private String roleName;
+	private final int roleID;
+	private final String roleName;
 	
 	
 	public static class Builder {

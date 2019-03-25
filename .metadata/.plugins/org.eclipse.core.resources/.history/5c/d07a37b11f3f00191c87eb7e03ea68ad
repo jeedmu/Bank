@@ -1,40 +1,57 @@
 package dk.eamv.bank.ejb.entity;
 
+
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
+import javax.annotation.Generated;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 import dk.eamv.bank.domain.Customer;
 
-@NamedQueries({	@NamedQuery(name = "allCustomers", query = "SELECT p FROM customer p  "
-															+ "ORDER BY p.customerID"),
-				@NamedQuery(name = "searchCustomer", query = "SELECT p FROM customer p " 
-															+ "WHERE p.firstName LIKE :search OR p.surName LIKE :search "
-															+ "ORDER BY p.customerID")})
-
-@Entity(name="customer")
+@Entity
+@Table(name="customer")
 public class CustomerEntity {
 	
+	public CustomerEntity() {}
+	
+	public CustomerEntity(Customer customer) {
+		this.customerID = customer.getCustomerID();
+		this.sSN = customer.getSSN();
+		this.firstName = customer.getFirstName();
+		this.surName = customer.getSurName();
+		this.address = customer.getAddress();
+		this.zipCode = customer.getZipCode();
+		this.city = customer.getCity();
+		this.email = customer.getEmail();
+		
+	}
+	
+	
+
+
+
 	@GeneratedValue
+	@NotNull
 	@Id
 	private int customerID;
 	
 	@OneToMany(fetch = FetchType.EAGER)
-	@JoinColumn(name = "customerID")
+	@JoinColumn(name = "AccountNumber")
 	private List<AccountEntity> accounts;
 	
+	public List<AccountEntity> getAccounts() {
+		return accounts;
+	}
+
+	public void setAccounts(List<AccountEntity> accounts) {
+		this.accounts = accounts;
+	}
+
 	@NotNull
-	@Column (length = 10)
-	//@Size(min=10, max=10)
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 10)
 	private String sSN;
 	
 	@NotNull
@@ -50,48 +67,24 @@ public class CustomerEntity {
 	private String country;
 	
 	@NotNull
+	// @Pattern(regexp= "(\"^[0-9]*$\"")
+	// @Column (length = 4)
 	private String zipCode;
 	
 	@NotNull
+	// @Pattern(regexp = "(\"^[A-Za-z]*$\"")
 	private String city;
 	
 	@NotNull
+	/*@Pattern(regexp = "[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\."
+			+ "[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@"
+			+ "(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9]"
+			+ "(?:[a-z0-9-]*[a-z0-9])?",
+			message = "WRONG email")*/
 	private String email;
 	
-	@NotNull
 	private String phoneNumber;
-	
-	
-	
-	public CustomerEntity() {}
-	
-	public CustomerEntity(Customer customer) {
-		this.customerID = customer.getCustomerID();
-		this.sSN = customer.getSSN();
-		this.firstName = customer.getFirstName();
-		this.surName = customer.getSurName();
-		this.address = customer.getAddress();
-		this.zipCode = customer.getZipCode();
-		this.city = customer.getCity();
-		this.email = customer.getEmail();
-		this.phoneNumber = customer.getPhoneNumber();
-	}
-	
-	
-	
-	public Customer toDomain() {
-		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
-				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
-				.setPhoneNumber(this.phoneNumber).build();
-	} 
-	
-	public List<AccountEntity> getAccounts() {
-		return accounts;
-	}
-	
-	public void setAccounts(List<AccountEntity> accounts) {
-		this.accounts = accounts;
-	}
+
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -153,4 +146,11 @@ public class CustomerEntity {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	
+	//something something. Virker måske.
+	public Customer toDomain() {
+		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
+				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email).setPhoneNumber(this.phoneNumber).Build();
+} 
+
 }
