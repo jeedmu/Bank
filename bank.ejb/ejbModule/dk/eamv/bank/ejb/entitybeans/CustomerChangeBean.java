@@ -29,7 +29,7 @@ public class CustomerChangeBean {
 	@Schedule(minute = "*/1", hour = "*")
 	public void checkForChanges() {
 		System.out.println("CustomerChangeBean");
-		List<CustomerChanges> listOfCustomerChanges = list();
+		List<CustomerChanges> listOfCustomerChanges = changesByDate();
 		for(CustomerChanges changes : listOfCustomerChanges) {
 			if(changes.getChangeDate() == LocalDate.now()) {
 				Customer customer = new Customer.Builder(changes.getCustomerID(), changes.getSSN())
@@ -91,8 +91,8 @@ public class CustomerChangeBean {
     }
     
 	
-    public List<CustomerChanges> list(String ssn){
-    	return em.createNamedQuery("searchCustomesChanges", CustomerChangesEntity.class)
+    public List<CustomerChanges> customerChanges(String ssn){
+    	return em.createNamedQuery("searchCustomerChanges", CustomerChangesEntity.class)
     				.setParameter("ssn", ssn)
     				.getResultList()
     				.stream()
@@ -100,5 +100,14 @@ public class CustomerChangeBean {
     				.collect(Collectors.toList());
     				
     }
-
+    
+    public List<CustomerChanges> changesByDate(){
+    	return em.createNamedQuery("searchChangesByDate", CustomerChangesEntity.class)
+    				.setParameter("date", LocalDate.now())
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());
+    				
+    }
 }
