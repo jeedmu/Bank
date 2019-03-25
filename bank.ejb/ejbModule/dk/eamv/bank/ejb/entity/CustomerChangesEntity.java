@@ -11,16 +11,22 @@ import javax.validation.constraints.Pattern;
 
 import dk.eamv.bank.domain.CustomerChanges;
 @NamedQueries({	@NamedQuery(name = "allCustomerChanges", query = "SELECT p FROM customerChanges p  "
-		+ "ORDER BY p.customerID"),
-@NamedQuery(name = "searchCustomerChange", query = "SELECT p FROM customerChanges p " 
-		+ "WHERE p.firstName LIKE :search OR p.surName LIKE :search "
-		+ "ORDER BY p.customerID")})
+		+ "ORDER BY p.changeID"),
+@NamedQuery(name = "searchCustomerChanges", query = "SELECT p FROM customerChanges p " 
+		+ "WHERE p.sSN LIKE :ssn "
+		+ "ORDER BY p.changeID"),
+@NamedQuery(name="searchChangesByDate", query = "SELECT p FROM customerChanges p "
+		+ "WHERE p.changeDate LIKE :date "
+		+ "ORDER BY p.changeID")})
 
 @Entity(name="customerChanges")
 public class CustomerChangesEntity {
 	
-	@NotNull
 	@Id
+	@GeneratedValue
+	private long changeID;
+	
+	@NotNull
 	private int customerID;
 	
 	@NotNull
@@ -81,6 +87,10 @@ public class CustomerChangesEntity {
 	
 	//..............................//
 	//Setters and getters//
+	
+	public long getChangeID() {
+		return changeID;
+	}
 	
 	public int getCustomerID() {
 		return customerID;
