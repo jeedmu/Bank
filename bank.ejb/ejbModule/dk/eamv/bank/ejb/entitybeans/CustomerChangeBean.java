@@ -91,8 +91,9 @@ public class CustomerChangeBean {
     }
     
 	
-    public List<CustomerChanges> list(){
-    	return em.createNamedQuery("searchCustomersChanges", CustomerChangesEntity.class)
+    public List<CustomerChanges> list(String ssn){
+    	return em.createNamedQuery("searchCustomesChanges", CustomerChangesEntity.class)
+    				.setParameter("ssn", ssn)
     				.getResultList()
     				.stream()
     				.map(c -> c.toDomain())
