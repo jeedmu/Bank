@@ -36,7 +36,7 @@ public class UserEntity {
 	
 	@ManyToMany(cascade = {
 			CascadeType.PERSIST,
-			CascadeType.MERGE
+			CascadeType.REMOVE
 	})
 	@JoinTable(name="user_role",
 		joinColumns = @JoinColumn(name = "user_userId", referencedColumnName = "userId"),

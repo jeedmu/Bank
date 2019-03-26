@@ -2,15 +2,19 @@ package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.Local;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.domain.CustomerSearchParameters;
 
 @Local
 public interface Employee {
 
+	public List<Customer> getCustomers(CustomerSearchParameters parameters);
+	
 	/** 
 	 * Used for both updating and creating customer
 	 * @param customerData HashMap keys: "sSN", "firstName", "surName", "address", "country", "zipCode", "city", "email", "phoneNumber"

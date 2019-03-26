@@ -8,8 +8,10 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.ejb.entity.CustomerEntity;
 import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;;
@@ -79,6 +81,34 @@ public class CustomerBean {
     				.map(c -> c.toDomain())
     				.collect(Collectors.toList());
     				
+    }
+    
+    public List<Customer> getCustomers(CustomerSearchParameters para){
+    	TypedQuery<CustomerEntity> createNamedQuery = em.createNamedQuery("SearchCustomer", CustomerEntity.class);
+    	
+    	if(para.getSsn() != null) 
+    		createNamedQuery.setParameter("ssn", "%" + para.getSsn() + "%"); 
+    	
+    	if (para.getFirstName() != null) 
+    		createNamedQuery.setParameter("firstName", "%" + para.getFirstName() + "%");
+    	
+    	if (para.getLastName() != null) 
+    		createNamedQuery.setParameter("lastName", "%" + para.getLastName() + "%");
+    	
+    	if (para.getAddress() != null) 
+    		createNamedQuery.setParameter("address", "%" + para.getAddress() + "%");
+    	
+    	if (para.getEmail() != null) 
+    		createNamedQuery.setParameter("email", "%" + para.getEmail() + "%");
+    	
+    	if (para.getPhoneNumber() != null) 
+    		createNamedQuery.setParameter("phoneNumber", "%" + para.getPhoneNumber() + "%");
+    	   	
+    	return createNamedQuery    				
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());    				
     }
 
 }

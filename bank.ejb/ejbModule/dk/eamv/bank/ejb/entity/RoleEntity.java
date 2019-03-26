@@ -15,9 +15,9 @@ import dk.eamv.bank.domain.Role;
 @NamedQueries({	@NamedQuery(name = "allRoles", query = "SELECT p FROM role p "
 														+ "ORDER BY p.roleID"),
 
-	@NamedQuery(name = "searchRole", query = "SELECT p FROM role p " 
-											  + "WHERE p.roleName LIKE :search "
-											  + "ORDER BY p.roleID")})
+				@NamedQuery(name = "searchRole", query = "SELECT p FROM role p " 
+											  			+ "WHERE p.roleName LIKE :search "
+											  			+ "ORDER BY p.roleID")})
 
 @Entity(name="role")
 public class RoleEntity {
