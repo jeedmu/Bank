@@ -1,1 +1,6 @@
 *.metadata
+.metadata\.plugins\
+.metadata/.log
+*.snap
+*.prefs
+*.ini
