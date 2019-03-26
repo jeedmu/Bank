@@ -87,15 +87,20 @@ public class CustomerBean {
     	TypedQuery<CustomerEntity> createNamedQuery = em.createNamedQuery("SearchCustomer", CustomerEntity.class);
     	
     	if(para.getSsn() != null) 
-    		createNamedQuery.setParameter("ssn", "%" + para.getSsn() + "%");   	
+    		createNamedQuery.setParameter("ssn", "%" + para.getSsn() + "%"); 
+    	
     	if (para.getFirstName() != null) 
     		createNamedQuery.setParameter("firstName", "%" + para.getFirstName() + "%");
+    	
     	if (para.getLastName() != null) 
     		createNamedQuery.setParameter("lastName", "%" + para.getLastName() + "%");
+    	
     	if (para.getAddress() != null) 
     		createNamedQuery.setParameter("address", "%" + para.getAddress() + "%");
+    	
     	if (para.getEmail() != null) 
     		createNamedQuery.setParameter("email", "%" + para.getEmail() + "%");
+    	
     	if (para.getPhoneNumber() != null) 
     		createNamedQuery.setParameter("phoneNumber", "%" + para.getPhoneNumber() + "%");
     	   	
