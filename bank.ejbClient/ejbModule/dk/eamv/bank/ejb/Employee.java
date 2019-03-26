@@ -13,6 +13,13 @@ import dk.eamv.bank.domain.CustomerSearchParameters;
 @Local
 public interface Employee {
 
+	/**
+	 * Search for customers based on the given search parameters. 
+	 * If any of the parameters in the CustomerSearchParameters are equal to null, they will not be used in the search.
+	 * 
+	 * @param parameters class that contains the search parameters
+	 * @return a list with customers based on the given search parameters
+	 */
 	public List<Customer> getCustomers(CustomerSearchParameters parameters);
 	
 	/** 
