@@ -28,8 +28,8 @@
                 <h:outputLabel value="Til konto:" />
                 <h:inputText p:placeholder="Indtast kontonummer" />
                 
-                 <p:outputLabel for="button" value="vælg dato:" />
-                 <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+                  <p:outputLabel for="restricted" value="Restricted:" /> 
+        		  <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14"  />
          
                 
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />

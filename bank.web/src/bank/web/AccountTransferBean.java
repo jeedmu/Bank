@@ -58,4 +58,29 @@ public class AccountTransferBean implements Serializable {
 		
 	}
 	
+	//calendar opsætning
+	 private List<Date> invalidDates;
+	    private List<Integer> invalidDays;
+	    private Date minDate;
+	    private Date maxDate;
+	    private Date currentday;
+	
+	 public void init() {
+	        invalidDates = new ArrayList<>();
+	        Date today = new Date();
+	        invalidDates.add(today);
+	        long oneDay = 24 * 60 * 60 * 1000;
+	        for (int i = 0; i < 5; i++) {
+	            invalidDates.add(new Date(invalidDates.get(i).getTime() + oneDay));
+	        }
+	 
+	        invalidDays = new ArrayList<>();
+	        invalidDays.add(0); /* the first day of week is disabled */
+	        invalidDays.add(3);
+	 
+	        minDate = new Date(today.getTime() - (365 * oneDay));
+	        maxDate = new Date(today.getTime() + (365 * oneDay));
+	    }
+	 
+	
 }
