@@ -1,12 +1,15 @@
 package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerChanges;
+import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
@@ -25,6 +28,12 @@ public class EmployeeBean implements Employee {
 	
     public EmployeeBean() {
         // TODO Auto-generated constructor stub
+    }
+    
+    
+    public List<Customer> getCustomers(CustomerSearchParameters parameters)
+    {
+    	return customerBean.getCustomers(parameters);
     }
 
     // fix return from customer changes 
