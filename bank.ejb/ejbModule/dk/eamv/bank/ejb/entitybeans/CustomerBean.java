@@ -84,31 +84,47 @@ public class CustomerBean {
     }
     
     public List<Customer> getCustomers(CustomerSearchParameters para){
-    	TypedQuery<CustomerEntity> createNamedQuery = em.createNamedQuery("SearchCustomer", CustomerEntity.class);
+    	TypedQuery<CustomerEntity> createNamedQuery = em.createQuery(" select c from customer c where c.sSN LIKE :ssn AND "
+    																								+ "c.firstName LIKE :firstName AND "
+    																								+ "c.surName LIKE :lastName AND "
+    																								+ "c.address LIKE :address AND "
+    																								+ "c.email LIKE :email AND "
+    																								+ "c.phoneNumber LIKE :phoneNumber", CustomerEntity.class);
     	
-    	if(para.getSsn() != null) 
-    		createNamedQuery.setParameter("ssn", "%" + para.getSsn() + "%"); 
+    	if(para.getSSN() != null) 
+    		createNamedQuery.setParameter("ssn", "%" + para.getSSN() + "%");
+    	else
+    		createNamedQuery.setParameter("ssn", "%" + "" + "%");
     	
     	if (para.getFirstName() != null) 
     		createNamedQuery.setParameter("firstName", "%" + para.getFirstName() + "%");
+    	else
+    		createNamedQuery.setParameter("firstName", "%" + "" + "%");
     	
     	if (para.getLastName() != null) 
     		createNamedQuery.setParameter("lastName", "%" + para.getLastName() + "%");
+    	else
+    		createNamedQuery.setParameter("lastName", "%" + "" + "%");
     	
     	if (para.getAddress() != null) 
     		createNamedQuery.setParameter("address", "%" + para.getAddress() + "%");
+    	else
+    		createNamedQuery.setParameter("address", "%" + "" + "%");
     	
     	if (para.getEmail() != null) 
     		createNamedQuery.setParameter("email", "%" + para.getEmail() + "%");
+    	else
+    		createNamedQuery.setParameter("email", "%" + "" + "%");
     	
     	if (para.getPhoneNumber() != null) 
     		createNamedQuery.setParameter("phoneNumber", "%" + para.getPhoneNumber() + "%");
+    	else
+    		createNamedQuery.setParameter("phoneNumber", "%" + "" + "%");
     	   	
-    	return createNamedQuery    				
+    	return createNamedQuery  				
     				.getResultList()
     				.stream()
     				.map(c -> c.toDomain())
     				.collect(Collectors.toList());    				
     }
-
 }
