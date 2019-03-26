@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -40,10 +41,10 @@ public class EmployeeRest implements Employee{
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("deleteCustomer")
+	@Path("deleteCustomer/{key}")
 	@Override
-	public boolean deleteCustomer(int customerID) {
-		cB.delete(customerID);
+	public boolean deleteCustomer(@PathParam("key") int key) {
+		cB.delete(key);
 		return true;
 	}
 
@@ -58,10 +59,10 @@ public class EmployeeRest implements Employee{
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("deleteAccount")
+	@Path("deleteAccount/{reg}&{acc}")
 	@Override
-	public boolean deleteAccount(int regNumber, int accountNo) {
-		aB.delete(regNumber, accountNo);
+	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
+		aB.delete(reg, acc);
 		return true;
 	}
 
