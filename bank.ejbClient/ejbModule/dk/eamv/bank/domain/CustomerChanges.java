@@ -206,5 +206,4 @@ public class CustomerChanges {
 				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
 				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
 	}
-
 }
