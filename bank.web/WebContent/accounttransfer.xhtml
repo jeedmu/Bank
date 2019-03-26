@@ -18,18 +18,19 @@
             <h:panelGrid columns="2" >
             	
             	<p:outputLabel for="account" value="Fra konto: " /> 
-            	<p:selectOneMenu id="account" value="#{accountTransferBean.accounts}">
+            	<p:selectOneMenu id="account" value="#{accountTransferBean.account}">
 
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
-                	<f:selectItems value="#{dropdownView.accounts}" />
+                	<f:selectItems value="#{accountTransferBean.accounts}" />
             	</p:selectOneMenu>
             	
 
                 <h:outputLabel value="Til konto:" />
                 <h:inputText p:placeholder="Indtast kontonummer" />
                 
-                <h:outputLabel value="Overførselsdato:" />
-                <h:inputText></h:inputText>
+                 <p:outputLabel for="button" value="vælg dato:" />
+                 <p:calendar id="button" value="#{calendarView.date3}" showOn="button" />
+         
                 
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />
                 <h:inputText>></h:inputText>
