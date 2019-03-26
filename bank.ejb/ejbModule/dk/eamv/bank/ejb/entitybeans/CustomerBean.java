@@ -80,5 +80,15 @@ public class CustomerBean {
     				.collect(Collectors.toList());
     				
     }
+    
+    public List<Customer> getCustomers(String ssn, String firstName, String lastName, String address, String email, String phoneNumber){
+    	return em.createNamedQuery("SearchCustomer", CustomerEntity.class)
+    				.setParameter("search", "%" + ssn + "%")
+    				.getResultList()
+    				.stream()
+    				.map(c -> c.toDomain())
+    				.collect(Collectors.toList());
+    				
+    }
 
 }
