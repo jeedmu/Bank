@@ -85,15 +85,15 @@ public class EmployeeRest implements Employee{
 	@Path("customerSearch")
 	@Override
 	public List<Customer> getCustomers(CustomerSearchParameters parameters) {
-		List<Customer> cL = cB.getCustomers(parameters);
-		return cL;
+		return cB.getCustomers(parameters);
 	}
 
-	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("accounts")
 	@Override
 	public List<Account> getAccounts(int customerID) {
-		// TODO Auto-generated method stub
-		return null;
+		return aB.list(customerID);
 	}
 
 	
