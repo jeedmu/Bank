@@ -63,8 +63,7 @@ public class AccountTransferBean implements Serializable {
 	    private List<Integer> invalidDays;
 	    private Date minDate;
 	    private Date maxDate;
-	    private Date currentday;
-	
+	   
 	 public void init() {
 	        invalidDates = new ArrayList<>();
 	        Date today = new Date();

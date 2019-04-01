@@ -29,7 +29,7 @@
                 <h:inputText p:placeholder="Indtast kontonummer" />
                 
                   <p:outputLabel for="restricted" value="Restricted:" /> 
-        		  <p:calendar id="restricted" value="#{calendarView.date6}" mindate="4/1/14"  />
+        		  <p:calendar id="restricted" value="#{calendarView.date6}" mindate="today"  />
          
                 
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />
@@ -39,7 +39,7 @@
                 <h:inputText p:type="number" p:step="1"/>
 
             </h:panelGrid>
-            <h:commandButton value="ボタン" />
+            <h:commandButton value="ボタン" action=""/>
         </h:form>
     </h:body>
 	
