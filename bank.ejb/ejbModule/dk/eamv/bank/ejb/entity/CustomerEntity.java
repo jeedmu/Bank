@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 import dk.eamv.bank.domain.Customer;
@@ -33,8 +34,7 @@ public class CustomerEntity {
 	private List<AccountEntity> accounts;
 	
 	@NotNull
-	@Column (length = 10)
-	//@Size(min=10, max=10)
+	@Column (length = 10, unique = true)
 	private String sSN;
 	
 	@NotNull
