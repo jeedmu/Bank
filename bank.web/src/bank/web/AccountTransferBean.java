@@ -31,7 +31,7 @@ public class AccountTransferBean implements Serializable {
 	Account ferie = new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build();
 	 private String account;
 	 private int kontonummer;
-	 private Date selectedDate;
+	 private String selectedDate;
 	 
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 //getters and setters
@@ -53,36 +53,21 @@ public class AccountTransferBean implements Serializable {
 	public int getKontonummer() {
 		return kontonummer;
 	}
+	public void setKontonummer(int kontnummer){
+		kontonummer = kontnummer;
+	}
 	
-	public Date getDate() {
+	public String getDate() {
 		return selectedDate;
 	}
+	public void setDate(String date) {
+		selectedDate = date;
+	}
+	
 	public void setNewEntry() {
 		
 	}
 	
-	//calendar opsætning
-	 private List<Date> invalidDates;
-	    private List<Integer> invalidDays;
-	    private Date minDate;
-	    private Date maxDate;
-	   
-	 public void init() {
-	        invalidDates = new ArrayList<>();
-	        Date today = new Date();
-	        invalidDates.add(today);
-	        long oneDay = 24 * 60 * 60 * 1000;
-	        for (int i = 0; i < 5; i++) {
-	            invalidDates.add(new Date(invalidDates.get(i).getTime() + oneDay));
-	        }
-	 
-	        invalidDays = new ArrayList<>();
-	        invalidDays.add(0); /* the first day of week is disabled */
-	        invalidDays.add(3);
-	 
-	        minDate = new Date(today.getTime() - (365 * oneDay));
-	        maxDate = new Date(today.getTime() + (365 * oneDay));
-	    }
-	 
+	
 	
 }
