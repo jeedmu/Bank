@@ -1,6 +1,8 @@
 package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import javax.ejb.Local;
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerSearchParameters;
+import dk.eamv.bank.domain.Entry;
 
 @Local
 public interface Employee {
@@ -29,6 +32,10 @@ public interface Employee {
 	 */
 	public boolean editCustomer(Customer customerData, LocalDate changeDate);
 
+	public List<Account> getAccounts(int customerID);
+	
+	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to);
+	
 	public boolean deleteCustomer(int customerID);
 
 	/**

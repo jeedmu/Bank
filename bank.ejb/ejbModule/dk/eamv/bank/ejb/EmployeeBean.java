@@ -1,6 +1,7 @@
 package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,6 +11,7 @@ import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerChanges;
 import dk.eamv.bank.domain.CustomerSearchParameters;
+import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
@@ -93,5 +95,17 @@ public class EmployeeBean implements Employee {
 		{
 			return false;
 		}
+	}
+
+
+	@Override
+	public List<Account> getAccounts(int customerID) {
+		throw new RuntimeException("Not implemented yet");
+	}
+
+
+	@Override
+	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to) {
+		throw new RuntimeException("Not implemented yet");
 	}
 }
