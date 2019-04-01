@@ -3,6 +3,7 @@ package dk.eamv.bank.rest;
 import java.time.LocalDate;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -27,14 +28,20 @@ public class EmployeeRest implements Employee{
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editCustomer")
 	@Override
 	public boolean editCustomer(Customer cD, LocalDate changeDate) {
 		CustomerChanges cC = new CustomerChanges.Builder(cD.getCustomerID(), cD.getSSN(), changeDate)
-											.setFirstName(cD.getFirstName()).setSurName(cD.getSurName())
-											.setAddress(cD.getAddress()).setCountry(cD.getCountry())
-											.setZipCode(cD.getZipCode()).setCity(cD.getCity())
-											.setEmail(cD.getEmail()).setPhoneNumber(cD.getPhoneNumber()).build();
+											.setFirstName(cD.getFirstName())
+											.setSurName(cD.getSurName())
+											.setAddress(cD.getAddress())
+											.setCountry(cD.getCountry())
+											.setZipCode(cD.getZipCode())
+											.setCity(cD.getCity())
+											.setEmail(cD.getEmail())
+											.setPhoneNumber(cD.getPhoneNumber())
+											.build();
 		cCB.create(cC);
 		return true;
 	}
@@ -50,6 +57,7 @@ public class EmployeeRest implements Employee{
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editAccount")
 	@Override
 	public boolean editAccount(Account account) {
@@ -68,6 +76,7 @@ public class EmployeeRest implements Employee{
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("customerSearch")
 	@Override
 	public List<Customer> getCustomers(CustomerSearchParameters parameters) {
