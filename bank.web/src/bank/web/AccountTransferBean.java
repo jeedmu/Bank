@@ -29,22 +29,18 @@ public class AccountTransferBean implements Serializable {
 
 	Account opsparing = new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").build();
 	Account ferie = new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build();
-	 private String account;  
+	 private String account;
+	 private int kontonummer;
+	 private Date selectedDate;
 	 
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
-	 
+	 //getters and setters
 	 public String getAccount() {
 		 return account;
 	 }
-
+	 
 	public Map<String, Account> getAccounts()
 	{
-//		ArrayList<Account> ac = new ArrayList<Account>();
-//		ac.add(new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").build());
-//		ac.add(new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build());
-//		ac.add(new Account.Builder(34,3487, 348584598).setBalance(BigDecimal.TEN.multiply(BigDecimal.TEN).multiply(BigDecimal.TEN).multiply(BigDecimal.TEN)).setAccountName("Kort").build());
-//		return ac;
-
 	    Map<String,Account> accounts;
 		   accounts  = new HashMap<String, Account>();
 	        accounts.put("opsparing",opsparing );
@@ -54,7 +50,13 @@ public class AccountTransferBean implements Serializable {
 		//return homeBanking.showAccounts("");
 	}
 	
+	public int getKontonummer() {
+		return kontonummer;
+	}
 	
+	public Date getDate() {
+		return selectedDate;
+	}
 	public void setNewEntry() {
 		
 	}
