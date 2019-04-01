@@ -15,6 +15,7 @@ import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
+import dk.eamv.bank.ejb.entitybeans.EntryBean;
 import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
@@ -27,6 +28,7 @@ public class EmployeeBean implements Employee {
 	@EJB CustomerChangeBean customerChangesBean;
 	@EJB AccountBean accountBean;
 	@EJB CustomerBean customerBean; 
+	@EJB EntryBean entryBean;
 	
     public EmployeeBean() {
         // TODO Auto-generated constructor stub
@@ -100,12 +102,12 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public List<Account> getAccounts(int customerID) {
-		throw new RuntimeException("Not implemented yet");
+		return accountBean.list(customerID);
 	}
 
 
 	@Override
 	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to) {
-		throw new RuntimeException("Not implemented yet");
+		return entryBean.list(account.getAccountNumber(), account.getRegNumber());
 	}
 }
