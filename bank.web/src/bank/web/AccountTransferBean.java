@@ -31,6 +31,7 @@ public class AccountTransferBean implements Serializable {
 	Account ferie = new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build();
 	 private String account;  
 	 
+	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 
 	 public String getAccount() {
 		 return account;
