@@ -17,11 +17,15 @@ import javax.inject.Named;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.ejb.HomeBanking;
+
 
 @Named
 @RequestScoped
 public class AccountTransferBean implements Serializable {
 
+	@EJB private HomeBanking hb_ejb;
+	
 	/**
 	 * 
 	 */
@@ -31,13 +35,19 @@ public class AccountTransferBean implements Serializable {
 	Account ferie = new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build();
 	 private String account;
 	 private int kontonummer;
-	 private String selectedDate;
+	 private Date selectedDate;
+	 private String inmessage;
+	 private String outmessage;
 	 
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 //getters and setters
 	 public String getAccount() {
 		 return account;
 	 }
+	 public void setAccount(String acc) {
+		 account = acc;
+	 }
+	 
 	 
 	public Map<String, Account> getAccounts()
 	{
@@ -50,6 +60,7 @@ public class AccountTransferBean implements Serializable {
 		//return homeBanking.showAccounts("");
 	}
 	
+	
 	public int getKontonummer() {
 		return kontonummer;
 	}
@@ -57,17 +68,33 @@ public class AccountTransferBean implements Serializable {
 		kontonummer = kontnummer;
 	}
 	
-	public String getDate() {
+	public Date getDate() {
 		return selectedDate;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		selectedDate = date;
+	}
+	
+	public String getInmessage() {
+		return inmessage;
+	}
+	public void setInmessage(String message) {
+		inmessage = message;
+	}
+	public String getOutmessage() {
+		return outmessage;
+	}
+	public void setOutmessage(String message) {
+		outmessage = message;
 	}
 	
 	public void setNewEntry() {
 		
 	}
 	
+	public void buttonaction() {
+	
+}
 	
 	
 }

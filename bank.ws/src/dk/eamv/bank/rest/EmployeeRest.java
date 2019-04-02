@@ -103,4 +103,16 @@ public class EmployeeRest implements Employee{
 		}
 		return returnList;
 	}
+
+	@Override
+	public boolean createAccount(Account account) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean createCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

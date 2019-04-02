@@ -32,6 +32,10 @@ public interface Employee {
 	
 	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to);
 	
+	public boolean createAccount(Account account);
+	
+	public boolean createCustomer(Customer customer);
+	
 	public boolean deleteCustomer(int customerID);
 
 	public boolean editAccount(Account account);

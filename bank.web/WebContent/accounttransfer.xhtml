@@ -28,18 +28,21 @@
                 <h:outputLabel value="Til konto:" />
                 <h:inputText p:placeholder="Indtast kontonummer" />
                 
+                <h:outputLabel value="Beløb:" />
+                <h:inputText p:type="number" p:step="1"  value="BELOOB"/>
+                
                   <p:outputLabel for="restricted" value="Restricted:" /> 
-        		  <p:calendar id="restricted" value="#{calendarView.date6}" mindate="today"  />
+        		  <p:calendar id="restricted"  mindate="today"  />
          
                 
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />
-                <h:inputText>></h:inputText>
+                <h:inputText value="#{accountTransferBean.inmessage}"/>
                 
                 <h:outputLabel value="Besked til modtager:" />
-                <h:inputText p:type="number" p:step="1"/>
+                <h:inputText p:type="number" p:step="1"  value="#{accountTransferBean.outmessage}"/>
 
             </h:panelGrid>
-            <h:commandButton value="ボタン" />
+            <h:commandButton value="ボタン"  action="#{accountTransferBean.buttonaction()}"/>
         </h:form>
     </h:body>
 	
