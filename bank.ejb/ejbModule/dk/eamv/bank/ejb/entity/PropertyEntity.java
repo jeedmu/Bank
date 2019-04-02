@@ -21,7 +21,6 @@ public class PropertyEntity {
 	@Id
 	private String property;
 	private String value;
-	private static final long serialVersionUID = 1L;
 
 	public PropertyEntity() {
 		super();

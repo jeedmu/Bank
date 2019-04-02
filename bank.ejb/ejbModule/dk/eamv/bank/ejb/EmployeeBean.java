@@ -16,7 +16,9 @@ import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
+import dk.eamv.bank.ejb.exception.AccountAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.AccountNotFoundException;
+import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
 /**
@@ -103,14 +105,21 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public boolean createAccount(Account account) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			accountBean.create(account);
+			return true;
+		}catch(AccountAlreadyExsistsException e) {
+			return false;	
+		}
 	}
-
 
 	@Override
 	public boolean createCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
+		try {
+			customerBean.create(customer);
+			return true;
+		}catch(CustomerAlreadyExsistsException e) {
+			return false;
+		}		
 	}
 }

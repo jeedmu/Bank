@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -103,16 +104,20 @@ public class EmployeeRest implements Employee{
 		}
 		return returnList;
 	}
-
+	
 	@Override
 	public boolean createAccount(Account account) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("createCustomer")
 	@Override
 	public boolean createCustomer(Customer customer) {
-		// TODO Auto-generated method stub
-		return false;
+		cB.create(customer);
+		return true;
 	}
 }
