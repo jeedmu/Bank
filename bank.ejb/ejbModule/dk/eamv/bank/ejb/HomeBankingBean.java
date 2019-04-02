@@ -11,7 +11,9 @@ import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Bank;
+import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.domain.Transfer;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.BankBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
@@ -29,11 +31,7 @@ public class HomeBankingBean implements HomeBanking {
 	@EJB private BankBean bankBean;
 	@EJB private ForeignEntryBean foreignEntryBean;
 
-	/**
-	 * Default constructor.
-	 */
-	public HomeBankingBean() {
-	}
+	public HomeBankingBean() {}
 
 	@Override
 	public ArrayList<Account> showAccounts(int customerID) {
@@ -52,11 +50,17 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	@Override
-	public boolean createEntry(HashMap<String, String> mappedEntry, int customerID) {
+	public boolean transferEntry(Transfer transferInfo) {
+				
+		Entry fromEntry = new Entry.Builder()
+				  .setAccountNumber(transferInfo.getFromAccount().getAccountNumber())
+				  .setRegNumber(transferInfo.getRegNumber())
+				  .setAmount(transferInfo.getAmount())
+				  .setEntryID(0)
+				  .setDate(transferInfo.getDate())
+				  .setDescription(transferInfo.getFromDescription())
+				  .build();
 		
-		ArrayList<Entry> fromAndToAccount = translateHashmapIntoEntries(mappedEntry);
-		
-		Entry fromEntry = fromAndToAccount.get(1);
 		Entry toEntry = fromAndToAccount.get(2);
 		
 		if (accountsBelongToSameBank(fromEntry.getAccountNumber(), toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
@@ -193,4 +197,12 @@ public class HomeBankingBean implements HomeBanking {
 		 return entity.getAccountNumber();
 		 
 	}
+
+	@Override
+	public Customer readCustomer(String cprn) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
