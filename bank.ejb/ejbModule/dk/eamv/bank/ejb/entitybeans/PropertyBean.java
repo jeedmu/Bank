@@ -20,8 +20,9 @@ import dk.eamv.bank.ejb.exception.PropertyNotFoundException;
 @Stateless
 @LocalBean
 public class PropertyBean {
-	@PersistenceContext private EntityManager em;
-	
+	@PersistenceContext
+	private EntityManager em;
+
 	public void create(Property property) {
 		Optional<Property> optional = read(property.getProperty());
 		if (optional.isPresent()) {
@@ -29,7 +30,7 @@ public class PropertyBean {
 		} else {
 			em.persist(new PropertyEntity(property));
 		}
-		
+
 	}
 
 	public Optional<Property> read(String property) {
@@ -58,14 +59,24 @@ public class PropertyBean {
 			throw new PropertyNotFoundException();
 		}
 	}
-	
-	 public List<Property> list(){
-	    	return em.createNamedQuery("searchProperties", PropertyEntity.class)
-	    				.getResultList()
-	    				.stream()
-	    				.map(p -> p.toDomain())
-	    				.collect(Collectors.toList());
-	    				
-	    }
+
+	public List<Property> list() {
+		return em.createNamedQuery("searchProperties", PropertyEntity.class)
+				.getResultList()
+				.stream()
+				.map(p -> p.toDomain())
+				.collect(Collectors.toList());
+
+	}
+
+	public List<Property> search(String search) {
+		return em.createNamedQuery("searchProperties", PropertyEntity.class)
+				.setParameter("search", search)
+				.getResultList()
+				.stream()
+				.map(p -> p.toDomain())
+				.collect(Collectors.toList());
+
+	}
 
 }
