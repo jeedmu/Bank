@@ -110,4 +110,18 @@ public class EmployeeBean implements Employee {
 	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to) {
 		return entryBean.list(account.getAccountNumber(), account.getRegNumber());
 	}
+
+
+	@Override
+	public boolean createAccount(Account account) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean createCustomer(Customer customer) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
