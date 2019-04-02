@@ -26,7 +26,7 @@ public class CustomerChangeBean {
 	@PersistenceContext private EntityManager em;
 	CustomerBean cb;
 	
-	@Schedule(minute = "*/1", hour = "*")
+	@Schedule(hour = "*/6")
 	public void checkForChanges() {
 		System.out.println("CustomerChangeBean");
 		List<CustomerChanges> listOfCustomerChanges = changesByDate();
