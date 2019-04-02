@@ -17,11 +17,15 @@ import javax.inject.Named;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.ejb.HomeBanking;
+
 
 @Named
 @RequestScoped
 public class AccountTransferBean implements Serializable {
 
+	@EJB private HomeBanking hb_ejb;
+	
 	/**
 	 * 
 	 */
@@ -43,6 +47,7 @@ public class AccountTransferBean implements Serializable {
 	 public void setAccount(String acc) {
 		 account = acc;
 	 }
+	 
 	 
 	public Map<String, Account> getAccounts()
 	{
