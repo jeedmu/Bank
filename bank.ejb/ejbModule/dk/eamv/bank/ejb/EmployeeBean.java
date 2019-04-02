@@ -43,21 +43,10 @@ public class EmployeeBean implements Employee {
 
     // fix return from customer changes 
 	@Override
-	public boolean editCustomer(Customer customerData, LocalDate changeDate) {
-		if(changeDate.compareTo(LocalDate.now()) < 0)
+	public boolean editCustomer(CustomerChanges customerData) {
+		if(customerData.getChangeDate().compareTo(LocalDate.now()) < 0)
 			return false;
-		
-		CustomerChanges customerChanges = new CustomerChanges.Builder(customerData.getCustomerID(), customerData.getSSN(), changeDate)
-															 .setAddress(customerData.getAddress())
-															 .setCity(customerData.getCity())
-															 .setCountry(customerData.getCountry())
-															 .setEmail(customerData.getEmail())
-															 .setFirstName(customerData.getFirstName())
-															 .setPhoneNumber(customerData.getPhoneNumber())
-															 .setSurName(customerData.getSurName())
-															 .setZipCode(customerData.getZipCode())
-															 .build();
-		customerChangesBean.create(customerChanges);
+		customerChangesBean.create(customerData);
 		return true;
 	}
 
