@@ -15,7 +15,7 @@
 	<div>
  <h:body>
         <h:form>
-            <h:panelGrid columns="2" >
+            <h:panelGrid columns="3" >
             	
             	<p:outputLabel for="account" value="Fra konto: " /> 
             	<p:selectOneMenu id="account" value="#{accountTransferBean.account}">
@@ -23,26 +23,26 @@
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
                 	<f:selectItems value="#{accountTransferBean.accounts}" />
             	</p:selectOneMenu>
-            	
+            		<br></br>
 
                 <h:outputLabel value="Til konto:" />
-                <h:inputText p:placeholder="Indtast kontonummer" />
+                <h:inputText p:placeholder="Indtast kontonummer" value="#{accountTransferBean.kontonummer}"/>
                 
                 <h:outputLabel value="Beløb:" />
-                <h:inputText p:type="number" p:step="1"  value="BELOOB"/>
-                
-                  <p:outputLabel for="restricted" value="Restricted:" /> 
-        		  <p:calendar id="restricted"  mindate="today"  />
+                <h:inputText p:type="number" p:step="1"  value="#{accountTransferBean.amount}"/>
+                <br></br>
+                  <p:outputLabel for="restricted" value="indsæt Dato" /> 
+        		  <p:calendar id="restricted" value="#{accountTransferBean.date}" mindate="today"  />
          
-                
+                <br></br>
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />
                 <h:inputText value="#{accountTransferBean.inmessage}"/>
-                
+                <br></br>
                 <h:outputLabel value="Besked til modtager:" />
                 <h:inputText p:type="number" p:step="1"  value="#{accountTransferBean.outmessage}"/>
-
+				<br></br>
             </h:panelGrid>
-            <h:commandButton value="ボタン"  action="#{accountTransferBean.buttonaction()}"/>
+            <h:commandButton value="ボタン"  action="#{accountTransferBean}"/>
         </h:form>
     </h:body>
 	

@@ -24,7 +24,7 @@ import dk.eamv.bank.ejb.HomeBanking;
 @RequestScoped
 public class AccountTransferBean implements Serializable {
 
-	@EJB private HomeBanking hb_ejb;
+	@EJB private HomeBanking homebank;
 	
 	/**
 	 * 
@@ -38,7 +38,7 @@ public class AccountTransferBean implements Serializable {
 	 private Date selectedDate;
 	 private String inmessage;
 	 private String outmessage;
-	 
+	 private BigDecimal amount; 
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 //getters and setters
 	 public String getAccount() {
@@ -87,14 +87,14 @@ public class AccountTransferBean implements Serializable {
 	public void setOutmessage(String message) {
 		outmessage = message;
 	}
-	
-	public void setNewEntry() {
-		
+	public BigDecimal getAmount() {
+		return amount;
+	}
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
 	}
 	
-	public void buttonaction() {
 	
-}
 	
 	
 }
