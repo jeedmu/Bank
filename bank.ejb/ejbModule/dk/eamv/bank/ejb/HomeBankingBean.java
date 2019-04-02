@@ -9,15 +9,9 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import dk.eamv.bank.domain.Account;
-import dk.eamv.bank.domain.Bank;
-import dk.eamv.bank.domain.Customer;
-import dk.eamv.bank.domain.Entry;
-import dk.eamv.bank.domain.Transfer;
-import dk.eamv.bank.ejb.entitybeans.AccountBean;
-import dk.eamv.bank.ejb.entitybeans.BankBean;
-import dk.eamv.bank.ejb.entitybeans.EntryBean;
-import dk.eamv.bank.ejb.entitybeans.ForeignEntryBean;
+import dk.eamv.bank.domain.*;
+import dk.eamv.bank.ejb.entitybeans.*;
+import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 
 /**
@@ -30,6 +24,7 @@ public class HomeBankingBean implements HomeBanking {
 	@EJB private EntryBean entryBean;
 	@EJB private BankBean bankBean;
 	@EJB private ForeignEntryBean foreignEntryBean;
+	@EJB private CustomerBean customerBean;
 
 	public HomeBankingBean() {}
 
@@ -61,11 +56,18 @@ public class HomeBankingBean implements HomeBanking {
 				  .setDescription(transferInfo.getFromDescription())
 				  .build();
 		
-		Entry toEntry = fromAndToAccount.get(2);
+		Entry toEntry = new Entry.Builder()
+				  .setAccountNumber(transferInfo.getToAccount().getAccountNumber())
+				  .setRegNumber(transferInfo.getRegNumber())
+				  .setAmount(transferInfo.getAmount())
+				  .setEntryID(0)
+				  .setDate(transferInfo.getDate())
+				  .setDescription(transferInfo.getToDescription())
+				  .build();
 		
 		if (accountsBelongToSameBank(fromEntry.getAccountNumber(), toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
 			if (accountExists(fromEntry.getAccountNumber(), fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(), fromEntry.getRegNumber())) {
-				if (customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())) {
+				if (customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(), fromEntry.getRegNumber())) {
 					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount(),fromEntry.getRegNumber())) {
 						try {
 							// create entries in database
@@ -85,7 +87,7 @@ public class HomeBankingBean implements HomeBanking {
 		}
 		else
 			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && ifForeignBankExsist(toEntry.getRegNumber())) {
-				if(customerHasAccountRights(fromEntry.getAccountNumber(), customerID,fromEntry.getRegNumber())){
+				if(customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(),fromEntry.getRegNumber())){
 					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
 						
 						Entry foreignBankEntry = new Entry.Builder()
@@ -126,7 +128,6 @@ public class HomeBankingBean implements HomeBanking {
 	 */
 	private boolean updateBalance(Entry entry, boolean add) {
 		
-		
 		Account account = accountBean.read(entry.getRegNumber(),entry.getAccountNumber()).get();
 		
 		if (add)
@@ -136,8 +137,6 @@ public class HomeBankingBean implements HomeBanking {
 		
 		accountBean.update(account);
 		return true;
-		
-		
 	}
 
 	
@@ -158,36 +157,7 @@ public class HomeBankingBean implements HomeBanking {
 	private boolean accountExists(int accountNo, int accountReg) {
 		return accountBean.read(accountReg,accountNo).isPresent();
 	}
-
-	private ArrayList<Entry> translateHashmapIntoEntries(HashMap<String, String> mappedEntry) {
-		ArrayList<Entry> list = new ArrayList<Entry>();
-
-		
-		Entry fromEntry = new Entry.Builder()
-								   .setAmount(new BigDecimal(mappedEntry.get("amount")))
-								   .setDate(LocalDateTime.now())
-								   .setDescription(mappedEntry.get("fromDescription"))
-								   .setEntryID(0)
-								   .setAccountNumber(Integer.parseInt(mappedEntry.get("fromAccount")))
-								   .setRegNumber(Integer.parseInt(mappedEntry.get("regNumber")))
-								   .build();
-
-		
-		
-		Entry toEntry = new Entry.Builder()
-								 .setAmount(new BigDecimal(mappedEntry.get("amount")))
-								 .setDate(LocalDateTime.now())
-								 .setDescription(mappedEntry.get("toDescription"))
-								 .setEntryID(0)
-								 .setAccountNumber(Integer.parseInt(mappedEntry.get("toAccount")))
-								 .setRegNumber(Integer.parseInt(mappedEntry.get("regNumber")))
-								 .build();
-
-		list.add(fromEntry);
-		list.add(toEntry);
-
-		return list;
-	}
+	
 	private boolean ifForeignBankExsist(int regNumber) {
 		return bankBean.read(regNumber).isPresent();
 	}
@@ -199,9 +169,16 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	@Override
-	public Customer readCustomer(String cprn) {
-		// TODO Auto-generated method stub
-		return null;
+	public Customer readCustomer(String ssn) {
+		CustomerSearchParameters param = new CustomerSearchParameters();
+		param.setSSN(ssn);
+		
+		List<Customer> result = customerBean.getCustomers(param);
+		
+		if (result.size()>0)
+			return result.get(0);
+		else
+			throw new CustomerNotFoundException();
 	}
 
 	
