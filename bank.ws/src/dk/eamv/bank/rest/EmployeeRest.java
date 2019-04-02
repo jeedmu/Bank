@@ -105,10 +105,14 @@ public class EmployeeRest implements Employee{
 		return returnList;
 	}
 	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("createAccount")
 	@Override
 	public boolean createAccount(Account account) {
-		// TODO Auto-generated method stub
-		return false;
+		aB.create(account);
+		return true;
 	}
 
 	@POST
