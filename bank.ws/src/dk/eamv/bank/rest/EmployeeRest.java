@@ -36,17 +36,7 @@ public class EmployeeRest implements Employee{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editCustomer")
 	@Override
-	public boolean editCustomer(Customer cD, LocalDate changeDate) {
-		CustomerChanges cC = new CustomerChanges.Builder(cD.getCustomerID(), cD.getSSN(), changeDate)
-											.setFirstName(cD.getFirstName())
-											.setSurName(cD.getSurName())
-											.setAddress(cD.getAddress())
-											.setCountry(cD.getCountry())
-											.setZipCode(cD.getZipCode())
-											.setCity(cD.getCity())
-											.setEmail(cD.getEmail())
-											.setPhoneNumber(cD.getPhoneNumber())
-											.build();
+	public boolean editCustomer(CustomerChanges cC) {
 		cCB.create(cC);
 		return true;
 	}
@@ -106,7 +96,8 @@ public class EmployeeRest implements Employee{
 		List<Entry> entryList = eB.list(account.getAccountNumber(), account.getRegNumber());
 		List<Entry> returnList = new ArrayList<Entry>();
 		for(Entry e : entryList) {
-			if((e.getDate().isAfter(fromDate) || e.getDate().isEqual(fromDate)) && (e.getDate().isBefore(toDate)|| e.getDate().isEqual(toDate))) {
+			if((e.getDate().isAfter(fromDate) || e.getDate().isEqual(fromDate)) 
+			&& (e.getDate().isBefore(toDate)|| e.getDate().isEqual(toDate))) {
 				returnList.add(e);
 			}
 		}

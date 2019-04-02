@@ -10,6 +10,7 @@ import javax.ejb.Local;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.domain.CustomerChanges;
 import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.domain.Entry;
 
@@ -25,7 +26,7 @@ public interface Employee {
 	 */
 	public List<Customer> getCustomers(CustomerSearchParameters parameters);
 	
-	public boolean editCustomer(Customer customerData, LocalDate changeDate);
+	public boolean editCustomer(CustomerChanges customer);
 
 	public List<Account> getAccounts(int customerID);
 	
