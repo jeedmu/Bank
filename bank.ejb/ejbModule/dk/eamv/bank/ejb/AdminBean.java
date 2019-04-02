@@ -4,6 +4,8 @@ import java.util.HashMap;
 
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.domain.User;
+
 /**
  * Session Bean implementation class AdminBean
  */
@@ -18,7 +20,7 @@ public class AdminBean implements Admin {
     }
 
 	@Override
-	public boolean editUser(HashMap<String, String> user) {
+	public boolean editUser(User user) {
 		// TODO Auto-generated method stub
 		return false;
 	}
