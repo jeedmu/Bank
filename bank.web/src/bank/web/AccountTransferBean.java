@@ -17,6 +17,7 @@ import javax.inject.Named;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.domain.Transfer;
 import dk.eamv.bank.ejb.HomeBanking;
 
 
@@ -34,11 +35,32 @@ public class AccountTransferBean implements Serializable {
 	Account opsparing = new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").build();
 	Account ferie = new Account.Builder(11,2201, 894891981).setBalance(BigDecimal.ONE).setAccountName("Ferie").build();
 	 private String account;
-	 private int kontonummer;
-	 private Date selectedDate;
+	 private String kontonummer;
+	 private LocalDateTime selectedDate;
 	 private String inmessage;
 	 private String outmessage;
 	 private BigDecimal amount; 
+	 private String regNummer;
+	 private Map accountmap;
+	 
+	 private int changenumber(String input) {
+		 int result = Integer.parseInt(input);
+		 return result;
+	 }
+	 
+	 
+	 
+	 
+	 public void sendData() {
+		Transfer transfer = new Transfer();
+		
+		transfer.setAmount(this.amount);
+		transfer.setRegNumber(changenumber(this.regNummer));
+		transfer.setFromDescription(this.inmessage);
+		transfer.setToDescription(this.outmessage);
+		
+		Object value = accountmap.get("I have no fucking idea how the fuck I should get anything out of this "); 
+		}
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 //getters and setters
 	 public String getAccount() {
@@ -55,23 +77,23 @@ public class AccountTransferBean implements Serializable {
 		   accounts  = new HashMap<String, Account>();
 	        accounts.put("opsparing",opsparing );
 	        accounts.put("ferie",ferie );
-	        
-	        return accounts;
+	        accountmap = accounts;
+	        return accountmap;
 		//return homeBanking.showAccounts("");
 	}
 	
 	
-	public int getKontonummer() {
+	public String getKontonummer() {
 		return kontonummer;
 	}
-	public void setKontonummer(int kontnummer){
+	public void setKontonummer(String kontnummer){
 		kontonummer = kontnummer;
 	}
 	
-	public Date getDate() {
+	public LocalDateTime getDate() {
 		return selectedDate;
 	}
-	public void setDate(Date date) {
+	public void setDate(LocalDateTime date) {
 		selectedDate = date;
 	}
 	
@@ -93,6 +115,13 @@ public class AccountTransferBean implements Serializable {
 	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
+	public String getRegNummer() {
+		return regNummer;
+	}
+	public void setRegNummer(String regNummer) {
+		this.regNummer = regNummer;
+	}
+	
 	
 	
 	

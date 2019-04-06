@@ -26,13 +26,15 @@
             		<br></br>
 
                 <h:outputLabel value="Til konto:" />
-                <h:inputText p:placeholder="Indtast kontonummer" value="#{accountTransferBean.kontonummer}"/>
+                <h:inputText maxlength="4" size="4" p:placeholder="indtast register nummer" value="#{accountTransferBean.regNummer}" />
+                <h:inputText p:placeholder="Indtast kontonummer" size="15" value="#{accountTransferBean.kontonummer}"/>
+               
                 
                 <h:outputLabel value="Beløb:" />
                 <h:inputText p:type="number" p:step="1"  value="#{accountTransferBean.amount}"/>
                 <br></br>
                   <p:outputLabel for="restricted" value="indsæt Dato" /> 
-        		  <p:calendar id="restricted" value="#{accountTransferBean.date}" mindate="today"  />
+        		  <p:calendar id="restricted" size="9" value="#{accountTransferBean.date}" mindate="today"  />
          
                 <br></br>
                 <h:outputLabel value="Tekst til egen kontoudskrift:" />
