@@ -2,6 +2,7 @@ package dk.eamv.bank.ejb.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,6 +14,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.validation.constraints.NotNull;
 
+import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
 
 @NamedQueries({ @NamedQuery(name = "allUsers", query = "SELECT p FROM user p " + "ORDER BY p.userId"),
@@ -75,7 +77,7 @@ public class UserEntity {
 	}
 	
 	public User toDomain() {
-		return new User(this.userId, this.name, this.password);
+		return new User(this.userId, this.name, this.password, toRoles());
 	}
 
 	public String getUserId() {
@@ -100,6 +102,13 @@ public class UserEntity {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	private List<Role> toRoles() {
+		return this.roles
+		.stream()
+		.map(r -> r.toDomain())
+		.collect(Collectors.toList());
 	}
 
 }
