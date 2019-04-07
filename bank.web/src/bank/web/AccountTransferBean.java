@@ -58,8 +58,9 @@ public class AccountTransferBean implements Serializable {
 		transfer.setRegNumber(changenumber(this.regNummer));
 		transfer.setFromDescription(this.inmessage);
 		transfer.setToDescription(this.outmessage);
-		
-		Object value = accountmap.get("I have no fucking idea how the fuck I should get anything out of this "); 
+		// kan ikke få en account ud af hash map
+//		transfer.setFromAccount(fromAccount);
+//		Account afsender = accountmap.get(key)
 		}
 	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
 	 //getters and setters
