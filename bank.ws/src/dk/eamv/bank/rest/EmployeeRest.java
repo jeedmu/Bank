@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,10 +28,10 @@ import dk.eamv.bank.ejb.entitybeans.EntryBean;
 
 @Path("/employee")
 public class EmployeeRest implements Employee{
-	CustomerChangeBean cCB;	
-	CustomerBean cB;
-	AccountBean aB;
-	EntryBean eB;
+	@EJB CustomerChangeBean cCB;	
+	@EJB CustomerBean cB;
+	@EJB AccountBean aB;
+	@EJB EntryBean eB;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
@@ -63,38 +64,36 @@ public class EmployeeRest implements Employee{
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("deleteAccount/{reg}&{acc}")
+	@Path("deleteAccount/{reg}/{acc}")
 	@Override
 	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
 		aB.delete(reg, acc);
 		return true;
 	}
 
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("customerSearch")
+	@Path("customerSearch/{customerSearch}")
 	@Override
-	public List<Customer> getCustomers(CustomerSearchParameters parameters) {
+	public List<Customer> getCustomers(@PathParam("customerSearch") CustomerSearchParameters parameters) {
 		return cB.getCustomers(parameters);
 	}
 
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("accounts")
+	@Path("accounts/{customerID}")
 	@Override
-	public List<Account> getAccounts(int customerID) {
+	public List<Account> getAccounts(@PathParam("customerID") int customerID) {
 		return aB.list(customerID);
 	}
 
 	
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("showEntries")
+	@Path("showEntries/{regNo}-{accountNo}/{fromDate}-{toDate}")
 	@Override
-	public List<Entry> showEntries(Account account, LocalDateTime fromDate, LocalDateTime toDate) {
-		List<Entry> entryList = eB.list(account.getAccountNumber(), account.getRegNumber());
+	public List<Entry> showEntries(@PathParam("regNo")int regNo, @PathParam("accountNo") int accountNo, @PathParam("fromDate") LocalDateTime fromDate, @PathParam("toDate") LocalDateTime toDate) {
+		List<Entry> entryList = eB.list(accountNo, regNo);
 		List<Entry> returnList = new ArrayList<Entry>();
 		for(Entry e : entryList) {
 			if((e.getDate().isAfter(fromDate) || e.getDate().isEqual(fromDate)) 

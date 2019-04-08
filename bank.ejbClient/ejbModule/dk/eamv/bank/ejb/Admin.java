@@ -1,6 +1,7 @@
 package dk.eamv.bank.ejb;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.Local;
 
@@ -19,9 +20,9 @@ public interface Admin {
 	
 	public boolean createUser(User user);
 	
-	public boolean getUsers();
+	public List<User> getUsers();
 	
-	public boolean getUser(String userId);
+	public List<User> getUser(String userId);
 	
 	public boolean editRole(Role role);
 	
@@ -29,9 +30,9 @@ public interface Admin {
 	
 	public boolean createRole(Role role);
 	
-	public boolean getRoles();
+	public List<Role> getRoles();
 	
-	public boolean getRole(int roleID);
+	public List<Role> getRole(String roleID);
 	
 	public boolean editProperty(Property property);
 	
@@ -39,8 +40,8 @@ public interface Admin {
 	
 	public boolean createProperty(Property property);
 	
-	public boolean getProperties();
+	public List<Property> getProperties();
 	
-	public boolean getProperty(String property);
+	public List<Property> getProperty(String property);
 	
 }

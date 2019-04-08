@@ -41,13 +41,13 @@ public class AccountTransferBean implements Serializable {
 	 private String outmessage;
 	 private BigDecimal amount; 
 	 private String regNummer;
-	 private Map accountmap;
+	 private Map<String, Account> accountmap;
 	 
 	 private int changenumber(String input) {
 		 int result = Integer.parseInt(input);
 		 return result;
 	 }
-	 
+
 	 
 	 
 	 
@@ -58,6 +58,10 @@ public class AccountTransferBean implements Serializable {
 		transfer.setRegNumber(changenumber(this.regNummer));
 		transfer.setFromDescription(this.inmessage);
 		transfer.setToDescription(this.outmessage);
+		transfer.setFromAccount(accountmap.get(account));
+		transfer.setToAccountAccountNumber(changenumber(this.kontonummer));
+		//transfer.setToAccount(this.regNummer);
+		//this.getAccounts().get(accountmap.get(account))
 		// kan ikke få en account ud af hash map
 //		transfer.setFromAccount(fromAccount);
 //		Account afsender = accountmap.get(key)
