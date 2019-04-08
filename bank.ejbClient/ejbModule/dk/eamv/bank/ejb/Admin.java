@@ -32,7 +32,7 @@ public interface Admin {
 	
 	public List<Role> getRoles();
 	
-	public List<Role> getRole(int roleID);
+	public List<Role> getRole(String roleID);
 	
 	public boolean editProperty(Property property);
 	

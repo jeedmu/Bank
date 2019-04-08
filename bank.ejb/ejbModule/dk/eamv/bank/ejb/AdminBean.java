@@ -56,35 +56,32 @@ public class AdminBean implements Admin {
 	public List<User> getUser(String search) {
 		return uB.namedList(search);
 	}
-
 	@Override
 	public boolean editRole(Role role) {
-		// TODO Auto-generated method stub
-		return false;
+		rB.update(role);
+		return true;
 	}
 
 	@Override
 	public boolean deleteRole(int roleID) {
-		// TODO Auto-generated method stub
-		return false;
+		rB.delete(roleID);
+		return true;
 	}
 
 	@Override
 	public boolean createRole(Role role) {
-		// TODO Auto-generated method stub
-		return false;
+		rB.create(role);
+		return true;
 	}
 
 	@Override
 	public List<Role> getRoles() {
-		// TODO Auto-generated method stub
-		return false;
+		return rB.list();
 	}
 
 	@Override
-	public List<Role> getRole(int roleID) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Role> getRole(String roleID) {
+		return rB.namedList(roleID);
 	}
 
 	@Override
