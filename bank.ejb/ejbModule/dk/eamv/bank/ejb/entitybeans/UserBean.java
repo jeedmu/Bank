@@ -17,7 +17,7 @@ import dk.eamv.bank.ejb.exception.UserNotFoundException;
  */
 @Stateless
 @LocalBean
-public class UserBean implements UserBeanLocal {
+public class UserBean {
 	@PersistenceContext
 	private EntityManager em;
 
