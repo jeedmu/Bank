@@ -71,25 +71,24 @@ public class EmployeeRest implements Employee{
 		return true;
 	}
 
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("customerSearch")
+	@Path("customerSearch/{customerSearch}")
 	@Override
-	public List<Customer> getCustomers(CustomerSearchParameters parameters) {
+	public List<Customer> getCustomers(@PathParam("customerSearch") CustomerSearchParameters parameters) {
 		return cB.getCustomers(parameters);
 	}
 
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("accounts")
+	@Path("accounts/{customerID}")
 	@Override
-	public List<Account> getAccounts(int customerID) {
+	public List<Account> getAccounts(@PathParam("customerID") int customerID) {
 		return aB.list(customerID);
 	}
 
 	
-	@POST
+	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("showEntries")
