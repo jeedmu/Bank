@@ -1,6 +1,7 @@
 package dk.eamv.bank.ejb;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.Local;
 

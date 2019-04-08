@@ -1,6 +1,7 @@
 package dk.eamv.bank.ejb;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -52,7 +53,7 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public User getUser(String search) {
+	public List<User> getUser(String search) {
 		return uB.namedList(search);
 	}
 
@@ -75,13 +76,13 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public boolean getRoles() {
+	public List<Role> getRoles() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean getRole(int roleID) {
+	public List<Role> getRole(int roleID) {
 		// TODO Auto-generated method stub
 		return false;
 	}
@@ -105,13 +106,13 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public boolean getProperties() {
+	public List<Property> getProperties() {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean getProperty(String property) {
+	public List<Property> getProperty(String property) {
 		// TODO Auto-generated method stub
 		return false;
 	}
