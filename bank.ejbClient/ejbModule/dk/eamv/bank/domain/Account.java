@@ -20,6 +20,7 @@ public class Account {
 			this.customerID = customerID;
 			this.regNumber = regNumber;
 			this.accountNumber = accountNumber;
+			balance = BigDecimal.ZERO;
 		}
 		
 		public Builder setAccountName(String accountName) {

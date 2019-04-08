@@ -26,19 +26,19 @@ public interface Employee {
 	 */
 	public List<Customer> getCustomers(CustomerSearchParameters parameters);
 	
-	public boolean editCustomer(CustomerChanges customer);
+	public void editCustomer(CustomerChanges customer);
 
 	public List<Account> getAccounts(int customerID);
 	
-	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to);
+	public List<Entry> showEntries(int regNo, int accountNo, LocalDateTime from, LocalDateTime to);
 	
-	public boolean createAccount(Account account);
+	public void createAccount(Account account);
 	
-	public boolean createCustomer(Customer customer);
+	public void createCustomer(Customer customer);
 	
-	public boolean deleteCustomer(int customerID);
+	public void deleteCustomer(int customerID);
 
-	public boolean editAccount(Account account);
+	public void editAccount(Account account);
 
-	public boolean deleteAccount(int regNumber, int accountNo);	
+	public void deleteAccount(int regNumber, int accountNo);	
 }

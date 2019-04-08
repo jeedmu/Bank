@@ -2,6 +2,7 @@ package dk.eamv.bank.ejb;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,6 +20,7 @@ import dk.eamv.bank.ejb.entitybeans.EntryBean;
 import dk.eamv.bank.ejb.exception.AccountAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
+import dk.eamv.bank.ejb.exception.CustomerChangeInPastException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
 /**
@@ -44,50 +46,26 @@ public class EmployeeBean implements Employee {
 
     // fix return from customer changes 
 	@Override
-	public boolean editCustomer(CustomerChanges customerData) {
+	public void editCustomer(CustomerChanges customerData) {
 		if(customerData.getChangeDate().compareTo(LocalDate.now()) < 0)
-			return false;
+			throw new CustomerChangeInPastException();
+		
 		customerChangesBean.create(customerData);
-		return true;
 	}
 
 	@Override
-	public boolean deleteCustomer(int customerID) {
-		try 
-		{
-			customerBean.delete(customerID);
-			return true;
-		}
-		catch(CustomerNotFoundException e)
-		{
-			return false;
-		}
+	public void deleteCustomer(int customerID) {
+		customerBean.delete(customerID);
 	}
 
 	@Override
-	public boolean editAccount(Account account) {
-		try 
-		{
-			accountBean.update(account);
-			return true;
-		}
-		catch(AccountNotFoundException e)
-		{
-			return false;
-		}
+	public void editAccount(Account account) {
+		accountBean.update(account);
 	}
 
 	@Override
-	public boolean deleteAccount(int regNumber, int accountNo) {
-		try 
-		{
-			accountBean.delete(regNumber, accountNo);
-			return true;
-		}
-		catch(AccountNotFoundException e)
-		{
-			return false;
-		}
+	public void deleteAccount(int regNumber, int accountNo) {
+		accountBean.delete(regNumber, accountNo);
 	}
 
 
@@ -98,28 +76,28 @@ public class EmployeeBean implements Employee {
 
 
 	@Override
-	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to) {
-		return entryBean.list(account.getAccountNumber(), account.getRegNumber());
-	}
-
-
-	@Override
-	public boolean createAccount(Account account) {
-		try {
-			accountBean.create(account);
-			return true;
-		}catch(AccountAlreadyExsistsException e) {
-			return false;	
+	public List<Entry> showEntries(int regNo, int accountNo, LocalDateTime from, LocalDateTime to) {
+		List<Entry> entries = entryBean.list(accountNo, regNo);
+		List<Entry> filteredEntries = new ArrayList<Entry>();
+		
+		for(Entry e : entries)
+		{
+			LocalDateTime date = e.getDate(); 
+			if((date.isAfter(from) && !date.isBefore(to)) || date.isEqual(from) || date.isEqual(to))
+				filteredEntries.add(e);
 		}
+		
+		return entries;
+	}
+
+
+	@Override
+	public void createAccount(Account account) {
+		accountBean.create(account);
 	}
 
 	@Override
-	public boolean createCustomer(Customer customer) {
-		try {
-			customerBean.create(customer);
-			return true;
-		}catch(CustomerAlreadyExsistsException e) {
-			return false;
-		}		
+	public void createCustomer(Customer customer) {
+		customerBean.create(customer);
 	}
 }
