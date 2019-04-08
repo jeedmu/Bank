@@ -89,32 +89,30 @@ public class AdminBean implements Admin {
 
 	@Override
 	public boolean editProperty(Property property) {
-		// TODO Auto-generated method stub
-		return false;
+		pB.update(property);
+		return true;
 	}
 
 	@Override
 	public boolean deleteProperty(String property) {
-		// TODO Auto-generated method stub
-		return false;
+		pB.delete(property);
+		return true;
 	}
 
 	@Override
 	public boolean createProperty(Property property) {
-		// TODO Auto-generated method stub
-		return false;
+		pB.create(property);
+		return true;
 	}
 
 	@Override
 	public List<Property> getProperties() {
-		// TODO Auto-generated method stub
-		return false;
+		return pB.list();
 	}
 
 	@Override
-	public List<Property> getProperty(String property) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<Property> getProperty(String search) {
+		return pB.search(search);
 	}
 
 }
