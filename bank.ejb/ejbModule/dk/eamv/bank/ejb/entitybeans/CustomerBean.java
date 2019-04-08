@@ -14,7 +14,8 @@ import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.ejb.entity.CustomerEntity;
 import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
-import dk.eamv.bank.ejb.exception.CustomerNotFoundException;;
+import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
+import dk.eamv.bank.ejb.exception.SSNAlreadyInUseException;;
 
 /**
  * Session Bean implementation class CustomerBean
@@ -30,7 +31,12 @@ public class CustomerBean {
     	if(optional.isPresent())
     		throw new CustomerAlreadyExsistsException();
     	else
-    		em.persist(new CustomerEntity(customer));
+    	{
+    		if(!isUserWithSsnRegistered(customer.getSSN()))
+    			em.persist(new CustomerEntity(customer));
+    		else 
+    			throw new SSNAlreadyInUseException(); 
+    	}
     }
 	public Optional<Customer> read(int customerID){
     	CustomerEntity entity = em.find(CustomerEntity.class, customerID);
@@ -71,6 +77,14 @@ public class CustomerBean {
     				.map(c -> c.toDomain())
     				.collect(Collectors.toList());
     				
+    }
+    
+    private boolean isUserWithSsnRegistered(String ssn)
+    {
+    	CustomerSearchParameters params = new CustomerSearchParameters();
+    	params.setSSN(ssn);
+    	
+    	return getCustomers(params).size() > 0;
     }
     
     public List<Customer> namedList(String search){
