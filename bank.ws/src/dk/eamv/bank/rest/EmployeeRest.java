@@ -64,7 +64,7 @@ public class EmployeeRest implements Employee{
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("deleteAccount/{reg}&{acc}")
+	@Path("deleteAccount/{reg}/{acc}")
 	@Override
 	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
 		aB.delete(reg, acc);
@@ -90,11 +90,10 @@ public class EmployeeRest implements Employee{
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Path("showEntries")
+	@Path("showEntries/{regNo}-{accountNo}/{fromDate}-{toDate}")
 	@Override
-	public List<Entry> showEntries(Account account, LocalDateTime fromDate, LocalDateTime toDate) {
-		List<Entry> entryList = eB.list(account.getAccountNumber(), account.getRegNumber());
+	public List<Entry> showEntries(@PathParam("regNo")int regNo, @PathParam("accountNo") int accountNo, @PathParam("fromDate") LocalDateTime fromDate, @PathParam("toDate") LocalDateTime toDate) {
+		List<Entry> entryList = eB.list(accountNo, regNo);
 		List<Entry> returnList = new ArrayList<Entry>();
 		for(Entry e : entryList) {
 			if((e.getDate().isAfter(fromDate) || e.getDate().isEqual(fromDate)) 

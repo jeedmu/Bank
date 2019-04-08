@@ -98,8 +98,8 @@ public class EmployeeBean implements Employee {
 
 
 	@Override
-	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to) {
-		return entryBean.list(account.getAccountNumber(), account.getRegNumber());
+	public List<Entry> showEntries(int regNo, int accountNo, LocalDateTime from, LocalDateTime to) {
+		return entryBean.list(accountNo, regNo);
 	}
 
 
