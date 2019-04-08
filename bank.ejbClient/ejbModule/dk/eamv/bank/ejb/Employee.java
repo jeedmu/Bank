@@ -30,7 +30,7 @@ public interface Employee {
 
 	public List<Account> getAccounts(int customerID);
 	
-	public List<Entry> showEntries(Account account, LocalDateTime from, LocalDateTime to);
+	public List<Entry> showEntries(int regNo, int accountNo, LocalDateTime from, LocalDateTime to);
 	
 	public boolean createAccount(Account account);
 	

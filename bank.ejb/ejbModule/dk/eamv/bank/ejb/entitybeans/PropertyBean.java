@@ -61,7 +61,7 @@ public class PropertyBean {
 	}
 
 	public List<Property> list() {
-		return em.createNamedQuery("searchProperties", PropertyEntity.class)
+		return em.createNamedQuery("allProperties", PropertyEntity.class)
 				.getResultList()
 				.stream()
 				.map(p -> p.toDomain())
@@ -70,7 +70,7 @@ public class PropertyBean {
 	}
 
 	public List<Property> search(String search) {
-		return em.createNamedQuery("searchProperties", PropertyEntity.class)
+		return em.createNamedQuery("searchProperty", PropertyEntity.class)
 				.setParameter("search", search)
 				.getResultList()
 				.stream()
