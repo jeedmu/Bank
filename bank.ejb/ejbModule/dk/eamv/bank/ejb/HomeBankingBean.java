@@ -128,7 +128,7 @@ public class HomeBankingBean implements HomeBanking {
 	 */
 	private boolean updateBalance(Entry entry, boolean add) {
 		
-		Account account = accountBean.read(entry.getRegNumber(),entry.getAccountNumber()).get();
+		Account account = accountBean.read(entry.getAccountNumber()).get();
 		
 		if (add)
 			account.setBalance(account.getBalance().add(entry.getAmount()));
@@ -141,21 +141,21 @@ public class HomeBankingBean implements HomeBanking {
 
 	
 	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo,int accountReg) {
-		return accountBean.read(accountReg,fromAccountNo).get().getRegNumber() == accountBean.read(accountReg,toAccountNo).get()
+		return accountBean.read(fromAccountNo).get().getRegNumber() == accountBean.read(toAccountNo).get()
 				.getRegNumber();
 	}
 
 	private boolean customerHasAccountRights(int accountNo, int customerID,int accountReg) {
-		return accountBean.read(accountReg,accountNo).get().getCustomerID() == customerID;
+		return accountBean.read(accountNo).get().getCustomerID() == customerID;
 	}
 
 	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount, int accountReg) {
-		Account account = new AccountBean().read(accountReg,accountNo).get();
+		Account account = new AccountBean().read(accountNo).get();
 		return account.getBalance().compareTo(amount) != -1;
 	}
 
 	private boolean accountExists(int accountNo, int accountReg) {
-		return accountBean.read(accountReg,accountNo).isPresent();
+		return accountBean.read(accountNo).isPresent();
 	}
 	
 	private boolean ifForeignBankExsist(int regNumber) {
