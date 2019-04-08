@@ -51,7 +51,7 @@ public class RoleEntity {
 	}
 	
 	public Role toDomain() {
-		return new Role.Builder(this.roleID, this.roleName).build();
+		return new Role(this.roleID, this.roleName);
 	}
 
 	public int getRoleID() {

@@ -28,8 +28,8 @@ public class TestUserServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		if (request.getParameter("test").equalsIgnoreCase("1")) {
-			Role role1 = new Role.Builder(0, "Role1").build();
-			Role role2 = new Role.Builder(0, "Role2").build();
+			Role role1 = new Role(0, "Role1");
+			Role role2 = new Role(0, "Role2");
 			role1 = admin.createRole(role1);
 			role2 = admin.createRole(role2);
 			User user1 = new User("userid1", "User1", "1", Arrays.asList(role1));
