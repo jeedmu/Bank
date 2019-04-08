@@ -11,7 +11,6 @@ import javax.persistence.PersistenceContext;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.ejb.entity.AccountEntity;
-import dk.eamv.bank.ejb.entity.AccountKey;
 import dk.eamv.bank.ejb.exception.AccountAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 
@@ -25,7 +24,7 @@ public class AccountBean {
 	@PersistenceContext private EntityManager em;
 
 	public void create(Account account) {
-		Optional<Account> optional = read(account.getRegNumber(), account.getAccountNumber());
+		Optional<Account> optional = read(account.getAccountNumber());
 		if (optional.isPresent()) {
 			throw new AccountAlreadyExsistsException();
 		} else {
@@ -33,8 +32,8 @@ public class AccountBean {
 		}
 	}
 	
-	public Optional<Account> read(int regNumber, int accountNumber){
-		AccountEntity entity = em.find(AccountEntity.class, new AccountKey(regNumber, accountNumber));
+	public Optional<Account> read(int accountNumber){
+		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			return Optional.of(entity.toDomain());
 		} else {
@@ -43,7 +42,7 @@ public class AccountBean {
 	}
 	
 	public void update(Account account) {
-		AccountEntity entity = em.find(AccountEntity.class, new AccountKey(account.getRegNumber(), account.getAccountNumber()));
+		AccountEntity entity = em.find(AccountEntity.class, account.getAccountNumber());
 		if (entity != null) {
 			entity.setAccountName(account.getAccountName());
 			entity.setBalance(account.getBalance());
@@ -53,7 +52,7 @@ public class AccountBean {
 	}
 	
 	public void delete(int regNumber, int accountNumber) {
-		AccountEntity entity = em.find(AccountEntity.class, new AccountKey(regNumber, accountNumber));
+		AccountEntity entity = em.find(AccountEntity.class, accountNumber);
 		if (entity != null) {
 			em.remove(entity);
 		} else {
