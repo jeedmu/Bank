@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -27,10 +28,10 @@ import dk.eamv.bank.ejb.entitybeans.EntryBean;
 
 @Path("/employee")
 public class EmployeeRest implements Employee{
-	CustomerChangeBean cCB;	
-	CustomerBean cB;
-	AccountBean aB;
-	EntryBean eB;
+	@EJB CustomerChangeBean cCB;	
+	@EJB CustomerBean cB;
+	@EJB AccountBean aB;
+	@EJB EntryBean eB;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)

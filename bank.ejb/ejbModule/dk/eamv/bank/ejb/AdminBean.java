@@ -2,17 +2,24 @@ package dk.eamv.bank.ejb;
 
 import java.util.HashMap;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
+import dk.eamv.bank.ejb.entitybeans.PropertyBean;
+import dk.eamv.bank.ejb.entitybeans.RoleBean;
+import dk.eamv.bank.ejb.entitybeans.UserBean;
 
 /**
  * Session Bean implementation class AdminBean
  */
 @Stateless
 public class AdminBean implements Admin {
+	@EJB UserBean uB;
+	@EJB RoleBean rB;
+	@EJB PropertyBean pB;
 
     /**
      * Default constructor. 
@@ -23,32 +30,30 @@ public class AdminBean implements Admin {
 
 	@Override
 	public boolean editUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		uB.update(user);
+		return true;
 	}
 
 	@Override
 	public boolean deleteUser(String id) {
-		// TODO Auto-generated method stub
-		return false;
+		uB.delete(id);
+		return true;
 	}
 
 	@Override
 	public boolean createUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		uB.create(user);
+		return true;
 	}
 
 	@Override
-	public boolean getUsers() {
-		// TODO Auto-generated method stub
-		return false;
+	public List<User> getUsers() {
+		return uB.list();
 	}
 
 	@Override
-	public boolean getUser(String userId) {
-		// TODO Auto-generated method stub
-		return false;
+	public User getUser(String search) {
+		return uB.namedList(search);
 	}
 
 	@Override
