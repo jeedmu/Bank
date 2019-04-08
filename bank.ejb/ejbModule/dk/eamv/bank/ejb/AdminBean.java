@@ -1,7 +1,7 @@
 package dk.eamv.bank.ejb;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -42,9 +42,8 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public boolean createUser(User user) {
-		uB.create(user);
-		return true;
+	public User createUser(User user) {
+		return uB.create(user);
 	}
 
 	@Override
@@ -53,8 +52,8 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public List<User> getUser(String search) {
-		return uB.namedList(search);
+	public Optional<User> getUser(String userid) {
+		return uB.read(userid);
 	}
 	@Override
 	public boolean editRole(Role role) {
@@ -69,9 +68,8 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public boolean createRole(Role role) {
-		rB.create(role);
-		return true;
+	public Role createRole(Role role) {
+		return rB.create(role);
 	}
 
 	@Override

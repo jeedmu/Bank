@@ -20,13 +20,16 @@ import dk.eamv.bank.ejb.exception.RoleNotFoundException;
 public class RoleBean {
 	@PersistenceContext private EntityManager em;
     
-    public void create(Role role) {
+    public Role create(Role role) {
     	Optional<Role> optional = read(role.getRoleID());
     	
     	if(optional.isPresent())
     		throw new RoleAlreadyExistsException();
-    	else
-    		em.persist(new RoleEntity(role));
+    	else {
+    		RoleEntity entity = new RoleEntity(role);
+    		em.persist(entity);
+    		return entity.toDomain();
+    	}
     }
     
     public Optional<Role> read(int roleID){

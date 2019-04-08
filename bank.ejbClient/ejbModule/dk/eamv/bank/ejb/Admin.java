@@ -1,7 +1,7 @@
 package dk.eamv.bank.ejb;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Optional;
 
 import javax.ejb.Local;
 
@@ -18,17 +18,17 @@ public interface Admin {
 
 	public boolean deleteUser(String userId);
 	
-	public boolean createUser(User user);
+	public User createUser(User user);
 	
 	public List<User> getUsers();
 	
-	public List<User> getUser(String userId);
+	public Optional<User> getUser(String userId);
 	
 	public boolean editRole(Role role);
 	
 	public boolean deleteRole(int roleID);
 	
-	public boolean createRole(Role role);
+	public Role createRole(Role role);
 	
 	public List<Role> getRoles();
 	

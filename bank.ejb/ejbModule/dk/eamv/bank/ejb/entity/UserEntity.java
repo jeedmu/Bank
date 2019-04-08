@@ -1,11 +1,10 @@
 package dk.eamv.bank.ejb.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -17,9 +16,10 @@ import javax.validation.constraints.NotNull;
 import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
 
-@NamedQueries({ @NamedQuery(name = "allUsers", query = "SELECT p FROM user p " + "ORDER BY p.userId"),
+@NamedQueries({ 
+	@NamedQuery(name = "allUsers", query = "SELECT p FROM user p " + "ORDER BY p.userId"),
 
-		@NamedQuery(name = "searchUser", query = "SELECT p FROM user p " 
+	@NamedQuery(name = "searchUser", query = "SELECT p FROM user p " 
 												 + "WHERE p.name LIKE :search "
 												 + "ORDER BY p.userId") })
 
@@ -36,29 +36,19 @@ public class UserEntity {
 	private String password;
 
 	
-	@ManyToMany(cascade = {
-			CascadeType.PERSIST,
-			CascadeType.REMOVE
-	})
+	@ManyToMany(
+			fetch = FetchType.EAGER)
+//			cascade = {
+//					CascadeType.PERSIST,
+//					CascadeType.REMOVE
+//			})
 	@JoinTable(name="user_role",
 		joinColumns = @JoinColumn(name = "user_userId", referencedColumnName = "userId"),
 		inverseJoinColumns = @JoinColumn(name = "role_roleID", referencedColumnName = "roleID")
 	)
-	private List<RoleEntity> roles = new ArrayList<RoleEntity>();
+	private List<RoleEntity> roles;
 	
-	/*
-	public void addRoleEntity(RoleEntity role) {
-		roles.add(role);
-		role.getUsers().add(role);
-	}
-	
-	public void removeTag(RoleEntity role) {
-		roles.remove(role);
-		role.getUsers().remove(role);
-	}
-	*/
-	
-	
+
 	public List<RoleEntity> getRoles() {
 		return roles;
 	}
@@ -74,6 +64,10 @@ public class UserEntity {
 		this.userId = user.getUserId();
 		this.name = user.getName();
 		this.password = user.getPassword();
+		this.roles = user.getRoles()
+				.stream()
+				.map(r -> new RoleEntity(r))
+				.collect(Collectors.toList());
 	}
 	
 	public User toDomain() {

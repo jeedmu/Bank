@@ -21,13 +21,16 @@ public class UserBean implements UserBeanLocal {
 	@PersistenceContext
 	private EntityManager em;
 
-	public void create(User user) {
+	public User create(User user) {
 		Optional<User> optional = read(user.getUserId());
 
 		if (optional.isPresent())
 			throw new UserAlreadyExistsException();
-		else
-			em.persist(new UserEntity(user));
+		else {
+			UserEntity entity = new UserEntity(user);
+			em.persist(entity);
+			return entity.toDomain();
+		}
 	}
 
 	public Optional<User> read(String userId) {

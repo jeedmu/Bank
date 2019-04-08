@@ -49,7 +49,7 @@ public class HomeBankingBean implements HomeBanking {
 				
 		Entry fromEntry = new Entry.Builder()
 				  .setAccountNumber(transferInfo.getFromAccount().getAccountNumber())
-				  .setRegNumber(transferInfo.getRegNumber())
+				  .setRegNumber(transferInfo.getFromAccount().getRegNumber())
 				  .setAmount(transferInfo.getAmount())
 				  .setEntryID(0)
 				  .setDate(transferInfo.getDate())
@@ -57,7 +57,7 @@ public class HomeBankingBean implements HomeBanking {
 				  .build();
 		
 		Entry toEntry = new Entry.Builder()
-				  .setAccountNumber(transferInfo.getToAccount().getAccountNumber())
+				  .setAccountNumber(transferInfo.getToAccountAccountNumber())
 				  .setRegNumber(transferInfo.getRegNumber())
 				  .setAmount(transferInfo.getAmount())
 				  .setEntryID(0)
