@@ -47,7 +47,7 @@ public class AccountTransferBean implements Serializable {
 		 int result = Integer.parseInt(input);
 		 return result;
 	 }
-	 
+
 	 
 	 
 	 
@@ -59,7 +59,7 @@ public class AccountTransferBean implements Serializable {
 		transfer.setFromDescription(this.inmessage);
 		transfer.setToDescription(this.outmessage);
 		transfer.setFromAccount(accountmap.get(account));
-		//transfer.setToAccount(d);
+		transfer.setToAccountAccountNumber(changenumber(this.kontonummer));
 		//transfer.setToAccount(this.regNummer);
 		//this.getAccounts().get(accountmap.get(account))
 		// kan ikke få en account ud af hash map

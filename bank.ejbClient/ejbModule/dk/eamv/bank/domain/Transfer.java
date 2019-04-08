@@ -8,7 +8,7 @@ public class Transfer {
 	
 	private BigDecimal amount;
 	private Account fromAccount;
-	private Account toAccount;
+	private int toAccountAccountNumber;
 	private String fromDescription;
 	private String toDescription;
 	private int regNumber;
@@ -26,12 +26,7 @@ public class Transfer {
 	public void setFromAccount(Account fromAccount) {
 		this.fromAccount = fromAccount;
 	}
-	public Account getToAccount() {
-		return toAccount;
-	}
-	public void setToAccount(Account toAccount) {
-		this.toAccount = toAccount;
-	}
+
 	public String getFromDescription() {
 		return fromDescription;
 	}
@@ -61,6 +56,12 @@ public class Transfer {
 	}
 	public void setDate(LocalDateTime date) {
 		this.date = date;
+	}
+	public int getToAccountAccountNumber() {
+		return toAccountAccountNumber;
+	}
+	public void setToAccountAccountNumber(int toAccountAccountNumber) {
+		this.toAccountAccountNumber = toAccountAccountNumber;
 	}
 	
 }
