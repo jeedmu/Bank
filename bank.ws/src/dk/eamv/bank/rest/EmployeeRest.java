@@ -45,10 +45,10 @@ public class EmployeeRest implements Employee{
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("deleteCustomer/{key}")
+	@Path("deleteCustomer/{customerID}")
 	@Override
-	public boolean deleteCustomer(@PathParam("key") int key) {
-		cB.delete(key);
+	public boolean deleteCustomer(@PathParam("customerID") int customerID) {
+		cB.delete(customerID);
 		return true;
 	}
 
