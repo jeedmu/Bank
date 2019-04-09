@@ -71,7 +71,7 @@ public class UserEntity {
 	}
 	
 	public User toDomain() {
-		return new User(this.userId, this.name, this.password, toRoles());
+		return new User.Builder(userId).setName(name).setPassword(password).setRoles(toRoles()).build();
 	}
 
 	public String getUserId() {
