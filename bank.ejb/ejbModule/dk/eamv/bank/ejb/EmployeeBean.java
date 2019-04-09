@@ -42,46 +42,26 @@ public class EmployeeBean implements Employee {
 
     // fix return from customer changes 
 	@Override
-	public boolean editCustomer(CustomerChanges customerData) {
+	public void editCustomer(CustomerChanges customerData) {
 		if(customerData.getChangeDate().compareTo(LocalDate.now()) < 0)
 			throw new CustomerChangeInPastException();
 		
-		try {
 		customerChangesBean.create(customerData);
-		return true;
-		} catch(Exception e) {
-			return false;
-		}
 	}
 
 	@Override
-	public boolean deleteCustomer(int customerID) {
-		try {
-			customerBean.delete(customerID);
-			return true;
-			} catch(Exception e) {
-				return false;
-			}
+	public void deleteCustomer(int customerID) {
+		customerBean.delete(customerID);
 	}
 
 	@Override
-	public boolean editAccount(Account account) {
-		try {
-			accountBean.update(account);
-			return true;
-			} catch(Exception e) {
-				return false;
-			}
+	public void editAccount(Account account) {
+		accountBean.update(account);
 	}
 
 	@Override
-	public boolean deleteAccount(int regNumber, int accountNo) {
-		try {
-			accountBean.delete(regNumber, accountNo);
-			return true;
-			} catch(Exception e) {
-				return false;
-			}
+	public void deleteAccount(int regNumber, int accountNo) {
+		accountBean.delete(regNumber, accountNo);
 	}
 
 
@@ -108,22 +88,16 @@ public class EmployeeBean implements Employee {
 
 
 	@Override
-	public boolean createAccount(Account account) {
-		try {
-			accountBean.create(account);
-			return true;
-			} catch(Exception e) {
-				return false;
-			}
+	public Account createAccount(Account account) {
+		accountBean.create(account);
+		//TODO change the accountbean so the id is retrieved
+		return account;
 	}
 
 	@Override
-	public boolean createCustomer(Customer customer) {
-		try {
-			customerBean.create(customer);
-			return true;
-			} catch(Exception e) {
-				return false;
-			}
+	public Customer createCustomer(Customer customer) {
+		customerBean.create(customer);
+		// TODO change the customerbean so the id is retrieved
+		return customer;
 	}
 }
