@@ -27,9 +27,6 @@ public class AccountTransferBean implements Serializable {
 
 	@EJB private HomeBanking homebank;
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	Account opsparing = new Account.Builder(25,9108,24242424).setBalance(BigDecimal.ZERO).setAccountName("Opsparing").build();
@@ -43,14 +40,12 @@ public class AccountTransferBean implements Serializable {
 	 private String regNummer;
 	 private Map<String, Account> accountmap;
 	 
+	 
 	 private int changenumber(String input) {
 		 int result = Integer.parseInt(input);
 		 return result;
 	 }
 
-	 
-	 
-	 
 	 public void sendData() {
 		Transfer transfer = new Transfer();
 		
@@ -60,14 +55,8 @@ public class AccountTransferBean implements Serializable {
 		transfer.setToDescription(this.outmessage);
 		transfer.setFromAccount(accountmap.get(account));
 		transfer.setToAccountAccountNumber(changenumber(this.kontonummer));
-		//transfer.setToAccount(this.regNummer);
-		//this.getAccounts().get(accountmap.get(account))
-		// kan ikke få en account ud af hash map
-//		transfer.setFromAccount(fromAccount);
-//		Account afsender = accountmap.get(key)
 		}
-	 //lav getters og setters. Set vaedierne i felterne og send videre i metode (submit). 
-	 //getters and setters
+
 	 public String getAccount() {
 		 return account;
 	 }
@@ -75,7 +64,7 @@ public class AccountTransferBean implements Serializable {
 		 account = acc;
 	 }
 	 
-	 
+	 //Denne metode mangler noget fra databasen vi ikke kan give på nuværende tidspunkt.
 	public Map<String, Account> getAccounts()
 	{
 	    Map<String,Account> accounts;
@@ -84,7 +73,6 @@ public class AccountTransferBean implements Serializable {
 	        accounts.put("ferie",ferie );
 	        accountmap = accounts;
 	        return accountmap;
-		//return homeBanking.showAccounts("");
 	}
 	
 	
@@ -94,14 +82,12 @@ public class AccountTransferBean implements Serializable {
 	public void setKontonummer(String kontnummer){
 		kontonummer = kontnummer;
 	}
-	
 	public LocalDateTime getDate() {
 		return selectedDate;
 	}
 	public void setDate(LocalDateTime date) {
 		selectedDate = date;
 	}
-	
 	public String getInmessage() {
 		return inmessage;
 	}
@@ -126,9 +112,4 @@ public class AccountTransferBean implements Serializable {
 	public void setRegNummer(String regNummer) {
 		this.regNummer = regNummer;
 	}
-	
-	
-	
-	
-	
 }
