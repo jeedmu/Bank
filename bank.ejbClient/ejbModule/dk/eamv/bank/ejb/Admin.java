@@ -20,7 +20,7 @@ public interface Admin {
 	
 	public User createUser(User user);
 	
-	public List<User> getUsers();
+	public List<User> getUsers(String search);
 	
 	public Optional<User> getUser(String userId);
 	
@@ -32,7 +32,7 @@ public interface Admin {
 	
 	public List<Role> getRoles();
 	
-	public List<Role> getRole(String roleID);
+	public Optional<Role> getRole(int roleID);
 	
 	public boolean editProperty(Property property);
 	
@@ -42,6 +42,6 @@ public interface Admin {
 	
 	public List<Property> getProperties();
 	
-	public List<Property> getProperty(String property);
+	public Optional<Property> getProperty(String property);
 	
 }

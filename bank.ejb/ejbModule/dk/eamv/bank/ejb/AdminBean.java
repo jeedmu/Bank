@@ -47,8 +47,8 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public List<User> getUsers() {
-		return uB.list();
+	public List<User> getUsers(String search) {
+		return uB.getUsers(search);
 	}
 
 	@Override
@@ -74,12 +74,12 @@ public class AdminBean implements Admin {
 
 	@Override
 	public List<Role> getRoles() {
-		return rB.list();
+		return rB.getRoles();
 	}
 
 	@Override
-	public List<Role> getRole(String roleID) {
-		return rB.namedList(roleID);
+	public Optional<Role> getRole(int roleID) {
+		return rB.read(roleID);
 	}
 
 	@Override
@@ -102,12 +102,12 @@ public class AdminBean implements Admin {
 
 	@Override
 	public List<Property> getProperties() {
-		return pB.list();
+		return pB.getProperties();
 	}
 
 	@Override
-	public List<Property> getProperty(String search) {
-		return pB.search(search);
+	public Optional<Property> getProperty(String search) {
+		return pB.read(search);
 	}
 
 }
