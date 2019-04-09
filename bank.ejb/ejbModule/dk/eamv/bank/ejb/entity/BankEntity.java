@@ -33,6 +33,8 @@ public class BankEntity implements Serializable {
 	private int accountNumber;
 	@NotNull
 	private String phoneNumber;
+	@NotNull
+	private String adresse;
 	
 	
 	
@@ -42,6 +44,13 @@ public class BankEntity implements Serializable {
 		this.regNumber = bank.getRegNumber();
 		this.accountNumber = bank.getAccountNumber();
 		this.phoneNumber = bank.getPhoneNumber();
+		this.adresse= bank.getAdresse();
+	}
+	public String getAdresse() {
+		return adresse;
+	}
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
 	}
 	public BankEntity() {
 		
@@ -88,7 +97,11 @@ public class BankEntity implements Serializable {
 	}
    
 	public Bank toDomain() {
-		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName).setRegNumber(this.regNumber).setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
+		return new Bank.Builder().setCvr(this.cvr)
+				.setBankName(this.bankName)
+				.setRegNumber(this.regNumber)
+				.setAccountNumber(this.accountNumber)
+				.setPhoneNumber(this.phoneNumber).setAdresse(adresse).build();
 	}
 	
 }
