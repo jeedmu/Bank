@@ -17,11 +17,7 @@ import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
-import dk.eamv.bank.ejb.exception.AccountAlreadyExsistsException;
-import dk.eamv.bank.ejb.exception.AccountNotFoundException;
-import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.CustomerChangeInPastException;
-import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 
 /**
  * Session Bean implementation class EmployeeBean
@@ -46,26 +42,46 @@ public class EmployeeBean implements Employee {
 
     // fix return from customer changes 
 	@Override
-	public void editCustomer(CustomerChanges customerData) {
+	public boolean editCustomer(CustomerChanges customerData) {
 		if(customerData.getChangeDate().compareTo(LocalDate.now()) < 0)
 			throw new CustomerChangeInPastException();
 		
+		try {
 		customerChangesBean.create(customerData);
+		return true;
+		} catch(Exception e) {
+			return false;
+		}
 	}
 
 	@Override
-	public void deleteCustomer(int customerID) {
-		customerBean.delete(customerID);
+	public boolean deleteCustomer(int customerID) {
+		try {
+			customerBean.delete(customerID);
+			return true;
+			} catch(Exception e) {
+				return false;
+			}
 	}
 
 	@Override
-	public void editAccount(Account account) {
-		accountBean.update(account);
+	public boolean editAccount(Account account) {
+		try {
+			accountBean.update(account);
+			return true;
+			} catch(Exception e) {
+				return false;
+			}
 	}
 
 	@Override
-	public void deleteAccount(int regNumber, int accountNo) {
-		accountBean.delete(regNumber, accountNo);
+	public boolean deleteAccount(int regNumber, int accountNo) {
+		try {
+			accountBean.delete(regNumber, accountNo);
+			return true;
+			} catch(Exception e) {
+				return false;
+			}
 	}
 
 
@@ -92,12 +108,22 @@ public class EmployeeBean implements Employee {
 
 
 	@Override
-	public void createAccount(Account account) {
-		accountBean.create(account);
+	public boolean createAccount(Account account) {
+		try {
+			accountBean.create(account);
+			return true;
+			} catch(Exception e) {
+				return false;
+			}
 	}
 
 	@Override
-	public void createCustomer(Customer customer) {
-		customerBean.create(customer);
+	public boolean createCustomer(Customer customer) {
+		try {
+			customerBean.create(customer);
+			return true;
+			} catch(Exception e) {
+				return false;
+			}
 	}
 }

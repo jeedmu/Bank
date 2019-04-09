@@ -20,7 +20,6 @@ import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 @Stateless
 @LocalBean
 public class AccountBean {
-	
 	@PersistenceContext private EntityManager em;
 
 	public void create(Account account) {

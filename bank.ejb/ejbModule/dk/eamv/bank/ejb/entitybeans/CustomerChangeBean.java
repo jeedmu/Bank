@@ -3,9 +3,9 @@ package dk.eamv.bank.ejb.entitybeans;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Timer;
 import java.util.stream.Collectors;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
@@ -24,7 +24,7 @@ import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 @LocalBean
 public class CustomerChangeBean {
 	@PersistenceContext private EntityManager em;
-	CustomerBean cb;
+	@EJB CustomerBean cb;
 	
 	@Schedule(hour = "*/6")
 	public void checkForChanges() {
@@ -42,7 +42,11 @@ public class CustomerChangeBean {
 												.setEmail(changes.getEmail())
 												.setPhoneNumber(changes.getPhoneNumber())
 												.build();
+				try {
 				cb.update(customer);
+				} catch(CustomerNotFoundException e) {
+
+				}
 			}
 		}
 		

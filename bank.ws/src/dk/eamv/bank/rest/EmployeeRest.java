@@ -1,6 +1,5 @@
 package dk.eamv.bank.rest;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +26,7 @@ import dk.eamv.bank.ejb.entitybeans.CustomerChangeBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
 
 @Path("/employee")
-public class EmployeeRest implements Employee{
+public class EmployeeRest implements Employee {
 	@EJB CustomerChangeBean cCB;	
 	@EJB CustomerBean cB;
 	@EJB AccountBean aB;
@@ -39,8 +38,12 @@ public class EmployeeRest implements Employee{
 	@Path("editCustomer")
 	@Override
 	public boolean editCustomer(CustomerChanges cC) {
-		cCB.create(cC);
-		return true;
+		try {
+			cCB.create(cC);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@DELETE
@@ -48,8 +51,12 @@ public class EmployeeRest implements Employee{
 	@Path("deleteCustomer/{customerID}")
 	@Override
 	public boolean deleteCustomer(@PathParam("customerID") int customerID) {
-		cB.delete(customerID);
-		return true;
+		try {
+			cB.delete(customerID);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@POST
@@ -58,8 +65,12 @@ public class EmployeeRest implements Employee{
 	@Path("editAccount")
 	@Override
 	public boolean editAccount(Account account) {
-		aB.update(account);
-		return true;
+		try {
+			aB.update(account);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@DELETE
@@ -67,8 +78,12 @@ public class EmployeeRest implements Employee{
 	@Path("deleteAccount/{reg}/{acc}")
 	@Override
 	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
-		aB.delete(reg, acc);
-		return true;
+		try {
+			aB.delete(reg, acc);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@GET
@@ -110,8 +125,12 @@ public class EmployeeRest implements Employee{
 	@Path("createAccount")
 	@Override
 	public boolean createAccount(Account account) {
-		aB.create(account);
-		return true;
+		try {
+			aB.create(account);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	@POST
@@ -120,7 +139,11 @@ public class EmployeeRest implements Employee{
 	@Path("createCustomer")
 	@Override
 	public boolean createCustomer(Customer customer) {
-		cB.create(customer);
-		return true;
+		try {
+			cB.create(customer);
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
 	}
 }
