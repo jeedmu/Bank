@@ -13,11 +13,12 @@
 <div align="center">
 
 	<div>
- <h:body>
+ <h:body style="font-size:1vw">
         <h:form>
+        
             <h:panelGrid columns="3" >
             	
-            	<p:outputLabel for="account" value="Fra konto: " /> 
+            	<p:outputLabel style="font-size:1vw;font-family:Times New Roman, Times, serif;" for="account" value="Fra konto: " /> 
             	<p:selectOneMenu id="account" value="#{accountTransferBean.account}">
 
                 	<f:selectItem itemLabel="Vælg konto" itemValue="" noSelectionOption="true" />
@@ -33,7 +34,7 @@
                 <h:outputLabel value="Beløb:" />
                 <h:inputText p:type="number" p:step="1"  value="#{accountTransferBean.amount}"/>
                 <br></br>
-                  <p:outputLabel for="restricted" value="indsæt Dato" /> 
+                  <p:outputLabel style="font-size:1vw;font-family:Times New Roman, Times, serif;" for="restricted" value="Indsæt dato" /> 
         		  <p:calendar id="restricted" size="9" value="#{accountTransferBean.date}" mindate="today"  />
          
                 <br></br>
@@ -45,6 +46,7 @@
 				<br></br>
             </h:panelGrid>
             <h:commandButton value="ボタン"  action="#{accountTransferBean}"/>
+        
         </h:form>
     </h:body>
 	
