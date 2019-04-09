@@ -21,47 +21,48 @@ import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.Employee;
 
 @Path("/employee")
-public class EmployeeRest implements Employee {
+public class EmployeeRest {
 	@EJB Employee employBean;
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editCustomer")
-	@Override
 	public boolean editCustomer(CustomerChanges cC) {
-		return employBean.editCustomer(cC);
+		employBean.editCustomer(cC);
+		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteCustomer/{customerID}")
-	@Override
 	public boolean deleteCustomer(@PathParam("customerID") int customerID) {
-		return employBean.deleteCustomer(customerID);
+		employBean.deleteCustomer(customerID);
+		return true;
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editAccount")
-	@Override
 	public boolean editAccount(Account account) {
-		return employBean.editAccount(account);
+		employBean.editAccount(account);
+		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteAccount/{reg}/{acc}")
-	@Override
+	
 	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
-		return employBean.deleteAccount(reg, acc);
+		 employBean.deleteAccount(reg, acc);
+		 return true;
 	}
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("customerSearch/{customerSearch}")
-	@Override
+	
 	public List<Customer> getCustomers(@PathParam("customerSearch") CustomerSearchParameters parameters) {
 		return employBean.getCustomers(parameters);
 	}
@@ -69,7 +70,7 @@ public class EmployeeRest implements Employee {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("accounts/{customerID}")
-	@Override
+	
 	public List<Account> getAccounts(@PathParam("customerID") int customerID) {
 		return employBean.getAccounts(customerID);
 	}
@@ -78,7 +79,6 @@ public class EmployeeRest implements Employee {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("showEntries/{regNo}-{accountNo}/{fromDate}-{toDate}")
-	@Override
 	public List<Entry> showEntries(@PathParam("regNo")int regNo, @PathParam("accountNo") int accountNo, @PathParam("fromDate") LocalDateTime fromDate, @PathParam("toDate") LocalDateTime toDate) {
 		return employBean.showEntries(regNo, accountNo, fromDate, toDate);
 	}
@@ -87,8 +87,7 @@ public class EmployeeRest implements Employee {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createAccount")
-	@Override
-	public boolean createAccount(Account account) {
+	public Account createAccount(Account account) {
 		return employBean.createAccount(account);
 	}
 
@@ -96,8 +95,7 @@ public class EmployeeRest implements Employee {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createCustomer")
-	@Override
-	public boolean createCustomer(Customer customer) {
+	public Customer createCustomer(Customer customer) {
 		return employBean.createCustomer(customer);
 	}
 }
