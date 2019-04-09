@@ -25,17 +25,19 @@ import dk.eamv.bank.ejb.exception.SSNAlreadyInUseException;;
 public class CustomerBean {
 	@PersistenceContext private EntityManager em;
 
-	public void create(Customer customer) {
+	public Customer create(Customer customer) {
     	Optional<Customer> optional = read(customer.getCustomerID());
     	
     	if(optional.isPresent())
     		throw new CustomerAlreadyExsistsException();
     	else
     	{
-    		if(!isUserWithSsnRegistered(customer.getSSN()))
-    			em.persist(new CustomerEntity(customer));
-    		else 
+    		if(isUserWithSsnRegistered(customer.getSSN()))
     			throw new SSNAlreadyInUseException(); 
+    			
+    		CustomerEntity customerEnt = new CustomerEntity(customer); 
+    		em.persist(customerEnt);
+    		return customerEnt.toDomain();
     	}
     }
 	public Optional<Customer> read(int customerID){

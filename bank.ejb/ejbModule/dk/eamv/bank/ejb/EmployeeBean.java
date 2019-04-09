@@ -96,8 +96,6 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public Customer createCustomer(Customer customer) {
-		customerBean.create(customer);
-		// TODO change the customerbean so the id is retrieved
-		return customer;
+		return customerBean.create(customer);
 	}
 }
