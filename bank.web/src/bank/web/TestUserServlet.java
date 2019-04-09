@@ -32,9 +32,9 @@ public class TestUserServlet extends HttpServlet {
 			Role role2 = new Role(0, "Role2");
 			role1 = admin.createRole(role1);
 			role2 = admin.createRole(role2);
-			User user1 = new User("userid1", "User1", "1", Arrays.asList(role1));
+			User user1 = new User.Builder("userid1").setName("User1").setPassword("1").setRoles(Arrays.asList(role1)).build();
 			user1 = admin.createUser(user1);
-			User user2 = new User("userid2", "User2", "2", Arrays.asList(role1, role2));
+			User user2 = new User.Builder("userid2").setName("User2").setPassword("2").setRoles(Arrays.asList(role1,role2)).build();
 			user2 = admin.createUser(user2);
 		}
 		if (request.getParameter("test").equalsIgnoreCase("2")) {
