@@ -63,8 +63,8 @@ public class Bank {
 		return adresse;
 	}
 	public Bank setAdresse(String adresse) {
-		return new Bank.Builder().setCvr(cvr).setBankName(this.bankName)
-				.setRegNumber(this.regNumber)
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setAdresse(adresse)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
@@ -74,7 +74,7 @@ public class Bank {
 	
 	public Bank setCVR(String cvr) {
 		return new Bank.Builder().setCvr(cvr).setBankName(this.bankName)
-				.setRegNumber(this.regNumber)
+				.setRegNumber(this.regNumber).setAdresse(this.adresse)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 
@@ -85,7 +85,7 @@ public class Bank {
 	public Bank setBankName(String bankName) {
 		return new Bank.Builder().setCvr(this.cvr).setBankName(bankName).setRegNumber(this.regNumber)
 				.setAccountNumber(this.accountNumber)
-				.setPhoneNumber(this.phoneNumber).setAdresse(bankName).build();
+				.setPhoneNumber(this.phoneNumber).setAdresse(this.adresse).build();
 	}
 	
 	public int getRegNumber() {
@@ -94,7 +94,7 @@ public class Bank {
 
 	public Bank setRegNumber(int regNumber) {
 		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
-				.setRegNumber(regNumber).setAdresse(adresse)
+				.setRegNumber(regNumber).setAdresse(this.adresse)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
@@ -104,7 +104,7 @@ public class Bank {
 	
 	public Bank setAccountNumber(int accountNumber) {
 		return new Bank.Builder().setCvr(this.cvr)
-				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(adresse)
+				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(this.adresse)
 				.setAccountNumber(accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
@@ -114,7 +114,7 @@ public class Bank {
 	
 	public Bank setPhoneNumber(String phoneNumber) {
 		return new Bank.Builder().setCvr(this.cvr)
-				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(phoneNumber)
+				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(this.adresse)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(phoneNumber).build();
 	}
 }

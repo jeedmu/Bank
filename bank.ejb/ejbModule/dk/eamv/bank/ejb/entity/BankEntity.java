@@ -101,7 +101,7 @@ public class BankEntity implements Serializable {
 				.setBankName(this.bankName)
 				.setRegNumber(this.regNumber)
 				.setAccountNumber(this.accountNumber)
-				.setPhoneNumber(this.phoneNumber).setAdresse(adresse).build();
+				.setPhoneNumber(this.phoneNumber).setAdresse(this.adresse).build();
 	}
 	
 }
