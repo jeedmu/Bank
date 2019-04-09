@@ -26,7 +26,7 @@ public class SingletonPropertiesBean implements SingletonPropertiesBeanLocal {
     @PostConstruct
     public void init()
     {
-    	for(Property p : propertyBean.list() )
+    	for(Property p : propertyBean.getProperties())
     		properties.put(p.getProperty(), p);
     }
     
