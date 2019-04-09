@@ -2,7 +2,6 @@ package dk.eamv.bank.ejb.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
 import dk.eamv.bank.domain.Property;
@@ -13,11 +12,8 @@ import dk.eamv.bank.domain.Property;
  */
 @Entity(name = "property")
 
-@NamedQueries({	@NamedQuery(name = "allProperties", query = "SELECT p FROM property p  "
-				+ "ORDER BY p.property"),
-				@NamedQuery(name = "searchProperty", query = "SELECT p FROM property p " 
-				+ "WHERE p.property LIKE :search "
-				+ "ORDER BY p.property")})
+@NamedQuery(name = "allProperties", query = "SELECT p FROM property p  " + "ORDER BY p.property")
+				
 
 public class PropertyEntity {
 	@Id

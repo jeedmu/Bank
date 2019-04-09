@@ -62,17 +62,9 @@ public class RoleBean {
     		throw new RoleNotFoundException();
     }
     
-    public List<Role> list(){
+
+    public List<Role> getRoles(){
     	return em.createNamedQuery("allRoles", RoleEntity.class)
-    				.getResultList()
-    				.stream()
-    				.map(c -> c.toDomain())
-    				.collect(Collectors.toList());
-    }
-    
-    public List<Role> namedList(String search){
-    	return em.createNamedQuery("searchRole", RoleEntity.class)
-    				.setParameter("search", "%" + search + "%")
     				.getResultList()
     				.stream()
     				.map(c -> c.toDomain())

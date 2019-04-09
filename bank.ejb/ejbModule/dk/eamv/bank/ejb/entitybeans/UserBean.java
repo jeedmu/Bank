@@ -60,14 +60,16 @@ public class UserBean {
 			throw new UserNotFoundException();
 	}
 
-	public List<User> list() {
-		return em.createNamedQuery("allUsers", UserEntity.class).getResultList().stream().map(c -> c.toDomain())
-				.collect(Collectors.toList());
-	}
-
-	public List<User> namedList(String search) {
+	public List<User> getUsers(String search) {
+		
+		if(search.isEmpty() || search == null) {
+			return em.createNamedQuery("allUsers", UserEntity.class).getResultList().stream().map(c -> c.toDomain())
+					.collect(Collectors.toList());
+		}
+		else {
 		return em.createNamedQuery("searchUser", UserEntity.class).setParameter("search", "%" + search + "%")
 				.getResultList().stream().map(c -> c.toDomain()).collect(Collectors.toList());
+		}
 	}
 
 }
