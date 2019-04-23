@@ -14,9 +14,9 @@ public interface Admin {
 
 	
 	// TODO user entities?
-	public boolean editUser(User user);
+	public void editUser(User user);
 
-	public boolean deleteUser(String userId);
+	public void deleteUser(String userId);
 	
 	public User createUser(User user);
 	
@@ -24,9 +24,9 @@ public interface Admin {
 	
 	public Optional<User> getUser(String userId);
 	
-	public boolean editRole(Role role);
+	public void editRole(Role role);
 	
-	public boolean deleteRole(int roleID);
+	public void deleteRole(int roleID);
 	
 	public Role createRole(Role role);
 	
@@ -34,11 +34,11 @@ public interface Admin {
 	
 	public Optional<Role> getRole(int roleID);
 	
-	public boolean editProperty(Property property);
+	public void editProperty(Property property);
 	
-	public boolean deleteProperty(String property);
+	public void deleteProperty(String property);
 	
-	public boolean createProperty(Property property);
+	public void createProperty(Property property);
 	
 	public List<Property> getProperties();
 	

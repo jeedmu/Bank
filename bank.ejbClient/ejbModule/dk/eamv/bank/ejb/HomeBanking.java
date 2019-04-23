@@ -13,7 +13,7 @@ public Customer readCustomer(String cprn);
 	 */
 	public List<Account> showAccounts(int customerID);
 
-	public boolean transferEntry(Transfer transferInfo);
+	public void transferEntry(Transfer transferInfo);
 	
 	public List<Entry> showEntries(int accountNo, int noOfDays,int regNumber);
 }
