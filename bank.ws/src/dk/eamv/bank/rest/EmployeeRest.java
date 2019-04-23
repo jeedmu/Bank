@@ -59,11 +59,11 @@ public class EmployeeRest {
 		 return true;
 	}
 
-	@GET
+	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("customerSearch/{customerSearch}")
-	
-	public List<Customer> getCustomers(@PathParam("customerSearch") CustomerSearchParameters parameters) {
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("customerSearch")
+	public List<Customer> getCustomers(CustomerSearchParameters parameters) {
 		return employBean.getCustomers(parameters);
 	}
 
