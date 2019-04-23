@@ -45,7 +45,7 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	@Override
-	public boolean transferEntry(Transfer transferInfo) {
+	public void transferEntry(Transfer transferInfo) {
 				
 		Entry fromEntry = new Entry.Builder()
 				  .setAccountNumber(transferInfo.getFromAccount().getAccountNumber())
@@ -69,18 +69,12 @@ public class HomeBankingBean implements HomeBanking {
 			if (accountExists(fromEntry.getAccountNumber(), fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(), fromEntry.getRegNumber())) {
 				if (customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(), fromEntry.getRegNumber())) {
 					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount(),fromEntry.getRegNumber())) {
-						try {
-							// create entries in database
-							entryBean.create(fromEntry);
-							entryBean.create(toEntry);
-							return true;
-						} catch (EntryAlreadyExsistsException e) {
-							e.printStackTrace();
-						}
+						// create entries in database
+						entryBean.create(fromEntry);
+						entryBean.create(toEntry);
 						
 						updateBalance(fromEntry, false);
 						updateBalance(toEntry, true);
-					
 					}
 				}
 			}
@@ -98,26 +92,16 @@ public class HomeBankingBean implements HomeBanking {
 														  .setDate(LocalDateTime.now())
 														  .setDescription(toEntry.getDescription())
 														  .build();
-						
-						
-					try {	
 					
-				    entryBean.create(fromEntry);
-				    entryBean.create(foreignBankEntry);
-				    foreignEntryBean.create(toEntry);
-				    return true;
-				    }
-					catch (EntryAlreadyExsistsException e) {
-						e.printStackTrace();
-					}
-					updateBalance(fromEntry, false);
-					updateBalance(foreignBankEntry,true);
-					
+						entryBean.create(fromEntry);
+						entryBean.create(foreignBankEntry);
+						foreignEntryBean.create(toEntry);
 				    
+						updateBalance(fromEntry, false);
+						updateBalance(foreignBankEntry,true);
 					}
 				}
 			}
-		return false;
 	}
 
 	/**

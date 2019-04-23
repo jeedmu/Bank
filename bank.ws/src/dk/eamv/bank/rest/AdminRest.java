@@ -20,7 +20,8 @@ import dk.eamv.bank.domain.User;
 import dk.eamv.bank.ejb.Admin;
 
 @Path("/admin")
-public class AdminRest{
+public class AdminRest {
+
 	@EJB Admin adminBean;
 	
 	@POST
@@ -28,14 +29,16 @@ public class AdminRest{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editUser")
 	public boolean editUser(User user) {
-		return adminBean.editUser(user);
+		adminBean.editUser(user);
+		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteUser/{userId}")
 	public boolean deleteUser(@PathParam("userId") String userId) {
-		return adminBean.deleteUser(userId);
+		adminBean.deleteUser(userId);
+		return true;
 	}
 
 	@POST
@@ -65,14 +68,16 @@ public class AdminRest{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editRole")
 	public boolean editRole(Role role) {
-		return adminBean.editRole(role);
+		adminBean.editRole(role);
+		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteRole/{roleID}")
 	public boolean deleteRole(@PathParam("roleID") int roleID) {
-		return adminBean.deleteRole(roleID);
+		adminBean.deleteRole(roleID);
+		return true;
 	}
 	
 	@POST
@@ -102,14 +107,16 @@ public class AdminRest{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editProperty")
 	public boolean editProperty(Property property) {
-		return adminBean.editProperty(property);
+		adminBean.editProperty(property);
+		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteProperty/{property}")
 	public boolean deleteProperty(@PathParam("property") String property) {
-		return adminBean.deleteProperty(property);
+		adminBean.deleteProperty(property);
+		return true;
 	}
 
 	@POST
@@ -117,7 +124,8 @@ public class AdminRest{
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createProperty")
 	public boolean createProperty(Property property) {
-		return adminBean.createProperty(property);
+		adminBean.createProperty(property);
+		return true;
 	}
 
 	@GET
