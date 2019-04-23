@@ -6,14 +6,14 @@ import javax.ejb.Stateless;
 
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
-import dk.eamv.bank.ejb.entitybeans.FutureEntryBean;
+import dk.eamv.bank.ejb.entitybeans.EntryBean;
 import dk.eamv.bank.ejb.ws.ForeignEntryNetsBean;
 import dk.eamv.bank.ejb.ws.ForeignEntryNetsBeanService;
 
 @Stateless
 public class TimerFutureEntityBean {
 
-	@EJB FutureEntryBean e;
+	@EJB EntryBean e;
 	String name;
 	
 	@Schedule(minute="*/1", hour="*")

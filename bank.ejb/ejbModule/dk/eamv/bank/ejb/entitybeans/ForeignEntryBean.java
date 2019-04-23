@@ -65,8 +65,7 @@ public class ForeignEntryBean {
 	    				.getResultList()
 	    				.stream()
 	    				.map(e -> e.toDomain())
-	    				.collect(Collectors.toList());
-	    				
+	    				.collect(Collectors.toList());	
 	    }
 	
 }
