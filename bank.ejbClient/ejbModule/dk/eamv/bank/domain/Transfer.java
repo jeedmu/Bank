@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 
 public class Transfer {
 	
-	
 	private BigDecimal amount;
 	private Account fromAccount;
 	private int toAccountAccountNumber;

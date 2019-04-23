@@ -11,6 +11,7 @@ public class Entry {
 	private final BigDecimal amount;
 	private final int accountNumber;
 	private final int regNumber;
+	private final boolean isHandled;
 
 	public static class Builder {
 		private long entryID;
@@ -19,7 +20,8 @@ public class Entry {
 		private int accountNumber;
 		private int regNumber;
 		private String description;
-
+		private boolean isHandled;
+		
 		public Builder() {
 		}
 		
@@ -53,6 +55,11 @@ public class Entry {
 			return this;
 		}
 		
+		public Builder setIsHandled(boolean isHandled) {
+			this.isHandled = isHandled;
+			return this;
+		}
+		
 		public Entry build() {
 			return new Entry(this);
 		}
@@ -65,6 +72,7 @@ public class Entry {
 		amount = builder.amount;
 		accountNumber = builder.accountNumber;
 		regNumber = builder.regNumber;
+		isHandled = builder.isHandled;
 	}
 
 	public long getEntryID() {
@@ -79,6 +87,7 @@ public class Entry {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 
@@ -94,6 +103,7 @@ public class Entry {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 
@@ -109,6 +119,7 @@ public class Entry {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 
@@ -124,6 +135,7 @@ public class Entry {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 
@@ -139,6 +151,7 @@ public class Entry {
 				.setAccountNumber(accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 	
@@ -153,6 +166,22 @@ public class Entry {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
+				.build();
+	}
+	
+	public boolean isHandled() {
+		return isHandled;
+	}
+	public Entry setIsHandled(boolean isHandled) {
+		return new Entry.Builder()
+				.setEntryID(this.entryID)
+				.setDate(this.date)
+				.setAmount(this.amount)
+				.setAccountNumber(this.accountNumber)
+				.setRegNumber(regNumber)
+				.setDescription(this.description)
+				.setIsHandled(isHandled)
 				.build();
 	}
 }
