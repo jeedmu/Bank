@@ -13,6 +13,10 @@ import dk.eamv.bank.domain.Entry;
 		+ "AND p.regNumber = :regNumber "
 		+ "ORDER BY p.entryID")
 
+@NamedQuery(name = "futureEntries", query = "SELECT p FROM entry p "
+		+ "WHERE isHandled = false" 
+		+ "And date <= current_date()")
+
 @Entity(name ="entry") 
 public class EntryEntity {
 	@Id

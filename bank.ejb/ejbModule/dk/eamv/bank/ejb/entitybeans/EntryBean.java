@@ -69,5 +69,14 @@ public class EntryBean {
 	    				.collect(Collectors.toList());
 	    				
 	    }
+	 public List<Entry> list2(){
+	    	return em.createNamedQuery("futureEntries", EntryEntity.class)
+	    				.getResultList()
+	    				.stream()
+	    				.map(e -> e.toDomain())
+	    				.collect(Collectors.toList());
+	    				
+	    }
+
 	
 }
