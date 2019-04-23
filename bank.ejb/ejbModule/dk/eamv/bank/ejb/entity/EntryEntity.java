@@ -14,7 +14,7 @@ import dk.eamv.bank.domain.Entry;
 		+ "ORDER BY p.entryID")
 
 @NamedQuery(name = "futureEntries", query = "SELECT p FROM entry p "
-		+ "WHERE isHandled = false" 
+		+ "WHERE isHandled = false " 
 		+ "And date <= current_date()")
 
 @Entity(name ="entry") 
