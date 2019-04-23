@@ -53,8 +53,8 @@ public class BankBean {
 		}
 	}
 	
-	public void delete(int regNumber) {
-		BankEntity entity = em.find(BankEntity.class, regNumber);
+	public void delete(String address) {
+		BankEntity entity = em.find(BankEntity.class, address);
 		if (entity != null) {
 			em.remove(entity);
 		} else {
@@ -62,7 +62,7 @@ public class BankBean {
 		}
 	}
 	
-	 public List<Bank> list(){
+	 public List<Bank> getBanks(){
 	    	return em.createNamedQuery("AllBanks", BankEntity.class)
 	    				.getResultList()
 	    				.stream()
@@ -70,5 +70,7 @@ public class BankBean {
 	    				.collect(Collectors.toList());
 	    				
 	   }
+	 
+
 	
 }
