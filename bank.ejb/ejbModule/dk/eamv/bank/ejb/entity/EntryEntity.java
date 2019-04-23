@@ -28,6 +28,8 @@ public class EntryEntity {
 	private int accountNumber;
 	@NotNull
 	private int regNumber;
+	@NotNull
+	private boolean isHandled;
 	
 	public EntryEntity(Entry entry) {
 		this.entryID = entry.getEntryID();
@@ -35,6 +37,7 @@ public class EntryEntity {
 		this.date = entry.getDate();
 		this.amount = entry.getAmount();
 		this.regNumber = entry.getRegNumber();
+		this.isHandled = entry.isHandled();
 	}
 	
 	public EntryEntity() {
