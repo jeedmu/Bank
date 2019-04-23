@@ -141,4 +141,41 @@ public class AdminRest {
 	public Optional<Property> getProperty(@PathParam("property") String property) {
 		return adminBean.getProperty(property);
 	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("createBank")
+	public boolean createBank(Bank bank) {
+		return adminBean.createBank(bank);
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("editBank")
+	public boolean editBank(Bank bank) {
+		return adminBean.editBank(bank);
+	}
+	
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("deleteBank/{address}")
+	public boolean deleteBank(@PathParam("address") String address) {
+		return adminBean.deleteBank(address);
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("getBanks")
+	public List<Bank> getBanks(){
+		return adminBean.getBanks();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("getBank/{reg}")
+	public Optional<Bank> getBank(@PathParam("reg") int reg){
+		return adminBean.getBank(reg);
+	}
 }
