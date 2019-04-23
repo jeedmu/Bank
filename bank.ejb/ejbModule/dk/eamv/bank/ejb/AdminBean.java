@@ -6,9 +6,11 @@ import java.util.Optional;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
+import dk.eamv.bank.ejb.entitybeans.BankBean;
 import dk.eamv.bank.ejb.entitybeans.PropertyBean;
 import dk.eamv.bank.ejb.entitybeans.RoleBean;
 import dk.eamv.bank.ejb.entitybeans.UserBean;
@@ -21,6 +23,7 @@ public class AdminBean implements Admin {
 	@EJB UserBean uB;
 	@EJB RoleBean rB;
 	@EJB PropertyBean pB;
+	@EJB BankBean bB;
 
     /**
      * Default constructor. 
@@ -110,4 +113,31 @@ public class AdminBean implements Admin {
 		return pB.read(search);
 	}
 
+	@Override
+	public boolean editBank(Bank bank) {
+		bB.update(bank);
+		return false;
+	}
+
+	@Override
+	public boolean deleteBank(String address) {
+		bB.delete(address);
+		return false;
+	}
+
+	@Override
+	public boolean createBank(Bank bank) {
+		bB.create(bank);
+		return false;
+	}
+
+	@Override
+	public List<Bank> getBanks() {
+		return bB.getBanks();
+	}
+
+	@Override
+	public Optional<Bank> getBank(int regNumber) {
+		return bB.read(regNumber);
+	}
 }

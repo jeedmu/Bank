@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.ejb.Local;
 
+import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
@@ -43,5 +44,17 @@ public interface Admin {
 	public List<Property> getProperties();
 	
 	public Optional<Property> getProperty(String property);
+	
+	public boolean editBank(Bank bank);
+	
+	public boolean deleteBank(String address);
+	
+	public boolean createBank(Bank bank);
+	
+	public List<Bank> getBanks();
+
+	public Optional<Bank> getBank(int regNumber);
+	
+	
 	
 }
