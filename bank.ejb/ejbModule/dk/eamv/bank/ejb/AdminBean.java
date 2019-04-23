@@ -33,15 +33,13 @@ public class AdminBean implements Admin {
     }
 
 	@Override
-	public boolean editUser(User user) {
+	public void editUser(User user) {
 		uB.update(user);
-		return true;
 	}
 
 	@Override
-	public boolean deleteUser(String id) {
+	public void deleteUser(String id) {
 		uB.delete(id);
-		return true;
 	}
 
 	@Override
@@ -59,15 +57,13 @@ public class AdminBean implements Admin {
 		return uB.read(userid);
 	}
 	@Override
-	public boolean editRole(Role role) {
+	public void editRole(Role role) {
 		rB.update(role);
-		return true;
 	}
 
 	@Override
-	public boolean deleteRole(int roleID) {
+	public void deleteRole(int roleID) {
 		rB.delete(roleID);
-		return true;
 	}
 
 	@Override
@@ -86,21 +82,18 @@ public class AdminBean implements Admin {
 	}
 
 	@Override
-	public boolean editProperty(Property property) {
+	public void editProperty(Property property) {
 		pB.update(property);
-		return true;
 	}
 
 	@Override
-	public boolean deleteProperty(String property) {
+	public void deleteProperty(String property) {
 		pB.delete(property);
-		return true;
 	}
 
 	@Override
-	public boolean createProperty(Property property) {
+	public void createProperty(Property property) {
 		pB.create(property);
-		return true;
 	}
 
 	@Override
