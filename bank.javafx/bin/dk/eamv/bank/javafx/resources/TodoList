@@ -1,0 +1,12 @@
+TODO list for Bank App SE part
+
+Validation and datatypes (currently domain data is converted to strings, and there is no validation on inputs from user) //Either redo and vallidate or handle exceptions
+
+Datepickers don´t save data to model
+
+Gui styles (could be prettier, only if needed)
+
+FMXL (POJO views could be replaced with FMXL, cleaner code)
+
+Controllers inherit from baseController (controllers contains redundant code that could be inherited from base)
+
