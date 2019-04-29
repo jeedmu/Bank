@@ -13,7 +13,8 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
-    <login-config>
+  
+  <login-config>
     <auth-method>FORM</auth-method>
     <realm-name>ApplicationRealm</realm-name>
     <form-login-config>
@@ -32,12 +33,13 @@
       <http-method>POST</http-method>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>role1</role-name>
+      <role-name>customer</role-name>
     </auth-constraint>
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
   </security-constraint>
+  
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Protected Area</web-resource-name>
@@ -48,12 +50,13 @@
       <http-method>POST</http-method>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>role2</role-name>
+      <role-name>admin</role-name>
     </auth-constraint>
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
   </security-constraint>
+  
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Manager Area</web-resource-name>
@@ -64,19 +67,40 @@
       <http-method>POST</http-method>
     </web-resource-collection>
     <auth-constraint>
-      <role-name>role3</role-name>
+      <role-name>employee</role-name>
     </auth-constraint>
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
   </security-constraint>
+  
+    <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Bank Area</web-resource-name>
+      <url-pattern>/bank/*</url-pattern>
+      <http-method>PUT</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>bank</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  
   <security-role>
-    <role-name>role1</role-name>
+    <role-name>admin</role-name>
   </security-role>
   <security-role>
-    <role-name>role2</role-name>
+    <role-name>employee</role-name>
   </security-role>
   <security-role>
-    <role-name>role3</role-name>
+    <role-name>customer</role-name>
+  </security-role>
+  <security-role>
+    <role-name>bank</role-name>
   </security-role>
 </web-app>
