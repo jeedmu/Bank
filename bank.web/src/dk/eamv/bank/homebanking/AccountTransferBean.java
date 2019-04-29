@@ -1,4 +1,4 @@
-package bank.web;
+package dk.eamv.bank.homebanking;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
