@@ -25,8 +25,8 @@
   
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>User Area</web-resource-name>
-      <url-pattern>/userarea/*</url-pattern>
+      <web-resource-name>Customer Area</web-resource-name>
+      <url-pattern>/customer/*</url-pattern>
       <http-method>PUT</http-method>
       <http-method>DELETE</http-method>
       <http-method>GET</http-method>
@@ -42,8 +42,8 @@
   
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>Protected Area</web-resource-name>
-      <url-pattern>/restricted/*</url-pattern>
+      <web-resource-name>Admin Area</web-resource-name>
+      <url-pattern>/admin/*</url-pattern>
       <http-method>PUT</http-method>
       <http-method>DELETE</http-method>
       <http-method>GET</http-method>
@@ -59,8 +59,8 @@
   
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>Manager Area</web-resource-name>
-      <url-pattern>/manager/*</url-pattern>
+      <web-resource-name>Employee</web-resource-name>
+      <url-pattern>/employee/*</url-pattern>
       <http-method>PUT</http-method>
       <http-method>DELETE</http-method>
       <http-method>GET</http-method>
