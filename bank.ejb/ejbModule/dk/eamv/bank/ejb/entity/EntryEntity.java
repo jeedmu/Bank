@@ -37,6 +37,7 @@ public class EntryEntity {
 	
 	public EntryEntity(Entry entry) {
 		this.entryID = entry.getEntryID();
+		this.accountNumber = entry.getAccountNumber();
 		this.description = entry.getDescription();
 		this.date = entry.getDate();
 		this.amount = entry.getAmount();
@@ -47,7 +48,6 @@ public class EntryEntity {
 	public EntryEntity() {
 		
 	}
-		
 	
 	public long getEntryID() {
 		return entryID;
