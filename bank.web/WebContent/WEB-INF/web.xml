@@ -13,4 +13,70 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.xhtml</url-pattern>
   </servlet-mapping>
+    <login-config>
+    <auth-method>FORM</auth-method>
+    <realm-name>ApplicationRealm</realm-name>
+    <form-login-config>
+      <form-login-page>/userarea/login.html</form-login-page>
+      <form-error-page>/userarea/error.html</form-error-page>
+    </form-login-config>
+  </login-config>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>User Area</web-resource-name>
+      <url-pattern>/userarea/*</url-pattern>
+      <http-method>PUT</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>role1</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Protected Area</web-resource-name>
+      <url-pattern>/restricted/*</url-pattern>
+      <http-method>PUT</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>role2</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Manager Area</web-resource-name>
+      <url-pattern>/manager/*</url-pattern>
+      <http-method>PUT</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <auth-constraint>
+      <role-name>role3</role-name>
+    </auth-constraint>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
+  <security-role>
+    <role-name>role1</role-name>
+  </security-role>
+  <security-role>
+    <role-name>role2</role-name>
+  </security-role>
+  <security-role>
+    <role-name>role3</role-name>
+  </security-role>
 </web-app>
