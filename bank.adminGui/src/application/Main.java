@@ -29,7 +29,7 @@ public class Main extends Application {
 			layout.setMargin(bankBtn, new Insets(0, 50, 50, 0));
 			layout.add(bankBtn, 1, 1);
 			Button propertyBtn = new Button("Property Menu");
-			propertyBtn.setMinWidth(scene.getWidth() / 2 - 70);
+			propertyBtn.setMinWidth(scene.getWidth() / 2 - 30);
 			propertyBtn.setMinHeight(scene.getHeight() / 2 - 50);
 			propertyBtn.setStyle("-fx-background-color: #F40101");
 			layout.setMargin(propertyBtn, new Insets(0, 0, 50, 50));
@@ -41,7 +41,7 @@ public class Main extends Application {
 			layout.setMargin(roleBtn, new Insets(50, 50, 0, 0));
 			layout.add(roleBtn, 1, 2);
 			Button userBtn = new Button("User Menu");
-			userBtn.setMinWidth(scene.getWidth() / 2 - 70);
+			userBtn.setMinWidth(scene.getWidth() / 2 - 30);
 			userBtn.setMinHeight(scene.getHeight() / 2 - 50);
 			userBtn.setStyle("-fx-background-color: #F40101");
 			layout.setMargin(userBtn, new Insets(50, 0, 0, 50));
