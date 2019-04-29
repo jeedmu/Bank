@@ -1,0 +1,35 @@
+/* JavaFX CSS - Leave this comment until you have at least create one rule which uses -fx-Property */
+#menu_backdrop {
+	-fx-background-color: #c9d0db;
+     -fx-background-size: cover;
+     -fx-border-color: #828889; 
+     -fx-border-width: 1;
+}
+
+#top_bar {
+   -fx-background-color: 
+        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+        linear-gradient(#444444, #353535),
+        linear-gradient(#b9b9b9 0%, #c2c2c2 20%, #afafaf 80%, #c8c8c8 100%),
+        linear-gradient(#f5f5f5 0%, #dbdbdb 40%, #cacaca 60%, #d7d7d7 100%);
+        -fx-border-color: #93959b; 
+        -fx-border-width: 1;
+}
+
+#view_screen {
+	-fx-background-color: #d5e0da;
+	-fx-background-size: cover;
+   -fx-border-color: #828889; 
+   -fx-border-width: 1;
+}
+
+#bottom_bar {
+   -fx-background-color: 
+        linear-gradient(#686868 0%, #232723 25%, #373837 75%, #757575 100%),
+        linear-gradient(#444444, #353535),
+        linear-gradient(#b9b9b9 0%, #c2c2c2 20%, #afafaf 80%, #c8c8c8 100%),
+        linear-gradient(#f5f5f5 0%, #dbdbdb 40%, #cacaca 60%, #d7d7d7 100%);
+        -fx-border-color: #93959b; 
+        -fx-border-width: 1;
+}
+
