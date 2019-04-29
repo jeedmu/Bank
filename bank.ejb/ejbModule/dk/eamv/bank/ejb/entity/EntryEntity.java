@@ -80,6 +80,16 @@ public class EntryEntity {
 		this.accountNumber = accountNumber;
 	}
 	
+	public boolean getIsHandled()
+	{
+		return isHandled;
+	}
+	
+	public void setIsHandled(boolean isHandled)
+	{
+		this.isHandled = isHandled;
+	}
+	
 	public int getRegNumber() {
 		return regNumber;
 	}
@@ -94,6 +104,7 @@ public class EntryEntity {
 				.setAccountNumber(this.accountNumber)
 				.setRegNumber(this.regNumber)
 				.setDescription(this.description)
+				.setIsHandled(this.isHandled)
 				.build();
 	}
 }
