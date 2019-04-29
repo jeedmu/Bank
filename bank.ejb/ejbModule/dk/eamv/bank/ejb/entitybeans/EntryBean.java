@@ -45,6 +45,7 @@ public class EntryBean {
 		EntryEntity entity = em.find(EntryEntity.class, entry.getEntryID());
 		if (entity != null) {
 			entity.setDescription(entry.getDescription());
+			em.persist(entity);
 		} else {
 			throw new EntryNotFoundException();
 		}
