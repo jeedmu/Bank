@@ -114,7 +114,7 @@ public class HomeBankingBean implements HomeBanking {
 		
 		BigDecimal amount = transfer.getAmount();
 		
-		if (!accountExists(fromAccNum, fromRegNum) && !accountExists(toAccNum, toRegNum)) {
+		if (!accountExists(fromAccNum, fromRegNum) || !accountExists(toAccNum, toRegNum)) {
 			return false;
 		}
 		
