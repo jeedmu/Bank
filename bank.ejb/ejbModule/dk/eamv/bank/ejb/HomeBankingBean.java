@@ -105,13 +105,14 @@ public class HomeBankingBean implements HomeBanking {
 	
 	public boolean CheckIfTransferValid(Transfer transfer) {
 		
+		int currAccID = transfer.getFromAccount().getCustomerID();
 		int fromAccNum = transfer.getFromAccount().getAccountNumber();
 		int fromRegNum = transfer.getFromAccount().getRegNumber();
-		int currAccID = transfer.getFromAccount().getCustomerID();
-		BigDecimal amount = transfer.getAmount();
-		
+
 		int toAccNum = transfer.getToAccountAccountNumber();
 		int toRegNum = transfer.getRegNumber();
+		
+		BigDecimal amount = transfer.getAmount();
 		
 		if (!accountExists(fromAccNum, fromRegNum) && !accountExists(toAccNum, toRegNum)) {
 			return false;
@@ -126,7 +127,6 @@ public class HomeBankingBean implements HomeBanking {
 		}
 		
 		return true;
-
 	}
 
 	/**
