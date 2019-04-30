@@ -50,7 +50,7 @@ public class HomeBankingBean implements HomeBanking {
 		Entry fromEntry = new Entry.Builder()
 				  .setAccountNumber(transferInfo.getFromAccount().getAccountNumber())
 				  .setRegNumber(transferInfo.getFromAccount().getRegNumber())
-				  .setAmount(transferInfo.getAmount())
+				  .setAmount(BigDecimal.ZERO.subtract(transferInfo.getAmount()))
 				  .setEntryID(0)
 				  .setDate(transferInfo.getDate())
 				  .setDescription(transferInfo.getFromDescription())
@@ -73,8 +73,8 @@ public class HomeBankingBean implements HomeBanking {
 						entryBean.create(fromEntry);
 						entryBean.create(toEntry);
 						
-						updateBalance(fromEntry, false);
-						updateBalance(toEntry, true);
+						updateBalance(fromEntry);
+						updateBalance(toEntry);
 					}
 				}
 			}
@@ -97,8 +97,8 @@ public class HomeBankingBean implements HomeBanking {
 						entryBean.create(foreignBankEntry);
 						foreignEntryBean.create(toEntry);
 				    
-						updateBalance(fromEntry, false);
-						updateBalance(foreignBankEntry,true);
+						updateBalance(fromEntry);
+						updateBalance(foreignBankEntry);
 					}
 				}
 			}
@@ -110,14 +110,11 @@ public class HomeBankingBean implements HomeBanking {
 	 * @param add if true: add amount to account balance, if false: subtract amount from account balance
 	 * @return true if succeeded, else false
 	 */
-	private boolean updateBalance(Entry entry, boolean add) {
+	private boolean updateBalance(Entry entry) {
 		
 		Account account = accountBean.read(entry.getAccountNumber()).get();
 		
-		if (add)
-			account.setBalance(account.getBalance().add(entry.getAmount()));
-		else 
-			account.setBalance(account.getBalance().subtract(entry.getAmount()));
+		account.setBalance(account.getBalance().add(entry.getAmount()));
 		
 		accountBean.update(account);
 		return true;
