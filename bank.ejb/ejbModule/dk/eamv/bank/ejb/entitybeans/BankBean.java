@@ -47,7 +47,7 @@ public class BankBean {
 			entity.setBankName(bank.getBankName());
 			entity.setRegNumber(bank.getRegNumber());
 			entity.setPhoneNumber(bank.getPhoneNumber());
-			entity.setAdresse(bank.getAdresse());
+			entity.setAdresse(bank.getAddress());
 		} else {
 			throw new BankNotFoundException();
 		}
