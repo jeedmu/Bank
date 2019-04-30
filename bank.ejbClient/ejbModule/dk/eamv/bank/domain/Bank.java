@@ -12,6 +12,7 @@ public class Bank {
 	private final String zipCode;
 	private final String city;
 	private String address;
+	private String country;
 	
 	
 	public static class Builder {
@@ -23,6 +24,7 @@ public class Bank {
 		private String zipCode;
 		private String city;
 		private String address;
+		private String country;
 		
 		public Builder(){
 		}
@@ -40,18 +42,22 @@ public class Bank {
 			this.city = city;
 			return this;
 		}
+		
 		public Builder setAddress(String address) {
 			this.address= address;
 			return this;
 		}
+		
 		public Builder setBankName(String bankName) {
 			this.bankName = bankName;
 			return this;
 		}
+		
 		public Builder setRegNumber(int regNumber) {
 			this.regNumber = regNumber;
 			return this;
 		}
+		
 		public Builder setAccountNumber(int accountNumber) {
 			this.accountNumber = accountNumber;
 			return this;
@@ -59,6 +65,11 @@ public class Bank {
 		
 		public Builder setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
+			return this;
+		}
+		
+		public Builder setCountry(String country) {
+			this.country = country;
 			return this;
 		}
 		
@@ -76,6 +87,8 @@ public class Bank {
 		address= builder.address;
 		zipCode = builder.zipCode;
 		city = builder.city;
+		country = builder.country;
+		
 	}
 	public String getAddress() {
 		return address;
@@ -107,6 +120,11 @@ public class Bank {
 	
 	public String getCity() {
 		return city;
-	}	
+	}
+	
+	public String getCountry() {
+		return country;
+	}
+	
 	
 }
