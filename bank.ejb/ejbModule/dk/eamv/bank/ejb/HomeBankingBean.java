@@ -93,12 +93,11 @@ public class HomeBankingBean implements HomeBanking {
 														  .setDescription(toEntry.getDescription())
 														  .build();
 					
+						fromEntry = fromEntry.setIsHandled(true);
 						entryBean.create(fromEntry);
-						entryBean.create(foreignBankEntry);
-						foreignEntryBean.create(toEntry);
+						foreignEntryBean.create(foreignBankEntry);
 				    
 						updateBalance(fromEntry);
-						updateBalance(foreignBankEntry);
 					}
 				}
 			}
