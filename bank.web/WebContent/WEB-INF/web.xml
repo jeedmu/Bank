@@ -18,8 +18,8 @@
     <auth-method>FORM</auth-method>
     <realm-name>ApplicationRealm</realm-name>
     <form-login-config>
-      <form-login-page>/userarea/login.html</form-login-page>
-      <form-error-page>/userarea/error.html</form-error-page>
+      <form-login-page>/customer/login.html</form-login-page>
+      <form-error-page>/customer/error.html</form-error-page>
     </form-login-config>
   </login-config>
   
