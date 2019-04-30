@@ -28,14 +28,11 @@ public class TimerFutureEntriesBean {
 	public void handleEntries()
 	{
 		for(Entry en : entryBean.getUpcomingUnhandledEntries())
-		{
-			try {
-			updateBalance(en);
-			entryBean.update(en.setIsHandled(true));
-			}catch(Exception e)
-			{}
-		}
-		
+			try 
+			{
+				updateBalance(en);
+				entryBean.update(en.setIsHandled(true));
+			}catch(Exception e){}
 	}
 	
 	private boolean updateBalance(Entry entry) 
