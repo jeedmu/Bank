@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -13,6 +14,7 @@ import javax.persistence.TypedQuery;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.ejb.entity.CustomerEntity;
+import dk.eamv.bank.ejb.entity.ZipCodeEntity;
 import dk.eamv.bank.ejb.exception.CustomerAlreadyExsistsException;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
 import dk.eamv.bank.ejb.exception.SSNAlreadyInUseException;;
@@ -24,6 +26,7 @@ import dk.eamv.bank.ejb.exception.SSNAlreadyInUseException;;
 @LocalBean
 public class CustomerBean {
 	@PersistenceContext private EntityManager em;
+	@EJB ZipCodeBean zCB;
 
 	public Customer create(Customer customer) {
     	Optional<Customer> optional = read(customer.getCustomerID());
@@ -50,13 +53,22 @@ public class CustomerBean {
     
     public void update(Customer customer) {
     	CustomerEntity entity = em.find(CustomerEntity.class, customer.getCustomerID());
+    	
     	if(entity != null) {
+    		Optional<ZipCodeEntity> zipCode = zCB.read(customer.getZipCode());
+    		ZipCodeEntity zipEntity = null;
+    		if(zipCode.isEmpty()) {
+    			zipEntity = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
+    			zCB.create(zipEntity);
+    		}
+    		else {
+    			zipEntity = zipCode.get();
+    		}
     		entity.setFirstName(customer.getFirstName());
     		entity.setSurName(customer.getSurName());
     		entity.setAddress(customer.getAddress());
     		entity.setCountry(customer.getCountry());
-    		entity.setZipCode(customer.getZipCode());
-    		entity.setCity(customer.getCity());
+    		entity.setZipCode(zipEntity);
     		entity.setEmail(customer.getEmail());
     	}
     	else 

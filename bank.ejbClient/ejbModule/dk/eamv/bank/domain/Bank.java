@@ -1,5 +1,7 @@
 package dk.eamv.bank.domain;
 
+import dk.eamv.bank.domain.Customer.Builder;
+
 public class Bank {
 
 	private final String cvr;
@@ -7,7 +9,9 @@ public class Bank {
 	private final int regNumber;
 	private final String phoneNumber;
 	private final int accountNumber;
-	private String adresse;
+	private final String zipCode;
+	private final String city;
+	private String address;
 	
 	
 	public static class Builder {
@@ -16,7 +20,9 @@ public class Bank {
 		private int regNumber;
 		private int accountNumber;
 		private String phoneNumber;
-		private String adresse;
+		private String zipCode;
+		private String city;
+		private String address;
 		
 		public Builder(){
 		}
@@ -25,8 +31,17 @@ public class Bank {
 			this.cvr = cvr;
 			return this;
 		}
-		public Builder setAdresse(String adresse) {
-			this.adresse= adresse;
+		public Builder setZipCode(String zipCode) {
+			this.zipCode = zipCode;
+			return this;
+		}
+
+		public Builder setCity(String city) {
+			this.city = city;
+			return this;
+		}
+		public Builder setAddress(String address) {
+			this.address= address;
 			return this;
 		}
 		public Builder setBankName(String bankName) {
@@ -41,6 +56,7 @@ public class Bank {
 			this.accountNumber = accountNumber;
 			return this;
 		}
+		
 		public Builder setPhoneNumber(String phoneNumber) {
 			this.phoneNumber = phoneNumber;
 			return this;
@@ -57,14 +73,16 @@ public class Bank {
 		regNumber = builder.regNumber;
 		phoneNumber = builder.phoneNumber;
 		accountNumber = builder.accountNumber;
-		adresse= builder.adresse;
+		address= builder.address;
+		zipCode = builder.zipCode;
+		city = builder.city;
 	}
-	public String getAdresse() {
-		return adresse;
+	public String getAddress() {
+		return address;
 	}
-	public Bank setAdresse(String adresse) {
+	public Bank setAddress(String address) {
 		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
-				.setRegNumber(this.regNumber).setAdresse(adresse)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
@@ -73,8 +91,8 @@ public class Bank {
 	}
 	
 	public Bank setCVR(String cvr) {
-		return new Bank.Builder().setCvr(cvr).setBankName(this.bankName)
-				.setRegNumber(this.regNumber).setAdresse(this.adresse)
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 
@@ -83,9 +101,9 @@ public class Bank {
 	}
 
 	public Bank setBankName(String bankName) {
-		return new Bank.Builder().setCvr(this.cvr).setBankName(bankName).setRegNumber(this.regNumber)
-				.setAccountNumber(this.accountNumber)
-				.setPhoneNumber(this.phoneNumber).setAdresse(this.adresse).build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
+				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public int getRegNumber() {
@@ -94,7 +112,7 @@ public class Bank {
 
 	public Bank setRegNumber(int regNumber) {
 		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
-				.setRegNumber(regNumber).setAdresse(this.adresse)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
 				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
@@ -103,9 +121,9 @@ public class Bank {
 	}
 	
 	public Bank setAccountNumber(int accountNumber) {
-		return new Bank.Builder().setCvr(this.cvr)
-				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(this.adresse)
-				.setAccountNumber(accountNumber).setPhoneNumber(this.phoneNumber).build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
+				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public String getPhoneNumber() {
@@ -113,8 +131,29 @@ public class Bank {
 	}
 	
 	public Bank setPhoneNumber(String phoneNumber) {
-		return new Bank.Builder().setCvr(this.cvr)
-				.setBankName(this.bankName).setRegNumber(this.regNumber).setAdresse(this.adresse)
-				.setAccountNumber(this.accountNumber).setPhoneNumber(phoneNumber).build();
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
+				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
 	}
+	
+	public String getZipCode() {
+		return zipCode;
+	}
+	
+	public Bank setZipCode(String zipCode) {
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
+				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
+	}
+	
+	public String getCity() {
+		return city;
+	}
+	
+	public Bank setCity(String city) {
+		return new Bank.Builder().setCvr(this.cvr).setBankName(this.bankName)
+				.setRegNumber(this.regNumber).setZipCode(this.zipCode).setCity(this.city).setAddress(address)
+				.setAccountNumber(this.accountNumber).setPhoneNumber(this.phoneNumber).build();
+	}
+	
 }

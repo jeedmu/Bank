@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -50,10 +51,9 @@ public class CustomerEntity {
 	private String country;
 	
 	@NotNull
-	private String zipCode;
-	
-	@NotNull
-	private String city;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "zipCode")
+	private ZipCodeEntity zipCode;
 	
 	@NotNull
 	private String email;
@@ -71,9 +71,8 @@ public class CustomerEntity {
 		this.firstName = customer.getFirstName();
 		this.surName = customer.getSurName();
 		this.address = customer.getAddress();
-		this.zipCode = customer.getZipCode();
+		this.zipCode = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
 		this.country = customer.getCountry();
-		this.city = customer.getCity();
 		this.email = customer.getEmail();
 		this.phoneNumber = customer.getPhoneNumber();
 	}
@@ -82,7 +81,7 @@ public class CustomerEntity {
 	
 	public Customer toDomain() {
 		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName).setAddress(this.address)
-				.setCountry(this.country).setZipCode(this.zipCode).setCity(this.city).setEmail(this.email)
+				.setCountry(this.country).setZipCode(this.zipCode.getZipCode()).setCity(this.zipCode.getCity()).setEmail(this.email)
 				.setPhoneNumber(this.phoneNumber).build();
 	} 
 	
@@ -129,18 +128,13 @@ public class CustomerEntity {
 	public void setCountry(String country) {
 		this.country = country;
 	}
-	public String getZipCode() {
+	public ZipCodeEntity getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(String zipCode) {
+	public void setZipCode(ZipCodeEntity zipCode) {
 		this.zipCode = zipCode;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
+	
 	public String getEmail() {
 		return email;
 	}

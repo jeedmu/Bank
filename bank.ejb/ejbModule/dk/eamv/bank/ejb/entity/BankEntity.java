@@ -44,7 +44,7 @@ public class BankEntity implements Serializable {
 		this.regNumber = bank.getRegNumber();
 		this.accountNumber = bank.getAccountNumber();
 		this.phoneNumber = bank.getPhoneNumber();
-		this.adresse= bank.getAdresse();
+		this.adresse= bank.getAddress();
 	}
 	public String getAdresse() {
 		return adresse;
@@ -101,7 +101,7 @@ public class BankEntity implements Serializable {
 				.setBankName(this.bankName)
 				.setRegNumber(this.regNumber)
 				.setAccountNumber(this.accountNumber)
-				.setPhoneNumber(this.phoneNumber).setAdresse(this.adresse).build();
+				.setPhoneNumber(this.phoneNumber).setAddress(this.adresse).build();
 	}
 	
 }
