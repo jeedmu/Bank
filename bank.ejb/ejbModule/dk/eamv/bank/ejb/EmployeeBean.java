@@ -89,9 +89,7 @@ public class EmployeeBean implements Employee {
 
 	@Override
 	public Account createAccount(Account account) {
-		accountBean.create(account);
-		//TODO change the accountbean so the id is retrieved
-		return account;
+		return accountBean.create(account); 
 	}
 
 	@Override

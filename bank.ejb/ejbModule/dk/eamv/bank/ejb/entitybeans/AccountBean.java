@@ -22,12 +22,14 @@ import dk.eamv.bank.ejb.exception.AccountNotFoundException;
 public class AccountBean {
 	@PersistenceContext private EntityManager em;
 
-	public void create(Account account) {
+	public Account create(Account account) {
 		Optional<Account> optional = read(account.getAccountNumber());
 		if (optional.isPresent()) {
 			throw new AccountAlreadyExsistsException();
 		} else {
-			em.persist(new AccountEntity(account));
+			AccountEntity accountEntity = new AccountEntity(account);
+			em.persist(accountEntity);
+			return accountEntity.toDomain();
 		}
 	}
 	
@@ -45,6 +47,7 @@ public class AccountBean {
 		if (entity != null) {
 			entity.setAccountName(account.getAccountName());
 			entity.setBalance(account.getBalance());
+			em.persist(entity);
 		} else {
 			throw new AccountNotFoundException();
 		}
