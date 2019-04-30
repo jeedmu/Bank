@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 import dk.eamv.bank.domain.Account;
 
 @NamedQuery(name = "searchAccounts", query = "SELECT p FROM account p " 
-											+ "WHERE p.customer.customerID = :customerID "
+											+ "WHERE p.customerID = :customerID "
 											+ "ORDER BY p.accountNumber")
 
 @Entity(name="account")
@@ -34,9 +34,7 @@ public class AccountEntity
 	@NotNull
 	private BigDecimal balance;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "customerID")
-	private CustomerEntity customer;
+	private int customerID;
 
 	public AccountEntity()
 	{
@@ -45,17 +43,18 @@ public class AccountEntity
 	
 	public AccountEntity(Account account) 
 	{
+		this.customerID = account.getCustomerID();
+		this.accountNumber = account.getAccountNumber();
 		this.accountName = account.getAccountName();
 		this.balance = account.getBalance();
 	}
-
 	
-	public CustomerEntity getCustomer() {
-		return customer;
+	public int getCustomerID() {
+		return customerID;
 	}
 
-	public void setCustomer(CustomerEntity customer) {
-		this.customer = customer;
+	public void setCustomer(int customerID) {
+		this.customerID = customerID;
 	}
 
 	//set/getters
@@ -71,7 +70,13 @@ public class AccountEntity
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+	
+	public int getAccountNumber()
+	{
+		return accountNumber;
+	}
+	
 	public Account toDomain() {
-		return new Account.Builder(this.customer.getCustomerID(), this.regNumber, (int)this.accountNumber).setAccountName(this.accountName).setBalance(this.balance).build();
+		return new Account.Builder(customerID, this.regNumber, (int)this.accountNumber).setAccountName(this.accountName).setBalance(this.balance).build();
 	}
 }
