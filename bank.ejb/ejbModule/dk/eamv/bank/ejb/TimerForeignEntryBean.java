@@ -11,20 +11,10 @@ import dk.eamv.bank.ejb.ws.ForeignEntryNetsBeanService;
 
 @Stateless
 public class TimerForeignEntryBean {
-
-	@EJB Employee e;
-	
-	int counter = 2424;
 	
 	@Schedule(minute="*/1", hour="*")
 	public void callWebService()
 	{
-		Customer a = e.createCustomer(new Customer.Builder(0, counter++ + "").setAddress("").setCity("").setEmail("").setFirstName("").setSurName("").setZipCode("").setPhoneNumber("").setCountry("").build());
-		Customer b = e.createCustomer(new Customer.Builder(0, counter++ + "").setAddress("").setCity("").setEmail("").setFirstName("").setSurName("").setZipCode("").setPhoneNumber("").setCountry("").build());
-		Account account = new Account.Builder(a.getCustomerID(),0,0).setAccountName("asd").build();
-		e.createAccount(account);
-		account = new Account.Builder(b.getCustomerID(),24,24).setAccountName("asd23").build();
-		e.createAccount(account);
 		/*
         System.out.println("***********************");
         System.out.println("Create Web Service Client...");
