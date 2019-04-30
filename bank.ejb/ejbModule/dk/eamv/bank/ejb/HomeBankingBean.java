@@ -70,11 +70,11 @@ public class HomeBankingBean implements HomeBanking {
 				if (customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(), fromEntry.getRegNumber())) {
 					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount(),fromEntry.getRegNumber())) {
 						// create entries in database
+						fromEntry = fromEntry.setIsHandled(true);
 						entryBean.create(fromEntry);
 						entryBean.create(toEntry);
 						
 						updateBalance(fromEntry);
-						updateBalance(toEntry);
 					}
 				}
 			}
