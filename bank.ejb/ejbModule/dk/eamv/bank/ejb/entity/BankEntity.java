@@ -34,7 +34,14 @@ public class BankEntity implements Serializable {
 	@NotNull
 	private String phoneNumber;
 	@NotNull
-	private String adresse;
+	private String address;
+	@NotNull
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "zipCode")
+	private ZipCodeEntity zipCode;
+	@NotNull
+	private String country;
+
 	
 	
 	
@@ -44,16 +51,34 @@ public class BankEntity implements Serializable {
 		this.regNumber = bank.getRegNumber();
 		this.accountNumber = bank.getAccountNumber();
 		this.phoneNumber = bank.getPhoneNumber();
-		this.adresse= bank.getAddress();
+		this.address= bank.getAddress();
+		this.country = bank.getCountry();
+		this.zipCode = new ZipCodeEntity(bank.getZipCode(), bank.getCity());
 	}
-	public String getAdresse() {
-		return adresse;
+	public String getAddress() {
+		return address;
 	}
-	public void setAdresse(String adresse) {
-		this.adresse = adresse;
+	public void setAddress(String address) {
+		this.address = address;
 	}
+	
+	public String getCountry() {
+		return country;
+	}
+	
+	public void setCountry(String country) {
+		this.country = country;
+	}
+	
+	public ZipCodeEntity getZipCode() {
+		return zipCode;
+	}
+	
+	public void setZipCode(ZipCodeEntity zipCode) {
+		this.zipCode = zipCode;
+	}
+	
 	public BankEntity() {
-		
 	}
 	
 	public String getCVR() {
@@ -101,7 +126,12 @@ public class BankEntity implements Serializable {
 				.setBankName(this.bankName)
 				.setRegNumber(this.regNumber)
 				.setAccountNumber(this.accountNumber)
-				.setPhoneNumber(this.phoneNumber).setAddress(this.adresse).build();
+				.setPhoneNumber(this.phoneNumber)
+				.setAddress(this.address)
+				.setZipCode(this.zipCode.getZipCode())
+				.setCity(this.zipCode.getCity())
+				.setCountry(this.country)
+				.build();
 	}
 	
 }
