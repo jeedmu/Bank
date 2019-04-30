@@ -40,11 +40,11 @@ public class TimerFutureEntriesBean {
 		Entry entry3 = new Entry.Builder().setDescription("asd").setDate(LocalDateTime.now().minusDays(1)).setAmount(BigDecimal.TEN).setAccountNumber(accountID).build();
 		entryBean.create(entry3);
 		
-		System.out.println(entryBean.list2().size());
+		System.out.println(entryBean.getUpcomingUnhandledEntries().size());
 		
 		System.out.println("BD: "+BigDecimal.TEN.add(BigDecimal.TEN).toPlainString());
 		
-		for(Entry en : entryBean.list2())
+		for(Entry en : entryBean.getUpcomingUnhandledEntries())
 		{
 			updateBalance(en);
 			entryBean.update(en.setIsHandled(true));
