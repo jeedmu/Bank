@@ -3,7 +3,6 @@ package dk.eamv.bank.javafx.viewModels;
 import java.math.BigDecimal;
 
 import dk.eamv.bank.javafx.domain.Account;
-import dk.eamv.bank.javafx.domain.Customer;
 import dk.eamv.bank.javafx.domain.Account.Builder;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;

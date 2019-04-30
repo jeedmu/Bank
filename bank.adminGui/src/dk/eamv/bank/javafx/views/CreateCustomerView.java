@@ -1,8 +1,6 @@
 package dk.eamv.bank.javafx.views;
 
 import dk.eamv.bank.javafx.controllers.CreateCustomerController;
-import dk.eamv.bank.javafx.domain.Customer;
-import dk.eamv.bank.javafx.interfaces.ITabPane;
 import dk.eamv.bank.javafx.viewModels.CustomerModel;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
