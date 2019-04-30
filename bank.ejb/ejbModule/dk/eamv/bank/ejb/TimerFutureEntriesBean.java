@@ -29,7 +29,7 @@ public class TimerFutureEntriesBean {
 	{
 		Customer a = e.createCustomer(new Customer.Builder(0, counter++ + "").setAddress("").setCity("").setEmail("").setFirstName("").setSurName("").setZipCode("").setPhoneNumber("").setCountry("").build());
 		Customer b = e.createCustomer(new Customer.Builder(0, counter++ + "").setAddress("").setCity("").setEmail("").setFirstName("").setSurName("").setZipCode("").setPhoneNumber("").setCountry("").build());
-		Account account = new Account.Builder(a.getCustomerID(),0,0).setBalance(BigDecimal.TEN).setAccountName("asd").build();
+		Account account = new Account.Builder(a.getCustomerID(),0,0).setBalance(BigDecimal.ONE).setAccountName("asd").build();
 		int accountID = e.createAccount(account).getAccountNumber();
 		
 		
@@ -42,21 +42,22 @@ public class TimerFutureEntriesBean {
 		
 		System.out.println(entryBean.list2().size());
 		
+		System.out.println("BD: "+BigDecimal.TEN.add(BigDecimal.TEN).toPlainString());
+		
 		for(Entry en : entryBean.list2())
 		{
 			updateBalance(en);
 			entryBean.update(en.setIsHandled(true));
 		}
+		
 	}
 	
-	private boolean updateBalance(Entry entry) {
-		System.out.println(entry.getAccountNumber());
+	private boolean updateBalance(Entry entry) 
+	{	
 		Account account = accountBean.read(entry.getAccountNumber()).get();
 		
-		System.out.println("bal before: "+account.getBalance().toPlainString());
-		System.out.println("Entry: "+entry.getAmount().toPlainString());
-		account.setBalance(BigDecimal.ONE);
-		System.out.println("bal: "+account.getBalance().toPlainString());
+		account = account.setBalance(account.getBalance().add(entry.getAmount()));
+		
 		accountBean.update(account);
 		return true;
 	}
