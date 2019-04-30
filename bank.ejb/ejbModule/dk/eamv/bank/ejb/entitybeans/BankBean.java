@@ -60,6 +60,7 @@ public class BankBean {
 			entity.setRegNumber(bank.getRegNumber());
 			entity.setPhoneNumber(bank.getPhoneNumber());
 			entity.setAddress(bank.getAddress());
+			entity.setCountry(bank.getCountry());
 		} else {
 			throw new BankNotFoundException();
 		}
