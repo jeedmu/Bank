@@ -68,17 +68,14 @@ public class EntryBean {
 	    				.getResultList()
 	    				.stream()
 	    				.map(e -> e.toDomain())
-	    				.collect(Collectors.toList());
-	    				
-	    }
-	 public List<Entry> list2(){
+	    				.collect(Collectors.toList());			
+	 }
+	 
+	 public List<Entry> getUpcomingUnhandledEntries(){
 	    	return em.createNamedQuery("futureEntries", EntryEntity.class)
 	    				.getResultList()
 	    				.stream()
 	    				.map(e -> e.toDomain())
-	    				.collect(Collectors.toList());
-	    				
-	    }
-
-	
+	    				.collect(Collectors.toList());   					
+	 }
 }

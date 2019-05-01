@@ -5,6 +5,8 @@ import java.util.List;
 import dk.eamv.bank.javafx.domain.Account;
 import dk.eamv.bank.javafx.domain.Customer;
 import dk.eamv.bank.javafx.domain.Entry;
+import dk.eamv.bank.javafx.domain.Property;
+import dk.eamv.bank.javafx.domain.Role;
 import dk.eamv.bank.javafx.domain.Transfer;
 
 public interface IDataRequestHandler 
@@ -12,6 +14,8 @@ public interface IDataRequestHandler
 	public void createNewCustomer(Customer customer);
 	
 	public void createNewAccount(Account account);
+	
+	public void createNewRole(Role role);
 
 	public List<Customer> getCustomers(String customerID, String name, String phoneNumber);
 	
@@ -22,5 +26,7 @@ public interface IDataRequestHandler
 	public Customer getCustomer(String customerID);
 	
 	public void createNewTransfer(Transfer transfer);
+	
+	public void createNewProperty(Property property);
 	
 }

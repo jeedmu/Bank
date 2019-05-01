@@ -46,62 +46,87 @@ public class HomeBankingBean implements HomeBanking {
 
 	@Override
 	public void transferEntry(Transfer transferInfo) {
-				
+		
+		int fromAccNum = transferInfo.getFromAccount().getAccountNumber();
+		int fromRegNum = transferInfo.getFromAccount().getRegNumber();
+		String fromDesc = transferInfo.getFromDescription();
+		
+		int toAccNum = transferInfo.getToAccountAccountNumber();
+		int toRegNum = transferInfo.getRegNumber();
+		String toDesc = transferInfo.getToDescription();
+		
+		LocalDateTime date = transferInfo.getDate();
+		BigDecimal amount = transferInfo.getAmount();
+		
 		Entry fromEntry = new Entry.Builder()
-				  .setAccountNumber(transferInfo.getFromAccount().getAccountNumber())
-				  .setRegNumber(transferInfo.getFromAccount().getRegNumber())
-				  .setAmount(transferInfo.getAmount())
+				  .setAccountNumber(fromAccNum)
+				  .setRegNumber(fromRegNum)
+				  .setAmount(BigDecimal.ZERO.subtract(amount))
 				  .setEntryID(0)
-				  .setDate(transferInfo.getDate())
-				  .setDescription(transferInfo.getFromDescription())
+				  .setDate(date)
+				  .setDescription(fromDesc)
 				  .build();
 		
 		Entry toEntry = new Entry.Builder()
-				  .setAccountNumber(transferInfo.getToAccountAccountNumber())
-				  .setRegNumber(transferInfo.getRegNumber())
-				  .setAmount(transferInfo.getAmount())
+				  .setAccountNumber(toAccNum)
+				  .setRegNumber(toRegNum)
+				  .setAmount(amount)
 				  .setEntryID(0)
-				  .setDate(transferInfo.getDate())
-				  .setDescription(transferInfo.getToDescription())
+				  .setDate(date)
+				  .setDescription(toDesc)
 				  .build();
 		
-		if (accountsBelongToSameBank(fromEntry.getAccountNumber(), toEntry.getAccountNumber(),fromEntry.getRegNumber())) {
-			if (accountExists(fromEntry.getAccountNumber(), fromEntry.getRegNumber()) && accountExists(toEntry.getAccountNumber(), fromEntry.getRegNumber())) {
-				if (customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(), fromEntry.getRegNumber())) {
-					if (accountHasSufficientFunds(fromEntry.getAccountNumber(), fromEntry.getAmount(),fromEntry.getRegNumber())) {
-						// create entries in database
-						entryBean.create(fromEntry);
-						entryBean.create(toEntry);
-						
-						updateBalance(fromEntry, false);
-						updateBalance(toEntry, true);
-					}
-				}
+		if(CheckIfTransferValid(transferInfo)) {
+			if (accountsBelongToSameBank(fromAccNum, toAccNum, fromRegNum)) {
+				fromEntry = fromEntry.setIsHandled(true);
+				entryBean.create(fromEntry);
+				entryBean.create(toEntry);
+				
+				updateBalance(fromEntry);
+			}
+			else if (ifForeignBankExsist(toEntry.getRegNumber())){
+				Entry foreignBankEntry = new Entry.Builder()
+												  .setAccountNumber(toEntry.getAccountNumber())
+												  .setRegNumber(toEntry.getRegNumber())
+												  .setAmount(toEntry.getAmount())
+												  .setEntryID(0)
+												  .setDate(LocalDateTime.now())
+												  .setDescription(toEntry.getDescription())
+												  .build();
+			
+				fromEntry = fromEntry.setIsHandled(true);
+				entryBean.create(fromEntry);
+				foreignEntryBean.create(foreignBankEntry);
+		    
+				updateBalance(fromEntry);
 			}
 		}
-		else
-			if(accountExists(fromEntry.getAccountNumber(),fromEntry.getRegNumber()) && ifForeignBankExsist(toEntry.getRegNumber())) {
-				if(customerHasAccountRights(fromEntry.getAccountNumber(), transferInfo.getCurrentCustomer().getCustomerID(),fromEntry.getRegNumber())){
-					if(accountHasSufficientFunds(fromEntry.getAccountNumber(),fromEntry.getAmount(),fromEntry.getRegNumber())){
-						
-						Entry foreignBankEntry = new Entry.Builder()
-														  .setAccountNumber(toEntry.getAccountNumber())
-														  .setRegNumber(toEntry.getRegNumber())
-														  .setAmount(toEntry.getAmount())
-														  .setEntryID(0)
-														  .setDate(LocalDateTime.now())
-														  .setDescription(toEntry.getDescription())
-														  .build();
-					
-						entryBean.create(fromEntry);
-						entryBean.create(foreignBankEntry);
-						foreignEntryBean.create(toEntry);
-				    
-						updateBalance(fromEntry, false);
-						updateBalance(foreignBankEntry,true);
-					}
-				}
-			}
+	}
+	
+	public boolean CheckIfTransferValid(Transfer transfer) {
+		
+		int currAccID = transfer.getFromAccount().getCustomerID();
+		int fromAccNum = transfer.getFromAccount().getAccountNumber();
+		int fromRegNum = transfer.getFromAccount().getRegNumber();
+
+		int toAccNum = transfer.getToAccountAccountNumber();
+		int toRegNum = transfer.getRegNumber();
+		
+		BigDecimal amount = transfer.getAmount();
+		
+		if (!accountExists(fromAccNum, fromRegNum) || !accountExists(toAccNum, toRegNum)) {
+			return false;
+		}
+		
+		if (!customerHasAccountRights(fromAccNum, currAccID, fromRegNum)) {
+			return false;
+		}
+		
+		if (!accountHasSufficientFunds(fromAccNum, amount, fromRegNum)) {
+			return false;
+		}
+		
+		return true;
 	}
 
 	/**
@@ -110,14 +135,11 @@ public class HomeBankingBean implements HomeBanking {
 	 * @param add if true: add amount to account balance, if false: subtract amount from account balance
 	 * @return true if succeeded, else false
 	 */
-	private boolean updateBalance(Entry entry, boolean add) {
+	private boolean updateBalance(Entry entry) {
 		
 		Account account = accountBean.read(entry.getAccountNumber()).get();
 		
-		if (add)
-			account.setBalance(account.getBalance().add(entry.getAmount()));
-		else 
-			account.setBalance(account.getBalance().subtract(entry.getAmount()));
+		account.setBalance(account.getBalance().add(entry.getAmount()));
 		
 		accountBean.update(account);
 		return true;
