@@ -1,21 +1,15 @@
 package application;
 	
-import controllers.BankController;
-import controllers.PropertyController;
-import controllers.RoleController;
-import controllers.UserController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Rectangle2D;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-
+import javafx.stage.Screen;
+import javafx.stage.Stage;
 
 public class Main extends Application {
 	

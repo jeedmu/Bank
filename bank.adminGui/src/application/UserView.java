@@ -1,14 +1,19 @@
 package application;
 
+import controllers.UserController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class UserView {
+	UserController controller = new UserController();
 
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();
@@ -48,9 +53,52 @@ public class UserView {
 		backButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
+				stage.setTitle("Hovedmenu");
 				stage.setScene(Main.getScene(stage));
 			};
 		});
+		
+		createUser.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Opret Bruger");
+				stage.setScene(getCreateUserScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getCreateUserScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Opret Bruger");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label userID = new Label("Bruger ID:");
+		layout.setMargin(userID, new Insets(0, 20, 15, 0));
+		TextField userIDTF = new TextField();
+		layout.setMargin(userIDTF, new Insets(0, 0, 15, 0));
+		
+		Label userName = new Label("Brugernavn:");
+		layout.setMargin(userName, new Insets(0, 20, 15, 0));
+		TextField userNameTF = new TextField();
+		layout.setMargin(userNameTF, new Insets(0, 0, 15, 0));
+		
+		Label password = new Label("Kodeord:");
+		layout.setMargin(password, new Insets(0, 20, 0, 0));
+		TextField passwordTF = new TextField();
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(userID, 2, 4);
+		layout.add(userIDTF, 3, 4);
+		layout.add(userName, 2, 6);
+		layout.add(userNameTF, 3, 6);
+		layout.add(password, 2, 8);
+		layout.add(passwordTF, 3, 8);
+		layout.setAlignment(Pos.TOP_CENTER);
 		
 		return scene;
 	}
