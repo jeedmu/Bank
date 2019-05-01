@@ -27,10 +27,24 @@ public class BankBean {
 	
 	public void create(Bank bank) {
 		Optional<Bank> optional = read(bank.getRegNumber());
+		
 		if (optional.isPresent()) {
 			throw new BankAlreadyExsistsException();
-		} else {
-			em.persist(new BankEntity(bank));
+			} 
+		
+			else {
+				Optional<ZipCodeEntity> zipCode = zCB.read(bank.getZipCode());
+	    		ZipCodeEntity zipEntity = null;
+	    		if(zipCode.isEmpty()) {
+	    			zipEntity = new ZipCodeEntity(bank.getZipCode(), bank.getCity());
+	    			zCB.create(zipEntity);
+	    		}
+	    		else {
+	    			zipEntity = zipCode.get();
+	    		}
+	    		BankEntity entity = new BankEntity(bank);
+	    		entity.setZipCode(zipEntity);
+			em.persist(entity);
 		}
 	}
 	
@@ -61,6 +75,7 @@ public class BankBean {
 			entity.setPhoneNumber(bank.getPhoneNumber());
 			entity.setAddress(bank.getAddress());
 			entity.setCountry(bank.getCountry());
+			entity.setZipCode(zipEntity);
 		} else {
 			throw new BankNotFoundException();
 		}

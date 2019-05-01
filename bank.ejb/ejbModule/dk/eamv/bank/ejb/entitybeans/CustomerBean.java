@@ -33,12 +33,22 @@ public class CustomerBean {
     	
     	if(optional.isPresent())
     		throw new CustomerAlreadyExsistsException();
-    	else
-    	{
+    	else {
+    		Optional<ZipCodeEntity> zipCode = zCB.read(customer.getZipCode());
+    		ZipCodeEntity zipEntity = null;
+    		if(zipCode.isEmpty()) {
+    			zipEntity = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
+    			zCB.create(zipEntity);
+    		}
+    		else {
+    			zipEntity = zipCode.get();
+    		}
+    		
     		if(isUserWithSsnRegistered(customer.getSSN()))
     			throw new SSNAlreadyInUseException(); 
     			
     		CustomerEntity customerEnt = new CustomerEntity(customer); 
+    		customerEnt.setZipCode(zipEntity);
     		em.persist(customerEnt);
     		return customerEnt.toDomain();
     	}
@@ -57,6 +67,7 @@ public class CustomerBean {
     	if(entity != null) {
     		Optional<ZipCodeEntity> zipCode = zCB.read(customer.getZipCode());
     		ZipCodeEntity zipEntity = null;
+    		
     		if(zipCode.isEmpty()) {
     			zipEntity = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
     			zCB.create(zipEntity);

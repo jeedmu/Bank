@@ -71,7 +71,7 @@ public class CustomerEntity {
 		this.firstName = customer.getFirstName();
 		this.surName = customer.getSurName();
 		this.address = customer.getAddress();
-		this.zipCode = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
+	//	this.zipCode = new ZipCodeEntity(customer.getZipCode(), customer.getCity());
 		this.country = customer.getCountry();
 		this.email = customer.getEmail();
 		this.phoneNumber = customer.getPhoneNumber();

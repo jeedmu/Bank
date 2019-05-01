@@ -53,7 +53,7 @@ public class BankEntity implements Serializable {
 		this.phoneNumber = bank.getPhoneNumber();
 		this.address= bank.getAddress();
 		this.country = bank.getCountry();
-		this.zipCode = new ZipCodeEntity(bank.getZipCode(), bank.getCity());
+//		this.zipCode = new ZipCodeEntity(bank.getZipCode(), bank.getCity());
 	}
 	public String getAddress() {
 		return address;
