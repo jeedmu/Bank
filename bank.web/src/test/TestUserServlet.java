@@ -1,4 +1,4 @@
-package dk.eamv.bank.homebanking;
+package test;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,7 +17,7 @@ import dk.eamv.bank.ejb.Admin;
 /**
  * Servlet implementation class TestUserServlet
  */
-@WebServlet("/TestUser")
+@WebServlet("admin/TestUser")
 public class TestUserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	@EJB private Admin admin;

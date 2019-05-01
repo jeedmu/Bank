@@ -19,6 +19,21 @@ public class User {
 			this.userId = userId;
 		}
 		
+		public Builder setName(String name) {
+			this.name = name;
+			return this;
+		}
+		
+		public Builder setPassword(String password) {
+			this.password = password;
+			return this;
+		}
+		
+		public Builder setRoles(List<Role> roles) {
+			this.roles = roles;
+			return this;
+		}
+		
 		public User build() {
 			return new User(this);
 		}
