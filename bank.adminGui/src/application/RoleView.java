@@ -4,8 +4,11 @@ import controllers.RoleController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
@@ -52,6 +55,109 @@ public class RoleView {
 			public void handle(ActionEvent e) {
 				stage.setTitle("Hovedmenu");
 				stage.setScene(Main.getScene(stage));
+			};
+		});
+		
+		createRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Opret Rolle");
+				stage.setScene(getCreateRoleScene(stage));
+			};
+		});
+		
+		updateRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rediger Rolle");
+				stage.setScene(getUpdateRoleScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getCreateRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Opret Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label roleID = new Label("Rolle ID:");
+		layout.setMargin(roleID, new Insets(0, 20, 15, 0));
+		TextField roleIDTF = new TextField();
+		layout.setMargin(roleIDTF, new Insets(0, 0, 15, 0));
+		
+		Label roleName = new Label("Rollenavn:");
+		layout.setMargin(roleName, new Insets(0, 20, 15, 0));
+		TextField roleNameTF = new TextField();
+		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
+
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button createBtn = new Button("Opret og gem");
+		layout.setMargin(createBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(roleID, 2, 4);
+		layout.add(roleIDTF, 3, 4);
+		layout.add(roleName, 2, 6);
+		layout.add(roleNameTF, 3, 6);
+
+		layout.add(backBtn, 2, 10);
+		layout.add(createBtn, 3, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(UserView.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getUpdateRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Rediger Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label roleID = new Label("Rolle ID:");
+		layout.setMargin(roleID, new Insets(0, 20, 15, 0));
+		TextField roleIDTF = new TextField();
+		layout.setMargin(roleIDTF, new Insets(0, 0, 15, 0));
+		
+		Label roleName = new Label("Rollenavn:");
+		layout.setMargin(roleName, new Insets(0, 20, 15, 0));
+		TextField roleNameTF = new TextField();
+		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
+		
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button updateBtn = new Button("Gem bruger");
+		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(roleID, 2, 4);
+		layout.add(roleIDTF, 3, 4);
+		layout.add(roleName, 2, 6);
+		layout.add(roleNameTF, 3, 6);
+		layout.add(backBtn, 2, 10);
+		layout.add(updateBtn, 3, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(UserView.getScene(stage));
 			};
 		});
 		

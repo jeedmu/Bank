@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class UserView {
@@ -66,6 +67,14 @@ public class UserView {
 			};
 		});
 		
+		updateUser.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rediger Bruger");
+				stage.setScene(getUpdateUserScene(stage));
+			};
+		});
+		
 		return scene;
 	}
 	
@@ -91,6 +100,11 @@ public class UserView {
 		layout.setMargin(password, new Insets(0, 20, 0, 0));
 		TextField passwordTF = new TextField();
 		
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button createBtn = new Button("Opret og gem");
+		layout.setMargin(createBtn, new Insets(100, 0, 0, 0));
+		
 		layout.add(headerLabel, 3, 1);
 		layout.add(userID, 2, 4);
 		layout.add(userIDTF, 3, 4);
@@ -98,7 +112,66 @@ public class UserView {
 		layout.add(userNameTF, 3, 6);
 		layout.add(password, 2, 8);
 		layout.add(passwordTF, 3, 8);
+		layout.add(backBtn, 2, 10);
+		layout.add(createBtn, 3, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Bankmenu");
+				stage.setScene(UserView.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getUpdateUserScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Rediger Bruger");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label userID = new Label("Bruger ID:");
+		layout.setMargin(userID, new Insets(0, 20, 15, 0));
+		TextField userIDTF = new TextField();
+		layout.setMargin(userIDTF, new Insets(0, 0, 15, 0));
+		
+		Label userName = new Label("Brugernavn:");
+		layout.setMargin(userName, new Insets(0, 20, 15, 0));
+		TextField userNameTF = new TextField();
+		layout.setMargin(userNameTF, new Insets(0, 0, 15, 0));
+		
+		Label password = new Label("Kodeord:");
+		layout.setMargin(password, new Insets(0, 20, 0, 0));
+		TextField passwordTF = new TextField();
+		
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button updateBtn = new Button("Gem bruger");
+		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(userID, 2, 4);
+		layout.add(userIDTF, 3, 4);
+		layout.add(userName, 2, 6);
+		layout.add(userNameTF, 3, 6);
+		layout.add(password, 2, 8);
+		layout.add(passwordTF, 3, 8);
+		layout.add(backBtn, 2, 10);
+		layout.add(updateBtn, 3, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Bankmenu");
+				stage.setScene(UserView.getScene(stage));
+			};
+		});
 		
 		return scene;
 	}
