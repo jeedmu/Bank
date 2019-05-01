@@ -65,4 +65,11 @@ public class Account {
 	public BigDecimal getBalance() {
 		return balance;
 	}
+
+	public Account setBalance(BigDecimal balance) {
+		return new Account.Builder(this.customerID, this.regNumber, this.accountNumber)
+				  .setAccountName(this.accountName)
+				  .setBalance(balance)
+				  .build();
+	}
 }
