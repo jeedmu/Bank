@@ -102,108 +102,43 @@ public class CustomerChanges {
 		return customerID;
 	}
 
-	public CustomerChanges setCustomerID(int customerID) {
-		return new CustomerChanges.Builder(customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
-	}
-
 	public String getSSN() {
 		return sSN;
-	}
-
-	public CustomerChanges setSSN(String sSN) {
-		return new CustomerChanges.Builder(this.customerID, sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
 	}
 	
 	public LocalDate getChangeDate() {
 		return changeDate;
 	}
 
-	public CustomerChanges setChangeDate(LocalDate changeDate) {
-		return new CustomerChanges.Builder(this.customerID, sSN, changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
-	}
 	public String getFirstName() {
 		return firstName;
-	}
-
-	public CustomerChanges setFirstName(String firstName) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
 	}
 
 	public String getSurName() {
 		return surName;
 	}
 
-	public CustomerChanges setSurName(String surName) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
-	}
-
 	public String getAddress() {
 		return address;
-	}
-
-	public CustomerChanges setAddress(String address) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getCountry() {
 		return country;
 	}
 
-	public CustomerChanges setCountry(String country) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
-	}
-
 	public String getZipCode() {
 		return zipCode;
-	}
-
-	public CustomerChanges setZipCode(String zipCode) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(zipCode).setCity(this.city)
-				.setEmail(this.email).build();
 	}
 
 	public String getCity() {
 		return city;
 	}
 
-	public CustomerChanges setCity(String city) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
-	}
-
 	public String getEmail() {
 		return email;
-	}
-
-	public CustomerChanges setEmail(String email) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
 	}
 	
 	public String getPhoneNumber() {
 		return phoneNumber;
-	}
-	
-	public CustomerChanges setPhoneNumber(String phoneNumber) {
-		return new CustomerChanges.Builder(this.customerID, this.sSN, this.changeDate).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
 	}
 }

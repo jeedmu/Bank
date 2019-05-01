@@ -95,100 +95,39 @@ public class Customer {
 		return customerID;
 	}
 
-	public Customer setCustomerID(int customerID) {
-		return new Customer.Builder(customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
-	}
-
 	public String getSSN() {
 		return sSN;
-	}
-
-	public Customer setSSN(String sSN) {
-		return new Customer.Builder(this.customerID, sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
 	}
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-	public Customer setFirstName(String firstName) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).build();
-	}
-
 	public String getSurName() {
 		return surName;
-	}
-
-	public Customer setSurName(String surName) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getAddress() {
 		return address;
 	}
 
-	public Customer setAddress(String address) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
-	}
-
 	public String getCountry() {
 		return country;
-	}
-
-	public Customer setCountry(String country) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getZipCode() {
 		return zipCode;
 	}
 
-	public Customer setZipCode(String zipCode) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(zipCode).setCity(this.city)
-				.setEmail(this.email).build();
-	}
-
 	public String getCity() {
 		return city;
-	}
-
-	public Customer setCity(String city) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(city)
-				.setEmail(this.email).setPhoneNumber(this.phoneNumber).build();
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public Customer setEmail(String email) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
-	}
-	
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-	
-	public Customer setPhoneNumber(String phoneNumber) {
-		return new Customer.Builder(this.customerID, this.sSN).setFirstName(this.firstName).setSurName(this.surName)
-				.setAddress(this.address).setCountry(this.country).setZipCode(this.zipCode).setCity(this.city)
-				.setEmail(email).setPhoneNumber(this.phoneNumber).build();
-	}
-
 }
