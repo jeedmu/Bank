@@ -1,8 +1,10 @@
 TODO list for Bank App SE part
 
-Validation and datatypes (currently domain data is converted to strings, and there is no validation on inputs from user) //Either redo and vallidate or handle exceptions
+Validation and datatypes (currently domain data is converted to strings, and there is no validation on inputs from user) //Either redo and validate or handle exceptions
 
 Datepickers don´t save data to model
+
+Format strings for display (bigdecimals shows a lot of decimals, should be formatted)
 
 Gui styles (could be prettier, only if needed)
 

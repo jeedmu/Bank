@@ -1,5 +1,8 @@
 package dk.eamv.bank.javafx.application;
 	
+import java.net.URI;
+import sun.net.www.http.HttpClient;
+import dk.eamv.bank.javafx.Implementations.DataRequestHandler;
 import dk.eamv.bank.javafx.controllers.ControllerHandler;
 import dk.eamv.bank.javafx.controllers.MainScreenController;
 import dk.eamv.bank.javafx.views.MainScreenView;
@@ -23,14 +26,17 @@ public class Main extends Application {
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+				
 	}
 	
 	public static void main(String[] args) {
+		DataRequestHandler h = new DataRequestHandler();
+		System.out.println(h.getCustomers(null, null, ""));
 		launch(args);
+		
 	}
 	
-	public void setupStage(Stage primaryStage)
-	{
+	public void setupStage(Stage primaryStage)	{
 		primaryStage.setTitle("Medarbejder Bank");
 	}
 }
