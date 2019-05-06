@@ -94,9 +94,9 @@ public class RoleView {
 		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
 
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		Button createBtn = new Button("Opret og gem");
-		layout.setMargin(createBtn, new Insets(100, 0, 0, 0));
+		layout.setMargin(createBtn, new Insets(15, 10, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
 		layout.add(roleID, 2, 4);
@@ -104,8 +104,8 @@ public class RoleView {
 		layout.add(roleName, 2, 6);
 		layout.add(roleNameTF, 3, 6);
 
-		layout.add(backBtn, 2, 10);
-		layout.add(createBtn, 3, 10);
+		layout.add(backBtn, 3, 10);
+		layout.add(createBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -138,17 +138,17 @@ public class RoleView {
 		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
 		
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		Button updateBtn = new Button("Gem bruger");
-		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		layout.setMargin(updateBtn, new Insets(15, 10, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
 		layout.add(roleID, 2, 4);
 		layout.add(roleIDTF, 3, 4);
 		layout.add(roleName, 2, 6);
 		layout.add(roleNameTF, 3, 6);
-		layout.add(backBtn, 2, 10);
-		layout.add(updateBtn, 3, 10);
+		layout.add(backBtn, 3, 10);
+		layout.add(updateBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
