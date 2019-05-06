@@ -3,7 +3,6 @@ package dk.eamv.bank.ejb;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -12,7 +11,6 @@ import javax.ejb.Stateless;
 import dk.eamv.bank.domain.*;
 import dk.eamv.bank.ejb.entitybeans.*;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
-import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 
 /**
  * Session Bean implementation class HomeBankingBean
@@ -77,13 +75,11 @@ public class HomeBankingBean implements HomeBanking {
 				  .build();
 		
 		
-		if(LocalDateTime.now().isAfter(transferInfo.getDate()) || LocalDateTime.now().isEqual(transferInfo.getDate())) {
+		if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
 			toEntry = toEntry.setIsHandled(true);
 		}
 		
 		if(CheckIfTransferValid(transferInfo)) {
-
-			
 			if (accountsBelongToSameBank(fromAccNum, toAccNum, fromRegNum)) {
 				
 				fromEntry.setIsHandled(true);
