@@ -299,10 +299,10 @@ public class BankView {
 		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
 		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
 		
-		Label searchTerm = new Label("Søg:");
-		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
-		TextField searchTermTF = new TextField();
-		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		Label searchBank = new Label("Søg:");
+		layout.setMargin(searchBank, new Insets(0, 20, 15, 0));
+		TextField searchBankTF = new TextField();
+		layout.setMargin(searchBankTF, new Insets(0, 0, 15, 0));
 		
 		Button searchBtn = new Button("Søg");
 		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
@@ -310,8 +310,8 @@ public class BankView {
 		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
-		layout.add(searchTerm, 2, 4);
-		layout.add(searchTermTF, 3, 4);
+		layout.add(searchBank, 2, 4);
+		layout.add(searchBankTF, 3, 4);
 		layout.add(backBtn, 3, 10);
 		layout.add(searchBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
@@ -335,10 +335,10 @@ public class BankView {
 		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
 		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
 		
-		Label searchTerm = new Label("Søg:");
-		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
-		TextField searchTermTF = new TextField();
-		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		Label searchBank = new Label("Søg:");
+		layout.setMargin(searchBank, new Insets(0, 20, 15, 0));
+		TextField searchBankTF = new TextField();
+		layout.setMargin(searchBankTF, new Insets(0, 0, 15, 0));
 		
 		Button searchBtn = new Button("Søg");
 		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
@@ -346,8 +346,8 @@ public class BankView {
 		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
-		layout.add(searchTerm, 2, 4);
-		layout.add(searchTermTF, 3, 4);
+		layout.add(searchBank, 2, 4);
+		layout.add(searchBankTF, 3, 4);
 		layout.add(backBtn, 3, 10);
 		layout.add(searchBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
