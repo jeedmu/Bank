@@ -1,6 +1,5 @@
 package application;
 
-import controllers.BankController;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,8 +13,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class BankView {
-	BankController controller = new BankController();
-
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();
 		Scene scene = new Scene(layout, 800, 600);
@@ -287,7 +284,7 @@ public class BankView {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Bankmenu");
-				stage.setScene(BankView.getScene(stage));
+				stage.setScene(getScene(stage));
 			};
 		});
 		
