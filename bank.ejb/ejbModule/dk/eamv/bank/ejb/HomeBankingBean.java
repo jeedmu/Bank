@@ -76,13 +76,27 @@ public class HomeBankingBean implements HomeBanking {
 				  .setDescription(toDesc)
 				  .build();
 		
+		
+		if(LocalDateTime.now().isAfter(transferInfo.getDate()) || LocalDateTime.now().isEqual(transferInfo.getDate())) {
+			toEntry = toEntry.setIsHandled(true);
+		}
+		
 		if(CheckIfTransferValid(transferInfo)) {
+
+			
 			if (accountsBelongToSameBank(fromAccNum, toAccNum, fromRegNum)) {
-				fromEntry = fromEntry.setIsHandled(true);
+				
+				fromEntry.setIsHandled(true);
+				
 				entryBean.create(fromEntry);
 				entryBean.create(toEntry);
 				
 				updateBalance(fromEntry);
+				
+				
+				if(toEntry.isHandled())
+					updateBalance(toEntry);
+				
 			}
 			else if (ifForeignBankExsist(toEntry.getRegNumber())){
 				Entry foreignBankEntry = new Entry.Builder()
@@ -95,10 +109,15 @@ public class HomeBankingBean implements HomeBanking {
 												  .build();
 			
 				fromEntry = fromEntry.setIsHandled(true);
+				
 				entryBean.create(fromEntry);
 				foreignEntryBean.create(foreignBankEntry);
-		    
+				
 				updateBalance(fromEntry);
+				
+				if(toEntry.isHandled())
+					updateBalance(toEntry);
+				
 			}
 		}
 	}
