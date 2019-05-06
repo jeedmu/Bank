@@ -112,7 +112,7 @@ public class RoleView {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Rollemenu");
-				stage.setScene(UserView.getScene(stage));
+				stage.setScene(RoleView.getScene(stage));
 			};
 		});
 		
@@ -155,7 +155,7 @@ public class RoleView {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Rollemenu");
-				stage.setScene(UserView.getScene(stage));
+				stage.setScene(RoleView.getScene(stage));
 			};
 		});
 		
