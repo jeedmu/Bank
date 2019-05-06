@@ -40,11 +40,16 @@ public class TimerFutureEntriesBean {
 	
 	private boolean updateBalance(Entry entry) 
 	{	
-		Account account = accountBean.read(entry.getAccountNumber()).get();
-		
-		account = account.setBalance(account.getBalance().add(entry.getAmount()));
-		
-		accountBean.update(account);
-		return true;
+		try 
+		{
+			Account account = accountBean.read(entry.getAccountNumber()).get();
+			account = account.setBalance(account.getBalance().add(entry.getAmount()));
+			accountBean.update(account);
+			return true;
+		} 
+		catch(Exception e)
+		{
+			return false;
+		}
 	}
 }

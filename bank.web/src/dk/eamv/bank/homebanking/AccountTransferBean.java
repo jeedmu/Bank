@@ -48,13 +48,14 @@ public class AccountTransferBean implements Serializable {
 
 	 public void sendData() {
 		Transfer transfer = new Transfer();
-		
+		/*
 		transfer.setAmount(this.amount);
 		transfer.setRegNumber(changenumber(this.regNummer));
 		transfer.setFromDescription(this.inmessage);
 		transfer.setToDescription(this.outmessage);
 		transfer.setFromAccount(accountmap.get(account));
 		transfer.setToAccountAccountNumber(changenumber(this.kontonummer));
+		*/
 		}
 
 	 public String getAccount() {

@@ -3,7 +3,6 @@ package dk.eamv.bank.ejb;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.security.RolesAllowed;
@@ -14,7 +13,6 @@ import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.*;
 import dk.eamv.bank.ejb.entitybeans.*;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
-import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
 
 /**
  * Session Bean implementation class HomeBankingBean
@@ -79,13 +77,25 @@ public class HomeBankingBean implements HomeBanking {
 				  .setDescription(toDesc)
 				  .build();
 		
+		
+		if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
+			toEntry = toEntry.setIsHandled(true);
+		}
+		
 		if(CheckIfTransferValid(transferInfo)) {
 			if (accountsBelongToSameBank(fromAccNum, toAccNum, fromRegNum)) {
-				fromEntry = fromEntry.setIsHandled(true);
+				
+				fromEntry.setIsHandled(true);
+				
 				entryBean.create(fromEntry);
 				entryBean.create(toEntry);
 				
 				updateBalance(fromEntry);
+				
+				
+				if(toEntry.isHandled())
+					updateBalance(toEntry);
+				
 			}
 			else if (ifForeignBankExsist(toEntry.getRegNumber())){
 				Entry foreignBankEntry = new Entry.Builder()
@@ -98,10 +108,15 @@ public class HomeBankingBean implements HomeBanking {
 												  .build();
 			
 				fromEntry = fromEntry.setIsHandled(true);
+				
 				entryBean.create(fromEntry);
 				foreignEntryBean.create(foreignBankEntry);
-		    
+				
 				updateBalance(fromEntry);
+				
+				if(toEntry.isHandled())
+					updateBalance(toEntry);
+				
 			}
 		}
 	}
