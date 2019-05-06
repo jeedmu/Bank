@@ -1,17 +1,17 @@
 package application;
 
-import controllers.PropertyController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class PropertyView {
-	PropertyController controller = new PropertyController();
-
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();
 		Scene scene = new Scene(layout, 800, 600);
@@ -47,11 +47,113 @@ public class PropertyView {
 		Button backButton = new Button("Tilbage");
 		layout.add(backButton, 1, 2);
 		
+		
+		createProperty.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Opret Property");
+				stage.setScene(getCreatePropertyScene(stage));
+			};
+		});
+		
+		updateProperty.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Opdater Property");
+				stage.setScene(getUpdatePropertyScene(stage));
+			};
+		});
+		
 		backButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Hovedmenu");
 				stage.setScene(Main.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getCreatePropertyScene(Stage stage) {
+	GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Opret Property");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label propertyName = new Label("Property navn:");
+		layout.setMargin(propertyName, new Insets(0, 20, 15, 0));
+		TextField propertyNameTF = new TextField();
+		layout.setMargin(propertyNameTF, new Insets(0, 0, 15, 0));
+		
+		Label value = new Label("Værdi:");
+		layout.setMargin(value, new Insets(0, 20, 15, 0));
+		TextField valueTF = new TextField();
+		layout.setMargin(valueTF, new Insets(0, 0, 15, 0));
+		
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button updateBtn = new Button("Gem property");
+		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(propertyName, 2, 4);
+		layout.add(propertyNameTF, 3, 4);
+		layout.add(value, 2, 6);
+		layout.add(valueTF, 3, 6);
+		layout.add(backBtn, 2, 8);
+		layout.add(updateBtn, 3, 8);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Propertymenu");
+				stage.setScene(PropertyView.getScene(stage));
+			};
+		});
+		return scene;
+	}
+	
+	private static Scene getUpdatePropertyScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Opdater Property");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Label propertyName = new Label("Property navn:");
+		layout.setMargin(propertyName, new Insets(0, 20, 15, 0));
+		TextField propertyNameTF = new TextField();
+		layout.setMargin(propertyNameTF, new Insets(0, 0, 15, 0));
+		
+		Label value = new Label("Værdi:");
+		layout.setMargin(value, new Insets(0, 20, 15, 0));
+		TextField valueTF = new TextField();
+		layout.setMargin(valueTF, new Insets(0, 0, 15, 0));
+		
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button updateBtn = new Button("Opdater property");
+		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(propertyName, 2, 4);
+		layout.add(propertyNameTF, 3, 4);
+		layout.add(value, 2, 6);
+		layout.add(valueTF, 3, 6);
+		layout.add(backBtn, 2, 8);
+		layout.add(updateBtn, 3, 8);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Propertymenu");
+				stage.setScene(PropertyView.getScene(stage));
 			};
 		});
 		

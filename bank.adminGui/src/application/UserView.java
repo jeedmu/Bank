@@ -41,7 +41,7 @@ public class UserView {
 		layout.setMargin(updateUser, new Insets(34, 50, 0, 0));
 		layout.add(updateUser, 1, 3);
 		
-		Button deleteUser = new Button("Slet Bank");
+		Button deleteUser = new Button("Slet Bruger");
 		deleteUser.setMinWidth(scene.getWidth() / 2 - 30);
 		deleteUser.setMinHeight(scene.getHeight() / 2 - 50);
 		deleteUser.setStyle("-fx-background-color: #F40101; -fx-text-fill: white; -fx-font-size: 30px");
@@ -72,6 +72,14 @@ public class UserView {
 			public void handle(ActionEvent e) {
 				stage.setTitle("Rediger Bruger");
 				stage.setScene(getUpdateUserScene(stage));
+			};
+		});
+		
+		deleteUser.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Slet Bruger");
+				stage.setScene(getDeleteUserScene(stage));
 			};
 		});
 		
@@ -165,6 +173,44 @@ public class UserView {
 		layout.add(updateBtn, 3, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Bankmenu");
+				stage.setScene(UserView.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getDeleteUserScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Slet Bruger");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		Label userName = new Label("Brugernavn:");
+		layout.setMargin(userName, new Insets(0, 20, 15, 0));
+		TextField userNameTF = new TextField();
+		layout.setMargin(userNameTF, new Insets(0, 0, 15, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(0, 0, 17, 10));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		Button updateBtn = new Button("Slet bruger");
+		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(userName, 2, 4);
+		layout.add(userNameTF, 3, 4);
+		layout.add(searchBtn, 4, 4);
+		layout.add(backBtn, 2, 10);
+		layout.add(updateBtn, 3, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+		
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
