@@ -29,6 +29,9 @@ public class UserEntity {
 
 	@Id
 	private String userId;
+	
+	@NotNull
+	private int customerId;
 
 	@NotNull
 	private String name;
@@ -63,6 +66,7 @@ public class UserEntity {
 
 	public UserEntity(User user) {
 		this.userId = user.getUserId();
+		this.customerId = user.getCustomerId();
 		this.name = user.getName();
 		this.password = user.getPassword();
 		this.roles = user.getRoles()
@@ -72,7 +76,7 @@ public class UserEntity {
 	}
 	
 	public User toDomain() {
-		return new User.Builder(userId).setName(name).setPassword(password).setRoles(toRoles()).build();
+		return new User.Builder(userId).setCustomerId(customerId).setName(name).setPassword(password).setRoles(toRoles()).build();
 	}
 
 	public String getUserId() {
@@ -81,6 +85,14 @@ public class UserEntity {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+	
+	public int getCustomerId() {
+		return customerId;
+	}
+	
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {

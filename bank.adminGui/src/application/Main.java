@@ -31,14 +31,14 @@ public class Main extends Application {
 		layout.setMargin(propertyBtn, new Insets(0, 0, 50, 50));
 		layout.add(propertyBtn, 2, 1);
 		
-		Button roleBtn = new Button("Role Menu");
+		Button roleBtn = new Button("Rolle Menu");
 		roleBtn.setMinWidth(scene.getWidth() / 2 - 70);
 		roleBtn.setMinHeight(scene.getHeight() / 2 - 50);
 		roleBtn.setStyle("-fx-background-color: #F40101; -fx-text-fill: white; -fx-font-size: 30px");
 		layout.setMargin(roleBtn, new Insets(50, 50, 0, 0));
 		layout.add(roleBtn, 1, 2);
 		
-		Button userBtn = new Button("User Menu");
+		Button userBtn = new Button("Bruger Menu");
 		userBtn.setMinWidth(scene.getWidth() / 2 - 30);
 		userBtn.setMinHeight(scene.getHeight() / 2 - 50);
 		userBtn.setStyle("-fx-background-color: #F40101; -fx-text-fill: white; -fx-font-size: 30px");

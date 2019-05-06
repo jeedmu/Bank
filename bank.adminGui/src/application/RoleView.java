@@ -1,6 +1,5 @@
 package application;
 
-import controllers.RoleController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class RoleView {
-	RoleController controller = new RoleController();
 
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();
@@ -74,6 +72,22 @@ public class RoleView {
 			};
 		});
 		
+		deleteRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Slet Rolle");
+				stage.setScene(getDeleteRoleScene(stage));
+			};
+		});
+		
+		getRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Se Rolle(r)");
+				stage.setScene(getSearchRoleScene(stage));
+			};
+		});
+		
 		return scene;
 	}
 	
@@ -96,9 +110,9 @@ public class RoleView {
 		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
 
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		Button createBtn = new Button("Opret og gem");
-		layout.setMargin(createBtn, new Insets(100, 0, 0, 0));
+		layout.setMargin(createBtn, new Insets(15, 10, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
 		layout.add(roleID, 2, 4);
@@ -106,8 +120,8 @@ public class RoleView {
 		layout.add(roleName, 2, 6);
 		layout.add(roleNameTF, 3, 6);
 
-		layout.add(backBtn, 2, 10);
-		layout.add(createBtn, 3, 10);
+		layout.add(backBtn, 3, 10);
+		layout.add(createBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -140,17 +154,17 @@ public class RoleView {
 		layout.setMargin(roleNameTF, new Insets(0, 0, 15, 0));
 		
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(100, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		Button updateBtn = new Button("Gem bruger");
-		layout.setMargin(updateBtn, new Insets(100, 0, 0, 0));
+		layout.setMargin(updateBtn, new Insets(15, 10, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
 		layout.add(roleID, 2, 4);
 		layout.add(roleIDTF, 3, 4);
 		layout.add(roleName, 2, 6);
 		layout.add(roleNameTF, 3, 6);
-		layout.add(backBtn, 2, 10);
-		layout.add(updateBtn, 3, 10);
+		layout.add(backBtn, 3, 10);
+		layout.add(updateBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -161,6 +175,74 @@ public class RoleView {
 			};
 		});
 		
+		return scene;
+	}
+	
+	private static Scene getDeleteRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Slet Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 25, 0));
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+		
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(RoleView.getScene(stage));
+			};
+		});
+		return scene;
+	}
+	
+	private static Scene getSearchRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Se Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 25, 0));
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+		
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(RoleView.getScene(stage));
+			};
+		});
 		return scene;
 	}
 }
