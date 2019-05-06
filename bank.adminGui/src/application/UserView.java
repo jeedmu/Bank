@@ -1,6 +1,5 @@
 package application;
 
-import controllers.UserController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,7 +13,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class UserView {
-	UserController controller = new UserController();
 
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();

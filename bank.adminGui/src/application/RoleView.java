@@ -1,6 +1,5 @@
 package application;
 
-import controllers.RoleController;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,7 +12,6 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class RoleView {
-	RoleController controller = new RoleController();
 
 	public static Scene getScene(Stage stage) {
 		GridPane layout = new GridPane();
