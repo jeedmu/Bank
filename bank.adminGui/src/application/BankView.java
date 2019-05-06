@@ -73,7 +73,7 @@ public class BankView {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Opdater Bank");
-				stage.setScene(getCreateBankScene(stage));
+				stage.setScene(getUpdateBankScene(stage));
 			};
 		});
 		
@@ -181,7 +181,7 @@ public class BankView {
 		GridPane layout = new GridPane();
 		Scene scene = new Scene(layout, 800, 600);
 		
-		Label headerLabel = new Label("Opret Bank");
+		Label headerLabel = new Label("Rediger Bank");
 		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
 		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
 		
