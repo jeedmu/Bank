@@ -210,8 +210,8 @@ public class UserView {
 		layout.add(headerLabel, 3, 1);
 		layout.add(userName, 2, 4);
 		layout.add(userNameTF, 3, 4);
-		layout.add(searchBtn, 3, 10);
-		layout.add(backBtn, 2, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.add(backBtn, 3, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -245,8 +245,8 @@ public class UserView {
 		layout.add(headerLabel, 3, 1);
 		layout.add(userName, 2, 4);
 		layout.add(userNameTF, 3, 4);
-		layout.add(searchBtn, 3, 10);
-		layout.add(backBtn, 2, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.add(backBtn, 3, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {

@@ -161,4 +161,72 @@ public class RoleView {
 		
 		return scene;
 	}
+	
+	private static Scene getDeleteRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Slet Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 25, 0));
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+		
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(RoleView.getScene(stage));
+			};
+		});
+		return scene;
+	}
+	
+	private static Scene getSearchRoleScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Se Rolle");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 25, 0));
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
+		layout.setAlignment(Pos.TOP_CENTER);
+		
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Rollemenu");
+				stage.setScene(RoleView.getScene(stage));
+			};
+		});
+		return scene;
+	}
 }
