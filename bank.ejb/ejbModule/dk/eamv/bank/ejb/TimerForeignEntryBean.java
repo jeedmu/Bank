@@ -1,15 +1,18 @@
 package dk.eamv.bank.ejb;
 
+import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.ejb.ws.ForeignEntryNetsBean;
 import dk.eamv.bank.ejb.ws.ForeignEntryNetsBeanService;
 
 @Stateless
+@RunAs(Constants.employeeRole)
 public class TimerForeignEntryBean {
 	
 	@Schedule(minute="*/1", hour="*")

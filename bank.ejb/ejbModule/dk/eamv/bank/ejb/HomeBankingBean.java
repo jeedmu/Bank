@@ -6,9 +6,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.*;
 import dk.eamv.bank.ejb.entitybeans.*;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
@@ -18,6 +20,7 @@ import dk.eamv.bank.ejb.exception.EntryAlreadyExsistsException;
  * Session Bean implementation class HomeBankingBean
  */
 @Stateless
+@RolesAllowed({Constants.employeeRole,Constants.customerRole})
 public class HomeBankingBean implements HomeBanking {
 
 	@EJB private AccountBean accountBean;

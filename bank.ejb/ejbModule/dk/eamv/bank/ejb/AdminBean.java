@@ -3,9 +3,11 @@ package dk.eamv.bank.ejb;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
+import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.domain.Role;
@@ -15,10 +17,12 @@ import dk.eamv.bank.ejb.entitybeans.PropertyBean;
 import dk.eamv.bank.ejb.entitybeans.RoleBean;
 import dk.eamv.bank.ejb.entitybeans.UserBean;
 
+
 /**
  * Session Bean implementation class AdminBean
  */
 @Stateless
+@RolesAllowed(Constants.adminRole)
 public class AdminBean implements Admin {
 	@EJB UserBean uB;
 	@EJB RoleBean rB;
@@ -33,6 +37,7 @@ public class AdminBean implements Admin {
     }
 
 	@Override
+	
 	public void editUser(User user) {
 		uB.update(user);
 	}

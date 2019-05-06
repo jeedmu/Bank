@@ -3,6 +3,7 @@ package dk.eamv.bank.ejb;
 import java.util.HashMap;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.security.PermitAll;
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Singleton;
@@ -14,6 +15,7 @@ import dk.eamv.bank.ejb.entitybeans.PropertyBean;
  * Session Bean implementation class SingletonPropertiesBean
  */
 @Singleton
+@PermitAll
 public class SingletonPropertiesBean implements SingletonPropertiesBeanLocal {
 
 	@EJB private PropertyBean propertyBean; 
