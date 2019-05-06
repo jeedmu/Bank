@@ -282,7 +282,7 @@ public class BankView {
 			@Override 
 			public void handle(ActionEvent e) {
 				stage.setTitle("Bankmenu");
-				stage.setScene(BankView.getScene(stage));
+				stage.setScene(getScene(stage));
 			};
 		});
 		
