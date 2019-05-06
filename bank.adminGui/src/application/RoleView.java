@@ -72,6 +72,22 @@ public class RoleView {
 			};
 		});
 		
+		deleteRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Slet Rolle");
+				stage.setScene(getDeleteRoleScene(stage));
+			};
+		});
+		
+		getRole.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Se Rolle(r)");
+				stage.setScene(getSearchRoleScene(stage));
+			};
+		});
+		
 		return scene;
 	}
 	
