@@ -5,12 +5,14 @@ import java.util.List;
 public class User {
 
 	private final String userId;
+	private final int customerId;
 	private final String name;
 	private final String password;
 	private final List<Role> roles;
 	
 	public static class Builder {
 		private final String userId;
+		private int customerId;
 		private String name;
 		private String password;
 		private List<Role> roles;
@@ -19,6 +21,10 @@ public class User {
 			this.userId = userId;
 		}
 		
+		public Builder setCustomerId(int customerId) {
+			this.customerId = customerId;
+			return this;
+		}
 		public Builder setName(String name) {
 			this.name = name;
 			return this;
@@ -41,6 +47,7 @@ public class User {
 	
 	private User(Builder builder) {
 		userId = builder.userId;
+		customerId = builder.customerId;
 		name = builder.name;
 		password = builder.password;
 		roles = builder.roles;
@@ -52,6 +59,10 @@ public class User {
 
 	public String getUserId() {
 		return userId;
+	}
+	
+	public int getCustomerId() {
+		return customerId;
 	}
 
 
