@@ -77,8 +77,26 @@ public class BankView {
 			};
 		});
 		
+		getBank.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Se Bank");
+				stage.setScene(getViewBankScene(stage));
+			};
+		});
+		
+		deleteBank.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Slet Bank");
+				stage.setScene(getDeleteBankScene(stage));
+			};
+		});
+		
 		return scene;
 	}
+	
+	
 	
 	private static Scene getCreateBankScene(Stage stage) {
 		GridPane layout = new GridPane();
@@ -263,6 +281,80 @@ public class BankView {
 		layout.add(createBtn, 3, 22);
 		layout.setAlignment(Pos.TOP_CENTER);
 
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Bankmenu");
+				stage.setScene(BankView.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getViewBankScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Se Bank");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(0, 20, 15, 0));
+		TextField searchTF = new TextField();
+		layout.setMargin(searchTF, new Insets(0, 0, 15, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchBtn, 2, 4);
+		layout.add(searchTF, 3, 4);
+		layout.add(backBtn, 2, 6);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		searchBtn.setMaxWidth(Double.MAX_VALUE);
+		
+		backBtn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override 
+			public void handle(ActionEvent e) {
+				stage.setTitle("Bankmenu");
+				stage.setScene(BankView.getScene(stage));
+			};
+		});
+		
+		return scene;
+	}
+	
+	private static Scene getDeleteBankScene(Stage stage) {
+		GridPane layout = new GridPane();
+		Scene scene = new Scene(layout, 800, 600);
+		
+		Label headerLabel = new Label("Slet Bank");
+		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
+		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
+		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(0, 20, 15, 0));
+		TextField searchTF = new TextField();
+		layout.setMargin(searchTF, new Insets(0, 0, 15, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
+		Button deleteBtn = new Button("Slet");
+		layout.setMargin(deleteBtn, new Insets(25, 10, 0, 0));
+		
+		
+		layout.add(headerLabel, 3, 1);
+		layout.add(searchBtn, 2, 4);
+		layout.add(searchTF, 3, 4);
+		layout.add(backBtn, 2, 6);
+		layout.add(deleteBtn, 3, 6);
+		layout.setAlignment(Pos.TOP_CENTER);
+
+		searchBtn.setMaxWidth(Double.MAX_VALUE);
+		
+		
+		
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
 			public void handle(ActionEvent e) {
