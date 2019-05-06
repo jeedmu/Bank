@@ -154,9 +154,9 @@ public class BankView {
 
 
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(25, 0, 0, 0));
 		Button createBtn = new Button("Opret og gem");
-		layout.setMargin(createBtn, new Insets(25, 0, 0, 0));
+		layout.setMargin(createBtn, new Insets(25, 0, 0, 10));
 		
 		
 		
@@ -180,8 +180,9 @@ public class BankView {
 		layout.add(country, 2, 20);
 		layout.add(countryTF, 3, 20);
 
-		layout.add(backBtn, 2, 22);
-		layout.add(createBtn, 3, 22);
+		layout.add(createBtn, 2, 22);
+		layout.add(backBtn, 3, 22);
+		
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -251,9 +252,9 @@ public class BankView {
 
 
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
-		Button createBtn = new Button("Gem bank");
-		layout.setMargin(createBtn, new Insets(25, 0, 0, 0));
+		layout.setMargin(backBtn, new Insets(25, 0, 0, 0));
+		Button createBtn = new Button("     Gem bank     ");
+		layout.setMargin(createBtn, new Insets(25, 10, 0, 0));
 		
 		
 		
@@ -276,9 +277,10 @@ public class BankView {
 		layout.add(addressTF, 3, 18);
 		layout.add(country, 2, 20);
 		layout.add(countryTF, 3, 20);
-
-		layout.add(backBtn, 2, 22);
-		layout.add(createBtn, 3, 22);
+		
+		layout.add(createBtn, 2, 22);
+		layout.add(backBtn, 3, 22);
+		
 		layout.setAlignment(Pos.TOP_CENTER);
 
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -300,20 +302,22 @@ public class BankView {
 		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
 		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
 		
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
+		
 		Button searchBtn = new Button("Søg");
-		layout.setMargin(searchBtn, new Insets(0, 20, 15, 0));
-		TextField searchTF = new TextField();
-		layout.setMargin(searchTF, new Insets(0, 0, 15, 0));
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
 		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
-		layout.add(searchBtn, 2, 4);
-		layout.add(searchTF, 3, 4);
-		layout.add(backBtn, 2, 6);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
-
-		searchBtn.setMaxWidth(Double.MAX_VALUE);
 		
 		backBtn.setOnAction(new EventHandler<ActionEvent>() {
 			@Override 
@@ -334,24 +338,22 @@ public class BankView {
 		headerLabel.setStyle("-fx-font-weight:bold; -fx-font-size:36px"); 
 		layout.setMargin(headerLabel, new Insets(0, 0, 40, 0));
 		
-		Button searchBtn = new Button("Søg");
-		layout.setMargin(searchBtn, new Insets(0, 20, 15, 0));
-		TextField searchTF = new TextField();
-		layout.setMargin(searchTF, new Insets(0, 0, 15, 0));
-		Button backBtn = new Button("Tilbage");
-		layout.setMargin(backBtn, new Insets(25, 10, 0, 0));
-		Button deleteBtn = new Button("Slet");
-		layout.setMargin(deleteBtn, new Insets(25, 10, 0, 0));
+		Label searchTerm = new Label("Søg:");
+		layout.setMargin(searchTerm, new Insets(0, 20, 15, 0));
+		TextField searchTermTF = new TextField();
+		layout.setMargin(searchTermTF, new Insets(0, 0, 15, 0));
 		
+		Button searchBtn = new Button("Søg");
+		layout.setMargin(searchBtn, new Insets(15, 10, 0, 0));
+		Button backBtn = new Button("Tilbage");
+		layout.setMargin(backBtn, new Insets(15, 0, 0, 0));
 		
 		layout.add(headerLabel, 3, 1);
-		layout.add(searchBtn, 2, 4);
-		layout.add(searchTF, 3, 4);
-		layout.add(backBtn, 2, 6);
-		layout.add(deleteBtn, 3, 6);
+		layout.add(searchTerm, 2, 4);
+		layout.add(searchTermTF, 3, 4);
+		layout.add(backBtn, 3, 10);
+		layout.add(searchBtn, 2, 10);
 		layout.setAlignment(Pos.TOP_CENTER);
-
-		searchBtn.setMaxWidth(Double.MAX_VALUE);
 		
 		
 		
