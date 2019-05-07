@@ -7,6 +7,7 @@ import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
+import dk.eamv.bank.domain.Account;
 import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.domain.Transfer;
@@ -20,18 +21,22 @@ public class ForeignEntryNetsBean
 	@EJB HomeBankingBean hbbejb;
 	
 	@WebMethod
-	public boolean CreateNetsRequest(int fromReg,Entry entry) 
+	public boolean CreateNetsRequest(int fromReg,Entry entry, Account fromAccount, String description) 
 	{
 		try {
 			/*if(bbejb.read(fromReg).isPresent()) {
 				bbejb.read(fromReg).get().getAccountNumber();
 			}*/
-			int k = bbejb.read(fromReg).get().getAccountNumber();
-			Transfer tf = new Transfer();
-			tf.getAmount();
-			tf.setRegNumber(entry.getRegNumber());
-			//tf.getFromAccount().getAccountNumber(k);
-			//tf.
+			int accountNumber = bbejb.read(fromReg).get().getAccountNumber();
+			Transfer transfer = new Transfer();
+			//transfer.setAmount();
+			transfer.setFromAccount(fromAccount);
+			transfer.setToAccountAccountNumber(accountNumber);			
+			transfer.setToDescription(description);			
+			transfer.setRegNumber(entry.getRegNumber());
+			//transfer.setCurrentCustomer(currentCustomer);
+			//transfer.setDate(date);
+
 			//hbbejb.transferEntry(tf);
 			
 			return true;
