@@ -18,7 +18,7 @@ import dk.eamv.bank.ejb.entitybeans.BankBean;
 public class ForeignEntryNetsBean 
 {
 	@EJB BankBean bbejb;
-	@EJB HomeBankingBean hbbejb;
+	@EJB HomeBanking hbbejb;
 	
 	@WebMethod
 	public boolean CreateNetsRequest(int fromReg,Entry entry, Account fromAccount, String description) 
