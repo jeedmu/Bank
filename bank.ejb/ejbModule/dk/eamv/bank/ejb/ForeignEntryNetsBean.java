@@ -27,8 +27,15 @@ public class ForeignEntryNetsBean
 				bbejb.read(fromReg).get().getAccountNumber();
 			}*/
 			Transfer transfer = new Transfer();
-			int accountNumber = bbejb.read(fromReg).get().getAccountNumber();
-			int customerID = abejb.read(accountNumber).get().getCustomerID();
+			int accountNumber=0;// = bbejb.read(fromReg).get().getAccountNumber();
+			int customerID = 0; 
+			
+			if(bbejb.read(fromReg).isPresent() == true) {
+				accountNumber = bbejb.read(fromReg).get().getAccountNumber();
+			}
+			if(abejb.read(accountNumber).isPresent() == true) {
+				customerID = abejb.read(accountNumber).get().getCustomerID();
+			}
 			
 			transfer.setAmount(entry.getAmount());
 			transfer.setFromAccount(abejb.read(accountNumber).get());
