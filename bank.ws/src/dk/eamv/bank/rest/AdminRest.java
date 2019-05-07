@@ -18,6 +18,10 @@ import dk.eamv.bank.domain.Property;
 import dk.eamv.bank.domain.Role;
 import dk.eamv.bank.domain.User;
 import dk.eamv.bank.ejb.Admin;
+import dk.eamv.bank.rest.domain.BankRest;
+import dk.eamv.bank.rest.domain.PropertyRest;
+import dk.eamv.bank.rest.domain.RoleRest;
+import dk.eamv.bank.rest.domain.UserRest;
 
 @Path("/admin")
 public class AdminRest {
@@ -28,8 +32,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editUser")
-	public boolean editUser(User user) {
-		adminBean.editUser(user);
+	public boolean editUser(UserRest user) {
+		adminBean.editUser(user.toDomain());
 		return true;
 	}
 
@@ -45,8 +49,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createUser")
-	public User createUser(User user) {
-		return adminBean.createUser(user);
+	public User createUser(UserRest user) {
+		return adminBean.createUser(user.toDomain());
 	}
 	
 	@GET
@@ -67,8 +71,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editRole")
-	public boolean editRole(Role role) {
-		adminBean.editRole(role);
+	public boolean editRole(RoleRest role) {
+		adminBean.editRole(role.toDomain());
 		return true;
 	}
 
@@ -84,8 +88,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createRole")
-	public Role createRole(Role role) {
-		return adminBean.createRole(role);
+	public Role createRole(RoleRest role) {
+		return adminBean.createRole(role.toDomain());
 	}
 
 	@GET
@@ -106,8 +110,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editProperty")
-	public boolean editProperty(Property property) {
-		adminBean.editProperty(property);
+	public boolean editProperty(PropertyRest property) {
+		adminBean.editProperty(property.toDomain());
 		return true;
 	}
 
@@ -123,8 +127,8 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createProperty")
-	public boolean createProperty(Property property) {
-		adminBean.createProperty(property);
+	public boolean createProperty(PropertyRest property) {
+		adminBean.createProperty(property.toDomain());
 		return true;
 	}
 
@@ -146,16 +150,16 @@ public class AdminRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createBank")
-	public boolean createBank(Bank bank) {
-		return adminBean.createBank(bank);
+	public boolean createBank(BankRest bank) {
+		return adminBean.createBank(bank.toDomain());
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editBank")
-	public boolean editBank(Bank bank) {
-		return adminBean.editBank(bank);
+	public boolean editBank(BankRest bank) {
+		return adminBean.editBank(bank.toDomain());
 	}
 	
 	@DELETE
