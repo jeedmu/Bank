@@ -29,17 +29,15 @@ public abstract class RestAuthenticationFilter implements javax.servlet.Filter {
 			}
 			catch(Exception e){}
 			
-			if (httpServletRequest.isUserInRole(allowedRole())) 
-			{
-				filter.doFilter(request, response); 
-				httpServletRequest.logout();
-			}
+			if (httpServletRequest.isUserInRole(allowedRole()))
+				filter.doFilter(request, response);
 			else
 				if (response instanceof HttpServletResponse) {
 					HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 					httpServletResponse.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 				}
 			
+			httpServletRequest.logout();
 		}
 	}
 
