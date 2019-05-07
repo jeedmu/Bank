@@ -1,8 +1,5 @@
 package dk.eamv.bank.ejb;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
-
 import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ejb.Schedule;
@@ -10,7 +7,6 @@ import javax.ejb.Stateless;
 
 import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.Account;
-import dk.eamv.bank.domain.Customer;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
@@ -22,20 +18,21 @@ public class TimerFutureEntriesBean {
 	@EJB EntryBean entryBean;
 	@EJB AccountBean accountBean;
 
-	@EJB Employee e;
-	
-	int counter = 2424;
-	
 	// TODO change to once every hour?
 	@Schedule(minute="*/1", hour="*")
 	public void handleEntries()
 	{
-		for(Entry en : entryBean.getUpcomingUnhandledEntries())
+		for(Entry en : entryBean.getUpcomingUnhandledEntries()) {
 			try 
 			{
 				updateBalance(en);
 				entryBean.update(en.setIsHandled(true));
-			}catch(Exception e){}
+			}
+			catch(Exception e)
+			{
+				//
+			}
+		}
 	}
 	
 	private boolean updateBalance(Entry entry) 
