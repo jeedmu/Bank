@@ -9,6 +9,7 @@ import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
@@ -125,7 +126,8 @@ public class RequestHandler implements Admin {
 
 	@Override
 	public boolean createBank(Bank bank) {
-		// TODO Auto-generated method stub
+		String url = "http://desktop-g3507t3:8080/bank.ws/rest/admin/createBank/";
+		HttpPost post = new HttpPost(url);
 		return false;
 	}
 
@@ -154,8 +156,27 @@ public class RequestHandler implements Admin {
 
 	@Override
 	public Optional<Bank> getBank(int regNumber) {
+		String url = "http://desktop-g3507t3:8080/bank.ws/rest/admin/getBanks/";
 		
-		return null;
+		Optional<Bank> result = null;
+		ObjectMapper mapper = new ObjectMapper();
+		HttpClient client = HttpClientBuilder.create().build();
+		
+		HttpGet get = new HttpGet(url);
+		get.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");
+		get.addHeader("regNumber", Integer.toString(regNumber));
+		
+		try {
+			HttpResponse response = client.execute(get);
+			HttpEntity entity = response.getEntity();
+			String string = EntityUtils.toString(entity);
+			System.out.println(string);
+			result = mapper.readValue(string, new TypeReference<Bank>() {});
+		}
+		catch(IOException e){
+			
+		}
+		return result;
 	}
 
 }
