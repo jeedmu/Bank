@@ -1,6 +1,7 @@
 package dk.eamv.bank.rest;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -19,6 +20,9 @@ import dk.eamv.bank.domain.CustomerChanges;
 import dk.eamv.bank.domain.CustomerSearchParameters;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.ejb.Employee;
+import dk.eamv.bank.rest.domain.AccountRest;
+import dk.eamv.bank.rest.domain.CustomerChangesRest;
+import dk.eamv.bank.rest.domain.CustomerRest;
 
 @Path("/employee")
 public class EmployeeRest {
@@ -28,15 +32,15 @@ public class EmployeeRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editCustomer")
-	public boolean editCustomer(CustomerChanges cC) {
-		employBean.editCustomer(cC);
+	public boolean editCustomer(CustomerChangesRest cC) {
+		employBean.editCustomer(cC.toDomain());
 		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteCustomer/{customerID}")
-	public boolean deleteCustomer(@PathParam("customerID") int customerID) {
+	public boolean deleteCustomer(@PathParam("customerID")int customerID) {
 		employBean.deleteCustomer(customerID);
 		return true;
 	}
@@ -45,15 +49,14 @@ public class EmployeeRest {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("editAccount")
-	public boolean editAccount(Account account) {
-		employBean.editAccount(account);
+	public boolean editAccount(AccountRest account) {
+		employBean.editAccount(account.toDomain());
 		return true;
 	}
 
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("deleteAccount/{reg}/{acc}")
-	
 	public boolean deleteAccount(@PathParam("reg") int reg, @PathParam("acc") int acc) {
 		 employBean.deleteAccount(reg, acc);
 		 return true;
@@ -70,7 +73,6 @@ public class EmployeeRest {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("accounts/{customerID}")
-	
 	public List<Account> getAccounts(@PathParam("customerID") int customerID) {
 		return employBean.getAccounts(customerID);
 	}
@@ -78,24 +80,25 @@ public class EmployeeRest {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("showEntries/{regNo}-{accountNo}/{fromDate}-{toDate}")
-	public List<Entry> showEntries(@PathParam("regNo")int regNo, @PathParam("accountNo") int accountNo, @PathParam("fromDate") LocalDateTime fromDate, @PathParam("toDate") LocalDateTime toDate) {
-		return employBean.showEntries(regNo, accountNo, fromDate, toDate);
+	@Path("showEntries/{regNo}/{accountNo}/{fromDate}/{toDate}")
+	public List<Entry> showEntries(@PathParam("regNo")int regNo, @PathParam("accountNo") int accountNo, @PathParam("fromDate") String fromDate, @PathParam("toDate") String toDate) {
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		return employBean.showEntries(regNo, accountNo, LocalDateTime.parse(fromDate, dtf), LocalDateTime.parse(toDate, dtf));
 	}
 	
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createAccount")
-	public Account createAccount(Account account) {
-		return employBean.createAccount(account);
+	public Account createAccount(AccountRest account) {
+		return employBean.createAccount(account.toDomain());
 	}
 
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("createCustomer")
-	public Customer createCustomer(Customer customer) {
-		return employBean.createCustomer(customer);
+	public Customer createCustomer(CustomerRest customer) {
+		return employBean.createCustomer(customer.toDomain());
 	}
 }
