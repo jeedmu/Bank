@@ -5,11 +5,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.security.RolesAllowed;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import dk.eamv.bank.constants.Constants;
 import dk.eamv.bank.domain.*;
 import dk.eamv.bank.ejb.entitybeans.*;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
@@ -18,7 +16,6 @@ import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
  * Session Bean implementation class HomeBankingBean
  */
 @Stateless
-@RolesAllowed({Constants.employeeRole,Constants.customerRole})
 public class HomeBankingBean implements HomeBanking {
 
 	@EJB private AccountBean accountBean;
@@ -77,26 +74,29 @@ public class HomeBankingBean implements HomeBanking {
 				  .setDescription(toDesc)
 				  .build();
 		
-		
-		if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
-			toEntry = toEntry.setIsHandled(true);
-		}
-		
 		if(CheckIfTransferValid(transferInfo)) {
-			if (accountsBelongToSameBank(fromAccNum, toAccNum, fromRegNum)) {
-				
-				fromEntry.setIsHandled(true);
+			if (accountsBelongToSameBank(fromAccNum, toAccNum)) {
 				
 				entryBean.create(fromEntry);
 				entryBean.create(toEntry);
 				
 				updateBalance(fromEntry);
+				fromEntry.setIsHandled(true);
 				
-				
-				if(toEntry.isHandled())
-					updateBalance(toEntry);
-				
+				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
+					try 
+					{
+						updateBalance(toEntry);
+						toEntry = toEntry.setIsHandled(true);
+					} 
+					catch(Exception e)
+					{
+						//
+					}
+				}
+					
 			}
+			// Ikke nogen forskel på entryBean og foreignEntryBean lige pt. Evt. slet 'else if' osv. ? :-)
 			else if (ifForeignBankExsist(toEntry.getRegNumber())){
 				Entry foreignBankEntry = new Entry.Builder()
 												  .setAccountNumber(toEntry.getAccountNumber())
@@ -106,17 +106,24 @@ public class HomeBankingBean implements HomeBanking {
 												  .setDate(LocalDateTime.now())
 												  .setDescription(toEntry.getDescription())
 												  .build();
-			
-				fromEntry = fromEntry.setIsHandled(true);
 				
 				entryBean.create(fromEntry);
 				foreignEntryBean.create(foreignBankEntry);
 				
 				updateBalance(fromEntry);
+				fromEntry = fromEntry.setIsHandled(true);
 				
-				if(toEntry.isHandled())
-					updateBalance(toEntry);
-				
+				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
+					try 
+					{
+						updateBalance(toEntry);
+						toEntry = toEntry.setIsHandled(true);
+					} 
+					catch(Exception e)
+					{
+						//
+					}
+				}
 			}
 		}
 	}
@@ -125,22 +132,20 @@ public class HomeBankingBean implements HomeBanking {
 		
 		int currAccID = transfer.getFromAccount().getCustomerID();
 		int fromAccNum = transfer.getFromAccount().getAccountNumber();
-		int fromRegNum = transfer.getFromAccount().getRegNumber();
-
-		int toAccNum = transfer.getToAccountAccountNumber();
-		int toRegNum = transfer.getRegNumber();
 		
+		int toAccNum = transfer.getToAccountAccountNumber();
+	
 		BigDecimal amount = transfer.getAmount();
 		
-		if (!accountExists(fromAccNum, fromRegNum) || !accountExists(toAccNum, toRegNum)) {
+		if (!accountExists(fromAccNum) || !accountExists(toAccNum)) {
 			return false;
 		}
 		
-		if (!customerHasAccountRights(fromAccNum, currAccID, fromRegNum)) {
+		if (!customerHasAccountRights(fromAccNum, currAccID)) {
 			return false;
 		}
 		
-		if (!accountHasSufficientFunds(fromAccNum, amount, fromRegNum)) {
+		if (!accountHasSufficientFunds(fromAccNum, amount)) {
 			return false;
 		}
 		
@@ -164,21 +169,21 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	
-	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo,int accountReg) {
+	private boolean accountsBelongToSameBank(int fromAccountNo, int toAccountNo) {
 		return accountBean.read(fromAccountNo).get().getRegNumber() == accountBean.read(toAccountNo).get()
 				.getRegNumber();
 	}
 
-	private boolean customerHasAccountRights(int accountNo, int customerID,int accountReg) {
+	private boolean customerHasAccountRights(int accountNo, int customerID) {
 		return accountBean.read(accountNo).get().getCustomerID() == customerID;
 	}
 
-	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount, int accountReg) {
+	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount) {
 		Account account = new AccountBean().read(accountNo).get();
 		return account.getBalance().compareTo(amount) != -1;
 	}
 
-	private boolean accountExists(int accountNo, int accountReg) {
+	private boolean accountExists(int accountNo) {
 		return accountBean.read(accountNo).isPresent();
 	}
 	
