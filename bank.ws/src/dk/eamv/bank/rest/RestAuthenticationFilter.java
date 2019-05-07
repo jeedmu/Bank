@@ -13,23 +13,30 @@ import javax.servlet.http.HttpServletResponse;
 public class RestAuthenticationFilter implements javax.servlet.Filter {
 	public static final String AUTHENTICATION_HEADER = "Authorization";
 
+	//protected abstract String getRole();
+	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filter) throws IOException, ServletException {
 		if (request instanceof HttpServletRequest) {
-		/*
+			
+		
 			HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-			String authCredentials = httpServletRequest
-					.getHeader(AUTHENTICATION_HEADER);
-
-			// better injected
-			AuthenticationService authenticationService = new AuthenticationService();
-
-			boolean authenticationStatus = authenticationService
-					.authenticate(authCredentials);
-*/
-			boolean authenticationStatus = true;
-			if (authenticationStatus) {
+		
+			String userid = httpServletRequest.getHeader("userid");
+			String password = httpServletRequest.getHeader("password");
+		/*	
+			boolean authenticationStatus = false;
+			
+			if(userid!= null && password!=null)
+				authenticationStatus=true;
+			*/	
+			//if (authenticationStatus) {
+			try {
+			httpServletRequest.login(userid, password);
+			}catch(Exception e) {}
+			
+			if (httpServletRequest.isUserInRole("employee")) {
 				filter.doFilter(request, response);
 			} else {
 				if (response instanceof HttpServletResponse) {
