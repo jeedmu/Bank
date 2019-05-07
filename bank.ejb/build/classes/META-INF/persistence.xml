@@ -3,7 +3,6 @@
 	<persistence-unit name="bank.ejb">
 		<jta-data-source>java:jboss/datasources/Bank</jta-data-source>
 		<properties>
-			<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
 			<property name="hibernate.show_sql" value="true"/>
 		</properties>
 	</persistence-unit>

@@ -1,17 +1,22 @@
-package dk.eamv.bank.javafx.domain;
+package dk.eamv.bank.rest.domain;
 
-public class Customer {
+import java.time.LocalDate;
 
-	private  int customerID;
+import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.domain.Customer.Builder;
+
+public class CustomerRest {
+	private int customerID;
 	private String sSN;
 	private String firstName;
 	private String surName;
-	private  String address;
-	private  String country;
-	private  String zipCode;
-	private  String city;
-	private  String email;
-	private  String phoneNumber;
+	private String address;
+	private String country;
+	private String zipCode;
+	private String city;
+	private String email;
+	private String phoneNumber;
+	
 	public int getCustomerID() {
 		return customerID;
 	}
@@ -73,5 +78,13 @@ public class Customer {
 		this.phoneNumber = phoneNumber;
 	}
 	
+	public Customer toDomain() {
+		Customer.Builder builder = new Builder(customerID, sSN)
+				.setFirstName(firstName).setSurName(surName)
+				.setAddress(address).setCountry(country)
+				.setCity(city).setZipCode(zipCode)
+				.setEmail(email).setPhoneNumber(phoneNumber);
+		return builder.build();
+	}
 
 }

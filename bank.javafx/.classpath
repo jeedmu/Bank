@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_151">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_161">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/commons-logging-1.2.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/httpclient-4.5.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/httpcore-4.4.11.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/jackson-annotations-2.9.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/jackson-core-2.9.8.jar"/>
-	<classpathentry kind="lib" path="C:/Users/Shahnaz Yahyavi/Documents/GitHub/Bank/bank.javafx/lib/jackson-databind-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/commons-logging-1.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/httpclient-4.5.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/httpcore-4.4.11.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/jackson-annotations-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/jackson-core-2.9.8.jar"/>
+	<classpathentry kind="lib" path="C:/Users/bloms/OneDrive/Dokumenter/GitHub/Bank/bank.javafx/lib/jackson-databind-2.9.8.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bank.ejbClient"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

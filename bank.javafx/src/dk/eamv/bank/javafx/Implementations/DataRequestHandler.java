@@ -19,11 +19,14 @@ import dk.eamv.bank.javafx.domain.Customer;
 import dk.eamv.bank.javafx.domain.Entry;
 import dk.eamv.bank.javafx.domain.Transfer;
 import dk.eamv.bank.javafx.interfaces.IDataRequestHandler;
-
+import dk.eamv.bank.constants.Constants;
 
 
 public class DataRequestHandler implements IDataRequestHandler {
 
+	private ObjectMapper mapper = new ObjectMapper();
+	private HttpClient client = HttpClientBuilder.create().build();
+	
 	@Override
 	public void createNewCustomer(Customer customer) {
 		// TODO Auto-generated method stub
@@ -39,11 +42,8 @@ public class DataRequestHandler implements IDataRequestHandler {
 	@Override
 	public List<Customer> getCustomers(String customerID, String name, String phoneNumber) {
 		
-		String url = "http://LENNI:8080/bank.ws/rest/employee/customerSearch/";
-		
+		String url = Constants.serverUrl + "/bank.ws/rest/employee/customerSearch/";
 		List<Customer> result = null;
-		ObjectMapper mapper = new ObjectMapper();
-		HttpClient client = HttpClientBuilder.create().build();
 		
 		HttpGet get = new HttpGet(url);
 		get.setHeader(HttpHeaders.CONTENT_TYPE, "application/json");		
