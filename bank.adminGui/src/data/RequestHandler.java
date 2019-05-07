@@ -149,7 +149,7 @@ public class RequestHandler implements Admin {
 		catch(IOException e){
 			
 		}
-		return null;
+		return result;
 	}
 
 	@Override
