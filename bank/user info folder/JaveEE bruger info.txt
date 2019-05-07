@@ -1,0 +1,10 @@
+lave en række users
+username= testemployee, PW empPW123, rolle employee
+username testcustomer, PW customPW123, rolle customer
+username testbank, PW bankPW123, rolle bank
+username testpureadmin, PW purePW123, rolle admin
+
+
+applications og roles property filerne skal ind og erstatte dem som ligger i jeres wildfly-14.0.1.Final\standalone\configuration
+
+denne tekst fil indeholder info om login
