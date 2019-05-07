@@ -79,24 +79,15 @@ public class HomeBankingBean implements HomeBanking {
 				
 				entryBean.create(fromEntry);
 				entryBean.create(toEntry);
-				
+
 				updateBalance(fromEntry);
 				fromEntry.setIsHandled(true);
 				
 				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
-					try 
-					{
-						updateBalance(toEntry);
-						toEntry = toEntry.setIsHandled(true);
-					} 
-					catch(Exception e)
-					{
-						//
-					}
-				}
-					
+					updateBalance(toEntry);
+					toEntry = toEntry.setIsHandled(true);
+				} 
 			}
-			// Ikke nogen forskel på entryBean og foreignEntryBean lige pt. Evt. slet 'else if' osv. ? :-)
 			else if (ifForeignBankExsist(toEntry.getRegNumber())){
 				Entry foreignBankEntry = new Entry.Builder()
 												  .setAccountNumber(toEntry.getAccountNumber())
@@ -111,18 +102,11 @@ public class HomeBankingBean implements HomeBanking {
 				foreignEntryBean.create(foreignBankEntry);
 				
 				updateBalance(fromEntry);
-				fromEntry = fromEntry.setIsHandled(true);
+				fromEntry.setIsHandled(true);
 				
 				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
-					try 
-					{
-						updateBalance(toEntry);
-						toEntry = toEntry.setIsHandled(true);
-					} 
-					catch(Exception e)
-					{
-						//
-					}
+					updateBalance(foreignBankEntry);
+					foreignBankEntry = foreignBankEntry.setIsHandled(true);
 				}
 			}
 		}
