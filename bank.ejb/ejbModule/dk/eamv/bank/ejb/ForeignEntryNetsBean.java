@@ -1,23 +1,23 @@
 package dk.eamv.bank.ejb;
 
-import java.util.Optional;
-
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 
-import dk.eamv.bank.domain.Bank;
 import dk.eamv.bank.domain.Entry;
 import dk.eamv.bank.domain.Transfer;
+import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.BankBean;
+import dk.eamv.bank.ejb.entitybeans.CustomerBean;
 
 @WebService
 @Stateless
 public class ForeignEntryNetsBean 
 {
 	@EJB BankBean bbejb;
-	@EJB HomeBankingBean hbbejb;
+	@EJB AccountBean abejb;
+	@EJB CustomerBean cbejb;
 	
 	@WebMethod
 	public boolean CreateNetsRequest(int fromReg,Entry entry) 
@@ -26,24 +26,26 @@ public class ForeignEntryNetsBean
 			/*if(bbejb.read(fromReg).isPresent()) {
 				bbejb.read(fromReg).get().getAccountNumber();
 			}*/
-			int k = bbejb.read(fromReg).get().getAccountNumber();
-			Transfer tf = new Transfer();
-			tf.getAmount();
-			tf.setRegNumber(entry.getRegNumber());
-			//tf.getFromAccount().getAccountNumber(k);
-			//tf.
-			//hbbejb.transferEntry(tf);
+			
+			Transfer transfer = new Transfer();
+			int accountNumber = bbejb.read(fromReg).get().getAccountNumber();
+			int customerID = abejb.read(accountNumber).get().getCustomerID();
+			
+			transfer.setAmount(entry.getAmount());
+			transfer.setFromAccount(abejb.read(accountNumber).get());
+			transfer.setToAccountAccountNumber(accountNumber);
+			transfer.setFromDescription("Overførsel fra " + fromReg);			
+			transfer.setToDescription(entry.getDescription());
+			transfer.setRegNumber(entry.getRegNumber());
+			transfer.setCurrentCustomer(cbejb.read(customerID).get());
+			transfer.setDate(entry.getDate());
 			
 			return true;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
+			
 			return false;
 		}
-		// Vi mangler oplysninger om afsendende bank.
-		// Den skal bruges til at finde det kontonummer, som pengene skal hæves fra!
-		// Derefter skal der laves et Transfer-objekt, som anvendes i kald til 
-		// metoden transferEntry i HomeBankingBean
-		// Skal afklares med Alex, Jacob og Jonas
 	}
-
 }
