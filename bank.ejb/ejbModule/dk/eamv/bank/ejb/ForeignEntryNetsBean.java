@@ -21,8 +21,7 @@ public class ForeignEntryNetsBean
 	@EJB CustomerBean cbejb;
 	
 	@WebMethod
-	public boolean CreateNetsRequest(int fromReg,Entry entry, Account fromAccount, String description) 
-	{
+	public boolean CreateNetsRequest(int fromReg,Entry entry, Account fromAccount, String description){
 		try {
 			/*if(bbejb.read(fromReg).isPresent()) {
 				bbejb.read(fromReg).get().getAccountNumber();
@@ -43,7 +42,6 @@ public class ForeignEntryNetsBean
 			transfer.setFromDescription("Overførsel fra " + fromReg);			
 			transfer.setToDescription(entry.getDescription());
 			transfer.setRegNumber(entry.getRegNumber());
-
 			transfer.setCurrentCustomer(cbejb.read(customerID).get());
 			transfer.setDate(entry.getDate());
 			
