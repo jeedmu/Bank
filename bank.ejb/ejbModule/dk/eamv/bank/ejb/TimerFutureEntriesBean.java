@@ -12,7 +12,7 @@ import dk.eamv.bank.ejb.entitybeans.AccountBean;
 import dk.eamv.bank.ejb.entitybeans.EntryBean;
 
 @Stateless
-@RunAs(Constants.employeeRole)
+@RunAs(Constants.ROLE_EMPLOYEE)
 public class TimerFutureEntriesBean {
 
 	@EJB EntryBean entryBean;

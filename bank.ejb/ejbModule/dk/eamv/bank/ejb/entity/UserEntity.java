@@ -24,7 +24,7 @@ import dk.eamv.bank.domain.User;
 												 + "ORDER BY p.userId") })
 
 @Entity(name = "user")
-@javax.persistence.Table(name = "\"user\"")
+//@javax.persistence.Table(name = "\"user\"")
 public class UserEntity {
 
 	@Id

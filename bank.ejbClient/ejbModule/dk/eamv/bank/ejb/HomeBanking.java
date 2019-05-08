@@ -8,6 +8,8 @@ import dk.eamv.bank.domain.*;
 public interface HomeBanking {
 public Customer readCustomer(String cprn);
 
+	public int getCustomerID(String userID);
+	
 	public List<Account> showAccounts(int customerID);
 
 	public void transferEntry(Transfer transferInfo);

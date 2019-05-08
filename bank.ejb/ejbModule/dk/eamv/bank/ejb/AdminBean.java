@@ -22,7 +22,7 @@ import dk.eamv.bank.ejb.entitybeans.UserBean;
  * Session Bean implementation class AdminBean
  */
 @Stateless
-@RolesAllowed(Constants.adminRole)
+@RolesAllowed(Constants.ROLE_ADMIN)
 public class AdminBean implements Admin {
 	@EJB UserBean uB;
 	@EJB RoleBean rB;

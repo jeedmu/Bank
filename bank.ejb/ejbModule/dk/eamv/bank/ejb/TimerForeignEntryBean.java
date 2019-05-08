@@ -12,7 +12,7 @@ import dk.eamv.bank.ejb.ws.ForeignEntryNetsBean;
 import dk.eamv.bank.ejb.ws.ForeignEntryNetsBeanService;
 
 @Stateless
-@RunAs(Constants.employeeRole)
+@RunAs(Constants.ROLE_EMPLOYEE)
 public class TimerForeignEntryBean {
 	
 	@Schedule(minute="*/1", hour="*")

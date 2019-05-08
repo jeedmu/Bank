@@ -25,7 +25,7 @@ import dk.eamv.bank.ejb.exception.CustomerChangeInPastException;
  * Session Bean implementation class EmployeeBean
  */
 @Stateless
-@RolesAllowed(Constants.employeeRole)
+@RolesAllowed(Constants.ROLE_EMPLOYEE)
 public class EmployeeBean implements Employee {
 
 	@EJB CustomerChangeBean customerChangesBean;

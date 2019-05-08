@@ -130,4 +130,11 @@ public class Customer {
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
+
+	@Override
+	public String toString() {
+		return "Customer [customerID=" + customerID + ", sSN=" + sSN + ", firstName=" + firstName + ", surName="
+				+ surName + ", address=" + address + ", country=" + country + ", zipCode=" + zipCode + ", city=" + city
+				+ ", email=" + email + ", phoneNumber=" + phoneNumber + "]";
+	}
 }

@@ -4,13 +4,26 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
-import dk.eamv.bank.domain.*;
-import dk.eamv.bank.ejb.entitybeans.*;
+import dk.eamv.bank.domain.Account;
+import dk.eamv.bank.domain.Bank;
+import dk.eamv.bank.domain.Customer;
+import dk.eamv.bank.domain.CustomerSearchParameters;
+import dk.eamv.bank.domain.Entry;
+import dk.eamv.bank.domain.Transfer;
+import dk.eamv.bank.domain.User;
+import dk.eamv.bank.ejb.entitybeans.AccountBean;
+import dk.eamv.bank.ejb.entitybeans.BankBean;
+import dk.eamv.bank.ejb.entitybeans.CustomerBean;
+import dk.eamv.bank.ejb.entitybeans.EntryBean;
+import dk.eamv.bank.ejb.entitybeans.ForeignEntryBean;
+import dk.eamv.bank.ejb.entitybeans.UserBean;
 import dk.eamv.bank.ejb.exception.CustomerNotFoundException;
+import dk.eamv.bank.ejb.exception.UserNotFoundException;
 
 /**
  * Session Bean implementation class HomeBankingBean
@@ -23,10 +36,21 @@ public class HomeBankingBean implements HomeBanking {
 	@EJB private BankBean bankBean;
 	@EJB private ForeignEntryBean foreignEntryBean;
 	@EJB private CustomerBean customerBean;
+	@EJB private UserBean userBean;
 
 	public HomeBankingBean() {}
 
 	@Override
+	public int getCustomerID(String userID) {
+		Optional<User> user = userBean.read(userID);
+		if (user.isPresent()) {
+			return user.get().getCustomerId();
+		} else {
+			throw new UserNotFoundException();
+		}
+	}
+
+		@Override
 	public ArrayList<Account> showAccounts(int customerID) {
 
 		ArrayList<Account> accounts = new ArrayList<Account>();
@@ -79,15 +103,24 @@ public class HomeBankingBean implements HomeBanking {
 				
 				entryBean.create(fromEntry);
 				entryBean.create(toEntry);
-
+				
 				updateBalance(fromEntry);
 				fromEntry.setIsHandled(true);
 				
 				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
-					updateBalance(toEntry);
-					toEntry = toEntry.setIsHandled(true);
-				} 
+					try 
+					{
+						updateBalance(toEntry);
+						toEntry = toEntry.setIsHandled(true);
+					} 
+					catch(Exception e)
+					{
+						//
+					}
+				}
+					
 			}
+			// Ikke nogen forskel på entryBean og foreignEntryBean lige pt. Evt. slet 'else if' osv. ? :-)
 			else if (ifForeignBankExsist(toEntry.getRegNumber())){
 				Entry foreignBankEntry = new Entry.Builder()
 												  .setAccountNumber(toEntry.getAccountNumber())
@@ -102,11 +135,18 @@ public class HomeBankingBean implements HomeBanking {
 				foreignEntryBean.create(foreignBankEntry);
 				
 				updateBalance(fromEntry);
-				fromEntry.setIsHandled(true);
+				fromEntry = fromEntry.setIsHandled(true);
 				
 				if(LocalDateTime.now().isAfter(transferInfo.getDate())) {
-					updateBalance(foreignBankEntry);
-					foreignBankEntry = foreignBankEntry.setIsHandled(true);
+					try 
+					{
+						updateBalance(toEntry);
+						toEntry = toEntry.setIsHandled(true);
+					} 
+					catch(Exception e)
+					{
+						//
+					}
 				}
 			}
 		}
@@ -146,7 +186,7 @@ public class HomeBankingBean implements HomeBanking {
 		
 		Account account = accountBean.read(entry.getAccountNumber()).get();
 		
-		account.setBalance(account.getBalance().add(entry.getAmount()));
+		account = account.setBalance(account.getBalance().add(entry.getAmount()));
 		
 		accountBean.update(account);
 		return true;
@@ -163,7 +203,7 @@ public class HomeBankingBean implements HomeBanking {
 	}
 
 	private boolean accountHasSufficientFunds(int accountNo, BigDecimal amount) {
-		Account account = new AccountBean().read(accountNo).get();
+		Account account = accountBean.read(accountNo).get();
 		return account.getBalance().compareTo(amount) != -1;
 	}
 
