@@ -1,0 +1,18 @@
+Følgende brugere og roller er nødvendige for at kunne køre TestUserServlet.
+Oplysningerne er kopieret fra filerne, og kan tilføjes jeres eksisterende filer.
+Begge filer ligger under directory wildfly-14.0.1-Final/standalone/configuration
+
+Følgende linjer tilføjes sidst i application-users.properties:
+
+admin=207b6e0cc556d7084b5e2db7d822555c
+employee=d80b45dce4d1c3e0501b4c382184fcbb
+customer=82637e9d1437eb150675d1b649d85360
+bank=1bfc2bff75991d5944f05bcd404da2b6
+
+Følgende linjer tilføjes sidst i application-roles.properties:
+
+admin=admin, employee
+employee=employee
+customer=customer
+bank=bank
+
