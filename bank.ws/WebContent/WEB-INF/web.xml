@@ -25,4 +25,18 @@
     <filter-name>AdminAuthenticationFilter</filter-name>
     <url-pattern>/rest/admin/*</url-pattern>
   </filter-mapping>
+  
+  <security-constraint>
+    <web-resource-collection>
+      <web-resource-name>Webservices</web-resource-name>
+      <url-pattern>/rest/*</url-pattern>
+      <http-method>PUT</http-method>
+      <http-method>DELETE</http-method>
+      <http-method>GET</http-method>
+      <http-method>POST</http-method>
+    </web-resource-collection>
+    <user-data-constraint>
+        <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+    </user-data-constraint>
+  </security-constraint>
 </web-app>
