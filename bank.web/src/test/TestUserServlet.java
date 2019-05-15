@@ -65,7 +65,7 @@ public class TestUserServlet extends HttpServlet {
 			customer4 = employee.createCustomer(customer4);
 			
 			// Users
-			User user1 = new User.Builder("admin").setName("Admin").setPassword("admin").setCustomerId(customer1.getCustomerID()).setRoles(Arrays.asList(role1, role2)).build();
+			User user1 = new User.Builder("admin").setName("Admin").setPassword("admin").setCustomerId(customer1.getCustomerID()).setRoles(Arrays.asList(role1, role2, role3)).build();
 			user1 = admin.createUser(user1);
 			User user2 = new User.Builder("employee").setName("Employee").setPassword("employee").setCustomerId(customer2.getCustomerID()).setRoles(Arrays.asList(role2)).build();
 			user2 = admin.createUser(user2);
@@ -76,7 +76,7 @@ public class TestUserServlet extends HttpServlet {
 		}
 		if (request.getParameter("test").equalsIgnoreCase("2")) {
 			CustomerSearchParameters cp = new CustomerSearchParameters();
-			cp.setFirstName("c4");
+			cp.setFirstName("c3");
 			List<Customer> customers = employee.getCustomers(cp);
 			if (customers.size() == 1) {
 				Customer customer = customers.get(0);
